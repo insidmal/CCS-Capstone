@@ -1,0 +1,42 @@
+﻿@model CCS2.Models.ProgressReport
+<link href="~/Content/Details.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Client Reports for project " ;
+}
+
+<h2>Client Reports Page</h2>
+
+<fieldset>
+    <legend>Progress Report #@Model.ProgressReportId</legend>
+
+    <div class="DetailHeader">
+
+        <div class="DetailLeftCol">
+            <div class="display-label, DetailLabel">
+                 Title
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="DetailRightCol">
+            <div class="display-label, DetailLabel">
+                Report Date
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ReportDate)
+            </div>
+        </div>
+    </div>
+
+    <div class="display-label, DetailLabel">
+         @Html.DisplayNameFor(model => model.Notes)
+    </div>
+    <div class="display-field, DetailContent">
+        @Html.DisplayFor(model => model.Notes)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

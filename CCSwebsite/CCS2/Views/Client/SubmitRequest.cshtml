@@ -1,0 +1,65 @@
+﻿@model CCS2.Models.Request
+
+@{
+    ViewBag.Title = "Submit Request";
+}
+
+<link href="~/Content/clientlayout.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/clientstyle.css" rel="stylesheet" type="text/css" />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <ol>
+            <li class="row">
+                <h2 class="col-xs-12 loginline">Create a Project Request</h2>
+            </li>
+            <li class="row">
+                @Html.Label("Service")
+            </li>
+            <li class="row">
+                @Html.DropDownList("Services", "What can we help with?")
+            </li>
+
+            <li class="row">
+                @Html.Label("Description Of Project")
+            </li>
+            <li class="row">
+                @Html.TextAreaFor(model => model.Description, new { @class = "col-xs-10" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </li>
+
+            <li class="row">
+                @Html.Label("To Be Completed By")
+            </li>
+            <li class="row">
+                @Html.TextBoxFor(model => model.CompleteDate, new { id = "datepicker" })
+                @Html.ValidationMessageFor(model => model.CompleteDate)
+            </li>
+            <li class="row">
+                <input type="submit" value="Request Quote" />
+            </li>
+        </ol>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#datepicker").datepicker({ defaultDate: Date.now + "3m" });
+        });
+    </script>
+}
+

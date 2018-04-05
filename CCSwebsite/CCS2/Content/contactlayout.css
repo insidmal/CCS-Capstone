@@ -1,0 +1,11 @@
+﻿.contactheading 
+{
+    margin: 0px;
+    margin-left: 5%;
+}
+
+.contactinfo
+{
+    vertical-align: central;
+    white-space: nowrap;
+}

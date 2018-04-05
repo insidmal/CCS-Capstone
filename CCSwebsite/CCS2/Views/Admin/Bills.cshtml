@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CCS2.Models.Bill>
+
+@{
+    ViewBag.Title = "Invoices";
+}
+
+<h2>List of Invoices</h2>
+
+<p>
+    @Html.ActionLink("Add A bill", "Upload")
+</p>
+<table>
+    <tr>
+        <td>
+            Date
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th>
+            Download
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.ActionLink("Download", "Download", new { id = item.BillId })
+        </td>
+    </tr>
+}
+
+</table>

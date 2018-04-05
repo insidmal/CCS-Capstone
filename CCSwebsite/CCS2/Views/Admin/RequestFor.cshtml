@@ -1,0 +1,85 @@
+﻿@model CCS2.ViewModels.RequestView
+<link href="~/Content/Report.css" rel="stylesheet" />
+<link href="~/Content/Details.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Request";
+}
+
+<fieldset>
+    <legend>Project Request</legend>
+
+    <div class="DetailHeader">
+        <div class="DetailLeftCol">
+            <div class="display-label, DetailLabel">
+                 Client Name
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ClientName)
+            </div>
+            <div class="display-label, DetailLabel">
+                    Service Name
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.ServiceName)
+            </div>
+        </div>
+        
+        <div class="DetailRightCol">
+            <div class="display-label, DetailLabel">
+                 Date Requested
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.DateReq)
+            </div>
+
+            <div class="display-label, DetailLabel">
+                 To Be Completed By
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.DateComp)
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:25px;">
+        <div class="display-label, DetailLabel">
+             @Html.DisplayNameFor(model => model.Description)
+        </div>
+        <div class="display-field, DetailContent">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+    </div>
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<h3>Progress Reports</h3>
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Date
+        </th>
+    </tr>
+    @foreach (var report in ViewBag.Reports)
+    {
+        <tr>
+            <td>
+                @report.Name
+            </td>
+            <td>
+                @report.ReportDate
+            </td>
+            <td>
+                @Html.ActionLink("Notes", "Report", "Client", new { id = report.ProgressReportId }, null)
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Add Report", "MakeReport", new { reqId = Model.RequestId })    
+</p>

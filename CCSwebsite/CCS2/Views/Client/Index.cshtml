@@ -1,0 +1,51 @@
+﻿@model IEnumerable<CCS2.ViewModels.RequestView>
+@{
+    ViewBag.Title = "Client Portal";
+}
+<link href="~/Content/clientlayout.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/clientstyle.css" rel="stylesheet" type="text/css" />
+
+<div class = "row">
+    @Html.Partial("_Partial_NoteStrip", ViewBag.NotesForUser as IEnumerable<CCS2.Models.Note>)
+</div>
+<div>
+    @if(Model != null && Model.FirstOrDefault() != null)
+    {
+        <ol id="Requests">
+            <li class="row">
+                <h2>Your Project Requests</h2>
+                <p>
+                    @Html.ActionLink("Make New Request", "SubmitRequest")
+                </p>
+                <div class="hidden-xs col-sm-3 tableheading">Date Received</div>
+                <div class="hidden-xs col-sm-3 tableheading">Service Requested</div>
+                <div class="hidden-xs col-sm-3 tableheading">Description of Project</div>
+                <div class="hidden-xs col-sm-3 tableheading">Status</div>
+            </li>
+            @foreach (var r in Model)
+            {
+                <li class="row limajor">
+                    <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">Date Received</div>
+                    <div class="col-xs-12 col-sm-3">@r.DateReq</div>
+                    <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">Service Requested</div>
+                    <div class="col-xs-12 col-sm-3">@r.ServiceName</div>
+                    <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">Description of Project</div>
+                    <div class="col-xs-12 col-sm-3">@r.Description</div>
+                    <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">Status</div>
+                    <div class="col-xs-12 col-sm-3">
+                        @if (r.Approved == true)
+                        { @Html.ActionLink("Progress Reports", "AllClientReports", new { reqId = r.RequestId })}
+                        @if (r.Approved == false)
+                        { @Html.Label("We regret to inform you we cannot complete your request at this time.") }
+                        @if (r.Approved == null)
+                        { @Html.Label("Approval Pending") }
+                    </div>
+                </li>
+            }
+        </ol>
+    }
+    else
+    {
+        @Html.ActionLink("Make New Request", "SubmitRequest")
+    }
+</div>

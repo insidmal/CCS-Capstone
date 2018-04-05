@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CCS2.ViewModels.ReportView>
+<link href="~/Content/Report.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Client Reports";
+}
+
+@if (Model == null || Model.Count() == 0)
+{
+    <h2>No Reports Recieved</h2>
+}
+else
+    {
+    <h2>Reports For Project @Model.FirstOrDefault().RequestNum </h2>
+    
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                Notes
+            </th>
+            <th>
+                Report Date
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BriefNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Full Report", "Report", new { id=item.RepId }) |
+
+            </td>
+        </tr>
+    }
+
+    </table>
+}

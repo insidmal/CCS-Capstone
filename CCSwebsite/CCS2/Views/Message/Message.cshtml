@@ -1,0 +1,47 @@
+﻿@model CCS2.Models.Message
+
+@{
+    ViewBag.Title = "Message";
+}
+
+<link href="~/Content/clientlayout.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/clientstyle.css" rel="stylesheet" type="text/css" />
+
+    <ol>
+        <li class="row"><h2 class="loginline">Message</h2></li>
+        <li class="row">
+            <p class="col-sm-2 tableheading">
+                Sent From
+            </p>
+            <div class="col-sm-6">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+        </li>
+        <li class="row">
+            <p class="col-sm-2 tableheading">
+                Date Recieved
+            </p>
+            <div class="col-sm-6">
+                @Html.DisplayFor(model => model.DateReceived)
+            </div>
+        </li>
+        <li class="row">
+            <p class="col-sm-2 tableheading">
+                @Html.DisplayNameFor(model => model.Subject)
+            </p>
+            <div class="col-sm-10">
+                @Html.DisplayFor(model => model.Subject)
+            </div>
+        </li>
+        <li class="row">
+            <p class="col-sm-2 tableheading">
+                Message
+            </p>
+            <div>
+                @Html.DisplayFor(model => model.cMessage, new {@class= "col-sm-10" })
+            </div>
+        </li>
+    </ol>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<CCS2.Models.Note>
+
+
+
+
+<div class="strip">
+    @foreach (var item in Model)
+    {
+    <div class="note">
+        <pre class=" wordwrap">
+@Html.Raw(item)
+        </pre>
+    </div>    
+    }
+</div>

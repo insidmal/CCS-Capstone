@@ -1,0 +1,158 @@
+﻿/* Shared Bookend */
+
+.headerauthbutton 
+{
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+header
+{
+    background-image: url("../Images/headerbg.png");
+    position: center;
+    background-size: 100% 100%;
+    /*background-color: #0a2666;*/
+    color: #EEEE3A;
+}
+
+header hgroup h1
+{
+    font-family: "Fira Mono", "Courier New", Courier, monospace;
+    font-weight: bolder;
+}
+
+header a
+{
+    color: #EEEE3A;
+}
+
+header hgroup h1 strong
+{
+    color: #fbfbd9;
+
+    display: inline-block;
+
+    transform-origin:left;
+    -ms-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+#navbar a
+{
+    color: #EEEE3A;
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: none !important;
+    background-color: #3354a0;
+}
+
+#clientportalheader
+{
+    color: #ffff65;
+    font-size: 110%;
+    font-weight: bold;
+    text-decoration: none !important;
+    background-color: #1a387c;
+}
+
+#loginlink, #userlink, #registerlink, #logoutlink
+{
+    color:#EEEE3A;
+    text-decoration: none;
+    text-align: right;
+    padding: 8px;
+}
+
+#navbar a:hover, #loginlink:hover, #registerlink:hover, #logoutlink:hover, #userlink:hover
+{
+    background-color: #ff9898 !important;
+}
+
+.decobar
+{
+    background-color: #0a2666; 
+}
+
+footer 
+{
+    color: #EEEE3A;
+    background-color: #0a2666;
+}
+
+li, th, tr
+{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+@media (max-width: 767px) 
+{
+    h1 {font-size: 24px !important;}
+    h2 {font-size: 22px !important;}
+    h3 {font-size: 16px !important;}
+    h4 {font-size: 12px !important;}
+    h5 {font-size: 10px !important;}
+    h6 {font-size: 8px !important;}
+
+    header
+    {
+        background-image: none;
+        background-color: #0a2666;
+    }
+
+    header hgroup h1 strong
+    {
+        transform-origin:left;
+        -ms-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    .navbutton
+    {
+        background-color: #1A387C;
+        border-top: 1px solid black;
+    }
+
+    footer
+    {
+        font-size: smaller;
+    }
+}
+
+@media (min-width: 768px) 
+{
+    h1 {font-size: 30px !important;}
+    h2 {font-size: 26px !important;}
+    h3 {font-size: 20px !important;}
+    h4 {font-size: 14px !important;}
+    h5 {font-size: 12px !important;}
+    h6 {font-size: 10px !important;}
+
+    #loginlink, #registerlink, #userlink, #logoutlink
+    {
+        font-size: smaller;
+    }
+}
+
+@media (min-width: 992px) 
+{
+    h1 {font-size: 34px !important;}
+    h2 {font-size: 30px !important;}
+    h3 {font-size: 24px !important;}
+    h4 {font-size: 18px !important;}
+    h5 {font-size: 14px !important;}
+    h6 {font-size: 12px !important;}
+
+    #loginlink, #registerlink, #userlink, #logoutlink
+    {
+        font-size: small;
+    }
+}

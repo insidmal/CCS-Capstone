@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Administration Home";
+}
+
+<h2>Adminstration Home Page</h2>
+
+<div class="admin_options">
+    <div class="admin_link">
+        @Html.ActionLink("View Project Requests", "Requests")
+    </div>
+    <br />
+    <div class="admin_link">
+        @Html.ActionLink("View Messages", "Index", "Message", null, null)
+    </div>
+    <br />
+    <div class="admin_link">
+        @Html.ActionLink("Send Message", "SendMessage")
+    </div>
+    <br />
+    <div class="admin_link">
+        @Html.ActionLink("Make Note", "AddNote")
+    </div>
+    <br />
+    <div class="admin_link">
+        @Html.ActionLink("View Invoices", "Bills")
+    </div>
+    <br />
+    <div class="admin_link">
+        @Html.ActionLink("Add Invoice", "Upload")
+    </div>
+</div>

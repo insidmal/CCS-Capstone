@@ -1,0 +1,58 @@
+﻿@model CCS2.Models.Message
+
+@{
+    ViewBag.Title = "Send Message";
+}
+
+<link href="~/Content/clientlayout.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/clientstyle.css" rel="stylesheet" type="text/css" />
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <ol>
+            <li class="row">
+                <h2 class="col-xs-12 loginline">Send A Message To Creative CyberSolutions LLC</h2>
+            </li>
+            <li class="row">
+                @Html.LabelFor(model => model.Email)
+            </li>
+            <li class="row">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </li>
+            <li class="row">
+                @Html.LabelFor(model => model.Subject)
+            </li>
+            <li class="row">
+                @Html.EditorFor(model => model.Subject, new { @class = "col-xs-10" })
+                @Html.ValidationMessageFor(model => model.Subject)
+            </li>
+            <li class="row">
+                @Html.Label("Message")
+            </li>
+            <li class="row">
+                @Html.TextAreaFor(model => model.cMessage, new { @class = "col-xs-10" })
+                @Html.ValidationMessageFor(model => model.cMessage)
+            </li>
+            <li class="row">
+                <input type="submit" value="Send Message" />
+            </li>
+            <li class="row col-xs-12 loginline">
+                    Please allow up to 48 hours for a response.
+                    If you have a project request please vist our requests page in the client portal.
+            </li>
+
+        </ol>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

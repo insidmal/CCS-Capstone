@@ -1,0 +1,63 @@
+﻿@model CCS2.Models.Note
+
+@{
+    ViewBag.Title = "AddNote";
+}
+
+<h2>AddNote</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Note</legend>
+
+        <div class="editor-label">
+            @Html.Label("Select A User")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Users")
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Text)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Text, new { id = "htmlText" })
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<script type="text/javascript">
+    // Found on stack overflow, changed /t to "   "
+    $(document).delegate('#htmlText', 'keydown', function (e) {
+        var keycode = e.keycode || e.which;
+
+        if (keycode == 9) {
+            e.preventDefault();
+            var start = $(this).get(0).selectionStart;
+            var end = $(this).get(0).selectionEnd;
+
+            // set textarea value to: text before caret + tab + text after caret
+            $(this).val($(this).val().substring(0, start) + "    " + $(this).val().substring(end));
+
+            // put caret at right position again
+            $(this).get(0).sectionStart = $(this).get(0).sectionEnd = start + 1;
+        }
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

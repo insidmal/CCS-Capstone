@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CCS2.ViewModels.RequestView>
+
+@{
+    ViewBag.Title = "Requests";
+}
+
+<h2>Client Requests</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayName("Sevrice Type")
+        </th>
+        <th>
+            @Html.DisplayName("Client Name")
+        </th>
+        <th>
+            @Html.DisplayName("Date Recieved")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayName("Requested Completion Date")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReq)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateComp)
+        </td>
+        <td>
+            @Html.ActionLink("View", "RequestFor", new { reqId = item.RequestId })
+        </td>
+        <td>
+            @Html.ActionLink("Approve", "Approve", new { reqId = item.RequestId }) | 
+            @Html.ActionLink("Deny", "Deny", new { reqId = item.RequestId })
+        </td>
+    </tr>
+}
+
+</table>

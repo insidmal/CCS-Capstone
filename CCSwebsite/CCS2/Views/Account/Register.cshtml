@@ -1,0 +1,53 @@
+﻿@model CCS2.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<link href="~/Content/clientlayout.css" rel="stylesheet" type="text/css"/>
+<link href="~/Content/clientstyle.css" rel="stylesheet" type="text/css"/>
+
+<section id="registerform" class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <fieldset>
+            <ol>
+                <li>
+                    <h2 class="row">Create An Account</h2>
+                </li>
+                <li class="row">
+                    @Html.ValidationSummary(false, string.Empty, new { @class = "loginerror" })
+            </li>
+            <li class="row">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-xs-12 col-sm-3 col-lg-3  loginline" })
+                @Html.TextBoxFor(m => m.UserName, new { @class = "col-sm-4 col-lg-3" })
+            </li>
+            <li class="row">
+                @Html.LabelFor(m => m.Password, new { @class = "col-xs-12 col-sm-3 col-lg-3  loginline" })
+                @Html.PasswordFor(m => m.Password, new { @class = "col-sm-4 col-lg-3" })
+            </li>
+            <li class="row">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-xs-12 col-sm-3 col-lg-3 loginline" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "col-sm-4 col-lg-3" })
+            </li>
+            <li class="row">
+                @Html.LabelFor(m => m.Email, new { @class = "col-xs-12 col-sm-3 col-lg-3  loginline" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "col-sm-4 col-lg-3" })
+            </li>
+            <li class="row">
+                <input type="submit" value="Register" class="col-sm-offset-3 col-sm-4 col-md-offset-3 col-lg-offset-3 col-lg-3 loginbutton" />
+            </li>
+            <li class="row">
+                <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+                    @Html.ActionLink("Log In", "Login") if you already have an account.
+                </div>
+            </li>
+        </ol>
+    </fieldset>
+    }
+</section>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

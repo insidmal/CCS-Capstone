@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <link href="~/Content/layout.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Lobster|Shadows+Into+Light' rel='stylesheet' type='text/css' />
+</head>
+<body class="container">
+    <div class="wrapper">
+        <header class="row">
+            <div class="decobar"></div>
+            <hgroup class="row">
+                <h1><span class="col-xs-12"><strong>C</strong>REATIVE</span> 
+                <span class="col-xs-12"><strong>C</strong>YBER<strong>S</strong>OLUTIONS<strong class="initials">&nbspLLC</strong></span></h1>
+                <h4>Windows, Web, and Mobile Software Development.</h4>
+            </hgroup>
+            <section>
+                @Html.Partial("_LoginPartial")
+            </section>
+
+        </header>
+        <div id="navbar" class="row text-center">
+            <div id="navhome" class="col-sm-5ths">@Html.ActionLink("Home", "index", "Home")</div>
+            <div id="navserv" class="col-sm-5ths">@Html.ActionLink("Services", "Index", "Services")</div>
+            @*<div class="col-sm-2">@Html.ActionLink("Portfolio", "Portfolio", "Services")</div>*@
+            <div id="navabout" class="col-sm-5ths">@Html.ActionLink("About", "about", "Home")</div>
+            <div id="navcont" class="col-sm-5ths">@Html.ActionLink("Contact Us", "contact", "Home")</div>
+            <div id="navlogin" class="col-sm-5ths">
+                @if (!Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Client Login", "Login", "Account")
+                }
+                else if (User.IsInRole("Administrator"))
+                {
+                    @Html.ActionLink("Admin Page", "index", "Admin")
+                }
+                else
+                {
+
+                    <a id="navportal" href="#"><div id="clientportalheader">Client Portal</div></a>
+                    <div class="sub-menu" id="menu">
+                        <div>@Html.ActionLink("Project Requests", "Index", "Client")</div>
+                        <div>@Html.ActionLink("Request Quote", "SubmitRequest")</div>
+                        <div> @Html.ActionLink("Send Message", "Create", "Message")</div>
+                        <div> @Html.ActionLink("Read Messages", "Index", "Message")</div>
+                        <div> @Html.ActionLink("Invoices", "ClientBills", "Client")</div>
+                        <div> @Html.ActionLink("Manage Account", "Manage", "Account")</div>
+                        <div>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutl" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutl').submit()">Log off</a>
+                            }
+                        </div>
+                    </div>
+
+                    <script type="text/javascript">
+                        var delay = function (elem, callback) {
+                            var timeout = null;
+                            elem.onmouseover = function () {
+                                // Set timeout to be a timer which will invoke callback after 1s
+                                timeout = setTimeout(callback, 250);
+                            };
+
+                            elem.onmouseout = function () {
+                                // Clear any timers set to timeout
+                                clearTimeout(timeout);
+                            }
+                        };
+
+                        var open = true;
+                        $("#navlogin").find(".sub-menu").slideDown();
+
+                        $("#navportal").click(function () {
+                            if (!open) {
+                                $("#navlogin").find(".sub-menu").clearQueue().slideDown("fast");
+                                open = true;
+                            }
+                            else {
+                                $("#navlogin").find(".sub-menu").slideUp("slow");
+                                open = false;
+                            }
+
+                        });
+                    </script>
+                }
+            </div>
+        </div>
+        <section class="content">
+            @RenderBody()
+        </section>
+        <footer class="col-xs-12 footer">
+            <div class="decobar"></div>
+            <p>&copy; Copyright 2017 Creative CyberSolutions. Made with ASP.NET MVC, jQuery, Bootstrap, and SQL Server</p>
+        </footer>
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </div>
+
+    <script type="text/javascript">
+        var decobar = $('.decobar');
+        var width;
+
+        $(window).resize(function () {
+            width = $(window).width();
+            decobar.css('width', width, 'left');
+            decobar.offset({left: 0 });
+
+        });
+
+
+        $(window).resize();
+    </script>
+</body>
+</html>

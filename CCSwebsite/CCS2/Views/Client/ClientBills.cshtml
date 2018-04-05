@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CCS2.Models.Bill>
+
+@{
+    ViewBag.Title = "Invoices";
+}
+
+<link href="~/Content/clientlayout.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/clientstyle.css" rel="stylesheet" type="text/css" />
+
+<h2>Invoices for @User.Identity.Name</h2>
+<table>
+
+    <tr class="row">
+        <th class=" tableheading">
+            Bill Date
+        </th>
+        <th class=" tableheading">
+            Download File
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="row">
+        <td >
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td >
+            @Html.ActionLink("Download", "Download", new { id=item.BillId })
+        </td>
+    </tr>
+}
+
+</table>

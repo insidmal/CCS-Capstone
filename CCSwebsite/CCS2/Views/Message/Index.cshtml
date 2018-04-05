@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CCS2.Models.Message>
+
+@{
+    ViewBag.Title = "Message Center";
+}
+
+<link href="~/Content/clientlayout.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/clientstyle.css" rel="stylesheet" type="text/css" />
+
+    <ol>
+        <li class="row">
+            <h2>Your Messages</h2>
+
+            <p>
+                @Html.ActionLink("Send Message", "Create")
+            </p>
+
+            <div class="hidden-xs col-sm-3 tableheading">Sent By</div>
+            <div class="hidden-xs col-sm-3 tableheading">@Html.DisplayName("Date")</div>
+            <div class="hidden-xs col-sm-3 tableheading">@Html.DisplayName("Subject")</div>
+            <div class="hidden-xs col-sm-3 tableheading">Action</div>
+        </li>
+        @foreach (var item in Model)
+        {
+            <li class="row limajor">
+                <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">Sent By</div>
+                <div class="col-xs-12 col-sm-3">
+                    @if (item.ClientId == 0)
+                    {
+                        <span>Brian</span>
+                        <img src="~/Images/arrowTo.png" />
+                    }
+                    else
+                    {
+                        @item.Email
+                        <img src="~/Images/arrowFrom.png" />
+                    }
+                </div>
+                <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">@Html.DisplayName("Date")</div>
+                <div class="col-xs-12 col-sm-3">@Html.DisplayFor(modelItem => item.DateReceived)</div>
+                <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">@Html.DisplayName("Subject")</div>
+                <div class="col-xs-12 col-sm-3">@Html.ActionLink(item.Subject, "Message", new { id = item.MessageId })</div>
+                <div class="visible-xs hidden-sm col-xs-12 tableheading headingleft">Action</div>
+                <div class="col-xs-12 col-sm-3">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MessageId })
+                </div>
+            </li>
+        }
+    </ol>

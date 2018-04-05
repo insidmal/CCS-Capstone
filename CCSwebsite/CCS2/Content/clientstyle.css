@@ -1,0 +1,91 @@
+﻿.loginerror, .loginerror *
+{
+    color: red;
+    font-weight: bold;    
+    list-style: none;
+    list-style-type: none !important;
+}
+
+.loginline, .loginline *, .loginerror *
+{
+    padding-left: 0px !important;
+}
+
+.loginsuccess, loginsuccess *
+{
+    font-weight: bold;
+    list-style: none;
+    list-style-type: none !important;
+}
+
+ol, ul
+{
+    list-style-type: none;
+}
+
+fieldset
+{
+    background-color: #90a9e2;
+}
+
+#loginform a, #registerform a
+{
+    text-decoration-style: none;
+    color: #EEEE3A;
+}
+
+input[type=submit], input[type=submit]
+{
+    border-style: none;
+    font-weight: bold;
+    color: #EEEE3A;
+    background-color: #1a387c;
+}
+
+input[type=submit]:hover, input[type=submit]:hover
+{
+    background-color: #ff9898;
+}
+
+.tableheading
+{
+    color: #ffff65;
+    background-color: #3354a0;
+    text-align: left;
+    font-weight: bold;
+    padding: 1px;
+    padding-left: 5px;
+}
+
+table
+{
+    width: 100%;
+}
+
+table tr:nth-child(odd):not(:first-child)
+{
+    background-color: #ffffb0;
+}
+
+table tr
+{
+    vertical-align: top;
+}
+
+fieldset a
+{
+    color: #ffff65;
+}
+
+.limajor:nth-child(odd)
+{
+    background-color: #ffff99;
+}
+
+@media (max-width: 767px) 
+{
+    .loginerror, .loginerror *
+    {
+        padding: 0px !important;
+    }
+}

@@ -1,0 +1,44 @@
+﻿ul li 
+{
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+ul li img 
+{
+    max-width: 64px;
+    min-height: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+ul li span 
+{
+    padding: 0 !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media(max-width:767px) {
+    ul li span {
+        margin-top: 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    ul li span {
+        margin-top: 12px;
+    }
+}
+
+@media (min-width: 992px) {
+    ul li span {
+        margin-top: 13px;
+    }
+}
+
+@media (min-width: 1200px) {
+    ul li span {
+        margin-top: 13px;
+    }
+}
