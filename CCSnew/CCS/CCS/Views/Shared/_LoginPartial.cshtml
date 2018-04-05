@@ -1,0 +1,19 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>
+        @{
+            string name = User.Identity.Name;
+            if (name.Length > 8) { name = name.Substring(0, 8); }
+        }
+        @Html.ActionLink("Hi, " + name + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { @id = "userlink", @class = "hidden-xs", title = "Manage" })
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutlink", @class = "hidden-xs" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutlink').submit()">Log off</a>
+        }
+    </text>
+}
+else
+{
+    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginlink", @class = "hidden-xs" })
+    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerlink", @class = "hidden-xs" })
+}
