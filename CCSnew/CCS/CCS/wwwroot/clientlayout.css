@@ -1,0 +1,51 @@
+﻿.loginline 
+{
+    display: block;
+    clear: left;
+    margin-bottom: 0.3%;
+}
+
+.logininput 
+{
+    display: block;
+    margin-right: 10px;
+    margin-bottom: 0.5%;
+}
+
+.loginbutton
+{
+    display: block;
+    float: left;
+    margin-top: 4%;
+}
+
+.headingleft
+{
+    float: left;
+    clear: left;
+}
+
+li
+{
+    margin-bottom: 5px;
+}
+
+.limajor
+{
+    margin-top: 20px;
+}
+
+.checkbox
+{
+    display: block;
+}
+
+#loginform input[type=submit], #registerform input[type=submit]
+{
+    height: 30px;
+}
+
+.tableheading
+{
+    min-height: 100%;
+}

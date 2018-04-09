@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Client\" />
     <Folder Include="Views\Contact\" />
