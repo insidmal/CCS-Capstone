@@ -4,6 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using CCS.Models;
 
+
+// CREATIVE CYBER SOLUTIONS
+// 04/10/2018
+// JOHN BELL contact@conquest-marketing.com
+
 namespace CCS.Repositories
 {
     public class TestMessageRepository : IMessageRepository
@@ -18,12 +23,8 @@ namespace CCS.Repositories
         }
 
         public List<Message> GetMessagesByUser(int id) => Messages.Where(a => a.FromID == id).ToList<Message>();
-
-
-        public List<Message> GetMessagesToAndFromUser(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
+        public List<Message> GetMessagesToAndFromUser(int id) => Messages.Where(a => a.ToID == id || a.FromID == id).ToList<Message>();
 
         public List<Message> GetMessagesToUser(int id) => Messages.Where(a => a.ToID == id).ToList<Message>();
 
@@ -35,17 +36,24 @@ namespace CCS.Repositories
 
         public int Remove(int MessID)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Message> ShowAllMessages()
-        {
-            return Messages;
-        }
-
-        public int Update(Message m)
-        {
+            Message m = Messages.Where(a => a.ID == MessID).ToList<Message>()[0];
+            Messages.Remove(m);
             return 1;
+        }
+
+        public List<Message> ShowAllMessages() => Messages;
+
+
+        public Message Update(Message m)
+        {
+            Message oldMess = Messages.Where(a => a.ID == m.ID).ToList<Message>()[0];
+            Messages.Remove(oldMess);
+            oldMess.Text = m.Text;
+            oldMess.Status = Read.Unread;
+            oldMess.Text = m.Text;
+            Messages.Add(oldMess);
+
+            return oldMess;
         }
     }
 }
