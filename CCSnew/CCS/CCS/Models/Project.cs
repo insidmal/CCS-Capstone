@@ -10,12 +10,12 @@ namespace CCS.Models
         string ID { get; set; }
         string CustomerID { get; set; }
         string Description { get; set; }
+        List<Product> Products { get; set; }
         float Quote { get; set; }
         float TotalDue { get; set; }
         DateTime QuoteDate { get; set; }
         DateTime InvoiceDue { get; set; }
         Paid Paid { get; set; }
-
     }
 
     public enum Paid
@@ -29,5 +29,6 @@ namespace CCS.Models
         int ID { get; set; }
         int From { get; set; }
         int ProjID { get; set; }
-        string Text {get;set;}
+        string Text { get; set; }
+    }
 }

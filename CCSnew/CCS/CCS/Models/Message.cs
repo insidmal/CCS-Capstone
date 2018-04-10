@@ -7,11 +7,11 @@ namespace CCS.Models
 {
     public class Message
     {
-        int ID { get; set; }
-        int FromID { get; set; }
-        int ToID { get; set; }
-        string Text { get; set; }
-        Read Status { get; set; }
+        public int ID { get; set; }
+        public int FromID { get; set; }
+        public int ToID { get; set; }
+        public string Text { get; set; }
+        public Read Status { get; set; }
     }
 
     public enum Read
