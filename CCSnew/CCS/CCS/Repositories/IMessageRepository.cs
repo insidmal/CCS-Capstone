@@ -14,6 +14,7 @@ namespace CCS.Repositories
     public interface IMessageRepository
     {
         List<Message> ShowAllMessages();
+        Message GetMessage(int id);
         List<Message> GetMessagesByUser(int id);
         List<Message> GetMessagesToUser(int id);
         List<Message> GetMessagesToAndFromUser(int id);

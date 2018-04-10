@@ -18,6 +18,7 @@ namespace CCS.Models
         public string Subject { get; set; }
         public string Text { get; set; }
         public Read Status { get; set; }
+        public DateTime Date { get; set; }
     }
 
     public enum Read

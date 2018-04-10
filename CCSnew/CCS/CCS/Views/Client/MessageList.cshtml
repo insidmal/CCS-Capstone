@@ -1,0 +1,36 @@
+﻿@model List<Message>
+@{
+    ViewData["Title"] = "Your Messages";
+}
+
+
+<h2>Your Messages</h2>
+
+
+<table cellspacing="3">
+    <caption>Inbox</caption>
+    <tr><td>From</td><td>Subject</td><td>Date</td></tr>
+    @foreach (Message m in @Model.Where(a => a.FromID == 1))
+    {
+    <tr>
+        <td>@m.FromID</td>
+        <td>
+            <a asp-action="MessageView" asp-route-id="@m.ID">
+                @if (m.Status == Read.Unread)
+                {
+
+            <strong>@m.Subject</strong>
+                }
+                else
+                { @m.Subject }
+            </a>
+        </td>
+        <td>@m.Date</td>
+    </tr>
+
+
+
+}
+
+
+</table>
