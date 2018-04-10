@@ -27,6 +27,8 @@ namespace CCS.Repositories
 
         public int Add(Message m)
         {
+            m.Date = DateTime.Now;
+            m.Status = Read.Unread;
             Messages.Add(m);
             return 1;
         }

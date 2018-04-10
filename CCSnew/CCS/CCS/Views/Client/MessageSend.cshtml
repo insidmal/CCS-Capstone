@@ -1,7 +1,18 @@
-﻿
+﻿@model  Message
 @{
-    ViewData["Title"] = "MessageSend";
+    ViewData["Title"] = "Send a Message";
 }
 
-<h2>MessageSend</h2>
+<h2>Send a Message</h2>
+
+<form method="post">
+    <label asp-for="ToID"></label>
+    <input asp-for="ToID">
+    <input type="hidden" asp-for="FromID" value="1" />
+    <label asp-for="Subject"></label>
+    <input asp-for="Subject" />
+    <label asp-for="Text"></label>
+    <input asp-for="Text" />
+    <input type="Submit" />
+</form>
 
