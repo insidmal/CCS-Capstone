@@ -15,7 +15,7 @@ namespace CCS.Repositories
     {
         private List<Note> notes;
 
-        public List<Note> GetNotesByProject(int id) => notes.Where(a => a.ProjID == id).ToList();
+        public List<Note> GetNotesByProject(int id) => notes.Where(a => a.ProjectID == id).ToList();
         public int RemoveNote(Note n)
         {
             notes.Remove(n);
@@ -31,7 +31,7 @@ namespace CCS.Repositories
         }
         public Note AddNote(int id, Note n)
         {
-            n.ProjID = id;
+            n.ProjectID = id;
             notes.Add(n);
             return n;
         }

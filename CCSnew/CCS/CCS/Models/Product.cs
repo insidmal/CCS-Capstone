@@ -13,9 +13,9 @@ namespace CCS.Models
     public class Product
     {
 
-        int ID { get; set; }
-        string Name { get; set; }
-        string Description { get; set; }
-        float Price { get; set; }
+       public int ID { get; set; }
+       public string Name { get; set; }
+       public string Description { get; set; }
+       public float Price { get; set; }
     }
 }

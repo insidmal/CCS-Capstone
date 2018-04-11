@@ -12,8 +12,9 @@ namespace CCS.Models
 {
     public class ProjectProducts
     {
-        int ProjectID { get; set; }
-        int ProductID { get; set; }
-        int Quantity { get; set; }
+        public int ID { get; set; }
+        public int ProjectID { get; set; }
+        public int ProductID { get; set; }
+        public int Quantity { get; set; }
     }
 }

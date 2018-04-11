@@ -13,6 +13,7 @@ namespace CCS.Models
 {
     public class Message
     {
+        public int ID { get; set; }
         public int FromID { get; set; }
         public int ToID { get; set; }
         public string Subject { get; set; }

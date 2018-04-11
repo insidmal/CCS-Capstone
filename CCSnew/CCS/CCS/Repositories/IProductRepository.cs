@@ -13,8 +13,9 @@ namespace CCS.Repositories
 {
     interface IProductRepository
     {
-        Product AddProductToProject(int id, int prodID);
-        Product RemoveProductFromProject(int id, int prodId);
+        Product AddProductToProject(int id, int prodID, int Qty);
+        int RemoveProductFromProject(int id, int prodId);
+        Product UpdateProductQuantity(int id, int qty);
         Product AddProduct(Product p);
         int RemoveProduct(Product p);
         List<Product> ListProducts();
