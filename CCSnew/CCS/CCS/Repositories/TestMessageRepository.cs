@@ -15,15 +15,13 @@ namespace CCS.Repositories
     {
         private List<Message> Messages = new List<Message>();
 
-        public TestMessageRepository()
-        {
-            Add(new Message() { FromID = 1, ToID = 2, ID = 0, Status = Read.Unread, Text = "Test Message 1 Text", Date=DateTime.Now, Subject="Test Message 1" });
-            Add(new Message() { FromID = 1, ToID = 3, ID = 1, Status = Read.Read, Text = "Test Message 2 Text", Date = DateTime.Now, Subject = "Test Message 2" });
-            Add(new Message() { FromID = 1, ToID = 4, ID = 2, Status = Read.Unread, Text = "Test Message 3 Text", Date = DateTime.Now, Subject = "Test Message 3" });
-            Add(new Message() { FromID = 1, ToID = 5, ID = 3, Status = Read.Unread, Text = "Test Message 4 Text", Date = DateTime.Now, Subject = "Test Message 4" });
-
-        }
-
+        //public TestMessageRepository()
+        //{
+        //    Add(new Message() { FromID = 1, ToID = 2, ID = 0, Status = Read.Unread, Text = "Test Message 1 Text", Date=DateTime.Now, Subject="Test Message 1" });
+        //    Add(new Message() { FromID = 1, ToID = 3, ID = 1, Status = Read.Read, Text = "Test Message 2 Text", Date = DateTime.Now, Subject = "Test Message 2" });
+        //    Add(new Message() { FromID = 1, ToID = 4, ID = 2, Status = Read.Unread, Text = "Test Message 3 Text", Date = DateTime.Now, Subject = "Test Message 3" });
+        //    Add(new Message() { FromID = 1, ToID = 5, ID = 3, Status = Read.Unread, Text = "Test Message 4 Text", Date = DateTime.Now, Subject = "Test Message 4" });
+        //}
 
         public int Add(Message m)
         {
@@ -68,7 +66,6 @@ namespace CCS.Repositories
         }
 
         public Message GetMessage(int id) =>Messages.FirstOrDefault(a => a.ID == id);
-
 
     }
 }

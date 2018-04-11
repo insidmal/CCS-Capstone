@@ -13,9 +13,9 @@ namespace CCS.Repositories
 {
     public class TestNoteRepo : INoteRepository
     {
-        private List<Note> notes;
+        private List<Note> notes = new List<Note>();
 
-        public List<Note> GetNotesByProject(int id) => notes.Where(a => a.ProjectID == id).ToList();
+        public List<Note> GetNotesByProject(int id) => notes.Where(a => a.ProjectID == id).ToList<Note>();
         public int RemoveNote(Note n)
         {
             notes.Remove(n);

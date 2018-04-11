@@ -24,6 +24,7 @@ namespace CCS
         {
             services.AddMvc();
             services.AddTransient<IMessageRepository, TestMessageRepository>();
+            services.AddTransient<INoteRepository, TestNoteRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

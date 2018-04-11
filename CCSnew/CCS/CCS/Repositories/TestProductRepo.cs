@@ -13,19 +13,13 @@ namespace CCS.Repositories
 
     public class TestProductRepo : IProductRepository
     {
-        private List<Product> products;
-        private List<ProjectProducts> projectProducts;
+        private List<Product> products = new List<Product>();
         public Product AddProduct(Product p)
         {
             products.Add(p);
             return p;
         }
 
-        public Product AddProductToProject(int id, int prodID, int qty)
-        {
-            projectProducts.Add(new ProjectProducts { ProjectID = id, ProductID = prodID, Quantity=qty });
-            return products.FirstOrDefault(a => a.ID == prodID);
-        }
 
         public List<Product> ListProducts() => products;
 
@@ -35,11 +29,6 @@ namespace CCS.Repositories
             return 1;
         }
 
-        public int RemoveProductFromProject(int id, int prodId)
-        {
-            projectProducts.Remove(projectProducts.FirstOrDefault(a => a.ProductID == prodId && a.ProjectID == id));
-            return 1;
-        }
 
         public Product UpdateProduct(Product p)
         {
@@ -52,15 +41,7 @@ namespace CCS.Repositories
             return p;
         }
 
-        public Product UpdateProductQuantity(int id, int qty)
-        {
-            ProjectProducts pp = projectProducts.FirstOrDefault(a => a.ID == id);
-            projectProducts.Remove(pp);
-            pp.Quantity = qty;
-            projectProducts.Add(pp);
-            return products.FirstOrDefault(a=>a.ID==pp.ProductID);
 
-        }
 
         public Product ViewProduct(int id) =>products.FirstOrDefault(a => a.ID == id);
         

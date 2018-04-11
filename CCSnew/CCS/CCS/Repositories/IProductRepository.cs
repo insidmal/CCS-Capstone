@@ -11,11 +11,9 @@ using System.Threading.Tasks;
 
 namespace CCS.Repositories
 {
-    interface IProductRepository
+    public interface IProductRepository
     {
-        Product AddProductToProject(int id, int prodID, int Qty);
-        int RemoveProductFromProject(int id, int prodId);
-        Product UpdateProductQuantity(int id, int qty);
+
         Product AddProduct(Product p);
         int RemoveProduct(Product p);
         List<Product> ListProducts();
