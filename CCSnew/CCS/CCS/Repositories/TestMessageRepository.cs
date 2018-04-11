@@ -47,7 +47,7 @@ namespace CCS.Repositories
 
         public int Remove(int MessID)
         {
-            Message m = Messages.Where(a => a.ID == MessID).ToList<Message>()[0];
+            Message m = Messages.FirstOrDefault(a => a.ID == MessID);
             Messages.Remove(m);
             return 1;
         }
@@ -57,7 +57,7 @@ namespace CCS.Repositories
 
         public Message Update(Message m)
         {
-            Message oldMess = Messages.Where(a => a.ID == m.ID).ToList<Message>()[0];
+            Message oldMess = Messages.FirstOrDefault(a => a.ID == m.ID);
             Messages.Remove(oldMess);
             oldMess.Text = m.Text;
             oldMess.Status = Read.Unread;
@@ -67,7 +67,7 @@ namespace CCS.Repositories
             return oldMess;
         }
 
-        public Message GetMessage(int id) =>Messages.Where(a => a.ID == id).ToList<Message>()[0];
+        public Message GetMessage(int id) =>Messages.FirstOrDefault(a => a.ID == id);
 
 
     }

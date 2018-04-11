@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 // CREATIVE CYBER SOLUTIONS
 // 04/10/2018
 // JOHN BELL contact@conquest-marketing.com
+// Message Model for sending/receiving messages between clients/admins
 
 namespace CCS.Models
 {
     public class Message
     {
-        public int ID { get; set; }
         public int FromID { get; set; }
         public int ToID { get; set; }
         public string Subject { get; set; }
