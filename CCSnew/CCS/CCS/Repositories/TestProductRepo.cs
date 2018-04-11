@@ -7,7 +7,7 @@ using CCS.Models;
 namespace CCS.Repositories
 {
     // CREATIVE CYBER SOLUTIONS
-    // 04/10/2018
+    // 04/11/2018
     // JOHN BELL contact@conquest-marketing.com
     // Product Test Repo
 
@@ -29,6 +29,12 @@ namespace CCS.Repositories
             return 1;
         }
 
+        public int RemoveProduct(int prodID)
+        {
+            
+            products.Remove(products.FirstOrDefault(a => a.ID == prodID));
+            return 1;
+        }
 
         public Product UpdateProduct(Product p)
         {

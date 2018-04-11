@@ -16,6 +16,8 @@ namespace CCS.Repositories
 
         Product AddProduct(Product p);
         int RemoveProduct(Product p);
+        int RemoveProduct(int prodID);
+
         List<Product> ListProducts();
         Product ViewProduct(int id);
         Product UpdateProduct(Product p);

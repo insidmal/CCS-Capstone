@@ -31,7 +31,7 @@ namespace CCS.Repositories
 
         public int RemoveProjectProduct(int projectID, Product p)
         {
-            projectProducts.Remove(projectProducts.FirstOrDefault(a => a.ProductID == prodId && a.ProjectID == id));
+            projectProducts.Remove(projectProducts.FirstOrDefault(a => a.ProductID == p.ID && a.ProjectID == projectID));
             return 1;
         }
 
