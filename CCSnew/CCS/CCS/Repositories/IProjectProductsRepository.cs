@@ -16,6 +16,7 @@ namespace CCS.Repositories
         List<ProjectProducts> GetProjectProducts(int projectId);
         Product AddProjectProduct(int projectID, Product p, int qty);
         int RemoveProjectProduct(int projectID, Product p);
+        int RemoveProjectProductId(int projectID, int productId);
         Product UpdateProjectProductQty(int projectID, int productId, int qty);
 
     }

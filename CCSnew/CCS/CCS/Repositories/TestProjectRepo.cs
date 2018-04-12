@@ -8,7 +8,7 @@ namespace CCS.Repositories
 {
     public class TestProjectRepo : IProjectRepository
     {
-        private List<Project> projects;
+        private List<Project> projects = new List<Project>();
         public Project Add(Project p)
         {
             projects.Add(p);
@@ -17,11 +17,12 @@ namespace CCS.Repositories
 
 
 
-        public Project AddQuote(int id, float q)
+        public Project AddQuote(int id, double q)
         {
             Project oldP = ShowProjectByID(id);
             projects.Remove(oldP);
             oldP.Quote = q;
+            oldP.Progress = Status.Quoted;
             oldP.QuoteDate = DateTime.Now;
             projects.Add(oldP);
             return oldP;

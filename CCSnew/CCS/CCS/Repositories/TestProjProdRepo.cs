@@ -24,16 +24,20 @@ namespace CCS.Repositories
 
         }
 
-        public List<ProjectProducts> GetProjectProducts(int projectId)
-        {
-            throw new NotImplementedException();
-        }
+        public List<ProjectProducts> GetProjectProducts(int projectId) => projectProducts.Where(a => a.ProjectID == projectId).ToList();
 
         public int RemoveProjectProduct(int projectID, Product p)
         {
             projectProducts.Remove(projectProducts.FirstOrDefault(a => a.ProductID == p.ID && a.ProjectID == projectID));
             return 1;
         }
+
+        public int RemoveProjectProductId(int projectID, int productId)
+        {
+            projectProducts.Remove(projectProducts.FirstOrDefault(a => a.ProductID == productId && a.ProjectID == projectID));
+            return 1;
+        }
+
 
         public Product UpdateProjectProductQty(int projectID, int productId, int qty)
         {

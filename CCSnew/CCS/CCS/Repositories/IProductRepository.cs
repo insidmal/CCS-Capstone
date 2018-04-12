@@ -13,7 +13,6 @@ namespace CCS.Repositories
 {
     public interface IProductRepository
     {
-
         Product AddProduct(Product p);
         int RemoveProduct(Product p);
         int RemoveProduct(int prodID);
