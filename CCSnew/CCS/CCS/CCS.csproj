@@ -25,7 +25,6 @@
   <ItemGroup>
     <Folder Include="Views\Admin\" />
     <Folder Include="Views\Client\" />
-    <Folder Include="Views\Contact\" />
   </ItemGroup>
 
 </Project>
