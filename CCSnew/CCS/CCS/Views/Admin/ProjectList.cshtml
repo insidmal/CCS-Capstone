@@ -1,0 +1,20 @@
+﻿@model List<Project>
+@{
+    ViewData["Title"] = "ProjectList";
+}
+
+<h2>Project List</h2>
+<table>
+    <caption>placeholder</caption>
+    <thead><tr><td>Customer</td><td>Project Name</td><td>Status</td><td>Origination Date</td></tr></thead>
+
+@foreach (Project p in Model)
+{
+    <tr><td>@p.CustomerID</td><td><a asp-action="ProjectView" asp-route-id="@p.ID">@p.Name</a></td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
+}
+ </table>
+    
+    
+
+
+

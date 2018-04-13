@@ -9,6 +9,17 @@ namespace CCS.Repositories
     public class TestProjectRepo : IProjectRepository
     {
         private List<Project> projects = new List<Project>();
+
+
+        public TestProjectRepo()
+        {
+           Add(new Project() { ID = 1, CustomerID = 1, Name = "Project 1", Description = "Test Project 1", Progress = Status.New, QuoteDate=DateTime.Now });
+            Add(new Project() { ID = 2, CustomerID = 1, Name = "Project 2", Description = "Test Project 2", Progress = Status.Started, QuoteDate = DateTime.Now });
+            Add(new Project() { ID = 3, CustomerID = 2, Name = "Project 3", Description = "Test Project 3", Progress = Status.New, QuoteDate = DateTime.Now });
+
+        }
+
+
         public Project Add(Project p)
         {
             projects.Add(p);
