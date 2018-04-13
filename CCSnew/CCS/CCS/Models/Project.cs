@@ -12,6 +12,8 @@ namespace CCS.Models
 {
     public class Project
     {
+  
+
         public int ID { get; set; }
         public int CustomerID { get; set; }
         public string Name { get; set; }
@@ -23,6 +25,10 @@ namespace CCS.Models
         public DateTime InvoiceDue { get; set; }
         public Paid Paid { get; set; }
         public Status Progress { get; set; }
+        public Project()
+        {
+            Products = new List<Product>();
+        }
     }
 
     public enum Paid

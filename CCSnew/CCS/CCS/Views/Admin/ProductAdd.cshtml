@@ -1,5 +1,6 @@
-﻿@model List<Product>
+﻿@model List<string>
 @{
+    int i = 1;
     // CREATIVE CYBER SOLUTIONS
     // 04/12/2018
     // JOHN BELL contact@conquest-marketing.com
@@ -9,3 +10,16 @@
 
 <h2>Add a Product</h2>
 
+<form method="post">
+    <input name ="ProjectId" type="hidden" value="@ViewBag.Project" />
+    <select name="ProductId" class="form-control">
+        @foreach (string s in Model)
+        {
+            <option value="@i">@s</option>
+            @i++
+        }
+
+
+    </select>
+    <input type="Submit" value="Add Product" />
+</form>

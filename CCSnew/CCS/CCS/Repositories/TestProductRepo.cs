@@ -13,6 +13,14 @@ namespace CCS.Repositories
 
     public class TestProductRepo : IProductRepository
     {
+        public TestProductRepo()
+        {
+            AddProduct(new Product { ID = 1, Description = "Test Product 1", Name = "Product 1", Price = 100 });
+            AddProduct(new Product { ID = 2, Description = "Test Product 2", Name = "Product 2", Price = 15 });
+            AddProduct(new Product { ID = 3, Description = "Test Product 3", Name = "Product 3", Price = 150 });
+
+        }
+
         private List<Product> products = new List<Product>();
         public Product AddProduct(Product p)
         {
