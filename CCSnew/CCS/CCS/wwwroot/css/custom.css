@@ -1,0 +1,112 @@
+
+
+.navbar-default {
+    background-color: transparent;
+    /*background-color: blue;*/
+    border-style: none;
+    height:100px;
+    padding:13px;
+
+}
+
+    .navbar-default .navbar-brand {
+        color: white;
+        margin: 10px;
+        padding-right:70px;
+    }
+
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: white;
+            
+        }
+
+    .navbar-default .navbar-nav {
+
+        padding-right:580px;
+     
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        transition: border 0.5s ease;
+        color: white;
+        border: 2px solid rgba(201, 76, 76, 0.0);
+        position: static;
+        margin: 10px;
+        margin-top:14px;
+        padding:10px;
+        
+    
+      
+
+  
+    }
+
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: white;
+            /*background-color: #2fb5b9;*/
+            border: 2px solid #80b3ffff;
+            position: static;
+            margin: 10px;
+            margin-top: 14px;
+            padding: 10px;
+
+        }
+
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+        color: #2a7fffff;
+        background-color: rgba(201, 76, 76, 0.0);
+        border: 2px solid #2a7fffff;
+
+    }
+
+    .navbar-default .navbar-nav > .open > a,
+    .navbar-default .navbar-nav > .open > a:hover,
+    .navbar-default .navbar-nav > .open > a:focus {
+        color: yellow;
+        background-color: red;
+    }
+
+.navbar-brand {
+    padding: 0px;
+    padding-left: 30px;
+    padding-top: 5px;
+
+}
+
+.form-inline {
+       padding-top:15.5px;
+}
+
+.btn {
+    margin-right:10px;
+}
+
+.btn-outline {
+    background-color: #2a7fffff;
+    color: white;
+    border: 2px solid transparent;
+    transition: all .5s;
+    height:40px;
+    width:80px;
+}
+
+    .btn-outline:hover {
+        background-color: transparent;
+        border: 2px solid #2a7fffff;
+        color: #2a7fffff;
+        transition: all .5s;
+        height: 40px;
+        width: 80px;
+    }
+
+.body-content {
+    background-color:transparent;
+    height:600px;
+    width:1400px;
+
+}
+
