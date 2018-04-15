@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.061871843"
-     inkscape:cx="8290.4766"
-     inkscape:cy="-1636.6081"
+     inkscape:zoom="0.0875"
+     inkscape:cx="7950.8747"
+     inkscape:cy="-2590.8136"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -59,11 +59,18 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="opacity:1;fill:#272336;fill-opacity:1;stroke:none;stroke-width:5.52669668;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="rect16796"
+       style="opacity:1;fill:#272336;fill-opacity:1;stroke:none;stroke-width:11.59813023;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect16806"
        width="1115.1896"
-       height="219.69154"
-       x="-180.19043"
+       height="967.51569"
+       x="991.53577"
+       y="1006.8636" />
+    <rect
+       style="opacity:1;fill:#272336;fill-opacity:1;stroke:none;stroke-width:11.59813023;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect16848"
+       width="1115.1896"
+       height="967.51569"
+       x="991.53577"
        y="1006.8636" />
     <rect
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:11.09998798;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -3563,7 +3570,7 @@
        rx="1.4699641"
        ry="1.4699641" />
     <g
-       transform="translate(-1174.49,1055.3095)"
+       transform="translate(-1173.1671,1053.2306)"
        id="g16735">
       <g
          id="g16677"
@@ -3586,11 +3593,17 @@
              id="tspan16673"
              sodipodi:role="line">Sell products and services </tspan></text>
         <circle
-           r="57.88274"
-           cy="17.037708"
-           cx="-992.36401"
-           id="circle16774"
-           style="opacity:1;fill:#2c5aa0;fill-opacity:1;stroke:none;stroke-width:5.05782652;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+           r="20.977678"
+           cy="258.74744"
+           cx="47.473888"
+           id="circle16858"
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#3771c8;stroke-width:1.83304131;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <circle
+           style="opacity:1;fill:none;fill-opacity:1;stroke:#3771c8;stroke-width:1.83304131;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="circle16862"
+           cx="47.473888"
+           cy="258.74744"
+           r="20.977678" />
       </g>
       <g
          id="g16685"
@@ -3695,18 +3708,18 @@
       <ellipse
          style="opacity:1;fill:#3771c8;fill-opacity:1;stroke:none;stroke-width:1.06953561;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="ellipse16717"
-         cx="2757.3711"
+         cx="2757.9055"
          cy="325.98898"
          rx="15.641986"
          ry="4.4008026" />
       <path
          style="opacity:1;fill:#3771c8;fill-opacity:1;stroke:none;stroke-width:1.06953561;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         d="m 2766.1706,330.38736 a 15.641986,4.4008028 0 0 1 -8.7993,0.76784 15.641986,4.4008028 0 0 1 -8.7995,-0.76303 15.641986,4.4008028 0 0 0 -6.8424,3.63313 15.641986,4.4008028 0 0 0 15.6419,4.40078 15.641986,4.4008028 0 0 0 15.6418,-4.40078 15.641986,4.4008028 0 0 0 -6.8425,-3.63794 z"
+         d="m 2766.7051,330.38736 a 15.641986,4.4008028 0 0 1 -8.7993,0.76784 15.641986,4.4008028 0 0 1 -8.7995,-0.76303 15.641986,4.4008028 0 0 0 -6.8424,3.63313 15.641986,4.4008028 0 0 0 15.6419,4.40078 15.641986,4.4008028 0 0 0 15.6418,-4.40078 15.641986,4.4008028 0 0 0 -6.8425,-3.63794 z"
          id="path16719"
          inkscape:connector-curvature="0" />
       <path
          style="opacity:1;fill:#3771c8;fill-opacity:1;stroke:none;stroke-width:1.06953561;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         d="m 2746.9579,338.10357 a 15.641986,4.4008028 0 0 0 -5.2285,3.27667 15.641986,4.4008028 0 0 0 15.6419,4.40078 15.641986,4.4008028 0 0 0 15.6418,-4.40078 15.641986,4.4008028 0 0 0 -5.2245,-3.27667 15.641986,4.4008028 0 0 1 -10.4173,1.12409 15.641986,4.4008028 0 0 1 -10.4134,-1.12409 z"
+         d="m 2747.4924,338.10357 a 15.641986,4.4008028 0 0 0 -5.2285,3.27667 15.641986,4.4008028 0 0 0 15.6419,4.40078 15.641986,4.4008028 0 0 0 15.6418,-4.40078 15.641986,4.4008028 0 0 0 -5.2245,-3.27667 15.641986,4.4008028 0 0 1 -10.4173,1.12409 15.641986,4.4008028 0 0 1 -10.4134,-1.12409 z"
          id="path16721"
          inkscape:connector-curvature="0" />
       <path
@@ -3740,11 +3753,6 @@
              y="263.59225"
              style="fill:#3771c8;fill-opacity:1;stroke-width:0.43366307">Store, organize and deliver information </tspan></text>
       </g>
-      <path
-         inkscape:connector-curvature="0"
-         id="path16739"
-         d="m 1115.201,2.1128169 v 8.5624171 a 44.585349,44.585349 0 0 0 -35.8498,43.714736 44.585349,44.585349 0 0 0 0.096,1.910711 h 40.7091 v 0.0055 h 22.6482 a 18.968329,18.968329 0 0 1 -18.8709,17.053604 18.968329,18.968329 0 0 1 -13.7272,-5.911768 h -28.8815 A 44.585349,44.585349 0 0 0 1115.2,98.067454 v 8.600946 h 17.4701 v -8.561016 a 44.585349,44.585349 0 0 0 35.8508,-43.716197 44.585349,44.585349 0 0 0 -0.121,-2.39407 h -25.6698 -7.8258 -29.7663 a 18.968329,18.968329 0 0 1 18.7974,-16.57446 18.968329,18.968329 0 0 1 13.2353,5.428395 h 29.2129 A 44.585349,44.585349 0 0 0 1132.6725,10.713519 V 2.1143463 Z"
-         style="opacity:1;fill:#80b3ff;fill-opacity:1;stroke:none;stroke-width:6.00393486;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
   </g>
 </svg>

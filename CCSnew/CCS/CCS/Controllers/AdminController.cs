@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CCS.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CCS.Models;
@@ -11,6 +12,7 @@ namespace CCS.Controllers
 {
     public class AdminController : Controller
     {
+<<<<<<< HEAD
         private UserManager<User> userManager;
         private IUserValidator<User> userValidator;
         private IPasswordValidator<User> passwordValidator;
@@ -152,6 +154,16 @@ namespace CCS.Controllers
             {
                 ModelState.AddModelError("", error.Description);
             }
+=======
+        private IMessageRepository repo;
+
+        public AdminController(IMessageRepository repos)
+        {
+            repo = repos;
+>>>>>>> 023c4c3718fc0f0c1fa293b0035515e5b60be6ff
         }
+
+        public IActionResult Index() => View();
+        
     }
 }
