@@ -22,9 +22,4 @@
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Client\" />
-  </ItemGroup>
-
 </Project>
