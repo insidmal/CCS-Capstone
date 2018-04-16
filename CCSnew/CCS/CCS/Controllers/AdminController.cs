@@ -8,6 +8,12 @@ using Microsoft.AspNetCore.Identity;
 using CCS.Models;
 using Microsoft.AspNetCore.Authorization;
 
+// CREATIVE CYBER SOLUTIONS
+// CREATED: 04/10/2018
+// CREATED BY: JOHN BELL contact@conquest-marketing.com
+// UPDATED: 04/16/2018
+// UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
+
 
 namespace CCS.Controllers
 {
@@ -21,7 +27,8 @@ namespace CCS.Controllers
         private IUserValidator<User> userValidator;
         private IPasswordValidator<User> passwordValidator;
         private IPasswordHasher<User> passwordHasher;
-        private IMessageRepository repo;
+        private IMessageRepository message;
+        private IProjectProductsRepository prodProj;
 
         public AdminController(UserManager<User> usrMgr,
             IUserValidator<User> userValid,
@@ -29,20 +36,26 @@ namespace CCS.Controllers
             IPasswordHasher<User> passwordHash,
             IMessageRepository repos, 
             IProjectRepository proj, 
-            IProductRepository prod)
+            IProductRepository prod,
+            IProjectProductsRepository prop)
         {
             userManager = usrMgr;
             userValidator = userValid;
             passwordValidator = passValid;
             passwordHasher = passwordHash;
-            repo = repos;
+            message = repos;
             project = proj;
             product = prod;
+            prodProj = prop;
         }
 
 
-        public ViewResult ViewUers() => View(userManager.Users);
         public IActionResult Index() => View();
+
+
+
+        #region Account Function Views
+        public ViewResult ViewUers() => View(userManager.Users);
 
         public ViewResult Register() => View();
 
@@ -168,9 +181,10 @@ namespace CCS.Controllers
                 ModelState.AddModelError("", error.Description);
             }
         }
-        
-        
-       
+
+        #endregion
+
+        #region Project Views
         public IActionResult ProjectList() => View(project.ShowAllProjects());
         public IActionResult ProjectView(int? id)
         {
@@ -181,13 +195,16 @@ namespace CCS.Controllers
         [HttpGet]
         public IActionResult ProductAdd(int id)
         {
+            ViewBag.Project = id;
               return View(product.ListActiveProducts());
         }
 
-        //[HttpPost]
-        //public IActionResult ProductAdd(int id)
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult ProductAdd(int ProjectId, int ProductId, int Qty)
+        {
+            prodProj.AddProjectProductId(ProjectId, ProjectId, Qty);
+            return RedirectToAction("ProjectList");
+        }
+        #endregion
     }
 }
