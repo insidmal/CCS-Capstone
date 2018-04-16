@@ -8,6 +8,8 @@ using Xunit;
 // CREATIVE CYBER SOLUTIONS
 // 04/10/2018
 // JOHN BELL contact@conquest-marketing.com
+// message system tests
+// all passed starting 4/11/2018
 
 namespace CCS.Tests
 {

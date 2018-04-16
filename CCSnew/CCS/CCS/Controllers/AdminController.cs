@@ -8,11 +8,15 @@ using Microsoft.AspNetCore.Identity;
 using CCS.Models;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace CCS.Controllers
 {
     public class AdminController : Controller
     {
 
+
+        private IProjectRepository project;
+        private IProductRepository product;
         private UserManager<User> userManager;
         private IUserValidator<User> userValidator;
         private IPasswordValidator<User> passwordValidator;
@@ -23,15 +27,19 @@ namespace CCS.Controllers
             IUserValidator<User> userValid,
             IPasswordValidator<User> passValid,
             IPasswordHasher<User> passwordHash,
-            IMessageRepository repos)
+            IMessageRepository repos, 
+            IProjectRepository proj, 
+            IProductRepository prod)
         {
             userManager = usrMgr;
             userValidator = userValid;
             passwordValidator = passValid;
             passwordHasher = passwordHash;
-            repo = repos; ;
+            repo = repos;
+            project = proj;
+            product = prod;
         }
-
+//public IActionResult Index() => View();
         public ViewResult Index() => View(userManager.Users);
 
         public ViewResult Register() => View();
@@ -158,10 +166,24 @@ namespace CCS.Controllers
                 ModelState.AddModelError("", error.Description);
             }
         }
-
-      
-
-     
         
+        
+       
+        public IActionResult ProjectList() => View(project.ShowAllProjects());
+        public IActionResult ProjectView(int? id)
+        {
+            if (id == null || id == 0) return RedirectToAction("ProjectList");
+            else return View(project.ShowProjectByID((int)id));
+
+        }
+        public IActionResult ProductAdd(int id)
+        {
+              return View(product.ListActiveProducts());
+        }
+
+        [HttpPost]
+        public IActionResult ProductAdd(int )
+        {
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CCS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,19 @@ using System.Threading.Tasks;
 
 namespace CCS.Repositories
 {
-    interface IProjectRepository
+    public interface IProjectRepository
     {
+        List<Project> ShowAllProjects();
+        List<Project> ShowProjectsByCustomer(int custID);
+        List<Project> ShowProjectsByStatus(Status s);
+        Project ShowProjectByID(int id);
+        Project Add(Project p);
+        int Remove(Project p);
+        int Remove(int id);
+        Project Update(Project p);
+        Project UpdateStatus(int id, Status s);
+        Project AddQuote(int id, double q);
+
+
     }
 }

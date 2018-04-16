@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CCS.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -44,6 +45,13 @@ namespace CCS
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+            services.AddTransient<IMessageRepository, TestMessageRepository>();
+            services.AddTransient<IProjectRepository, TestProjectRepo>();
+            services.AddTransient<INoteRepository, TestNoteRepo>();
+            services.AddTransient<IProductRepository, TestProductRepo>();
+            services.AddTransient<IProjectProductsRepository, TestProjProdRepo>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
