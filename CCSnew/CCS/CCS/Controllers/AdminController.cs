@@ -32,8 +32,8 @@ namespace CCS.Controllers
             repo = repos; ;
         }
 
-        public ViewResult Index() => View(userManager.Users);
-
+        public ViewResult ViewUers() => View(userManager.Users);
+        public IActionResult Index() => View();
         public ViewResult Register() => View();
 
         [HttpPost]
