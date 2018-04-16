@@ -121,6 +121,11 @@ h1 {
     font-family:headerFont;
 }
 
+h2 {
+    color:white;
+}
+
 .collapse navbar-collapse {
     height: 3000px;
 }
+
