@@ -12,21 +12,24 @@ namespace CCS.Controllers
 {
     public class AdminController : Controller
     {
-<<<<<<< HEAD
+
         private UserManager<User> userManager;
         private IUserValidator<User> userValidator;
         private IPasswordValidator<User> passwordValidator;
         private IPasswordHasher<User> passwordHasher;
+        private IMessageRepository repo;
 
         public AdminController(UserManager<User> usrMgr,
             IUserValidator<User> userValid,
             IPasswordValidator<User> passValid,
-            IPasswordHasher<User> passwordHash)
+            IPasswordHasher<User> passwordHash,
+            IMessageRepository repos)
         {
             userManager = usrMgr;
             userValidator = userValid;
             passwordValidator = passValid;
             passwordHasher = passwordHash;
+            repo = repos; ;
         }
 
         public ViewResult Index() => View(userManager.Users);
@@ -154,16 +157,11 @@ namespace CCS.Controllers
             {
                 ModelState.AddModelError("", error.Description);
             }
-=======
-        private IMessageRepository repo;
-
-        public AdminController(IMessageRepository repos)
-        {
-            repo = repos;
->>>>>>> 023c4c3718fc0f0c1fa293b0035515e5b60be6ff
         }
 
-        public IActionResult Index() => View();
+      
+
+     
         
     }
 }
