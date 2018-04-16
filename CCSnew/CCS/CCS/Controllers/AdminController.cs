@@ -29,19 +29,11 @@ namespace CCS.Controllers
         }
         public IActionResult ProductAdd(int id)
         {
-            string productName;
-            //string productSpace = "                                                                                ";
-
-            ViewBag.Project = id.ToString();
-            List<string> products = new List<string>();
-            foreach (Product p in product.ListProducts())
-            {
-                productName = p.Name + "    — $" + p.Price.ToString();
-
-                products.Add(productName);
-            }
-            return View(products);
+              return View(product.ListActiveProducts());
         }
+
+        [HttpPost]
+        public IActionResult ProductAdd(int )
 
 
     }

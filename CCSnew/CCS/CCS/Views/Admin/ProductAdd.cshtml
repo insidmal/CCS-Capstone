@@ -1,9 +1,12 @@
-﻿@model List<string>
+﻿@model List<Product>
 @{
     int i = 1;
     // CREATIVE CYBER SOLUTIONS
-    // 04/12/2018
-    // JOHN BELL contact@conquest-marketing.com
+    // CREATED: 04/12/2018
+    // CREATED BY: JOHN BELL contact@conquest-marketing.com
+    // UPDATED: 04/16/2018
+    // UPDATED BY: JOHN BELL contact@conquest-marketing.com
+
 
     ViewData["Title"] = "Add a Product";
 }
@@ -11,15 +14,17 @@
 <h2>Add a Product</h2>
 
 <form method="post">
-    <input name ="ProjectId" type="hidden" value="@ViewBag.Project" />
-    <select name="ProductId" class="form-control">
-        @foreach (string s in Model)
+    <input name="ProjectId" type="hidden" value="@ViewBag.Project" />
+    <select name="ProductId" class="form-control" width="30">
+        @foreach (Product p in Model)
         {
-            <option value="@i">@s</option>
-            @i++
+            <option value="@p.ID">@p.Name — $@p.Price</option>;
         }
 
 
     </select>
+    <br />
+    Quantity<br />
+    <input name="Qty" type="text" /><br />
     <input type="Submit" value="Add Product" />
 </form>
