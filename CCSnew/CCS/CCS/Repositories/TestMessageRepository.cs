@@ -15,9 +15,18 @@ namespace CCS.Repositories
     {
         private List<Message> Messages = new List<Message>();
 
+        //public TestMessageRepository()
+        //{
+        //    Add(new Message() { FromID = 1, ToID = 2, ID = 0, Status = Read.Unread, Text = "Test Message 1 Text", Date=DateTime.Now, Subject="Test Message 1" });
+        //    Add(new Message() { FromID = 1, ToID = 3, ID = 1, Status = Read.Read, Text = "Test Message 2 Text", Date = DateTime.Now, Subject = "Test Message 2" });
+        //    Add(new Message() { FromID = 1, ToID = 4, ID = 2, Status = Read.Unread, Text = "Test Message 3 Text", Date = DateTime.Now, Subject = "Test Message 3" });
+        //    Add(new Message() { FromID = 1, ToID = 5, ID = 3, Status = Read.Unread, Text = "Test Message 4 Text", Date = DateTime.Now, Subject = "Test Message 4" });
+        //}
 
         public int Add(Message m)
         {
+            m.Date = DateTime.Now;
+            m.Status = Read.Unread;
             Messages.Add(m);
             return 1;
         }
@@ -36,7 +45,7 @@ namespace CCS.Repositories
 
         public int Remove(int MessID)
         {
-            Message m = Messages.Where(a => a.ID == MessID).ToList<Message>()[0];
+            Message m = Messages.FirstOrDefault(a => a.ID == MessID);
             Messages.Remove(m);
             return 1;
         }
@@ -46,7 +55,7 @@ namespace CCS.Repositories
 
         public Message Update(Message m)
         {
-            Message oldMess = Messages.Where(a => a.ID == m.ID).ToList<Message>()[0];
+            Message oldMess = Messages.FirstOrDefault(a => a.ID == m.ID);
             Messages.Remove(oldMess);
             oldMess.Text = m.Text;
             oldMess.Status = Read.Unread;
@@ -55,5 +64,8 @@ namespace CCS.Repositories
 
             return oldMess;
         }
+
+        public Message GetMessage(int id) =>Messages.FirstOrDefault(a => a.ID == id);
+
     }
 }

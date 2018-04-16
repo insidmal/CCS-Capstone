@@ -1,0 +1,27 @@
+﻿@model  Project
+@{
+    // CREATIVE CYBER SOLUTIONS
+    // 04/12/2018
+    // JOHN BELL contact@conquest-marketing.com
+
+
+    ViewData["Title"] = Model.Name;
+}
+<h2>@Model.Name</h2>
+
+@Model.Description
+@Model.Quote
+@Model.Progress
+
+@if (Model.Products.Count>0)
+{
+<table>
+    <caption>Products</caption>
+    @foreach (Product p in Model.Products)
+    {
+        <tr><td>@p.Name</td><td>@p.Price</td></tr>
+    }
+</table>
+}
+<a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a>
+<a asp-action="ProductAdd" asp-route-id="@Model.ID">Add a Product to Project Invoice</a>

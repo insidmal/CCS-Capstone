@@ -12,15 +12,23 @@ namespace CCS.Models
 {
     public class Project
     {
-        string ID { get; set; }
-        string CustomerID { get; set; }
-        string Description { get; set; }
-        List<Product> Products { get; set; }
-        float Quote { get; set; }
-        float TotalDue { get; set; }
-        DateTime QuoteDate { get; set; }
-        DateTime InvoiceDue { get; set; }
-        Paid Paid { get; set; }
+  
+
+        public int ID { get; set; }
+        public int CustomerID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public List<Product> Products { get; set; }
+        public double Quote { get; set; }
+        public double TotalDue { get; set; }
+        public DateTime QuoteDate { get; set; }
+        public DateTime InvoiceDue { get; set; }
+        public Paid Paid { get; set; }
+        public Status Progress { get; set; }
+        public Project()
+        {
+            Products = new List<Product>();
+        }
     }
 
     public enum Paid
@@ -29,11 +37,14 @@ namespace CCS.Models
         Unaid = 2
     }
 
-    public class Note
+    public enum Status
     {
-        int ID { get; set; }
-        int From { get; set; }
-        int ProjID { get; set; }
-        string Text { get; set; }
+        New = 0,
+        Quoted = 1,
+        Accepted = 2,
+        Started = 3,
+        Completed = 4
     }
+
+
 }
