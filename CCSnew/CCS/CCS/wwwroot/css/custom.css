@@ -92,6 +92,7 @@
     transition: all .5s;
     height:40px;
     width:80px;
+    font-family:headerFont;
 }
 
     .btn-outline:hover {
@@ -101,6 +102,7 @@
         transition: all .5s;
         height: 40px;
         width: 80px;
+        font-family: headerFont;
     }
 
 .body-content {
@@ -112,8 +114,10 @@
 
 @font-face {
     font-family:headerFont;
-    src: url(~/fonts/Aller_Std_Rg.ttf);
+    src: url(/fonts/Aller_Std_Bd.ttf);
 }
+
+
 
 h1 {
     color:white;
