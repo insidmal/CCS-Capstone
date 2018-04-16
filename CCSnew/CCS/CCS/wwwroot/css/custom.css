@@ -23,7 +23,7 @@
 
     .navbar-default .navbar-nav {
 
-        padding-right:580px;
+       
      
     }
 
@@ -110,3 +110,17 @@
 
 }
 
+@font-face {
+    font-family:headerFont;
+    src: url(~/fonts/Aller_Std_Rg.ttf);
+}
+
+h1 {
+    color:white;
+    font-size:40px;
+    font-family:headerFont;
+}
+
+.collapse navbar-collapse {
+    height: 3000px;
+}
