@@ -1,135 +1,194 @@
+@media (min-width: 768px) and (max-width: 1100px) {
 
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
 
-.navbar-default {
-    background-color: transparent;
-    /*background-color: blue;*/
-    border-style: none;
-    height:100px;
-    padding:13px;
+        .navbar-collapse.collapse.in {
+            display: block !important;
+        }
+
+    .navbar-header .collapse, .navbar-toggle {
+        display: block !important;
+        
+    }
+
+    .navbar-header {
+        float: none;
+    }
+
+  
+
 
 }
 
-    .navbar-default .navbar-brand {
-        color: white;
-        margin: 10px;
-        padding-right:70px;
+
+@media only screen and (max-width: 1100px) {
+    .navbar-default-fixed-top {
+        background-color: black;
+        /*background-color: blue;*/
+        border-style: none;
+        height: 100px;
+        padding: 13px;
+    }
+}
+
+
+.navbar-default-fixed-top {
+    background-color: transparent;
+    /*background-color: blue;*/
+    border-style: none;
+    height: 100px;
+    padding: 13px;
+}
+
+
+
+    
+
+
+
+    .myNavbar {
+        background-color: white;
     }
 
-        .navbar-default .navbar-brand:hover,
-        .navbar-default .navbar-brand:focus {
+    .navbar-default-fixed-top .navbar-brand {
+        color: white;
+        margin: 10px;
+        padding-right: 70px;
+    }
+
+        .navbar-default-fixed-top .navbar-brand:hover,
+        .navbar-default-fixed-top .navbar-brand:focus {
             color: white;
-            
         }
 
-    .navbar-default .navbar-nav {
-
-       
-     
+    .navbar-default-fixed-top .navbar-nav {
     }
 
-    .navbar-default .navbar-nav > li > a {
-        transition: border 0.5s ease;
-        color: white;
-        border: 2px solid rgba(201, 76, 76, 0.0);
-        position: static;
-        margin: 10px;
-        margin-top:14px;
-        padding:10px;
-        
-    
-      
-
-  
-    }
-
-        .navbar-default .navbar-nav > li > a:hover,
-        .navbar-default .navbar-nav > li > a:focus {
+        .navbar-default-fixed-top .navbar-nav > li > a {
+            transition: border 0.5s ease;
             color: white;
-            /*background-color: #2fb5b9;*/
-            border: 2px solid #80b3ffff;
+            border: 2px solid rgba(201, 76, 76, 0.0);
             position: static;
             margin: 10px;
             margin-top: 14px;
             padding: 10px;
-
         }
 
-    .navbar-default .navbar-nav > .active > a,
-    .navbar-default .navbar-nav > .active > a:hover,
-    .navbar-default .navbar-nav > .active > a:focus {
-        color: #2a7fffff;
-        background-color: rgba(201, 76, 76, 0.0);
-        border: 2px solid #2a7fffff;
+            .navbar-default-fixed-top .navbar-nav > li > a:hover,
+            .navbar-default-fixed-top .navbar-nav > li > a:focus {
+                color: white;
+                /*background-color: #2fb5b9;*/
+                border: 2px solid #80b3ffff;
+                background-color: transparent;
+                margin: 10px;
+                margin-top: 14px;
+                padding: 10px;
+            }
 
+        .navbar-default-fixed-top .navbar-nav > .active > a,
+        .navbar-default-fixed-top .navbar-nav > .active > a:hover,
+        .navbar-default-fixed-top .navbar-nav > .active > a:focus {
+            color: #2a7fffff;
+            background-color: rgba(201, 76, 76, 0.0);
+            border: 2px solid #2a7fffff;
+        }
+
+        .navbar-default-fixed-top .navbar-nav > .open > a,
+        .navbar-default-fixed-top .navbar-nav > .open > a:hover,
+        .navbar-default-fixed-top .navbar-nav > .open > a:focus {
+            color: yellow;
+            background-color: red;
+        }
+
+    .navbar-brand {
+        padding: 0px;
+        padding-left: 30px;
+        padding-top: 5px;
     }
 
-    .navbar-default .navbar-nav > .open > a,
-    .navbar-default .navbar-nav > .open > a:hover,
-    .navbar-default .navbar-nav > .open > a:focus {
-        color: yellow;
-        background-color: red;
+    .form-inline {
+        padding-top: 15.5px;
     }
 
-.navbar-brand {
-    padding: 0px;
-    padding-left: 30px;
-    padding-top: 5px;
+    .btn {
+        margin-right: 10px;
+    }
 
-}
-
-.form-inline {
-       padding-top:15.5px;
-}
-
-.btn {
-    margin-right:10px;
-}
-
-.btn-outline {
-    background-color: #2a7fffff;
-    color: white;
-    border: 2px solid transparent;
-    transition: all .5s;
-    height:40px;
-    width:80px;
-    font-family:headerFont;
-}
-
-    .btn-outline:hover {
-        background-color: transparent;
-        border: 2px solid #2a7fffff;
-        color: #2a7fffff;
+    .btn-outline {
+        background-color: #2a7fffff;
+        color: white;
+        border: 2px solid transparent;
         transition: all .5s;
         height: 40px;
         width: 80px;
         font-family: headerFont;
     }
 
-.body-content {
-    background-color:transparent;
-    height:600px;
-    width:1400px;
+        .btn-outline:hover {
+            background-color: transparent;
+            border: 2px solid #2a7fffff;
+            color: #2a7fffff;
+            transition: all .5s;
+            height: 40px;
+            width: 80px;
+            font-family: headerFont;
+        }
 
-}
+    .body-content {
+        background-color: transparent;
+        height: 600px;
+        width: 1400px;
+    }
 
-@font-face {
-    font-family:headerFont;
-    src: url(/fonts/Aller_Std_Bd.ttf);
-}
+    @font-face {
+        font-family: headerFont;
+        src: url(/fonts/Aller_Std_Bd.ttf);
+    }
 
 
 
-h1 {
-    color:white;
-    font-size:40px;
-    font-family:headerFont;
-}
 
-h2 {
-    color:white;
-}
+    h1 {
+        color: white;
+        font-size: 40px;
+        font-family: headerFont;
+    }
 
-.collapse navbar-collapse {
-    height: 3000px;
-}
+    h2 {
+        color: white;
+    }
 
+
+
+    
+
+        .navbar-default-fixed-top .navbar-toggle .icon-bar {
+            background-color: #80b3ffff;
+        }
+
+        .navbar-default-fixed-top .navbar-toggle:hover {
+            border-color: white;
+            background-color: transparent;
+        }
+
+            .navbar-default-fixed-top .navbar-toggle:hover .icon-bar {
+                background-color: white;
+            }
+
+    .navbar-default-fixed-top.open .navbar-toggle {
+        border-color: red;
+        background-color: transparent;
+    }
+
+
+
+    .navbar-default .navbar-toggle.collapsed {
+        border-color: #80b3ffff;
+        background-color: transparent;
+    }
+
+        .navbar-default .navbar-toggle.collapsed .icon-bar {
+            background-color: #80b3ffff;
+        }
