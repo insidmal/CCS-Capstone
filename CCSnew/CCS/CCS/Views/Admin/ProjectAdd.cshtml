@@ -1,0 +1,29 @@
+﻿@model Project;
+@{
+    ViewData["Title"] = "Create New Project";
+
+    // CREATIVE CYBER SOLUTIONS
+    // CREATED 04/16/2018
+    // CREATED BY JOHN BELL contact@conquest-marketing.com
+    // UPDATED 04/16/2018
+    // UPDATED BY JOHN BELL contact@conquest-marketing.com
+
+}
+
+<h2>Create New Project</h2>
+<form method="post">
+    <label asp-for="Name">Project Name</label>
+    <br />
+    <input asp-for="Name" />
+    <br />&nbsp;<br />
+    <label asp-for="CustomerID">Customer (replace with auto-fill by name)</label>
+    <br />
+    <input asp-for="CustomerID" />
+    <br />&nbsp;<br />
+    <label asp-for="Description">Description</label>
+    <br />
+    <textarea asp-for="Description"></textarea>
+    <br />&nbsp;<br />
+  <input type="Submit" value="Create Project" />
+</form>
+

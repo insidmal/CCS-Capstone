@@ -20,7 +20,6 @@ namespace CCS.Controllers
     public class AdminController : Controller
     {
 
-
         private IProjectRepository project;
         private IProductRepository product;
         private UserManager<User> userManager;
@@ -29,6 +28,7 @@ namespace CCS.Controllers
         private IPasswordHasher<User> passwordHasher;
         private IMessageRepository message;
         private IProjectProductsRepository prodProj;
+        private INoteRepository note;
 
         public AdminController(UserManager<User> usrMgr,
             IUserValidator<User> userValid,
@@ -37,7 +37,8 @@ namespace CCS.Controllers
             IMessageRepository repos, 
             IProjectRepository proj, 
             IProductRepository prod,
-            IProjectProductsRepository prop)
+            IProjectProductsRepository prop,
+            INoteRepository nor)
         {
             userManager = usrMgr;
             userValidator = userValid;
@@ -47,6 +48,7 @@ namespace CCS.Controllers
             project = proj;
             product = prod;
             prodProj = prop;
+            note = nor;
         }
 
 
@@ -185,6 +187,7 @@ namespace CCS.Controllers
         #endregion
 
         #region Project Views
+        //view projects
         public IActionResult ProjectList() => View(project.ShowAllProjects());
         public IActionResult ProjectView(int? id)
         {
@@ -192,6 +195,36 @@ namespace CCS.Controllers
             else return View(project.ShowProjectByID((int)id));
 
         }
+        //add projects
+        [HttpGet]
+        public IActionResult ProjectAdd() => View();
+
+        [HttpPost]
+        public IActionResult ProjectAdd(Project p)
+        {
+            p.Progress = Status.New;
+            project.Add(p);
+            return View("ProjectView", p);
+        }
+
+        //add quote to project
+        [HttpGet]
+        public IActionResult ProjectQuote(int id)
+        {
+            Project p = project.ShowProjectByID(id);
+            ViewBag.ProjectName = p.Name;
+            ViewBag.ProjectDescription = p.Description;
+            return View(id);
+        }
+        [HttpPost]
+        public IActionResult ProjectQuote(int projectId, double quote)
+        {
+            project.AddQuote(projectId, quote);
+            return View("ProjectView", project.ShowProjectByID(projectId));
+
+        }
+
+        //add products to project
         [HttpGet]
         public IActionResult ProductAdd(int id)
         {

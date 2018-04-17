@@ -85,8 +85,6 @@ namespace CCS.Repositories
             return oldP;
         }
 
-
-
         public Project UpdateStatus(int id, Status s)
         {
             Project oldP = ShowProjectByID(id);

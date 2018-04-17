@@ -1,17 +1,21 @@
 ﻿@model  Project
 @{
     // CREATIVE CYBER SOLUTIONS
-    // 04/12/2018
-    // JOHN BELL contact@conquest-marketing.com
+    // CREATED 04/12/2018
+    // CREATED BY JOHN BELL contact@conquest-marketing.com
+    // UPDATED 04/16/2018
+    // UPDATED BY JOHN BELL contact@conquest-marketing.com
+
 
 
     ViewData["Title"] = Model.Name;
 }
 <h2>@Model.Name</h2>
 
-@Model.Description
-@Model.Quote
-@Model.Progress
+@Model.Description<br />
+Quote: $@Model.Quote<br />
+Status: @Model.Progress<br />&nbsp;<br />
+@if(@Model.Quote==0) { <a asp-action="ProjectQuote" asp-route-id="@Model.ID">Add a Quote</a><br /> <br /> }
 
 @if (Model.Products.Count>0)
 {
@@ -23,5 +27,6 @@
     }
 </table>
 }
-<a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a>
+<a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
 <a asp-action="ProductAdd" asp-route-id="@Model.ID">Add a Product to Project Invoice</a>
+<br />
