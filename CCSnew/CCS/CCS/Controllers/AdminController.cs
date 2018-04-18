@@ -224,6 +224,10 @@ namespace CCS.Controllers
 
         }
 
+        #endregion
+
+        #region Project Products
+
         //add products to project
         [HttpGet]
         public IActionResult ProductAdd(int id)
@@ -238,6 +242,46 @@ namespace CCS.Controllers
             prodProj.AddProjectProductId(ProjectId, ProjectId, Qty);
             return RedirectToAction("ProjectList");
         }
+
+        [HttpGet]
+        public IActionResult ProjProdEdit(int id) => View(prodProj.GetProjectProduct(id));
+
+        [HttpPost]
+        public IActionResult ProjProdEdit(ProjectProducts pp)
+        {
+            prodProj.UpdateProjectProductQty(pp);
+            return View("ProjectView", project.ShowProjectByID(pp.ProjectID));
+        }
+
         #endregion
+
+
+
+        #region Product Views
+
+        public IActionResult ProductView(int id) => View(product.ViewProduct(id));
+
+        [HttpGet]
+        public IActionResult ProductNew() => View();
+
+        [HttpPost]
+        public IActionResult ProductNew(Product p)
+        {
+            product.AddProduct(p);
+            return View("ProductView", p);
+        }
+
+        [HttpGet]
+        public IActionResult ProductEdit(int id) => View(product.ViewProduct(id));
+
+        [HttpPost]
+        public IActionResult ProductEdit(Product p)
+        {
+            product.UpdateProduct(p);
+            ViewBag.Message = "Product Updated!";
+            return View("ProductView",p);
+        }
+        #endregion
+
     }
 }

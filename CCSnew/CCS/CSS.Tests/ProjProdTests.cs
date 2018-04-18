@@ -83,7 +83,7 @@ namespace CCS.Tests
             Assert.Empty(repo.GetProjectProducts(1));
             repo.AddProjectProduct(1, p3, 2);
             Assert.Equal(2, repo.GetProjectProducts(1)[0].Quantity);
-            repo.UpdateProjectProductQty(1, 3, 1);
+            //repo.UpdateProjectProductQty(1, 3, 1);
             Assert.Equal(1, repo.GetProjectProducts(1)[0].Quantity);
 
         }

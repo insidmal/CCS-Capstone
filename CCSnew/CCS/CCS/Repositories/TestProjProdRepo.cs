@@ -31,6 +31,11 @@ namespace CCS.Repositories
 
         }
 
+        public ProjectProducts GetProjectProduct(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetProjectProducts(int projectId)
         {
             List<Product> p = new List<Product>();
@@ -57,14 +62,19 @@ namespace CCS.Repositories
             return 1;
         }
 
-
-        public Product UpdateProjectProductQty(int projectID, int productId, int qty)
+        public Product UpdateProjectProductQty(ProjectProducts pp)
         {
-            ProjectProducts pp = projectProducts.FirstOrDefault(a => a.ProductID == productId && a.ProjectID==projectID);
-            projectProducts.Remove(pp);
-            pp.Quantity = qty;
-            projectProducts.Add(pp);
-            return products.FirstOrDefault(a => a.ID == pp.ProductID);
+            throw new NotImplementedException();
         }
+
+
+        //public Product UpdateProjectProductQty(int projectID, int productId, int qty)
+        //{
+        //    ProjectProducts pp = projectProducts.FirstOrDefault(a => a.ProductID == productId && a.ProjectID==projectID);
+        //    projectProducts.Remove(pp);
+        //    pp.Quantity = qty;
+        //    projectProducts.Add(pp);
+        //    return products.FirstOrDefault(a => a.ID == pp.ProductID);
+        //}
     }
 }

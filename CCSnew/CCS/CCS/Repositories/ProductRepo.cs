@@ -8,7 +8,7 @@ using CCS.Models;
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/16/2018
 // CREATED BY: JOHN BELL contact@conquest-marketing.com
-// UPDATED: 04/16/2018
+// UPDATED: 04/18/2018
 // UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
 
@@ -28,6 +28,7 @@ namespace CCS.Repositories
 
         public Product AddProduct(Product p)
         {
+            p.Active = true;
             context.Product.Add(p);
             context.SaveChanges();
             return p;
@@ -54,6 +55,7 @@ namespace CCS.Repositories
             return context.SaveChanges();
         }
 
+        // update so that if the product exists in an invoice and has a price change that it just inactivates the old product and updates the new one, this way it does not create discrepancies on old invoices
         public Product UpdateProduct(Product p)
         {
             context.Product.Update(p);

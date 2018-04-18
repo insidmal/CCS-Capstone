@@ -20,10 +20,11 @@ Status: @Model.Progress<br />&nbsp;<br />
 @if (Model.Products.Count>0)
 {
 <table>
+    <tr><td>Qty</td><td>Name</td><td>Price</td><td></td></tr>
     <caption>Products</caption>
     @foreach (Product p in Model.Products)
     {
-        <tr><td></td><td>@p.Name</td><td>@p.Price</td></tr>
+        <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ProjProdId">Edit</a></td></tr>
     }
 </table>
 }

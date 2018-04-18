@@ -16,10 +16,12 @@ namespace CCS.Repositories
     {
 
         private readonly AppIdentityDbContext context;
+        private IProjectProductsRepository projProd;
 
-        public ProjectRepo(AppIdentityDbContext repo)
+        public ProjectRepo(AppIdentityDbContext repo, IProjectProductsRepository projprod)
         {
             context = repo;
+            projProd = projprod;
         }
 
         public Project Add(Project p)
@@ -54,7 +56,12 @@ namespace CCS.Repositories
         }
 
         public List<Project> ShowAllProjects() => context.Project.ToList();
-        public Project ShowProjectByID(int id) => context.Project.FirstOrDefault(a => a.ID == id);
+        public Project ShowProjectByID(int id)
+        {
+            Project p = context.Project.FirstOrDefault(a => a.ID == id);
+            p.Products = projProd.GetProjectProducts(id);
+            return p;
+        }
         public List<Project> ShowProjectsByCustomer(int custID) => context.Project.Where(a => a.CustomerID == custID).ToList();
         public List<Project> ShowProjectsByStatus(Status s) => context.Project.Where(a => a.Progress == s).ToList();
         public Project Update(Project p)
