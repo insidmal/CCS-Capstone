@@ -17,9 +17,11 @@ namespace CCS.Repositories
 
         private readonly AppIdentityDbContext context;
         private IProjectProductsRepository projProd;
+        private INoteRepository notes;
 
-        public ProjectRepo(AppIdentityDbContext repo, IProjectProductsRepository projprod)
+        public ProjectRepo(AppIdentityDbContext repo, IProjectProductsRepository projprod, INoteRepository n)
         {
+            notes = n;
             context = repo;
             projProd = projprod;
         }
@@ -59,6 +61,7 @@ namespace CCS.Repositories
         public Project ShowProjectByID(int id)
         {
             Project p = context.Project.FirstOrDefault(a => a.ID == id);
+            p.Notes = notes.GetNotesByProject(id);
             p.Products = projProd.GetProjectProducts(id);
             return p;
         }

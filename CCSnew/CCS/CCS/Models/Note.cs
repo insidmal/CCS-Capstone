@@ -14,7 +14,7 @@ namespace CCS.Models
     public class Note
     {
         public int ID { get; set; }
-        public int From { get; set; }
+        public string From { get; set; }
         public int ProjectID { get; set; }
         public string Text { get; set; }
         public DateTime Date { get; set; }

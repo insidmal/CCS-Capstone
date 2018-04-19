@@ -255,8 +255,6 @@ namespace CCS.Controllers
 
         #endregion
 
-
-
         #region Product Views
         public IActionResult ProductList() => View(product.ListProducts());
 
@@ -290,5 +288,23 @@ namespace CCS.Controllers
         }
         #endregion
 
+        #region Note Views
+        
+        [HttpGet]
+        public IActionResult NoteAdd(int id)
+        {
+            ViewBag.From = GetCurrentUserId();
+            Note n = new Note();
+            n.ProjectID = id;
+            return View(n);
+        }
+
+        #endregion
+
+
+        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
+
+
     }
 }
+

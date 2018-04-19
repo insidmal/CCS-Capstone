@@ -19,6 +19,7 @@ namespace CCS.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Product> Products { get; set; }
+        public List<Note> Notes { get; set; }
         public double Quote { get; set; }
         public double TotalDue { get; set; }
         public DateTime QuoteDate { get; set; }

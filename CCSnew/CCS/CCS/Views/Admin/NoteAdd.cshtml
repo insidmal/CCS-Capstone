@@ -9,4 +9,11 @@
 }
 
 <h2>Add a Note</h2>
+<form method="post">
+    <input type="hidden" asp-for="From" value="@ViewBag.From" />
+    <label asp-for="Text">Note:</label>
+    <br /><textarea asp-for="Text"></textarea>
+    <input type="submit" value="Add Note" />
+
+</form>
 
