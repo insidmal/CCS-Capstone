@@ -8,12 +8,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// CREATIVE CYBER SOLUTIONS
+// CREATED 04/12/2018
+// CREATED BY YADIRA DESPAINGE PLANCHE
+// UPDATED 04/16/2018
+// UPDATED BY JOHN BELL contact@conquest-marketing.com
+
+
 namespace CCS.Models
 {
     public class AppIdentityDbContext : IdentityDbContext<User>
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options)
             : base(options) { }
+
+
+        public DbSet<Project> Project { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Note> Note { get; set; }
+        public DbSet<Message> Message { get; set; }
+        public DbSet<ProjectProducts> ProjProd { get; set; }
 
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider,
             IConfiguration configuration)

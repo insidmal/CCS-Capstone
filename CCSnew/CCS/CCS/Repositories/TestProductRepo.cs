@@ -16,16 +16,19 @@ namespace CCS.Repositories
 
     public class TestProductRepo : IProductRepository
     {
+
+
+        private List<Product> products = new List<Product>();
+
         public TestProductRepo()
         {
-            AddProduct(new Product { ID = 1, Description = "Test Product 1", Name = "Product 1", Price = 100, Active = true });
-            AddProduct(new Product { ID = 2, Description = "Test Product 2", Name = "Product 2", Price = 15, Active=true });
-            AddProduct(new Product { ID = 3, Description = "Test Product 3", Name = "Product 3", Price = 150, Active=true });
-            AddProduct(new Product { ID = 4, Description = "Test Product 4", Name = "Product 4", Price = 150, Active = false });
+            //AddProduct(new Product { ID = 1, Description = "Test Product 1", Name = "Product 1", Price = 100, Active = true });
+            //AddProduct(new Product { ID = 2, Description = "Test Product 2", Name = "Product 2", Price = 15, Active=true });
+            //AddProduct(new Product { ID = 3, Description = "Test Product 3", Name = "Product 3", Price = 150, Active=true });
+            //AddProduct(new Product { ID = 4, Description = "Test Product 4", Name = "Product 4", Price = 150, Active = false });
 
         }
 
-        private List<Product> products = new List<Product>();
         public Product AddProduct(Product p)
         {
             products.Add(p);

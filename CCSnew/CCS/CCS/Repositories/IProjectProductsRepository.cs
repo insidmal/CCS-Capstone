@@ -13,11 +13,13 @@ namespace CCS.Repositories
 {
     public interface IProjectProductsRepository
     {
-        List<ProjectProducts> GetProjectProducts(int projectId);
+        List<Product> GetProjectProducts(int projectId);
+        ProjectProducts GetProjectProduct(int id);
+
         Product AddProjectProduct(int projectID, Product p, int qty);
         int RemoveProjectProduct(int projectID, Product p);
         int RemoveProjectProductId(int projectID, int productId);
-        Product UpdateProjectProductQty(int projectID, int productId, int qty);
-
+        Product UpdateProjectProductQty(ProjectProducts pp);
+        int AddProjectProductId(int projectID, int productId, int qty);
     }
 }

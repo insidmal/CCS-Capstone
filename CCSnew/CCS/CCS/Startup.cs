@@ -46,10 +46,10 @@ namespace CCS
 
             services.AddMvc();
             services.AddTransient<IMessageRepository, TestMessageRepository>();
-            services.AddTransient<IProjectRepository, TestProjectRepo>();
+            services.AddTransient<IProjectRepository, ProjectRepo>();
             services.AddTransient<INoteRepository, TestNoteRepo>();
-            services.AddTransient<IProductRepository, TestProductRepo>();
-            services.AddTransient<IProjectProductsRepository, TestProjProdRepo>();
+            services.AddTransient<IProductRepository, ProductRepo>();
+            services.AddTransient<IProjectProductsRepository, ProjProdRepo>();
 
 
         }

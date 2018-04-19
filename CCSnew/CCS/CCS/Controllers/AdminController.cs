@@ -8,12 +8,17 @@ using Microsoft.AspNetCore.Identity;
 using CCS.Models;
 using Microsoft.AspNetCore.Authorization;
 
+// CREATIVE CYBER SOLUTIONS
+// CREATED: 04/10/2018
+// CREATED BY: JOHN BELL contact@conquest-marketing.com
+// UPDATED: 04/16/2018
+// UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
+
 
 namespace CCS.Controllers
 {
     public class AdminController : Controller
     {
-
 
         private IProjectRepository project;
         private IProductRepository product;
@@ -21,7 +26,9 @@ namespace CCS.Controllers
         private IUserValidator<User> userValidator;
         private IPasswordValidator<User> passwordValidator;
         private IPasswordHasher<User> passwordHasher;
-        private IMessageRepository repo;
+        private IMessageRepository message;
+        private IProjectProductsRepository prodProj;
+        private INoteRepository note;
 
         public AdminController(UserManager<User> usrMgr,
             IUserValidator<User> userValid,
@@ -29,20 +36,28 @@ namespace CCS.Controllers
             IPasswordHasher<User> passwordHash,
             IMessageRepository repos, 
             IProjectRepository proj, 
-            IProductRepository prod)
+            IProductRepository prod,
+            IProjectProductsRepository prop,
+            INoteRepository nor)
         {
             userManager = usrMgr;
             userValidator = userValid;
             passwordValidator = passValid;
             passwordHasher = passwordHash;
-            repo = repos;
+            message = repos;
             project = proj;
             product = prod;
+            prodProj = prop;
+            note = nor;
         }
 
 
-        public ViewResult ViewUers() => View(userManager.Users);
         public IActionResult Index() => View();
+
+
+
+        #region Account Function Views
+        public ViewResult ViewUers() => View(userManager.Users);
 
         public ViewResult Register() => View();
 
@@ -168,9 +183,11 @@ namespace CCS.Controllers
                 ModelState.AddModelError("", error.Description);
             }
         }
-        
-        
-       
+
+        #endregion
+
+        #region Project Views
+        //view projects
         public IActionResult ProjectList() => View(project.ShowAllProjects());
         public IActionResult ProjectView(int? id)
         {
@@ -178,16 +195,116 @@ namespace CCS.Controllers
             else return View(project.ShowProjectByID((int)id));
 
         }
+        //add projects
+        [HttpGet]
+        public IActionResult ProjectAdd() => View();
+
+        [HttpPost]
+        public IActionResult ProjectAdd(Project p)
+        {
+            p.Progress = Status.New;
+            project.Add(p);
+            return View("ProjectView", p);
+        }
+
+        //add quote to project
+        [HttpGet]
+        public IActionResult ProjectQuote(int id)
+        {
+            Project p = project.ShowProjectByID(id);
+            ViewBag.ProjectName = p.Name;
+            ViewBag.ProjectDescription = p.Description;
+            return View(id);
+        }
+        [HttpPost]
+        public IActionResult ProjectQuote(int projectId, double quote)
+        {
+            project.AddQuote(projectId, quote);
+            return View("ProjectView", project.ShowProjectByID(projectId));
+
+        }
+
+        #endregion
+
+        #region Project Products
+
+        //add products to project
         [HttpGet]
         public IActionResult ProductAdd(int id)
         {
+            ViewBag.Project = id;
               return View(product.ListActiveProducts());
         }
 
-        //[HttpPost]
-        //public IActionResult ProductAdd(int id)
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult ProductAdd(int ProjectId, int ProductId, int Qty)
+        {
+            prodProj.AddProjectProductId(ProjectId, ProductId, Qty);
+            return View("ProjectView", project.ShowProjectByID(ProjectId));
+        }
+
+        [HttpGet]
+        public IActionResult ProjProdEdit(int id) => View(prodProj.GetProjectProduct(id));
+
+        [HttpPost]
+        public IActionResult ProjProdEdit(ProjectProducts pp)
+        {
+            prodProj.UpdateProjectProductQty(pp);
+            return View("ProjectView", project.ShowProjectByID(pp.ProjectID));
+        }
+
+        #endregion
+
+        #region Product Views
+        public IActionResult ProductList() => View(product.ListProducts());
+
+        public IActionResult ProductDelete(int id)
+        {
+            product.RemoveProduct(id);
+            return RedirectToAction("ProductList");
+        }
+
+        public IActionResult ProductView(int id) => View(product.ViewProduct(id));
+
+        [HttpGet]
+        public IActionResult ProductNew() => View();
+
+        [HttpPost]
+        public IActionResult ProductNew(Product p)
+        {
+            product.AddProduct(p);
+            return View("ProductView", p);
+        }
+
+        [HttpGet]
+        public IActionResult ProductEdit(int id) => View(product.ViewProduct(id));
+
+        [HttpPost]
+        public IActionResult ProductEdit(Product p)
+        {
+            product.UpdateProduct(p);
+            ViewBag.Message = "Product Updated!";
+            return View("ProductView",p);
+        }
+        #endregion
+
+        #region Note Views
+        
+        [HttpGet]
+        public IActionResult NoteAdd(int id)
+        {
+            ViewBag.From = GetCurrentUserId();
+            Note n = new Note();
+            n.ProjectID = id;
+            return View(n);
+        }
+
+        #endregion
+
+
+        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
+
+
     }
 }
+

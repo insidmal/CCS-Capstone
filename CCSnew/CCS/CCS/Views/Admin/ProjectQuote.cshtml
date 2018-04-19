@@ -1,0 +1,14 @@
+﻿@model  int;
+@{
+    ViewData["Title"] = "Quote Project";
+}
+
+<h2>Quote Project</h2>
+<form method="post">
+    <input type="hidden" name="projectId" value="@Model" />
+    <strong>@ViewBag.ProjectName</strong><br />
+    @ViewBag.ProjectDescription
+    <br />&nbsp;<br />
+    <input type="number" name="quote" />
+    <input type="submit" value="Add Quote" />
+</form>

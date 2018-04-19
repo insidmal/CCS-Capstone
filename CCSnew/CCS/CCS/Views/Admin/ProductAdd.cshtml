@@ -1,6 +1,6 @@
 ﻿@model List<Product>
 @{
-    int i = 1;
+
     // CREATIVE CYBER SOLUTIONS
     // CREATED: 04/12/2018
     // CREATED BY: JOHN BELL contact@conquest-marketing.com
@@ -14,7 +14,7 @@
 <h2>Add a Product</h2>
 
 <form method="post">
-    <input name="ProjectId" type="hidden" value="@ViewBag.Project" />
+    <input name="ProjectId" value="@ViewBag.Project" style="width:30px" type="hidden" />
     <select name="ProductId" class="form-control" width="30">
         @foreach (Product p in Model)
         {

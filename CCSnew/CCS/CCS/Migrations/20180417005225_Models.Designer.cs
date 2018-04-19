@@ -11,9 +11,10 @@ using System;
 namespace CCS.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    partial class AppIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180417005225_Models")]
+    partial class Models
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,8 +73,6 @@ namespace CCS.Migrations
                     b.Property<string>("Name");
 
                     b.Property<float>("Price");
-
-                    b.Property<int>("ProjProdId");
 
                     b.Property<int?>("ProjectID");
 

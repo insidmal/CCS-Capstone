@@ -10,16 +10,21 @@ namespace CCS.Repositories
     {
         private List<Project> projects = new List<Project>();
 
+        IProductRepository products = new TestProductRepo();
+        IProjectProductsRepository projProds = new TestProjProdRepo();
 
-        public TestProjectRepo()
-        {
-           Add(new Project() { ID = 1, CustomerID = 1, Name = "Project 1", Description = "Test Project 1", Progress = Status.New, QuoteDate=DateTime.Now });
-            Add(new Project() { ID = 2, CustomerID = 1, Name = "Project 2", Description = "Test Project 2", Progress = Status.Started, QuoteDate = DateTime.Now });
-            Add(new Project() { ID = 3, CustomerID = 2, Name = "Project 3", Description = "Test Project 3", Progress = Status.New, QuoteDate = DateTime.Now });
+        //public TestProjectRepo()
+        //{
+        //    if (projects.Count == 0)
+        //    {
 
-        }
+        //        Add(new Project() { ID = 1, CustomerID = 1, Name = "Project 1", Description = "Test Project 1", Progress = Status.New, QuoteDate = DateTime.Now });
+        //        Add(new Project() { ID = 2, CustomerID = 1, Name = "Project 2", Description = "Test Project 2", Progress = Status.Started, QuoteDate = DateTime.Now });
+        //        Add(new Project() { ID = 3, CustomerID = 2, Name = "Project 3", Description = "Test Project 3", Progress = Status.New, QuoteDate = DateTime.Now });
+        //    }
+        //}
 
-
+            
         public Project Add(Project p)
         {
             projects.Add(p);
@@ -57,7 +62,15 @@ namespace CCS.Repositories
 
 
         public List<Project> ShowAllProjects() => projects;
-        public Project ShowProjectByID(int id) => projects.FirstOrDefault(a => a.ID == id);
+        public Project ShowProjectByID(int id) {
+            Project proj = projects.FirstOrDefault(a => a.ID == id);
+
+            proj.Products= projProds.GetProjectProducts(id);
+
+
+            return proj;
+               }
+
         public List<Project> ShowProjectsByCustomer(int custID) => projects.Where(a => a.CustomerID == custID).ToList();
         public List<Project> ShowProjectsByStatus(Status s) => projects.Where(a => a.Progress == s).ToList();
         public Project Update(Project p)
@@ -71,8 +84,6 @@ namespace CCS.Repositories
             projects.Add(oldP);
             return oldP;
         }
-
-
 
         public Project UpdateStatus(int id, Status s)
         {

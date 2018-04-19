@@ -1,0 +1,16 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "View Product";
+}
+
+<h2>@Model.Name</h2>
+<br /><span style="color:red">@ViewBag.Message</span>
+<br /><strong>Description</strong><br />
+@Model.Description
+<br /><strong>Price</strong><br />
+@Model.Price
+<br />&nbsp;<br />
+<a asp-action="ProductEdit" asp-route-id="@Model.ID">Edit Product</a>
+<br /><a asp-action="ProductDelete" asp-route-id="@Model.ID">Delete Product</a><br />
+(If product exists in an invoice, it will be marked inactive instead of deleted.)
+
