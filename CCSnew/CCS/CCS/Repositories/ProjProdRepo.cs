@@ -34,14 +34,14 @@ namespace CCS.Repositories
         {
             ProjectProducts pd;
 
-            if (context.ProjProd.Any(a => a.ProjectID == productId && a.ProductID == productId))
+            if (context.ProjProd.Any(a => a.ProjectID == projectID && a.ProductID == productId))
             {
                 pd = new ProjectProducts() { ProductID = productId, ProjectID = projectID, Quantity = qty };
                 context.ProjProd.Add(pd);
             }
             else
             {
-                pd = context.ProjProd.FirstOrDefault(a => a.ProjectID == productId && a.ProductID == productId);
+                pd = context.ProjProd.FirstOrDefault(a => a.ProjectID == projectID && a.ProductID == productId);
 
                 pd.Quantity += qty;
                 context.ProjProd.Update(pd);
@@ -55,13 +55,11 @@ namespace CCS.Repositories
         public List<Product> GetProjectProducts(int projectId)
         {
             List<Product> pd = new List<Product>();
-            foreach (ProjectProducts pp in context.ProjProd.Where(a=>a.ProjectID==projectId))
+            List<ProjectProducts> pplist = context.ProjProd.Where(a => a.ProjectID == projectId).ToList();
+            foreach (ProjectProducts pp in pplist)
             {
-                Product pro = context.Product.FirstOrDefault(a => a.ID == pp.ProductID);
-                pro.ProjProdId = pp.ID;
-                pro.Quantity = pp.Quantity;
-                pro.Price *= pp.Quantity;
-                pd.Add(pro);
+                var pro = context.Product.FirstOrDefault(a => a.ID == pp.ProductID);
+                pd.Add(new Product { Name = pro.Name, ProjProdId=pp.ID, Quantity=pp.Quantity, Price=pro.Price*pp.Quantity });
             }
             return pd;
         }
@@ -78,18 +76,18 @@ namespace CCS.Repositories
         public Product UpdateProjectProductQty(ProjectProducts pp)
         {
 
+            Product pro = context.Product.FirstOrDefault(a => a.ID == pp.ProductID);
+
             if (pp.Quantity <= 0) {
                 context.ProjProd.Remove(pp);
             }
             else
             {
                 context.ProjProd.Update(pp);
+                pro.Price *= (pp.Quantity - pro.Quantity);
+                pro.Quantity = pp.Quantity;
             }
             context.SaveChanges();
-
-            Product pro = context.Product.FirstOrDefault(a => a.ID == pp.ProductID);
-            pro.Quantity = pp.Quantity;
-            pro.Price *= pp.Quantity;
 
             return pro;
         }
