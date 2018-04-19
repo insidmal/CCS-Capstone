@@ -11,6 +11,6 @@
 @Model.Price
 <br />&nbsp;<br />
 <a asp-action="ProductEdit" asp-route-id="@Model.ID">Edit Product</a>
-<br />Delete Product<br />
+<br /><a asp-action="ProductDelete" asp-route-id="@Model.ID">Delete Product</a><br />
 (If product exists in an invoice, it will be marked inactive instead of deleted.)
 

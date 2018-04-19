@@ -239,8 +239,8 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProductAdd(int ProjectId, int ProductId, int Qty)
         {
-            prodProj.AddProjectProductId(ProjectId, ProjectId, Qty);
-            return RedirectToAction("ProjectList");
+            prodProj.AddProjectProductId(ProjectId, ProductId, Qty);
+            return View("ProjectView", project.ShowProjectByID(ProjectId));
         }
 
         [HttpGet]
@@ -258,6 +258,13 @@ namespace CCS.Controllers
 
 
         #region Product Views
+        public IActionResult ProductList() => View(product.ListProducts());
+
+        public IActionResult ProductDelete(int id)
+        {
+            product.RemoveProduct(id);
+            return RedirectToAction("ProductList");
+        }
 
         public IActionResult ProductView(int id) => View(product.ViewProduct(id));
 

@@ -34,7 +34,7 @@ namespace CCS.Repositories
         {
             ProjectProducts pd;
 
-            if (context.ProjProd.Any(a => a.ProjectID == projectID && a.ProductID == productId))
+            if (context.ProjProd.Any(a => a.ProjectID == projectID && a.ProductID == productId)==false)
             {
                 pd = new ProjectProducts() { ProductID = productId, ProjectID = projectID, Quantity = qty };
                 context.ProjProd.Add(pd);

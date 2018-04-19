@@ -37,21 +37,23 @@ namespace CCS.Repositories
         public List<Product> ListActiveProducts() => context.Product.Where(a => a.Active == true).ToList<Product>();
 
 
-        public List<Product> ListProducts() =>context.Product.ToList();
+        public List<Product> ListProducts() =>context.Product.OrderByDescending(a=>a.Active).ToList();
 
 
-        public int RemoveProduct(Product p)
-        {
-            p.Active = false;
-            context.Product.Update(p);
-            return context.SaveChanges();
-        }
+        public int RemoveProduct(Product p) => RemoveProduct(p.ID);
 
         public int RemoveProduct(int prodID)
         {
             Product p = context.Product.FirstOrDefault(a => a.ID == prodID);
-            p.Active = false;
-            context.Product.Update(p);
+            if (context.ProjProd.Any(a => a.ProductID == p.ID))
+            {
+                p.Active = false;
+                context.Product.Update(p);
+            }
+            else
+            {
+                context.Product.Remove(p);
+            }
             return context.SaveChanges();
         }
 
