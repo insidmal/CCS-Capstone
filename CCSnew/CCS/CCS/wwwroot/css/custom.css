@@ -1,6 +1,4 @@
-.body {
-    color: white;
-}
+
 
 
 @font-face {
@@ -8,8 +6,23 @@
     src: url(/fonts/Aller_Std_Bd.ttf);
 }
 
+.jumbotron {
+  
+}
+
+.content {
+    padding-top:50px;
+}
+
+.container {
+    padding-top:100px;
+    padding-right:40px;
+    padding-left:40px;
+    width:100%;
+}
+
 h1 {
-    color:white;
+    color:black;
     font-family:'MainFont';
 
 }
@@ -21,6 +34,14 @@ h1 {
     padding-top: 20px;
     padding-bottom: 20px;
     border: 2px solid transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+
+   
+ 
 }
 
 
@@ -48,6 +69,10 @@ h1 {
         color: #3771c8ff;
     }
 
+
+.navbar-nav  a:active {
+    background-color:blue;
+}
 
 .icon-bar {
     background-color: white;
@@ -103,15 +128,11 @@ h1 {
 
 
 body, html {
-    height: 100%;
-}
-
-.bg {
-    /* The image used */
-    background-image: url("/images/background.png");
+    background-image: url('/images/background.png');
     /* Full height */
     height: 100%;
-    /* Center and scale the image nicely */
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -119,7 +140,9 @@ body, html {
 
 
 
-@media only screen and (max-width: 1100px) {
+
+
+@media only screen and (max-width: 1200px) {
 
 
     .navbar-custom {
