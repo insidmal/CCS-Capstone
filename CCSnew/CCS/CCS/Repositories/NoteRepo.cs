@@ -23,14 +23,22 @@ namespace CCS.Repositories
 
         public Note AddNote(int id, Note n)
         {
-            n.ProjectID = id;
-            context.Note.Add(n);
+            Note note = new Note();
+            note.ProjectID = id;
+            note.From = n.From;
+            note.Date = DateTime.Now;
+            note.Text = n.Text;
+            context.Note.Add(note);
             context.SaveChanges();
             return n;
         }
 
-        public List<Note> GetNotesByProject(int id) => context.Note.Where(a => a.ProjectID == id).ToList();
-
+        public List<Note> GetNotesByProject(int id)
+        {
+            List<Note> ln = new List<Note>();
+            ln = context.Note.Where(a => a.ProjectID == id).ToList();
+            return ln;
+        }
         public int RemoveNote(Note n)
         {
             context.Note.Remove(n);

@@ -1,4 +1,4 @@
-﻿@model  Project
+﻿@model Project
 @{
     // CREATIVE CYBER SOLUTIONS
     // CREATED 04/12/2018
@@ -15,19 +15,37 @@
 @Model.Description<br />
 Quote: $@Model.Quote<br />
 Status: @Model.Progress<br />&nbsp;<br />
-@if(@Model.Quote==0) { <a asp-action="ProjectQuote" asp-route-id="@Model.ID">Add a Quote</a><br /> <br /> }
+@if (@Model.Quote == 0)
+{<a asp-action="ProjectQuote" asp-route-id="@Model.ID">Add a Quote</a><br /> <br />}
+<br /><strong>Invoiced Products</strong><br />
+@if (Model.Products.Count > 0)
+{
+    <table>
+        <tr><td>Qty</td><td>Name</td><td>Price</td><td></td></tr>
+        <caption>Products</caption>
+        @foreach (Product p in Model.Products)
+        {
+            <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ProjProdId">Edit</a></td></tr>
+        }
+    </table>
 
-@if (Model.Products.Count>0)
+}
+<a asp-action="ProductAdd" asp-route-id="@Model.ID">Add a Product to Project Invoice</a>
+
+@if (Model.Notes.Count > 0)
 {
 <table>
-    <tr><td>Qty</td><td>Name</td><td>Price</td><td></td></tr>
-    <caption>Products</caption>
-    @foreach (Product p in Model.Products)
+    <br />
+    <strong>Invoice Notes</strong>
+    <br />
+    @foreach (Note n in Model.Notes)
     {
-        <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ProjProdId">Edit</a></td></tr>
+        <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
+
     }
 </table>
+
 }
-<a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
-<a asp-action="ProductAdd" asp-route-id="@Model.ID">Add a Product to Project Invoice</a>
-<br />
+
+    <a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
+    <br />

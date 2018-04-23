@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/10/2018
 // CREATED BY: JOHN BELL contact@conquest-marketing.com
-// UPDATED: 04/16/2018
+// UPDATED: 04/23/2018
 // UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
 
 
@@ -20,9 +20,11 @@ namespace CCS.Controllers
     public class AdminController : Controller
     {
 
+        #region var dec and constructor
+
         private IProjectRepository project;
         private IProductRepository product;
-        public UserManager<User> userManager;
+        private UserManager<User> userManager;
         private IUserValidator<User> userValidator;
         private IPasswordValidator<User> passwordValidator;
         private IPasswordHasher<User> passwordHasher;
@@ -51,11 +53,10 @@ namespace CCS.Controllers
             note = nor;
         }
 
+        #endregion
 
         public IActionResult Index() => View();
-
-
-
+        
         #region Account Function Views
         public ViewResult ViewUers() => View(userManager.Users);
 
@@ -192,8 +193,19 @@ namespace CCS.Controllers
         public IActionResult ProjectView(int? id)
         {
             if (id == null || id == 0) return RedirectToAction("ProjectList");
-            else return View(project.ShowProjectByID((int)id));
 
+
+            else
+            {
+
+                var pj = project.ShowProjectByID((int)id);
+                foreach (Note n in pj.Notes)
+                {
+                    n.FromName = userManager.GetUserName(HttpContext.User);
+                }
+
+                return View(pj);
+            }
         }
         //add projects
         [HttpGet]
@@ -303,11 +315,18 @@ namespace CCS.Controllers
             return View(n);
         }
 
+        [HttpPost]
+        public IActionResult NoteAdd(Note n)
+        {
+            n.Date = DateTime.Now;
+            note.AddNote(n.ProjectID, n);
+            ViewBag.Message = "Note Added!";
+            return RedirectToAction("ProjectView", n.ProjectID);
+        }
+
         #endregion
 
-
-
-
+        
     }
 }
 

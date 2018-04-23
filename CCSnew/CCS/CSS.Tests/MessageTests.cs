@@ -25,7 +25,7 @@ namespace CCS.Tests
         public void MessageAddTest()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 3, ToID = 4, ID = 1, Status = Read.Unread, Text = "Test Message 2 Text" };
+            Message m = new Message() { FromID = "3", ToID = "4", ID = 1, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
             Assert.Single(repo.ShowAllMessages());
         }
@@ -34,7 +34,7 @@ namespace CCS.Tests
         public void MessageRemoveTest()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 3, ToID = 4, ID = 1, Status = Read.Unread, Text = "Test Message 2 Text" };
+            Message m = new Message() { FromID = "3", ToID = "4", ID = 1, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
             Assert.Single(repo.ShowAllMessages());
             repo.Remove(m);
@@ -44,7 +44,7 @@ namespace CCS.Tests
         public void MessageRemoveByIDTest()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 3, ToID = 4, ID = 1, Status = Read.Unread, Text = "Test Message 2 Text" };
+            Message m = new Message() { FromID = "3", ToID = "4", ID = 1, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
             Assert.Single(repo.ShowAllMessages());
             repo.Remove(1);
@@ -56,11 +56,11 @@ namespace CCS.Tests
         public void MessageGetByFromIDTest()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 1, ToID = 2, ID = 1, Status = Read.Unread, Text = "Test Message Text" };
+            Message m = new Message() { FromID = "1", ToID = "2", ID = 1, Status = Read.Unread, Text = "Test Message Text" };
             repo.Add(m);
-            m = new Message() { FromID = 3, ToID = 4, ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
+            m = new Message() { FromID = "3", ToID = "4", ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
-            Assert.Equal(1, repo.GetMessagesByUser(1)[0].ID);
+            Assert.Equal(1, repo.GetMessagesByUser("1")[0].ID);
 
         }
 
@@ -68,35 +68,35 @@ namespace CCS.Tests
         public void MessageGetByToIDTest()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 1, ToID = 2, ID = 1, Status = Read.Unread, Text = "Test Message Text" };
+            Message m = new Message() { FromID = "1", ToID = "2", ID = 1, Status = Read.Unread, Text = "Test Message Text" };
             repo.Add(m);
-            m = new Message() { FromID = 3, ToID = 4, ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
+            m = new Message() { FromID = "3", ToID = "4", ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
-            Assert.Equal(2, repo.GetMessagesToUser(4)[0].ID);
+            Assert.Equal(2, repo.GetMessagesToUser("4")[0].ID);
         }
 
         [Fact]
         public void MessageGetByToAndFromIDTest()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 1, ToID = 2, ID = 1, Status = Read.Unread, Text = "Test Message Text" };
+            Message m = new Message() { FromID = "1", ToID = "2", ID = 1, Status = Read.Unread, Text = "Test Message Text" };
             repo.Add(m);
-            m = new Message() { FromID = 2, ToID = 3, ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
+            m = new Message() { FromID = "2", ToID = "3", ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
-            m = new Message() { FromID = 3, ToID = 4, ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
+            m = new Message() { FromID = "3", ToID = "4", ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
-            Assert.Equal(2, repo.GetMessagesToAndFromUser(3).Count);
+            Assert.Equal(2, repo.GetMessagesToAndFromUser("3").Count);
         }
 
         [Fact]
         public void MessageShowAllTest()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 1, ToID = 2, ID = 1, Status = Read.Unread, Text = "Test Message Text" };
+            Message m = new Message() { FromID = "1", ToID = "2", ID = 1, Status = Read.Unread, Text = "Test Message Text" };
             repo.Add(m);
-            m = new Message() { FromID = 2, ToID = 3, ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
+            m = new Message() { FromID = "2", ToID = "3", ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
-            m = new Message() { FromID = 3, ToID = 4, ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
+            m = new Message() { FromID = "3", ToID = "4", ID = 2, Status = Read.Unread, Text = "Test Message 2 Text" };
             repo.Add(m);
             Assert.Equal(3, repo.ShowAllMessages().Count);
 
@@ -106,7 +106,7 @@ namespace CCS.Tests
         public void MessageUpdate()
         {
             Assert.Empty(repo.ShowAllMessages());
-            Message m = new Message() { FromID = 1, ToID = 2, ID = 1, Status = Read.Unread, Text = "Test Message Text" };
+            Message m = new Message() { FromID = "1", ToID = "2", ID = 1, Status = Read.Unread, Text = "Test Message Text" };
             repo.Add(m);
             m.Text = "Updated Text";
             repo.Update(m);
