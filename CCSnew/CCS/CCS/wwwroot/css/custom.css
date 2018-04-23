@@ -16,13 +16,20 @@
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-.container {
+.container-content {
     padding-top: 100px;
     padding-right: 40px;
     padding-left: 40px;
     width: 100%;
    
     
+}
+
+.container {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
 }
 
 h1 {
@@ -49,6 +56,24 @@ h1 {
 }
 
 
+
+.form-group {
+    padding:300px;
+    padding-top:0px;
+}
+
+
+.footer {
+    height: 200px;
+    position: relative;
+    padding-top: 50px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #3771c8ff;
+    color: white;
+    text-align: center;
+}
 
 .navbar-nav > li > a {
     background-color: transparent;
