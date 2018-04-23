@@ -22,7 +22,7 @@ namespace CCS.Controllers
 
         private IProjectRepository project;
         private IProductRepository product;
-        private UserManager<User> userManager;
+        public UserManager<User> userManager;
         private IUserValidator<User> userValidator;
         private IPasswordValidator<User> passwordValidator;
         private IPasswordHasher<User> passwordHasher;
@@ -293,7 +293,11 @@ namespace CCS.Controllers
         [HttpGet]
         public IActionResult NoteAdd(int id)
         {
-            ViewBag.From = GetCurrentUserId();
+            if (userManager.GetUserAsync(HttpContext.User).Result.Id is null)
+            {
+                ViewBag.From = 0;
+            }
+            else ViewBag.From = userManager.GetUserAsync(HttpContext.User).Result.Id;
             Note n = new Note();
             n.ProjectID = id;
             return View(n);
@@ -302,7 +306,6 @@ namespace CCS.Controllers
         #endregion
 
 
-        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
 
 
     }
