@@ -40,7 +40,7 @@
                     <li><a href="Services.html">Services</a></li>
                     <li><a href="About.html">About</a></li>
                     <li><a href="Contact">Contact</a></li>
-                    <li><a href="Client">Client Login</a></li>
+                    <li><a class="active"  href="Client">Client Login</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -55,6 +55,23 @@
         <br>
         <center><h1>Client Login</h1></center>
     </div>
+
+
+    <script>
+        $(document).ready(function () {
+            var scroll_start = 0;
+            var startchange = $('#startchange');
+            var offset = startchange.offset();
+            $(document).scroll(function () {
+                scroll_start = $(this).scrollTop();
+                if (scroll_start > offset.top) {
+                    $('.navbar-custom').css('background-color', '#2c2f40ff');
+                } else {
+                    $('.navbar-custom').css('background-color', 'transparent');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
