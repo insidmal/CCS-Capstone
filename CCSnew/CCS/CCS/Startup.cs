@@ -45,9 +45,9 @@ namespace CCS
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
-            services.AddTransient<IMessageRepository, TestMessageRepository>();
+            services.AddTransient<IMessageRepository, MessageRepo>();
             services.AddTransient<IProjectRepository, ProjectRepo>();
-            services.AddTransient<INoteRepository, TestNoteRepo>();
+            services.AddTransient<INoteRepository, NoteRepo>();
             services.AddTransient<IProductRepository, ProductRepo>();
             services.AddTransient<IProjectProductsRepository, ProjProdRepo>();
 
