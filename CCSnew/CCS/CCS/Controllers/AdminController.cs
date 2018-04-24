@@ -324,9 +324,18 @@ namespace CCS.Controllers
             return RedirectToAction("ProjectView", n.ProjectID);
         }
 
+        [HttpGet]
+        public IActionResult NoteEdit(int id) => View(note.GetNote(id));
+        [HttpPost]
+        public IActionResult NoteEdit(Note n)
+        {
+            note.UpdateNote(n);
+            ViewBag.Message = "Message Updated!";
+            return RedirectToAction("ProjectView", n.ProjectID);
+        }
         #endregion
 
-        
+
     }
 }
 

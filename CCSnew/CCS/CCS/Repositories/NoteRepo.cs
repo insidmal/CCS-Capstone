@@ -33,6 +33,8 @@ namespace CCS.Repositories
             return n;
         }
 
+        public Note GetNote(int id) => context.Note.FirstOrDefault(a => a.ID == id);
+
         public List<Note> GetNotesByProject(int id)
         {
             List<Note> ln = new List<Note>();
