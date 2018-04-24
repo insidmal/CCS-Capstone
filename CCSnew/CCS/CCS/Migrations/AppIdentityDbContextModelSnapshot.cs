@@ -27,7 +27,11 @@ namespace CCS.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("FromID");
+                    b.Property<string>("FromID");
+
+                    b.Property<string>("FromName");
+
+                    b.Property<int>("Parent");
 
                     b.Property<int>("Status");
 
@@ -35,7 +39,7 @@ namespace CCS.Migrations
 
                     b.Property<string>("Text");
 
-                    b.Property<int>("ToID");
+                    b.Property<string>("ToID");
 
                     b.HasKey("ID");
 
@@ -49,13 +53,17 @@ namespace CCS.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("From");
+                    b.Property<string>("From");
+
+                    b.Property<string>("FromName");
 
                     b.Property<int>("ProjectID");
 
                     b.Property<string>("Text");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ProjectID");
 
                     b.ToTable("Note");
                 });
@@ -291,6 +299,14 @@ namespace CCS.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CCS.Models.Note", b =>
+                {
+                    b.HasOne("CCS.Models.Project")
+                        .WithMany("Notes")
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CCS.Models.Product", b =>

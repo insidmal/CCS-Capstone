@@ -14,12 +14,14 @@ namespace CCS.Models
     public class Message
     {
         public int ID { get; set; }
-        public int FromID { get; set; }
-        public int ToID { get; set; }
+        public string FromID { get; set; }
+        public string FromName { get; set; }
+        public string ToID { get; set; }
         public string Subject { get; set; }
         public string Text { get; set; }
         public Read Status { get; set; }
         public DateTime Date { get; set; }
+        public int Parent { get; set; }
     }
 
     public enum Read

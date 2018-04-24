@@ -16,9 +16,9 @@ namespace CCS.Repositories
     {
         List<Message> ShowAllMessages();
         Message GetMessage(int id);
-        List<Message> GetMessagesByUser(int id);
-        List<Message> GetMessagesToUser(int id);
-        List<Message> GetMessagesToAndFromUser(int id);
+        List<Message> GetMessagesByUser(string id);
+        List<Message> GetMessagesToUser(string id);
+        List<Message> GetMessagesToAndFromUser(string id);
         int Add(Message m);
         int Remove(Message m);
         int Remove(int MessID);

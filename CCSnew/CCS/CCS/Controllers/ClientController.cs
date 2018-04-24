@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CCS.Repositories;
+﻿using CCS.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using CCS.Repositories;
 
 namespace CCS.Controllers
 {
@@ -20,8 +15,8 @@ namespace CCS.Controllers
         }
 
         public IActionResult Index() => View();
-
-        public IActionResult MessageList() => View(repo.GetMessagesToAndFromUser(1));
+        //this is a placeholder from test repo, needs to be updated for new repo to use existing user ID string
+        public IActionResult MessageList() => View(repo.GetMessagesToAndFromUser("1"));
 
         public IActionResult MessageView(int id) => View(repo.GetMessage(id));
 
