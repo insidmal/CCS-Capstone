@@ -31,11 +31,11 @@ namespace CCS.Repositories
             return 1;
         }
 
-        public List<Message> GetMessagesByUser(int id) => Messages.Where(a => a.FromID == id).ToList<Message>();
+        public List<Message> GetMessagesByUser(string id) => Messages.Where(a => a.FromID == id).ToList<Message>();
         
-        public List<Message> GetMessagesToAndFromUser(int id) => Messages.Where(a => a.ToID == id || a.FromID == id).ToList<Message>();
+        public List<Message> GetMessagesToAndFromUser(string id) => Messages.Where(a => a.ToID == id || a.FromID == id).ToList<Message>();
 
-        public List<Message> GetMessagesToUser(int id) => Messages.Where(a => a.ToID == id).ToList<Message>();
+        public List<Message> GetMessagesToUser(string id) => Messages.Where(a => a.ToID == id).ToList<Message>();
 
         public int Remove(Message m)
         {

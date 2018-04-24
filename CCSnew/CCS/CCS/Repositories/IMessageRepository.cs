@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 
 // CREATIVE CYBER SOLUTIONS
-// 04/10/2018
-// JOHN BELL contact@conquest-marketing.com
-// Messaging system repo
+// CREATED: 04/10/2018
+// CREATED BY: JOHN BELL contact@conquest-marketing.com
+// LAST UPDATED ON: 04/24/2018
+// LAST UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
 namespace CCS.Repositories
 {
@@ -16,9 +17,9 @@ namespace CCS.Repositories
     {
         List<Message> ShowAllMessages();
         Message GetMessage(int id);
-        List<Message> GetMessagesByUser(int id);
-        List<Message> GetMessagesToUser(int id);
-        List<Message> GetMessagesToAndFromUser(int id);
+        List<Message> GetMessagesByUser(string id);
+        List<Message> GetMessagesToUser(string id);
+        List<Message> GetMessagesToAndFromUser(string id);
         int Add(Message m);
         int Remove(Message m);
         int Remove(int MessID);
