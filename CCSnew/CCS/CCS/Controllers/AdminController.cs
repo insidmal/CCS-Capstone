@@ -216,6 +216,7 @@ namespace CCS.Controllers
         {
             p.Progress = Status.New;
             project.Add(p);
+            p.Notes = new List<Note>();
             return View("ProjectView", p);
         }
 
