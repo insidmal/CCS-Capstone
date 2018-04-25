@@ -3,6 +3,7 @@ using CCS.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CCS.Models;
+using System;
 
 namespace CCS.Controllers
 {
@@ -53,18 +54,26 @@ namespace CCS.Controllers
         public IActionResult MessageList()
         {
           ViewBag.UserId = GetCurrentUserId();
-          return View(message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>());
+            var mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
+            foreach (Message m in mess)
+            {
+                m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
+            }
+          return View();
         }
         public IActionResult MessageView(int id) => View(message.GetMessage(id));
 
         [HttpGet]
-        public IActionResult MessageSend() => View(GetCurrentUserId());
+        public IActionResult MessageSend() => View( new Message() { FromID = GetCurrentUserId() });
 
         [HttpPost]
         public IActionResult MessageSend(Message m)
         {
+            m.ToID = userManager.FindByNameAsync(m.ToUser).Result.Id;
+            m.Date = DateTime.Now;
             message.Add(m);
-            return View();
+            ViewBag.Message = "Message Sent to " + m.ToUser + "!";
+            return RedirectToAction("MessageList");
         }
 
         public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();

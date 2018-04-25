@@ -1,0 +1,15 @@
+﻿
+@model string
+@{
+    Layout = "";
+}
+$(function() {
+var members =  [
+@Html.Raw(Model)
+];
+
+$('#ToUser').autocomplete({source:members});
+
+});
+
+

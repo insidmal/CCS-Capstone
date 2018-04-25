@@ -11,8 +11,8 @@ using System;
 namespace CCS.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180417005225_Models")]
-    partial class Models
+    [Migration("20180425201803_InitialV2")]
+    partial class InitialV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,9 @@ namespace CCS.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("FromID");
+                    b.Property<string>("FromID");
+
+                    b.Property<string>("FromName");
 
                     b.Property<int>("Status");
 
@@ -36,7 +38,9 @@ namespace CCS.Migrations
 
                     b.Property<string>("Text");
 
-                    b.Property<int>("ToID");
+                    b.Property<string>("ToID");
+
+                    b.Property<string>("ToUser");
 
                     b.HasKey("ID");
 
@@ -50,13 +54,15 @@ namespace CCS.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("From");
+                    b.Property<string>("From");
 
                     b.Property<int>("ProjectID");
 
                     b.Property<string>("Text");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ProjectID");
 
                     b.ToTable("Note");
                 });
@@ -73,6 +79,8 @@ namespace CCS.Migrations
                     b.Property<string>("Name");
 
                     b.Property<float>("Price");
+
+                    b.Property<int>("ProjProdId");
 
                     b.Property<int?>("ProjectID");
 
@@ -290,6 +298,14 @@ namespace CCS.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CCS.Models.Note", b =>
+                {
+                    b.HasOne("CCS.Models.Project")
+                        .WithMany("Notes")
+                        .HasForeignKey("ProjectID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CCS.Models.Product", b =>

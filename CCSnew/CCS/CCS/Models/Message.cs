@@ -17,6 +17,7 @@ namespace CCS.Models
         public string FromID { get; set; }
         public string FromName { get; set; }
         public string ToID { get; set; }
+        public string ToUser { get; set; }
         public string Subject { get; set; }
         public string Text { get; set; }
         public Read Status { get; set; }
