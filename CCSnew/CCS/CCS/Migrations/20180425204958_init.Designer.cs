@@ -11,8 +11,8 @@ using System;
 namespace CCS.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180425201803_InitialV2")]
-    partial class InitialV2
+    [Migration("20180425204958_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,8 @@ namespace CCS.Migrations
                     b.Property<string>("FromID");
 
                     b.Property<string>("FromName");
+
+                    b.Property<int>("Parent");
 
                     b.Property<int>("Status");
 
@@ -55,6 +57,8 @@ namespace CCS.Migrations
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("From");
+
+                    b.Property<string>("FromName");
 
                     b.Property<int>("ProjectID");
 
