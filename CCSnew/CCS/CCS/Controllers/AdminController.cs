@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/10/2018
 // CREATED BY: JOHN BELL contact@conquest-marketing.com
-// UPDATED: 04/16/2018
+// UPDATED: 04/23/2018
 // UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
 
 
@@ -19,6 +19,8 @@ namespace CCS.Controllers
 {
     public class AdminController : Controller
     {
+
+        #region var dec and constructor
 
         private IProjectRepository project;
         private IProductRepository product;
@@ -51,11 +53,10 @@ namespace CCS.Controllers
             note = nor;
         }
 
+        #endregion
 
         public IActionResult Index() => View();
-
-
-
+        
         #region Account Function Views
         public ViewResult ViewUers() => View(userManager.Users);
 
@@ -192,8 +193,19 @@ namespace CCS.Controllers
         public IActionResult ProjectView(int? id)
         {
             if (id == null || id == 0) return RedirectToAction("ProjectList");
-            else return View(project.ShowProjectByID((int)id));
 
+
+            else
+            {
+
+                var pj = project.ShowProjectByID((int)id);
+                foreach (Note n in pj.Notes)
+                {
+                    n.FromName = userManager.GetUserName(HttpContext.User);
+                }
+
+                return View(pj);
+            }
         }
         //add projects
         [HttpGet]
@@ -204,6 +216,7 @@ namespace CCS.Controllers
         {
             p.Progress = Status.New;
             project.Add(p);
+            p.Notes = new List<Note>();
             return View("ProjectView", p);
         }
 
@@ -293,16 +306,35 @@ namespace CCS.Controllers
         [HttpGet]
         public IActionResult NoteAdd(int id)
         {
-            ViewBag.From = GetCurrentUserId();
+            if (userManager.GetUserAsync(HttpContext.User).Result.Id is null)
+            {
+                ViewBag.From = 0;
+            }
+            else ViewBag.From = userManager.GetUserAsync(HttpContext.User).Result.Id;
             Note n = new Note();
             n.ProjectID = id;
             return View(n);
         }
 
+        [HttpPost]
+        public IActionResult NoteAdd(Note n)
+        {
+            n.Date = DateTime.Now;
+            note.AddNote(n.ProjectID, n);
+            ViewBag.Message = "Note Added!";
+            return RedirectToAction("ProjectView", n.ProjectID);
+        }
+
+        [HttpGet]
+        public IActionResult NoteEdit(int id) => View(note.GetNote(id));
+        [HttpPost]
+        public IActionResult NoteEdit(Note n)
+        {
+            note.UpdateNote(n);
+            ViewBag.Message = "Message Updated!";
+            return RedirectToAction("ProjectView", n.ProjectID);
+        }
         #endregion
-
-
-        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
 
 
     }

@@ -1,9 +1,10 @@
-﻿using System.Linq;
+using System.Linq;
 using CCS.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CCS.Models;
 using System;
+
 
 namespace CCS.Controllers
 {
@@ -51,6 +52,7 @@ namespace CCS.Controllers
 
         public IActionResult Index() => View();
 
+
         public IActionResult MessageList()
         {
           ViewBag.UserId = GetCurrentUserId();
@@ -65,6 +67,7 @@ namespace CCS.Controllers
 
         [HttpGet]
         public IActionResult MessageSend() => View( new Message() { FromID = GetCurrentUserId() });
+
 
         [HttpPost]
         public IActionResult MessageSend(Message m)

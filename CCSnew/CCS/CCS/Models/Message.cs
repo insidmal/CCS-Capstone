@@ -22,6 +22,7 @@ namespace CCS.Models
         public string Text { get; set; }
         public Read Status { get; set; }
         public DateTime Date { get; set; }
+        public int Parent { get; set; }
     }
 
     public enum Read

@@ -28,6 +28,7 @@ namespace CCS.Repositories
 
         public Project Add(Project p)
         {
+            p.QuoteDate = DateTime.Now;
             context.Project.Add(p);
             context.SaveChanges();
             return p;

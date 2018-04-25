@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 // 04/10/2018
 // JOHN BELL contact@conquest-marketing.com
 // Note Test Repo
+//TO DO: Get note by ID
 
 namespace CCS.Repositories
 {
@@ -36,5 +37,9 @@ namespace CCS.Repositories
             return n;
         }
 
+        public Note GetNote(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

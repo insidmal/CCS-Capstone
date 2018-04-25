@@ -17,5 +17,6 @@ namespace CCS.Repositories
         List<Note> GetNotesByProject(int id);
         Note UpdateNote(Note n);
         int RemoveNote(Note n);
+        Note GetNote(int id);
     }
 }

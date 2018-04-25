@@ -8,7 +8,8 @@ using CCS.Models;
 // CREATIVE CYBER SOLUTIONS
 // 04/10/2018
 // JOHN BELL contact@conquest-marketing.com
-
+//UPDATED 4/23
+//TO DO - switch test lookups to STRING, had to update interface for real user auth data
 namespace CCS.Repositories
 {
     public class TestMessageRepository : IMessageRepository
