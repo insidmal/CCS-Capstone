@@ -1,18 +1,27 @@
-﻿@model  Message
+﻿@model Message
 @{
     ViewData["Title"] = "Send a Message";
+    //footer may have an over-writing version of jquery, if auto fill doesn't complete then check that!
 }
+
+
+
+
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
 
 <h2>Send a Message</h2>
 
 <form method="post">
-    <label asp-for="ToID"></label>
-    <input asp-for="ToID">
-    <input type="hidden" asp-for="FromID" value="1" />
-    <label asp-for="Subject"></label>
-    <input asp-for="Subject" />
-    <label asp-for="Text"></label>
-    <input asp-for="Text" />
-    <input type="Submit" />
+    <label asp-for="ToID"><strong>Send To</strong></label><br />
+    <input asp-for="ToUser"><br />&nbsp;<br />
+    <input type="hidden" asp-for="FromID" />
+    <label asp-for="Subject">Subject</label><br />
+    <input asp-for="Subject" /><br />&nbsp;<br />
+    <label asp-for="Text">Message</label><br />
+    <textarea asp-for="Text"></textarea><br />
+    <input type="Submit" value="Send!"/>
 </form>
 
+<script type="text/javascript" src="/Home/memberMessageList"></script>

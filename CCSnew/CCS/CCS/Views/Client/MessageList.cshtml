@@ -4,13 +4,13 @@
 }
 
 
-<h2>Your Messages</h2>
-
-
+<h2>Your Messages</h2><br />
+<a asp-action="MessageSend">Send a New Message</a>
+<br />
 <table cellspacing="3">
     <caption>Inbox</caption>
     <tr><td>From</td><td>Subject</td><td>Date</td></tr>
-    @foreach (Message m in @Model.Where(a => a.FromID == 1))
+    @foreach (Message m in @Model.Where(a=>a.ToID==ViewBag.UserId))
     {
     <tr>
         <td>@m.FromID</td>
@@ -31,3 +31,28 @@
 
 
 </table>
+<br />&nbsp;<br />
+            <table cellspacing="3">
+                <caption>Sent Messages</caption>
+                <tr><td>To</td><td>Subject</td><td>Date</td></tr>
+                @foreach (Message m in @Model.Where(a => a.FromID == ViewBag.UserId))
+    {
+            <tr>
+                <td>@m.FromID</td>
+                <td>
+                    <a asp-action="MessageView" asp-route-id="@m.ID">
+                        @if (m.Status == Read.Unread)
+            {
+
+                <strong>@m.Subject</strong>
+}
+else
+{ @m.Subject}
+                    </a>
+                </td>
+                <td>@m.Date</td>
+            </tr>
+}
+
+
+            </table>
