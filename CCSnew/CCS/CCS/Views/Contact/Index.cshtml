@@ -39,47 +39,59 @@
                     <li><a href="Index.html">Home</a></li>
                     <li><a href="Services.html">Services</a></li>
                     <li><a href="About.html">About</a></li>
-                    <li><a class="active"  href="Contact">Contact</a></li>
+                    <li><a class="active" href="Contact">Contact</a></li>
                     <li><a href="Client">Client Login</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><button type="button" class="btn btn-primary">Register</button></li>
-                    <li><button type="button" class="btn btn-primary">Login</button></li>
+                    <li><button onclick="location.href='Register.html'" type="button" class="btn btn-primary">Register</button></li>
+                    <li><button onclick="location.href='Client'" type="button" class="btn btn-primary">Login</button></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container" id="startchange" style="height:200px;">
-        <br>
-        <div class="container-content">
-            <center><h1>Contact</h1></center>
-            <br />
 
-            <form action="/action_page.php">
-                <div class="form-group">
-                    <input type="text" id="fname" name="firstname" placeholder="Name">
+    <br>
+    <div class="container-content" id="startchange">
+        <center><h1>Contact</h1></center>
+        <br />
 
+        <center>
+            <form class="form">
 
-                    <input type="text" id="lname" name="lastname" placeholder="Email">
+                <input type="text" id="fname" name="firstname" placeholder="Name">
 
 
-                    <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
-                    <br />
+                <input type="text" id="lname" name="lastname" placeholder="Email">
 
-                    <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
-                </div>
+
+                <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
+                <br />
+
+                <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
+
+
             </form>
-            <br />
-            <br>
-        </div>
-        <div>
-            <!-- Footer -->
-            <footer class="footer">
-                <p>Creative Cyber Solutions 2018</p>
-            </footer>
-        </div>
+
+        </center>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Creative Cyber Solutions 2018</p>
+        </footer>
+    </div>
 
     </div>
 

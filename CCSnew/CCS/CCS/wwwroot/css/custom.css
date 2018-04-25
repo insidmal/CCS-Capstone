@@ -1,13 +1,10 @@
-
-
-
 @font-face {
     font-family: MainFont;
     src: url(/fonts/Aller_Std_Bd.ttf);
 }
 
-.jumbotron {
-  
+.form {
+    width:40%;
 }
 
 .content {
@@ -19,10 +16,7 @@
 .container-content {
     padding-top: 100px;
     padding-right: 40px;
-    padding-left: 40px;
-    width: 100%;
-   
-    
+    padding-left: 40px;  
 }
 
 .container {
@@ -30,6 +24,13 @@
     padding-right: 0px;
     padding-left: 0px;
     width: 100%;
+}
+
+.container form {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 60%;
 }
 
 h1 {
@@ -50,18 +51,12 @@ h1 {
     left: 0;
     z-index: 9999;
     width: 100%;
-
-   
- 
 }
-
-
 
 .form-group {
     padding:300px;
     padding-top:0px;
 }
-
 
 .footer {
     height: 200px;
@@ -86,18 +81,16 @@ h1 {
     color: white;
 }
 
-
-
-    .navbar-nav > li > a:hover {
-        background-color: transparent;
-        border: 2px solid #3771c8ff;
-        transition: all .5s;
-        margin-right: 5px;
-        margin-top: 6px;
-        padding: 10px;
-        text-align: center;
-        width: 100px;
-        color: #3771c8ff;
+.navbar-nav > li > a:hover {
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
     }
 
 .navbar-custom .navbar-nav > li > .active {
@@ -157,6 +150,19 @@ h1 {
     font-family: 'MainFont';
 }
 
+.btn-primary.active {
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    height: 42px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+
+
 /* brand logo styling */
 
 .navbar-brand {
@@ -214,6 +220,12 @@ input[type=submit] {
 
 
 @media only screen and (max-width: 1200px) {
+
+
+    .form {
+        width: 100%;
+      
+    }
 
 
     .navbar-custom {
