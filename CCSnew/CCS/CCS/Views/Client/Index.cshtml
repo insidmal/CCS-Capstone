@@ -1,7 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@model Dictionary<string, object>
+
 @{
-    ViewBag.Title = "Client Login";
+    ViewData["Title"] = "Index";
 }
+
 
 <html lang="en">
 <head>
@@ -33,66 +35,18 @@
                     <input type="text" id="fname" name="firstname" placeholder="Name">
 
 
+<div class="bg-primary m-1 p-1 text-white"><h4>User Details</h4></div>
 
-                    <input type="text" id="lname" name="lastname" placeholder="Email">
+<table class="table table-sm table-bordered m-1 p-1">
+    @foreach (var kvp in Model)
+    {
+        <tr><th>@kvp.Key</th><td>@kvp.Value</td></tr>
+    }
+</table>
 
+@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    <a asp-controller="Account" asp-action="Logout"
+       class="btn btn-danger">Logout</a>
+}
 
-
-                    <br />
-                    <div class="checkbox">
-                        <label style="color:white; float: left;"><input type="checkbox" value="">Remember Me</label>
-
-                        <br />
-                        <br />
-                        <button style="float: left" class="btn btn-primary" type="submit" value="Submit">Submit</button>
-                    </div>
-                    <br />
-                    <div>
-
-
-
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                </form>
-            </center>
-            <br />
-            <br>
-        </div>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div>
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Creative Cyber Solutions 2018</p>
-        </footer>
-    </div>
-
-
-
-
-    <script>
-        $(document).ready(function () {
-            var scroll_start = 0;
-            var startchange = $('#startchange');
-            var offset = startchange.offset();
-            $(document).scroll(function () {
-                scroll_start = $(this).scrollTop();
-                if (scroll_start > offset.top) {
-                    $('.navbar-custom').css('background-color', '#2c2f40ff');
-                } else {
-                    $('.navbar-custom').css('background-color', 'transparent');
-                }
-            });
-        });
-    </script>
-
-</body>
-</html>
