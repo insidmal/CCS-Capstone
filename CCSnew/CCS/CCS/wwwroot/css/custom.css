@@ -119,7 +119,9 @@ h1 {
     }
 
 
-    .navbar-nav > li > a:active {
+
+
+    .navbar-nav > li:focus{
         background-color: transparent;
         border: 2px solid #3771c8ff;
         transition: all .5s;
@@ -131,19 +133,7 @@ h1 {
         color: #3771c8ff;
     }
 
-    .navbar-nav > li > a:focus{
-        background-color: transparent;
-        border: 2px solid #3771c8ff;
-        transition: all .5s;
-        margin-right: 5px;
-        margin-top: 6px;
-        padding: 10px;
-        text-align: center;
-        width: 100px;
-        color: #3771c8ff;
-    }
-
-    .navbar-nav > li > a:after {
+    .navbar-nav > li:after {
         background-color: transparent;
         border: 2px solid #3771c8ff;
         transition: all .5s;
@@ -196,6 +186,17 @@ h1 {
 /* primary button styling on hover */
 
 .btn-primary:hover {
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    height: 42px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+.btn-primary:after {
     margin-right: 10px;
     transition: all .5s;
     width: 80px;
