@@ -1,13 +1,52 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-
+    <link rel="stylesheet" href="/animate.css-master/animate.min.css">
 </head>
-<body>
+<body class="bg">
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="navbar-brand" id="logo1"><img style="height:55px;" src="/images/logo2.png"></div>
+                <div class="navbar-brand" id="logo2"><img style="height:55px;" src="/images/logo.png"></div>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+
+
+                    <li class="dropdown">
+                    
+                    </li>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a class="@((ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Contact") ? "active" : "")" href="Contact">Contact</a></li>
+                    <li><a class="@((ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Client") ? "active" : "")" href="Client">Client Login</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button onclick="location.href='Register.html'" type="button" class="btn btn-primary">Register</button></li>
+                    <li><button onclick="location.href='Client'" type="button" class="btn btn-primary">Login</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     @RenderBody()
 
 
