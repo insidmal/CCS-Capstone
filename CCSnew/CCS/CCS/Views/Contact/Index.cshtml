@@ -3,36 +3,122 @@
     ViewData["Title"] = "Contact";
 }
 
-<h2>Contact</h2>
 
-<div class="container-fluid bg-grey">
-    <h2 class="text-center">CONTACT</h2>
-    <div class="row">
-        <div class="col-sm-5">
-            <p>Contact us and we'll get back to you within 24 hours.</p>
-            <p><span class="glyphicon glyphicon-map-marker"></span> Oregon, US</p>
-            <p><span class="glyphicon glyphicon-phone"></span> (541) 393-2284</p>
-            <p><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:brianb@ccybers.com">brianb@ccybers.com</a></p>
+@{
+    ViewBag.Title = "Contact";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contact</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/animate.css-master/animate.min.css">
+</head>
+<body class="bg">
+
+
+
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <div class="navbar-brand" id="logo1"><img style="height:55px;" src="/images/logo2.png"></div>
+                <div class="navbar-brand" id="logo2"><img style="height:55px;" src="/images/logo.png"></div>
+
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+
+
+                    <li class="dropdown">
+
+                    </li>
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="Services.html">Services</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a class="active" href="Contact">Contact</a></li>
+                    <li><a href="Client">Client Login</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button onclick="location.href='Register.html'" type="button" class="btn btn-primary">Register</button></li>
+                    <li><button onclick="location.href='Client'" type="button" class="btn btn-primary">Login</button></li>
+                </ul>
+            </div>
         </div>
-        <div class="col-sm-7">
-            <form class="p-a-1" asp-action="CommentSent" method="post">
-                <div asp-validation-summary="All"></div>
-                <div class="row">
-                    <div class="col-sm-6 form-group">
-                        <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                        <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-                    </div>
-                </div>
-                <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <button class="btn btn-default pull-right" type="submit">Send</button>
-                    </div>
-                </div>
+    </nav>
+
+
+    <br>
+    <div class="container-content" id="startchange">
+        <center><h1>Contact</h1></center>
+        <br />
+
+        <center>
+            <form class="form animated bounceInLeft">
+
+                <input type="text" id="fname" name="firstname" placeholder="Name">
+
+
+                <input type="text" id="lname" name="lastname" placeholder="Email">
+
+
+                <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
+                <br />
+
+                <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
+
+
             </form>
-        </div>
-    </div>
-</div>
 
+        </center>
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Creative Cyber Solutions 2018</p>
+        </footer>
+    </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var scroll_start = 0;
+            var startchange = $('#startchange');
+            var offset = startchange.offset();
+            $(document).scroll(function () {
+                scroll_start = $(this).scrollTop();
+                if (scroll_start > offset.top) {
+                    $('.navbar-custom').css('background-color', '#2c2f40ff');
+                } else {
+                    $('.navbar-custom').css('background-color', 'transparent');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
