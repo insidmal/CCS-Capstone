@@ -98,6 +98,7 @@ h1 {
     background-color: transparent;
     border: 2px solid transparent;
     margin-right: 5px;
+    transition: all .5s;
     margin-top: 6px;
     padding: 10px;
     text-align: center;
@@ -115,6 +116,18 @@ h1 {
     text-align: center;
     width: 100px;
     color: #3771c8ff;
+    }
+
+    .navbar-nav > li > a:after {
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        transition: all .5s;
+        margin-right: 5px;
+        margin-top: 6px;
+        padding: 10px;
+        text-align: center;
+        width: 100px;
+        color: #3771c8ff;
     }
 
 .navbar-custom .navbar-nav > li > .active {
@@ -140,6 +153,7 @@ h1 {
 .btn-primary {
     margin-right: 10px;
     width: 80px;
+    transition: all .5s;
     height: 42px;
     background-color: #3771c8ff;
     border: 2px solid #3771c8ff;
