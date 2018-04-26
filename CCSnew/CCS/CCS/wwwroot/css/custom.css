@@ -5,13 +5,27 @@
 
 #logo1 {
     display: none;
-
 }
 
 #logo2 {
     display: block;
+}
 
-} 
+.link {
+    transition: all .5s;
+    color: #3771c8ff;
+    font-size: 23px;
+    font-family: 'MainFont';
+}
+
+    .link:hover {
+        color: #73a5ff;
+        transition: all .5s;
+        /* Gets rid of the underline on links */
+        text-decoration: none;
+        font-size: 23px;
+        font-family: 'MainFont';
+    }
 
 .form {
     max-width:500px;;
@@ -120,6 +134,7 @@ h1 {
     margin-top: 3px;
 }
 
+
 /* primary button styling */
 
 .btn-primary {
@@ -225,11 +240,6 @@ input[type=submit]:hover {
 
 @media only screen and (max-width: 1200px) {
 
-/*.form {
-    width: 100%;
-}*/
-
-
 .navbar-custom {
     background-color: transparent;
 }
@@ -305,6 +315,13 @@ input[type=submit]:hover {
 .navbar-nav > li > a {
     padding-top: 10px;
     padding-bottom: 10px;
+    background-color:transparent;
+}
+
+.navbar-custom .navbar-nav > li > .active {
+    background-color: transparent;
+    text-align: left;
+    border:2px solid transparent;
 }
 
 .navbar-text {
