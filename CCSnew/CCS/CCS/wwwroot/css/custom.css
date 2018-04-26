@@ -121,7 +121,7 @@ h1 {
 
 
 
-    .navbar-nav > li:focus{
+    .navbar-nav > li > a:focus{
         background-color: transparent;
         border: 2px solid #3771c8ff;
         transition: all .5s;
@@ -133,7 +133,7 @@ h1 {
         color: #3771c8ff;
     }
 
-    .navbar-nav > li:after {
+    .navbar-nav > li > a:after {
         background-color: transparent;
         border: 2px solid #3771c8ff;
         transition: all .5s;
@@ -145,7 +145,7 @@ h1 {
         color: #3771c8ff;
     }
 
-.navbar-custom .navbar-nav > li > .active {
+.navbar-custom .navbar-nav > li > a.active {
     background-color: transparent;
     border: 2px solid #3771c8ff;
     transition: all .5s;
