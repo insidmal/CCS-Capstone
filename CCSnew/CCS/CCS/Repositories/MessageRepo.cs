@@ -23,6 +23,7 @@ namespace CCS.Repositories
         }
 
         public Message GetMessage(int id) => context.Message.FirstOrDefault(a => a.ID == id);
+        public List<Message> GetMessages(int parent) => context.Message.Where(a => a.ID == parent || a.Parent==parent).OrderByDescending(a=>a.Date).ToList();
 
         public List<Message> GetMessagesByUser(string id) => context.Message.Where(a=>a.FromID == id).ToList<Message>();
 

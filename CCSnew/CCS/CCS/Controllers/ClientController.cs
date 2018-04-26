@@ -66,7 +66,7 @@ namespace CCS.Controllers
             }
             return View();
         }
-        public IActionResult MessageView(int id) => View(message.GetMessage(id));
+        public IActionResult MessageView(int id) => View(message.GetMessages(id));
 
         [HttpGet]
         public IActionResult MessageSend() => View( new Message() { FromID = GetCurrentUserId() });

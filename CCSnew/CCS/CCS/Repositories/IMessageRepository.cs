@@ -17,6 +17,7 @@ namespace CCS.Repositories
     {
         List<Message> ShowAllMessages();
         Message GetMessage(int id);
+        List<Message> GetMessages(int id);
         List<Message> GetMessagesByUser(string id);
         List<Message> GetMessagesToUser(string id);
         List<Message> GetMessagesToAndFromUser(string id);
