@@ -37,7 +37,7 @@
                     <li><a href="Services.html">Services</a></li>
                     <li><a href="About.html">About</a></li>
                     <li><a class="@((ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Contact") ? "active" : "")" href="Contact">Contact</a></li>
-                    <li><a class="@((ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Client") ? "active" : "")" href="Client">Client Login</a></li>
+                    <li><a class="@((ViewContext.RouteData.Values["Action"].ToString() == "Login" && ViewContext.RouteData.Values["Controller"].ToString() == "Account") ? "active" : "")" href="Client/Login">Client Login</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
