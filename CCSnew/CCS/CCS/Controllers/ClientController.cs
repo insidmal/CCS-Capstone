@@ -12,7 +12,7 @@ namespace CCS.Controllers
     // CREATIVE CYBER SOLUTIONS
     // CREATED: 04/10/2018
     // CREATED BY: JOHN BELL contact@conquest-marketing.com
-    // UPDATED: 04/24/2018
+    // UPDATED: 04/25/2018
     // UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
 
@@ -52,6 +52,7 @@ namespace CCS.Controllers
 
         public IActionResult Index() => View();
 
+        #region Message System Views
 
         public IActionResult MessageList()
         {
@@ -60,10 +61,12 @@ namespace CCS.Controllers
             foreach (Message m in mess)
             {
                 m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
+                m.ToUser = userManager.FindByIdAsync(m.ToID).Result.Id;
+
             }
-          return View();
+            return View();
         }
-        public IActionResult MessageView(int id) => View(message.GetMessage(id));
+        public IActionResult MessageView(int id) => View(message.GetMessages(id));
 
         [HttpGet]
         public IActionResult MessageSend() => View( new Message() { FromID = GetCurrentUserId() });
@@ -78,6 +81,8 @@ namespace CCS.Controllers
             ViewBag.Message = "Message Sent to " + m.ToUser + "!";
             return RedirectToAction("MessageList");
         }
+
+        #endregion
 
         public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
 

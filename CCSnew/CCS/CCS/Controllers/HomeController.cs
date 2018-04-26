@@ -6,6 +6,13 @@ using CCS.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+// CREATIVE CYBER SOLUTIONS
+// CREATED: 04/10/2018
+// CREATED BY: CODY CONNOR
+// UPDATED: 04/25/2018
+// UPDATED BY: JOHN BELL contact@conquest-marketing.com
+
+
 namespace CCS.Controllers
 {
     public class HomeController : Controller

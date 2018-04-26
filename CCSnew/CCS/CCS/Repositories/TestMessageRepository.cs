@@ -68,5 +68,9 @@ namespace CCS.Repositories
 
         public Message GetMessage(int id) =>Messages.FirstOrDefault(a => a.ID == id);
 
+        public List<Message> GetMessages(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
