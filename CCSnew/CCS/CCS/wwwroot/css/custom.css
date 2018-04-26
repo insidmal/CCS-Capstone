@@ -3,8 +3,18 @@
     src: url(/fonts/Aller_Std_Bd.ttf);
 }
 
+#logo1 {
+    display: none;
+
+}
+
+#logo2 {
+    display: block;
+
+} 
+
 .form {
-    width:40%;
+    max-width:500px;;
 }
 
 .content {
@@ -162,7 +172,7 @@ h1 {
 }
 
 .navbar-brand > img {
-        width: 300px;
+        height: 90px;
         margin-top: 0px;
         height: auto;
 }
@@ -202,12 +212,23 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
+@media only screen and (max-width: 470px) {
+
+    #logo1 {
+        display: block;
+    }
+
+    #logo2 {
+        display: none;
+    } 
+}
 
 @media only screen and (max-width: 1200px) {
 
-.form {
+/*.form {
     width: 100%;
-}
+}*/
+
 
 .navbar-custom {
     background-color: transparent;
