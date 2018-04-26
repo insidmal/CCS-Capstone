@@ -118,6 +118,31 @@ h1 {
     color: #3771c8ff;
     }
 
+
+    .navbar-nav > li > a:active {
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        transition: all .5s;
+        margin-right: 5px;
+        margin-top: 6px;
+        padding: 10px;
+        text-align: center;
+        width: 100px;
+        color: #3771c8ff;
+    }
+
+    .navbar-nav > li > a:focus{
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        transition: all .5s;
+        margin-right: 5px;
+        margin-top: 6px;
+        padding: 10px;
+        text-align: center;
+        width: 100px;
+        color: #3771c8ff;
+    }
+
     .navbar-nav > li > a:after {
         background-color: transparent;
         border: 2px solid #3771c8ff;
