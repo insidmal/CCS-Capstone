@@ -123,10 +123,12 @@ namespace CCS.Controllers
 
         public ViewResult Register() => View();
 
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
+
             {
                 User user = new User
                 {
@@ -157,9 +159,40 @@ namespace CCS.Controllers
         #region Message System Views
 
         public IActionResult MessageList()
+
             {
+                User user = new User
+                {
+                    UserName = model.Name,
+                    Email = model.Email
+                };
+                IdentityResult result
+                    = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        #endregion
+
+        #region Message System Views
+
+        public IActionResult MessageList()
+            {
+            List<Message> mess = new List<Message>();
                 ViewBag.UserId = GetCurrentUserId();
-                var mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
+                 mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
                 foreach (Message m in mess)
                 {
                     m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
@@ -168,7 +201,17 @@ namespace CCS.Controllers
                 }
                 return View();
             }
-            public IActionResult MessageView(int id) => View(message.GetMessages(id));
+
+
+        public IActionResult MessageView(int id)
+        {
+            var messages = message.GetMessages(id, GetCurrentUserId());
+            foreach (Message m in messages)
+            {
+                m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
+            }
+            return View(messages);
+        }
 
             [HttpGet]
             public IActionResult MessageSend() => View(new Message() { FromID = GetCurrentUserId() });

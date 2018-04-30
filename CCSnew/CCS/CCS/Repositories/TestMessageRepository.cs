@@ -9,7 +9,7 @@ using CCS.Models;
 // 04/10/2018
 // JOHN BELL contact@conquest-marketing.com
 //UPDATED 4/23
-//TO DO - switch test lookups to STRING, had to update interface for real user auth data
+//TO DO - switch test lookups to STRING, had to update interface for real user auth data also needs getmessages tests
 namespace CCS.Repositories
 {
     public class TestMessageRepository : IMessageRepository
@@ -68,7 +68,7 @@ namespace CCS.Repositories
 
         public Message GetMessage(int id) =>Messages.FirstOrDefault(a => a.ID == id);
 
-        public List<Message> GetMessages(int id)
+        public List<Message> GetMessages(int id, string userId)
         {
             throw new NotImplementedException();
         }
