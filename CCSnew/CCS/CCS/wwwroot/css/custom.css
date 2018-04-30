@@ -83,8 +83,8 @@ h1 {
 }
 
 .footer {
-    height: 200px;
-    position: relative;
+    height: 60px;
+    position: fixed;
     padding-top: 50px;
     left: 0;
     bottom: 0;
@@ -92,6 +92,7 @@ h1 {
     background-color: #3771c8ff;
     color: white;
     text-align: center;
+
 }
 
 .navbar-nav > li > a {
