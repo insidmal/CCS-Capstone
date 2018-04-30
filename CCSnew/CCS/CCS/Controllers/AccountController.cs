@@ -120,11 +120,72 @@ namespace CCS.Controllers
             {
                 return View();
             }
-            #endregion
 
-            #region Message System Views
+        public ViewResult Register() => View();
 
-            public IActionResult MessageList()
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = new User
+                {
+                    UserName = model.Name,
+                    Email = model.Email
+                };
+                IdentityResult result
+                    = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        public ViewResult Register() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                User user = new User
+                {
+                    UserName = model.Name,
+                    Email = model.Email
+                };
+                IdentityResult result
+                    = await userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        #endregion
+
+        #region Message System Views
+
+        public IActionResult MessageList()
             {
                 ViewBag.UserId = GetCurrentUserId();
                 var mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
