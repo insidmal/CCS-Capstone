@@ -168,11 +168,11 @@ namespace CCS.Controllers
                  mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
                 foreach (Message m in mess)
                 {
-                    m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
-                    m.ToUser = userManager.FindByIdAsync(m.ToID).Result.Id;
+                    m.FromName = userManager.FindByIdAsync(m.FromID).Result.UserName;
+                    m.ToUser = userManager.FindByIdAsync(m.ToID).Result.UserName;
 
                 }
-                return View();
+                return View(mess);
             }
 
 

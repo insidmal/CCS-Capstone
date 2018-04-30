@@ -8,84 +8,46 @@
     ViewBag.Title = "Contact";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Contact</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/custom.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="/animate.css-master/animate.min.css">
-</head>
-<body class="bg">
 
 
+<center><h1>Contact</h1></center>
+<br />
+
+<center>
+    <form class="form">
+
+        <input type="text" id="fname" name="firstname" placeholder="Name">
 
 
+        <input type="text" id="lname" name="lastname" placeholder="Email">
 
 
-    <br>
-    <div class="container-content" id="startchange">
-        <center><h1>Contact</h1></center>
+        <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
         <br />
 
-        <center>
-            <form class="form">
-
-                <input type="text" id="fname" name="firstname" placeholder="Name">
+        <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
 
 
-                <input type="text" id="lname" name="lastname" placeholder="Email">
+    </form>
 
-
-                <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
-                <br />
-
-                <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
-
-
-            </form>
-
-        </center>
-
-
-        <br />
-        <br />
-        <br />
-        <br />
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <div>
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Creative Cyber Solutions 2018</p>
-        </footer>
-    </div>
+</center>
 
     </div>
 
-    <script>
-        $(document).ready(function () {
-            var scroll_start = 0;
-            var startchange = $('#startchange');
-            var offset = startchange.offset();
-            $(document).scroll(function () {
-                scroll_start = $(this).scrollTop();
-                if (scroll_start > offset.top) {
-                    $('.navbar-custom').css('background-color', '#2c2f40ff');
-                } else {
-                    $('.navbar-custom').css('background-color', 'transparent');
-                }
-            });
-        });
-    </script>
 
-</body>
-</html>
+<div>
+
+
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
