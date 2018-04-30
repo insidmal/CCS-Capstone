@@ -19,5 +19,6 @@ namespace CCS.Models
         public int ProjectID { get; set; }
         public string Text { get; set; }
         public DateTime Date { get; set; }
+        public bool Visible { get; set; }
     }
 }
