@@ -178,6 +178,8 @@ namespace CCS.Controllers
 
         public IActionResult MessageView(int id)
         {
+            ViewBag.UserId = GetCurrentUserId();
+
             var messages = message.GetMessages(id, GetCurrentUserId());
             foreach (Message m in messages)
             {
@@ -200,9 +202,24 @@ namespace CCS.Controllers
                 return RedirectToAction("MessageList");
             }
 
-            #endregion
+        [HttpPost]
+        public IActionResult MessageReply(string FromId, string ToId, int Parent, string Text, string Subject)
+        {
+            Message m = new Message();
+            m.FromID = FromId;
+            m.ToID = ToId;
+            m.Parent = Parent;
+            m.Text = Text;
+            m.Subject = Subject;
+            m.Date = DateTime.Now;
+            m.Status = Read.Unread;
+            message.Add(m);
+            ViewBag.Message = "Message Sent to " + m.ToUser + "!";
+            return RedirectToAction("MessageList");
+        }
+        #endregion
 
-            public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
+        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
 
         }
     }

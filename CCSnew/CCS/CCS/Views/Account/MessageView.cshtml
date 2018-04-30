@@ -10,3 +10,21 @@
     <div>@m.Text</div>
     <div style="margin:10px;">&nbsp;</div>
 }
+
+    <form method="post" asp-action="MessageReply">
+        <input type="hidden" parent="@Model[0].ID" />
+        @if (Model[0].FromID == ViewBag.UserId)
+    {
+        <input type="hidden" id="ToId" value="@Model[0].ToID" />
+        <input type="hidden" id="FromId" value="@Model[0].FromID" />
+}
+else
+{
+    <input type="hidden" id="FromId" value="@Model[0].ToID" />
+    <input type="hidden" id="ToId" value="@Model[0].FromID" />
+}
+        <input type="text" id="Subject" value="Re: @Model[0].Subject" />
+        <textarea id="Text"></textarea>
+        <input type="submit" value="Send Message" />
+
+    </form>
