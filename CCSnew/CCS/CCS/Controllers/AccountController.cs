@@ -10,7 +10,7 @@ using CCS.Repositories;
 
 namespace CCS.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         // CREATIVE CYBER SOLUTIONS
@@ -121,7 +121,9 @@ namespace CCS.Controllers
                 return View();
             }
 
-        public ViewResult Register() => View();
+
+            [HttpGet]
+            public ViewResult Register() => View();
 
 
         [HttpPost]
