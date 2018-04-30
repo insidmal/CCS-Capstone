@@ -25,7 +25,8 @@ namespace CCS.Repositories
         public Message GetMessage(int id) => context.Message.FirstOrDefault(a => a.ID == id);
         public List<Message> GetMessages(int parent, string userId)
         {
-           List<Message> messages = context.Message.Where(a => a.ID == parent || a.Parent == parent).OrderByDescending(a => a.Date).ToList();
+            List<Message> messages = new List<Message>();
+           messages = context.Message.Where(a => a.ID == parent || a.Parent == parent).OrderByDescending(a => a.Date).ToList();
             foreach (Message m in messages)
             {
                 if (m.ToID == userId) m.Status = Read.Read;
