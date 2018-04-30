@@ -3,14 +3,10 @@
     ViewData["Title"] = "Your Messages";
 }
 
-<h2>Your Messages</h2>
-
-
-<strong>From</strong><br />
-@Model.FromID <br />
-<strong>Date</strong><br />
-@Model.Date <br />
-<strong>Subject</strong><br />
-@Model.Subject <br />
-<strong>Message</strong><br />
-@Model.Text <br />
+@foreach (Message m in @Model)
+{
+    <a id="@m.ID"></a>
+    <div style="background:grey">@m.Subject -  @m.Date</div>
+    <div>@m.Text</div>
+    <div style="margin:10px;">&nbsp;</div>
+}

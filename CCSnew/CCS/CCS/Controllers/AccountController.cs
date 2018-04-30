@@ -136,7 +136,17 @@ namespace CCS.Controllers
                 }
                 return View();
             }
-            public IActionResult MessageView(int id) => View(message.GetMessages(id));
+
+
+        public IActionResult MessageView(int id)
+        {
+            var messages = message.GetMessages(id, GetCurrentUserId());
+            foreach (Message m in messages)
+            {
+                m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
+            }
+            return View(messages);
+        }
 
             [HttpGet]
             public IActionResult MessageSend() => View(new Message() { FromID = GetCurrentUserId() });
