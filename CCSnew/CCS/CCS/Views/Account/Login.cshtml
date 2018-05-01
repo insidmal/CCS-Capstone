@@ -7,6 +7,7 @@
 
 
 
+
         <center><h1>Login to your account</h1></center>
      
 
@@ -20,14 +21,22 @@
 
                 <input asp-for="Password" type="text" placeholder="Password">
 
-                <br />
-                <br />
 
-                <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
-               
+    <div asp-validation-summary=" All" class="text-danger"></div>
+    <form asp-action="Login" method="post">
 
-            </form>
 
-        </center>
+        <input asp-for="Email" type="text" placeholder="Email">
 
+
+        <input asp-for="Password" type="text" placeholder="Password">
+
+        <br />
+        <br />
+
+        <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+
+
+    </form>
 
