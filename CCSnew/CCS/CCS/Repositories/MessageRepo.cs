@@ -18,6 +18,7 @@ namespace CCS.Repositories
 
         public int Add(Message m)
         {
+            if (m.Parent <= 0) m.Parent = m.ID;
             context.Message.Add(m);
             return context.SaveChanges();
         }
@@ -26,7 +27,7 @@ namespace CCS.Repositories
         public List<Message> GetMessages(int parent, string userId)
         {
             List<Message> messages = new List<Message>();
-           messages = context.Message.Where(a => a.ID == parent || a.Parent == parent).OrderByDescending(a => a.Date).ToList();
+           messages = context.Message.Where(a => a.ID == parent || a.Parent == parent).OrderBy(a => a.Date).ToList();
             foreach (Message m in messages)
             {
                 if (m.ToID == userId) m.Status = Read.Read;

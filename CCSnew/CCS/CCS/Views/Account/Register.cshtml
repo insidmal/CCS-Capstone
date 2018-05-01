@@ -5,19 +5,28 @@
 }
 
 
-<br>
-<div class="container-content" id="startchange">
-    <center><h1>Register for an account</h1></center>
-    <br />
 
-    <div asp-validation-summary=" All" class="text-danger"></div>
-    <form asp-action="Register" method="post">
+<br>
+
+  
+        <center><h1>Register for an account</h1></center>
+
+        <center>
+            <div asp-validation-summary=" All" class="text-danger"></div>
+            <form class="form" method="post">
+
 
         <input asp-for="Name" type="text" placeholder="Name">
+        <input asp-for="Email" type="text" placeholder="Email">
 
         <input asp-for="Password" placeholder="Password">
 
-        <input asp-for="Email" type="text" placeholder="Email">
+
+        
+
+                <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
+       
+
 
         <br />
         <br />
@@ -27,10 +36,5 @@
 
     </form>
 
-</div>
-<br />
-<br />
-<br />
-<br />
-<br />
+
 

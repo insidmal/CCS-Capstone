@@ -1,19 +1,27 @@
-﻿@if (Request.IsAuthenticated)
+﻿@using Microsoft.AspNetCore.Identity
+@using CCS.Models
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+@if (SignInManager.IsSignedIn(User))
 {
-    <text>
-        @{
-            string name = User.Identity.Name;
-            if (name.Length > 8) { name = name.Substring(0, 8); }
-        }
-        @Html.ActionLink("Hi, " + name + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { @id = "userlink", @class = "hidden-xs", title = "Manage" })
-        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutlink", @class = "hidden-xs" })) {
-            @Html.AntiForgeryToken()
-            <a href="javascript:document.getElementById('logoutlink').submit()">Log off</a>
-        }
-    </text>
+    <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" >
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <p style="color:white; padding-right:20px; padding-top:7px; font-size:20px;">Hello, @UserManager.GetUserName(User)</p>
+            </li>
+           
+            <li><button type="submit" class="btn btn-primary">Log out</button></li>
+        </ul>
+    </form>
 }
 else
 {
-    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginlink", @class = "hidden-xs" })
-    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerlink", @class = "hidden-xs" })
+    <ul class="nav navbar-nav navbar-right">
+        <li><button onclick="location.href='/Account/Register'" type="button" class="btn btn-primary">Register</button></li>
+        <li><button onclick="location.href='/Account/Login'" type="button" class="btn btn-primary">Login</button></li>
+
+    </ul>
+
 }

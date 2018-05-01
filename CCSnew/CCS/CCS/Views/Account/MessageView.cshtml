@@ -7,6 +7,37 @@
 {
     <a id="@m.ID"></a>
     <div style="background:grey">@m.Subject -  @m.Date</div>
-    <div>@m.Text</div>
+    <div>
+        @if (m.Status == Read.Unread)
+        {<strong>@m.Text</strong> }
+    else
+    { @m.Text}
+    </div>
     <div style="margin:10px;">&nbsp;</div>
 }
+
+<form method="post" asp-action="MessageReply">
+    <input type="hidden" name="parent" value="@Model[0].Parent" />
+    @if (Model[0].FromID == ViewBag.UserId)
+    {
+        <input type="hidden" name="ToId" value="@Model[0].ToID" />
+        <input type="hidden" name="FromId" value="@Model[0].FromID" />
+    }
+    else
+    {
+        <input type="hidden" name="FromId" value="@Model[0].ToID" />
+        <input type="hidden" id="ToId" value="@Model[0].FromID" />
+    }
+    <input type="text" name="Subject" value="Re: @Model[0].Subject" />
+    <textarea name="Text"></textarea>
+    <input type="submit" value="Send Message" />
+
+</form>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    var anchor = document.getElementById('@ViewBag.Item');
+    anchor.scrollIntoView(true);
+    });
+        </script>

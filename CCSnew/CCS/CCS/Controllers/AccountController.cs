@@ -168,21 +168,24 @@ namespace CCS.Controllers
                  mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
                 foreach (Message m in mess)
                 {
-                    m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
-                    m.ToUser = userManager.FindByIdAsync(m.ToID).Result.Id;
+                    m.FromName = userManager.FindByIdAsync(m.FromID).Result.UserName;
+                    m.ToUser = userManager.FindByIdAsync(m.ToID).Result.UserName;
 
                 }
-                return View();
+                return View(mess);
             }
 
 
         public IActionResult MessageView(int id)
         {
+            ViewBag.UserId = GetCurrentUserId();
+
             var messages = message.GetMessages(id, GetCurrentUserId());
             foreach (Message m in messages)
             {
                 m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
             }
+            ViewBag.Item = messages.Last().ID;
             return View(messages);
         }
 
@@ -200,9 +203,25 @@ namespace CCS.Controllers
                 return RedirectToAction("MessageList");
             }
 
-            #endregion
+        [HttpPost]
+        public IActionResult MessageReply(Message m)
+        {
+            
+            //Message m = new Message();
+            //m.FromID = FromId;
+            //m.ToID = ToId;
+            //m.Parent = Parent;
+            //m.Text = Text;
+            //m.Subject = Subject;
+            m.Date = DateTime.Now;
+            m.Status = Read.Unread;
+            message.Add(m);
+            ViewBag.Message = "Message Sent to " + m.ToUser + "!";
+            return RedirectToAction("MessageList");
+        }
+        #endregion
 
-            public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
+        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
 
         }
     }
