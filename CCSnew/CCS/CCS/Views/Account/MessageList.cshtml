@@ -22,14 +22,14 @@
             <tr>
                 <td>@m.FromName</td>
                 <td>
-                    <a asp-action="MessageView" asp-route-id="@m.ID">
+                    <a asp-action="MessageView" asp-route-id="@m.Parent">
                         @if (m.Status == Read.Unread)
                         {
 
                             <strong>@m.Subject</strong>
                         }
                         else
-                        { @m.Subject}
+                        { @m.Subject }
                     </a>
                 </td>
                 <td>@m.Date</td>
@@ -59,7 +59,7 @@ else
             <tr>
                 <td>@m.ToUser</td>
                 <td>
-                    <a asp-action="MessageView" asp-route-id="@m.ID">
+                    <a asp-action="MessageView" asp-route-id="@m.Parent">
                         @if (m.Status == Read.Unread)
             {
 
