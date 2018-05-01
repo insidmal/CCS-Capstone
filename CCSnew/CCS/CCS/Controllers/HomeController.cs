@@ -27,9 +27,24 @@ namespace CCS.Controllers
 
         public IActionResult Index()
         {
-            return File("~/Index.html", "text/html");
+            return View();
             
         }
+
+        public IActionResult About()
+        {
+            return View();
+
+        }
+
+   
+
+        public IActionResult Services()
+        {
+            return View();
+
+        }
+
 
         public IActionResult memberMessageList()
         {
