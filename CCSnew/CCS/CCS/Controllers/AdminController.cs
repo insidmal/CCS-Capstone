@@ -58,7 +58,7 @@ namespace CCS.Controllers
         public IActionResult Index() => View();
         
         #region Account Function Views
-        public ViewResult ViewUers() => View(userManager.Users);
+        public ViewResult ViewUsers() => View(userManager.Users);
 
         public ViewResult Register() => View();
 

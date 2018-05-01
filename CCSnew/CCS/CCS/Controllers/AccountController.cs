@@ -185,6 +185,7 @@ namespace CCS.Controllers
             {
                 m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
             }
+            ViewBag.Item = messages.Last().ID;
             return View(messages);
         }
 
@@ -203,14 +204,15 @@ namespace CCS.Controllers
             }
 
         [HttpPost]
-        public IActionResult MessageReply(string FromId, string ToId, int Parent, string Text, string Subject)
+        public IActionResult MessageReply(Message m)
         {
-            Message m = new Message();
-            m.FromID = FromId;
-            m.ToID = ToId;
-            m.Parent = Parent;
-            m.Text = Text;
-            m.Subject = Subject;
+            
+            //Message m = new Message();
+            //m.FromID = FromId;
+            //m.ToID = ToId;
+            //m.Parent = Parent;
+            //m.Text = Text;
+            //m.Subject = Subject;
             m.Date = DateTime.Now;
             m.Status = Read.Unread;
             message.Add(m);
