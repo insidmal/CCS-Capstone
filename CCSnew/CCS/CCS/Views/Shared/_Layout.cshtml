@@ -33,17 +33,14 @@
                     <li class="dropdown">
 
                     </li>
-                    <li><a href="/Index.html">Home</a></li>
-                    <li><a href="/Services.html">Services</a></li>
-                    <li><a href="/About.html">About</a></li>
-                    <li><a class="@((ViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.RouteData.Values["Controller"].ToString() == "Contact") ? "active" : "")" href="/Contact">Contact</a></li>
-                    <li><a class="@((ViewContext.RouteData.Values["Action"].ToString() == "Login" && ViewContext.RouteData.Values["Controller"].ToString() == "Account") ? "active" : "")" href="/Account/Login">Client Login</a></li>
+                    <li><a asp-controller="Home" asp-action="Index" >Home</a></li>
+                    <li><a asp-controller="Home" asp-action="Services">Services</a></li>
+                    <li><a asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+            
 
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><button onclick="location.href='/Account/Register'" type="button" class="btn btn-primary">Register</button></li>
-                    <li><button onclick="location.href='/Account/Login'" type="button" class="btn btn-primary">Login</button></li>
-                </ul>
+                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
@@ -51,7 +48,8 @@
         <br>
         <div class="container-content">
 
-            <div class="content" style="height:600px;  background-color: white">
+            <div class="content" style="min-height:600px;  background-color: white">
+
                 @RenderBody()
 
             </div>
@@ -59,10 +57,7 @@
 
         </div>
         <!-- Footer -->
-        <br />
-        <br />
-        <br />
-        <br />
+      
         <footer class="footer">
             Creative Cyber Solutions 2018
         </footer>
