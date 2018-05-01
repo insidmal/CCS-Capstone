@@ -4,55 +4,33 @@
     ViewData["Title"] = "Index";
 }
 
-
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/custom.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body class="bg">
-
-
-
-
-
-
-    <br>
-    <div class="container-content" id="startchange">
-        <center><h1>Log into your account</h1></center>
+<br>
+<div class="container-content" id="startchange">
+    <center>
+        <h1>Log into your account</h1>
+    </center>
+    <br />
+    <form class="form">
+        <label style="color:white; float: left; padding-top:0px; font-size:20px;"><a class="link" href="Register.html">Register Here &nbsp; </a> if you don't have an account</label>
         <br />
-        <div>
+        <br />
+        <input type="text" id="fname" name="firstname" placeholder="Name">
 
-            <center>
-                <form class="form">
-                    <label style="color:white; float: left; padding-top:0px; font-size:20px;"><a class="link" href="Register.html">Register Here &nbsp; </a> if you don't have an account</label>
-                    <br />
-                    <br />
-                    <input type="text" id="fname" name="firstname" placeholder="Name">
+        <div class="bg-primary m-1 p-1 text-white"><h4>User Details</h4></div>
 
+        <table class="table table-sm table-bordered m-1 p-1">
+            @foreach (var kvp in Model)
+            {
+                <tr><th>@kvp.Key</th><td>@kvp.Value</td></tr>
+            }
+        </table>
 
-<div class="bg-primary m-1 p-1 text-white"><h4>User Details</h4></div>
+        @if (User?.Identity?.IsAuthenticated ?? false)
+        {
+            <a asp-controller="Account" asp-action="Logout"
+                class="btn btn-danger">Logout</a>
+        }
+    </form>
+</div>
 
-<table class="table table-sm table-bordered m-1 p-1">
-    @foreach (var kvp in Model)
-    {
-        <tr><th>@kvp.Key</th><td>@kvp.Value</td></tr>
-    }
-</table>
-
-@if (User?.Identity?.IsAuthenticated ?? false)
-{
-    <a asp-controller="Account" asp-action="Logout"
-       class="btn btn-danger">Logout</a>
-}
-</form>
-</center>
-
-</body>
-
-</html>
 
