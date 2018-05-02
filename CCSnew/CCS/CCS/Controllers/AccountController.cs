@@ -19,9 +19,10 @@ namespace CCS.Controllers
         // UPDATED: 05/02/2018
         // UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
+        #region var and constructor
 
 
-            private IProjectRepository project;
+        private IProjectRepository project;
             private IProductRepository product;
             private UserManager<User> userManager;
             private SignInManager<User> signInManager;
@@ -55,10 +56,11 @@ namespace CCS.Controllers
                 note = nor;
             }
 
-            //public IActionResult Index() => View();
+        #endregion
 
-            #region Account Functions
-            [Authorize]
+
+        #region Account Functions
+        [Authorize]
             public IActionResult Index() => View(GetData(nameof(Index)));
 
             [Authorize(Roles = "Users")]
@@ -99,7 +101,7 @@ namespace CCS.Controllers
                                 user, details.Password, false, false);
                         if (result.Succeeded)
                         {
-                            return Redirect(returnUrl ?? "/");
+                            return Redirect(returnUrl ?? "/Account");
                         }
                     }
                     ModelState.AddModelError(nameof(LoginModel.Email),
@@ -142,6 +144,8 @@ namespace CCS.Controllers
 
                 if (result.Succeeded)
                 {
+                    await signInManager.PasswordSignInAsync(
+                                user, model.Password, false, false);
                     return RedirectToAction("Index");
                 }
                 else
