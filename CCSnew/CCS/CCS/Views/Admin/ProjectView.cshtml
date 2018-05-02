@@ -34,18 +34,19 @@ Status: @Model.Progress<br />&nbsp;<br />
 
 @if (Model.Notes.Count > 0)
 {
-<table>
     <br />
     <strong>Invoice Notes</strong>
     <br />
-    @foreach (Note n in Model.Notes)
-    {
-        <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
+    <table>
 
-    }
-</table>
+        @foreach (Note n in Model.Notes)
+        {
+            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
+
+        }
+    </table>
 
 }
 
-    <br /><a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
-    <br />
+<br /><a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
+<br />

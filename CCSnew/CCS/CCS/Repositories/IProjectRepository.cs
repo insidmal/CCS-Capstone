@@ -13,7 +13,7 @@ namespace CCS.Repositories
     public interface IProjectRepository
     {
         List<Project> ShowAllProjects();
-        List<Project> ShowProjectsByCustomer(int custID);
+        List<Project> ShowProjectsByCustomer(string custID);
         List<Project> ShowProjectsByStatus(Status s);
         Project ShowProjectByID(int id);
         Project Add(Project p);

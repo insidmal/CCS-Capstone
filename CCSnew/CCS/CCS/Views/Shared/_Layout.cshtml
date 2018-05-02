@@ -33,11 +33,46 @@
                     <li class="dropdown">
 
                     </li>
-                    <li><a asp-controller="Home" asp-action="Index" >Home</a></li>
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Home" asp-action="Services">Services</a></li>
                     <li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
-            
+
+
+                    @if (User.Identity.IsAuthenticated)
+    {
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="accountDropdown">
+
+                        <a class="dropdown-item" asp-controller="Account" asp-action="MessageList">View Messages</a>
+                        <br /><a class="dropdown-item" asp-controller="Account" asp-action="MessageSend">Send Message</a>
+                        <br /><a class="dropdown-item" asp-controller="Account" asp-action="ProjectList">View Projects</a>
+                        <br /><a class="dropdown-item" asp-controller="Account" asp-action="ProjectRequest">Request Project</a>
+                    </div>
+
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                        <a class="dropdown-item" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
+                        <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
+                        <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductList">View Products</a>
+                        <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductNew">New Product</a>
+                        <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ViewUsers">View Registered Users</a>
+                    </div>
+
+                </li>
+
+
+}
+
 
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
