@@ -234,6 +234,27 @@ p {
     font-family: 'MainFont';
 }
 
+
+
+.btn-primary-dropdown {
+    width: 80px;
+    margin-top: 7px;
+    height: 40px;
+    padding-right:10px;
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+
+.btn-primary-dropdown:hover {
+    color: #3771c8ff;
+}
+
 /* brand logo styling */
 
 .navbar-brand {
