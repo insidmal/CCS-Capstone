@@ -16,7 +16,7 @@ namespace CCS.Controllers
         // CREATIVE CYBER SOLUTIONS
         // CREATED: 04/10/2018
         // CREATED BY: JOHN BELL contact@conquest-marketing.com
-        // UPDATED: 04/25/2018
+        // UPDATED: 05/02/2018
         // UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
 
@@ -219,6 +219,25 @@ namespace CCS.Controllers
             ViewBag.Message = "Message Sent to " + m.ToUser + "!";
             return RedirectToAction("MessageList");
         }
+        #endregion
+
+        #region Project Views
+        [HttpGet]
+        public IActionResult ProjectRequest() {
+
+            @ViewBag.UserId = GetCurrentUserId();
+            return View();
+        }
+
+        public IActionResult ProjectList() => View(project.ShowProjectsByCustomer(GetCurrentUserId()));
+
+        [HttpPost]
+        public IActionResult ProjectRequest(Project p)
+        {
+            project.Add(p);
+            return RedirectToAction("Index");
+        }
+        
         #endregion
 
         public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();

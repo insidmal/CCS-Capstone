@@ -103,7 +103,9 @@ namespace CCS.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CustomerID");
+                    b.Property<string>("CustomerID");
+
+                    b.Property<string>("CustomerName");
 
                     b.Property<string>("Description");
 

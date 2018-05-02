@@ -26,9 +26,9 @@ namespace CCS.Tests
         public ProjectTests()
         {
             repo = new TestProjectRepo();
-            pr1 = new Project() { ID = 1, CustomerID = 1, Name = "Project 1", Description = "Test Project 1", Progress = Status.New };
-            pr2 = new Project() { ID = 2, CustomerID = 1, Name = "Project 2", Description = "Test Project 2", Progress = Status.Started };
-            pr3 = new Project() { ID = 3, CustomerID = 2, Name = "Project 3", Description = "Test Project 3", Progress = Status.New };
+            pr1 = new Project() { ID = 1, CustomerID = "1", Name = "Project 1", Description = "Test Project 1", Progress = Status.New };
+            pr2 = new Project() { ID = 2, CustomerID = "1", Name = "Project 2", Description = "Test Project 2", Progress = Status.Started };
+            pr3 = new Project() { ID = 3, CustomerID = "2", Name = "Project 3", Description = "Test Project 3", Progress = Status.New };
 
         }
 
@@ -88,7 +88,7 @@ namespace CCS.Tests
             repo.Add(pr1);
             repo.Add(pr2);
             repo.Add(pr3);
-            Assert.Equal(2, repo.ShowProjectsByCustomer(1).Count);
+            Assert.Equal(2, repo.ShowProjectsByCustomer("1").Count);
 
         }
 

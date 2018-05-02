@@ -1,7 +1,24 @@
-﻿
+﻿@model Project
 @{
-    ViewData["Title"] = "ProjectRequest";
+    // CREATIVE CYBER SOLUTIONS
+    // CREATED 05/02/2018
+    // CREATED BY JOHN BELL contact@conquest-marketing.com
+    // UPDATED 05/02/2018
+    // UPDATED BY JOHN BELL contact@conquest-marketing.com
+
+    ViewData["Title"] = "New Project Request";
 }
 
-<h2>ProjectRequest</h2>
-
+<h2>New Project Request</h2>
+<form method="post">
+    <label asp-for="Name">Project Name</label>
+    <br />
+    <input asp-for="Name" />
+    <input asp-for="CustomerID" type="hidden" value="@ViewBag.UserId"/>
+    <br />&nbsp;<br />
+    <label asp-for="Description">Description</label>
+    <br />
+    <textarea asp-for="Description"></textarea>
+    <br />&nbsp;<br />
+    <input type="Submit" value="Create Project" />
+</form>
