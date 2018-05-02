@@ -11,8 +11,8 @@ using System;
 namespace CCS.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180430204004_updateV2")]
-    partial class updateV2
+    [Migration("20180502191438_AlphaCandidate1")]
+    partial class AlphaCandidate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,7 +104,9 @@ namespace CCS.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CustomerID");
+                    b.Property<string>("CustomerID");
+
+                    b.Property<string>("CustomerName");
 
                     b.Property<string>("Description");
 

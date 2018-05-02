@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CCS.Migrations
 {
-    public partial class init : Migration
+    public partial class AlphaCandidate1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -77,7 +77,8 @@ namespace CCS.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CustomerID = table.Column<int>(nullable: false),
+                    CustomerID = table.Column<string>(nullable: true),
+                    CustomerName = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     InvoiceDue = table.Column<DateTime>(nullable: false),
                     Name = table.Column<string>(nullable: true),
@@ -223,7 +224,8 @@ namespace CCS.Migrations
                     From = table.Column<string>(nullable: true),
                     FromName = table.Column<string>(nullable: true),
                     ProjectID = table.Column<int>(nullable: false),
-                    Text = table.Column<string>(nullable: true)
+                    Text = table.Column<string>(nullable: true),
+                    Visible = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

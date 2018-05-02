@@ -66,7 +66,7 @@ namespace CCS.Repositories
             p.Products = projProd.GetProjectProducts(id);
             return p;
         }
-        public List<Project> ShowProjectsByCustomer(int custID) => context.Project.Where(a => a.CustomerID == custID).ToList();
+        public List<Project> ShowProjectsByCustomer(string custID) => context.Project.Where(a => a.CustomerID == custID).ToList();
         public List<Project> ShowProjectsByStatus(Status s) => context.Project.Where(a => a.Progress == s).ToList();
         public Project Update(Project p)
         {

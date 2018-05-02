@@ -28,9 +28,9 @@ namespace CCS.Tests
         public ProjProdTests()
         {
             repo = new TestProjProdRepo();
-            pr1 = new Project() { ID = 1, CustomerID = 1, Name = "Project 1", Description = "Test Project 1", Progress = Status.New };
-            pr2 = new Project() { ID = 2, CustomerID = 1, Name = "Project 2", Description = "Test Project 2", Progress = Status.Started };
-            pr3 = new Project() { ID = 3, CustomerID = 2, Name = "Project 3", Description = "Test Project 3", Progress = Status.New };
+            pr1 = new Project() { ID = 1, CustomerID = "1", Name = "Project 1", Description = "Test Project 1", Progress = Status.New };
+            pr2 = new Project() { ID = 2, CustomerID = "1", Name = "Project 2", Description = "Test Project 2", Progress = Status.Started };
+            pr3 = new Project() { ID = 3, CustomerID = "2", Name = "Project 3", Description = "Test Project 3", Progress = Status.New };
             p1 = new Product { ID = 1, Description = "Test Product 1", Name = "Product 1", Price = 100 };
             p2 = new Product { ID = 2, Description = "Test Product 2", Name = "Product 2", Price = 15 };
             p3 = new Product { ID = 3, Description = "Test Product 3", Name = "Product 3", Price = 150 };
