@@ -1,71 +1,88 @@
+
+body, html {
+    /* background image for the website */
+    background-image: url('/images/background.png');
+    /* Full height */
+    height: 100%;
+    /* fits the background image to the screen when resizing */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* uses font from folder instead of using installed fonts*/
 @font-face {
     font-family: MainFont;
     src: url(/fonts/Aller_Std_Bd.ttf);
 }
 
+/*logo that is displayed when regular logo no longer fits on navbar*/
 #logo1 {
     display: none;
 }
 
+/* logo that is displayed on the navbar */
 #logo2 {
     display: block;
 }
 
-.link {
-    transition: all .5s;
-    color: #3771c8ff;
-    font-size: 23px;
-    font-family: 'MainFont';
-}
-
-    .link:hover {
-        color: #73a5ff;
-        transition: all .5s;
-        /* Gets rid of the underline on links */
-        text-decoration: none;
-        font-size: 23px;
-        font-family: 'MainFont';
-    }
-
+/* styling for all forms on the website */
 .form {
-    max-width:500px;;
-}
-
-.content {
-    padding-top: 50px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.6);
-    margin-bottom:50px;
-}
-
-.container-content {
-    padding-top: 110px;
-    padding-right: 40px;
-    padding-left: 40px;  
-}
-
-.container {
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    width: 100%;
-}
-
-.container form {
+    /* resizes the forms correctly when the page is resized */
+    max-width: 500px;
     padding-top: 0px;
     padding-right: 0px;
     padding-left: 0px;
     width: 60%;
 }
 
+/* container for all the content on the webpage */
+.container {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+    height: 200px;
+}
+
+/* the div that contains content on the webpage */
+.content {
+    padding-top: 50px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 50px;
+    min-height: 600px;
+    background-color: white
+}
+
+/* the styling for the content inside the content div */
+.container-content {
+    padding-top: 110px;
+    padding-right: 40px;
+    padding-left: 40px;  
+}
+
+/* styling for h1 tags */
 h1 {
     color: #3771c8ff;
     font-family: 'MainFont';
     font-size: 50px;
 }
 
-/* Navigation bar styling */
+/* styling for h2 tags */
+h2 {
+    color: #3771c8ff;
+}
 
+/* styling for p tags */
+p {
+    color: #3771c8ff;
+}
+
+
+/* NAVIGATION BAR STYLING */
+/* navbar-custom overwrites the stlying for the default bootstrap navbar*/
 .navbar-custom {
     background-color: transparent;
     padding-top: 20px;
@@ -117,34 +134,32 @@ h1 {
     text-align: center;
     width: 100px;
     color: #3771c8ff;
-    }
+}
 
 
+.navbar-nav > li > a:focus{
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
 
-
-    .navbar-nav > li > a:focus{
-        background-color: transparent;
-        border: 2px solid #3771c8ff;
-        transition: all .5s;
-        margin-right: 5px;
-        margin-top: 6px;
-        padding: 10px;
-        text-align: center;
-        width: 100px;
-        color: #3771c8ff;
-    }
-
-    .navbar-nav > li > a:after {
-        background-color: transparent;
-        border: 2px solid #3771c8ff;
-        transition: all .5s;
-        margin-right: 5px;
-        margin-top: 6px;
-        padding: 10px;
-        text-align: center;
-        width: 100px;
-        color: #3771c8ff;
-    }
+.navbar-nav > li > a:after {
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
 
 .navbar-custom .navbar-nav > li > a.active {
     background-color: transparent;
@@ -228,21 +243,12 @@ h1 {
 }
 
 .navbar-brand > img {
-        height: 90px;
-        margin-top: 0px;
-        height: auto;
+    height: 90px;
+    margin-top: 0px;
+    height: auto;
 }
 
-body, html {
-    background-image: url('/images/background.png');
-    /* Full height */
-    height: 100%;
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+/* END OF NAVIGATION BAR STYLING */
 
 input[type=text], select, textarea {
     width: 100%;
@@ -279,6 +285,8 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
+
+/* changes the logo when the logo no longer fits on the screen*/
 @media only screen and (max-width: 470px) {
 
     #logo1 {
@@ -290,6 +298,7 @@ input[type=submit]:hover {
     } 
 }
 
+/* all the styling when the page is resized and the navbar is toggled*/
 @media only screen and (max-width: 1200px) {
 
 .navbar-custom {
