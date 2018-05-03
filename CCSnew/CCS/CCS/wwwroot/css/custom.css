@@ -136,6 +136,18 @@ p {
     color: #3771c8ff;
 }
 
+    .navbar-nav > li > a:hover {
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        transition: all .5s;
+        margin-right: 5px;
+        margin-top: 6px;
+        padding: 10px;
+        text-align: center;
+        width: 100px;
+        color: #3771c8ff;
+    }
+
 
 .navbar-nav > li > a:focus{
     background-color: transparent;
@@ -149,7 +161,7 @@ p {
     color: #3771c8ff;
 }
 
-.navbar-nav > li > a:after {
+.navbar-nav > li > a::after {
     background-color: transparent;
     border: 2px solid #3771c8ff;
     transition: all .5s;
@@ -159,6 +171,11 @@ p {
     text-align: center;
     width: 100px;
     color: #3771c8ff;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: transparent;
+    border-color: #3771c8ff;
 }
 
 .navbar-custom .navbar-nav > li > a.active {
@@ -172,6 +189,9 @@ p {
     width: 100px;
     color: #3771c8ff;
 }
+
+
+
 
 .icon-bar {
     background-color: white;
@@ -259,6 +279,16 @@ p {
 .btn-primary-dropdown:hover {
     color: #3771c8ff;
 }
+
+.dropdown {
+    color:white;
+}
+
+li.active > a dropdown {
+    color: white;
+    background-color:red;
+}
+
 
 /* brand logo styling */
 
