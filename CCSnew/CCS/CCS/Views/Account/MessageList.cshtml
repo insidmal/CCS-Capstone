@@ -4,17 +4,17 @@
 }
 
 
-
-<h2>Your Messages</h2><br />
-<a asp-action="MessageSend">Send a New Message</a>
+<div class="container">
+<center><h1>Your Messages</h1><br /></center>
+<center><a asp-action="MessageSend">Send a New Message</a></center>
 <br />
 @if (Model.Any(a => a.ToID == ViewBag.UserId))
 {
 
-
+    <center>
     <table cellspacing="3">
 
-
+        
         <caption>Inbox</caption>
         <tr><td>From</td><td>Subject</td><td>Date</td></tr>
         @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
@@ -36,6 +36,9 @@
             </tr>
         }
     </table>
+    </center>
+    <br/>
+     
 
 }
 
@@ -43,9 +46,9 @@
 
 
 else
-{ <span>You have not receive any messages.</span>}
+{ <center><span>You have not received any messages.</span></center>}
 
-
+</div>
 <br />&nbsp;<br />
 
 @if (Model.Any(a => a.FromID == ViewBag.UserId))
@@ -73,9 +76,13 @@ else
             </tr>
 }
             </table>
+            <br />
 }
 else
-{ <span>You have not receive any messages.</span>}
+{ 
+    <br/>
+    <br />
+    <center><span>You have not sent any messages.</span></center>}
 
 
 
