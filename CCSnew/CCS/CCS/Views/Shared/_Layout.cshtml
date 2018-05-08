@@ -29,7 +29,7 @@
 
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav ">
 
 
                     <li class="dropdown">
@@ -44,8 +44,8 @@
                     @if (User.Identity.IsAuthenticated)
     {
 
-                <li class="nav-item dropdown">
-                    <button href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary-dropdown">Account&nbsp;<span class="caret"></span></button>
+                <li>
+                    <a href="#" id="adminDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Account&nbsp;<span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="accountDropdown">
 
                         <a class="dropdown-item" asp-controller="Account" asp-action="MessageList">View Messages</a>
@@ -58,7 +58,7 @@
 
                 <li class="nav-item dropdown">
           
-                    <button href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-primary-dropdown">Admin&nbsp;<span class="caret"></span></button>
+                    <a href="#" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown">Admin&nbsp;<span class="caret"></span></a>
                 <div class="dropdown-menu" aria-labelledby="adminDropdown">
                     <a class="dropdown-item" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
                     <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
@@ -68,8 +68,6 @@
                 </div>
 
                 </li>
-
-
 }
 
 
