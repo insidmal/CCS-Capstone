@@ -3,12 +3,15 @@
     ViewData["Title"] = "Product List";
 }
 
-<h2>Product List</h2>
-<a asp-action="ProductNew">Create a New Product</a>
+<center><h1>Product List</h1></center>
+<br />
+<center><a asp-action="ProductNew" class="btn button">Send a New Message</a></center>
+<br />
 
+<center>
 <div class="table-responsive">
-    <table>
-        <tr><td></td></tr>
+    <table cellspacing="3" class="table table-condensed">
+        <tr><th>Name</th><th>Price</th><th>Status</th></tr>
 
         @foreach (Product p in @Model)
         {
@@ -29,3 +32,5 @@
         }
 
     </table>
+</div>
+</center>
