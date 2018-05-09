@@ -25,13 +25,13 @@ namespace CCS.Controllers
                     MailMessage msz = new MailMessage();
                     msz.From = new MailAddress(vm.Email);//Email which you are getting 
                                                          //from contact us page 
-                    msz.To.Add("yady0312@gmail.com");//Where mail will be sent 
+                    msz.To.Add("ccscapstonelcc@gmail.com");//Where mail will be sent 
                     msz.Subject = vm.Subject;
                     msz.Body = vm.Message;
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
 
                     smtp.Credentials = 
-                        new System.Net.NetworkCredential("yady0312@gmail.com", "Belkis/50");
+                        new System.Net.NetworkCredential("ccscapstonelcc@gmail.com", "capstone123");
 
                     smtp.EnableSsl = true;
 
