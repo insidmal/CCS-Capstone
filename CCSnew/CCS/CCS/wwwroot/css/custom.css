@@ -46,8 +46,15 @@ body, html {
     height: 200px;
 }
 
+
 caption {
 
+}
+
+.ui-widget-content::after {
+    border: 1px solid #aaaaaa;
+    background: #ffffff;
+    color: red;
 }
 
 
@@ -269,9 +276,6 @@ a {
 }
 
 
-
-
-
 .navbar-right {
     background-color: transparent;
     padding-left: 10px;
@@ -316,12 +320,9 @@ a {
 
 .button {
 
-
     transition: all .5s;
-
     background-color: #3771c8ff;
     border: 2px solid #3771c8ff;
-
     color: white;
     font-family: 'MainFont';
 }
