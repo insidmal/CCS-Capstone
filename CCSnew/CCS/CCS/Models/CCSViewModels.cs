@@ -41,6 +41,8 @@ namespace CCS.Models
         [Required]
         [UIHint("password")]
         public string Password { get; set; }
+
+        //public string ReturnUrl { get; set; }
     }
 
     public class RoleEditModel
@@ -57,5 +59,19 @@ namespace CCS.Models
         public string RoleId { get; set; }
         public string[] IdsToAdd { get; set; }
         public string[] IdsToDelete { get; set; }
+    }
+
+    public class ContactViewModel
+    {
+        [Required]
+        [StringLength(20, MinimumLength = 5)]
+        public string Name { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
+        public string Subject { get; set; }
+        [Required]
+        public string Message { get; set; }
     }
 }
