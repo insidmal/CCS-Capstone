@@ -8,18 +8,24 @@
     ViewData["Title"] = "Projects";
 }
 
-<h2>Projects</h2>
-<a asp-action="ProjectAdd">New Project</a><br />
-<table>
-     <thead><tr><td>Customer</td><td>Project Name</td><td>Status</td><td>Origination Date</td></tr></thead>
+<center><h1>Projects</h1></center>
+<br />
+<center><a asp-action="ProjectAdd" class="btn button">New Project</a></center>
+<br />
+<div class="table-responsive">
+    <center>
+        <table cellspacing="3" class="table table-condensed">
+            <thead><tr><th>Customer</th><th>Project Name</th><th>Status</th><th>Origination Date</th></tr></thead>
 
-@foreach (Project p in Model)
-{
-    <tr><td>@p.CustomerName</td><td><a asp-action="ProjectView" asp-route-id="@p.ID">@p.Name</a></td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
-}
- </table>
-    
-    
+            @foreach (Project p in Model)
+            {
+                <tr><td>@p.CustomerName</td><td><a asp-action="ProjectView" asp-route-id="@p.ID">@p.Name</a></td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
+            }
+        </table>
+    </center>
+</div>
+
+
 
 
 

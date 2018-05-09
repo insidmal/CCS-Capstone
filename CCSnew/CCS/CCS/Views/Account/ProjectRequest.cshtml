@@ -8,17 +8,16 @@
 
     ViewData["Title"] = "New Project Request";
 }
+<br />
+<center><h1>New Project Request</h1></center>
+</br>
 
-<h2>New Project Request</h2>
-<form method="post">
-    <label asp-for="Name">Project Name</label>
-    <br />
-    <input asp-for="Name" />
+<center>
+<form method="post" class="form">
+    <input asp-for="Name" placeholder="Project Name"/>
     <input asp-for="CustomerID" type="hidden" value="@ViewBag.UserId"/>
-    <br />&nbsp;<br />
-    <label asp-for="Description">Description</label>
-    <br />
-    <textarea asp-for="Description"></textarea>
-    <br />&nbsp;<br />
-    <input type="Submit" value="Create Project" />
+    <textarea asp-for="Description" placeholder="Description"></textarea>
+
+    <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
 </form>
+</center>

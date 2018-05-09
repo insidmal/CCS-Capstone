@@ -10,13 +10,14 @@
 
     ViewData["Title"] = "Add a Product";
 }
-<h2>Add a Product</h2>
-<form method="post">
-    <label asp-for="Name">Product Name</label><br />
-    <input asp-for="Name" /><br />&nbsp;<br />
-    <label asp-for="Description">Description</label><br />
-    <textarea asp-for="Description"></textarea><br />&nbsp;<br />
-    <label asp-for="Price">Price</label><br />
-    <input asp-for="Price" />
-    <input type="submit" value="Add Product"/>
+<br />
+<center><h1>Add a Product</h1></center>
+<br />
+<center>
+<form method="post" class="form">
+    <input asp-for="Name" placeholder="Product Name"/>
+    <textarea asp-for="Description" placeholder="Description"></textarea>
+    <input asp-for="Price" placeholder="Price"/>
+    <button class="btn btn-primary" style="float: left;" type="submit" value="AddProduct">Submit</button>
 </form>
+</center>

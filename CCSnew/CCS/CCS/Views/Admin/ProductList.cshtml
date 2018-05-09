@@ -6,25 +6,26 @@
 <h2>Product List</h2>
 <a asp-action="ProductNew">Create a New Product</a>
 
-<table>
-    <tr><td></td></tr>
+<div class="table-responsive">
+    <table>
+        <tr><td></td></tr>
 
-    @foreach (Product p in @Model)
-    {
-        <tr>
-            <td><a asp-action="ProductView" asp-route-id="@p.ID">@p.Name</a></td>
-            <td>$@p.Price</td>
+        @foreach (Product p in @Model)
+        {
+            <tr>
+                <td><a asp-action="ProductView" asp-route-id="@p.ID">@p.Name</a></td>
+                <td>$@p.Price</td>
 
-            <td>
-                @{ if (p.Active == false)
-                    { @Html.Raw("<i>Inactive</i>") }
-                else
-                { @Html.Raw("Active") }
-                }
+                <td>
+                    @{ if (p.Active == false)
+                        { @Html.Raw("<i>Inactive</i>") }
+                    else
+                    { @Html.Raw("Active") }
+                    }
 
-            </td>
-        </tr>
+                </td>
+            </tr>
 
-    }
+        }
 
-</table>
+    </table>
