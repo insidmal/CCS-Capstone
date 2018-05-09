@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="/css/custom.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
     <link rel="stylesheet" href="/animate.css-master/animate.min.css">
 </head>
 <body class="bg">
@@ -27,28 +29,58 @@
 
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav ">
 
 
                     <li class="dropdown">
 
                     </li>
-                    <li><a asp-controller="Home" asp-action="Index" >Home</a></li>
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Home" asp-action="Services">Services</a></li>
                     <li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
-            
+
+
+                    @if (User.Identity.IsAuthenticated)
+    {
+
+                <li>
+                    <a href="#" id="adminDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Account&nbsp;<span class="caret"></span></a>
+                    <div class="dropdown-menu" aria-labelledby="accountDropdown">
+
+                        <a class="dropdown-item" asp-controller="Account" asp-action="MessageList">View Messages</a>
+                        <br /><a class="dropdown-item" asp-controller="Account" asp-action="MessageSend">Send Message</a>
+                        <br /><a class="dropdown-item" asp-controller="Account" asp-action="ProjectList">View Projects</a>
+                        <br /><a class="dropdown-item" asp-controller="Account" asp-action="ProjectRequest">Request Project</a>
+                    </div>
+
+                </li>
+
+                <li class="nav-item dropdown">
+          
+                    <a href="#" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown">Admin&nbsp;<span class="caret"></span></a>
+                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                    <a class="dropdown-item" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
+                    <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
+                    <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductList">View Products</a>
+                    <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductNew">New Product</a>
+                    <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ViewUsers">View Registered Users</a>
+                </div>
+
+                </li>
+}
+
 
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
-    <div class="container" id="startchange" style="height:200px;">
-        <br>
+    <div class="container" id="startchange">
+
         <div class="container-content">
 
-            <div class="content" style="min-height:600px;  background-color: white">
+            <div class="content">
 
                 @RenderBody()
 

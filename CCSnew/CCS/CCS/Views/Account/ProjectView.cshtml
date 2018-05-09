@@ -1,7 +1,53 @@
-﻿
+﻿@model Project
 @{
-    ViewData["Title"] = "ProjectView";
+    // CREATIVE CYBER SOLUTIONS
+    // CREATED 05/02/2018
+    // CREATED BY JOHN BELL contact@conquest-marketing.com
+    // UPDATED 05/02/2018
+    // UPDATED BY JOHN BELL contact@conquest-marketing.com
+
+
+
+    ViewData["Title"] = Model.Name;
+}
+<h2>@Model.Name</h2>
+
+@Model.Description<br />
+Status: @Model.Progress<br />&nbsp;<br />
+@if (@Model.Quote != 0)
+{
+    <span>Quote: $@Model.Quote<br /></span>}
+
+
+@if (Model.Products.Count > 0)
+{
+    <br /><strong>Invoiced Products</strong><br />
+
+    <table>
+        <tr><td>Qty</td><td>Name</td><td>Price</td><td></td></tr>
+        <caption>Products</caption>
+        @foreach (Product p in Model.Products)
+        {
+            <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ProjProdId">Edit</a></td></tr>
+        }
+    </table>
+
 }
 
-<h2>ProjectView</h2>
+@if (Model.Notes.Count > 0)
+{<br />
+    <strong>Invoice Notes</strong>
+    <br />
+    <table>
 
+        @foreach (Note n in Model.Notes)
+        {
+            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
+
+        }
+    </table>
+
+}
+
+<br /><a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
+<br />

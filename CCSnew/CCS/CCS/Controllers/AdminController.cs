@@ -201,9 +201,10 @@ namespace CCS.Controllers
                 var pj = project.ShowProjectByID((int)id);
                 foreach (Note n in pj.Notes)
                 {
-                    n.FromName = userManager.GetUserName(HttpContext.User);
+                    n.FromName = userManager.FindByIdAsync(n.From).Result.UserName;
                 }
 
+                pj.CustomerName = userManager.FindByIdAsync(pj.CustomerID).Result.UserName;
                 return View(pj);
             }
         }
@@ -215,6 +216,7 @@ namespace CCS.Controllers
         public IActionResult ProjectAdd(Project p)
         {
             p.Progress = Status.New;
+            p.CustomerID = userManager.FindByNameAsync(p.CustomerName).Result.Id;
             project.Add(p);
             p.Notes = new List<Note>();
             return View("ProjectView", p);

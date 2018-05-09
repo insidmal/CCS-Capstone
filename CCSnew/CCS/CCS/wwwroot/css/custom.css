@@ -1,71 +1,88 @@
+
+body, html {
+    /* background image for the website */
+    background-image: url('/images/background.png');
+    /* Full height */
+    height: 100%;
+    /* fits the background image to the screen when resizing */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* uses font from folder instead of using installed fonts*/
 @font-face {
     font-family: MainFont;
     src: url(/fonts/Aller_Std_Bd.ttf);
 }
 
+/*logo that is displayed when regular logo no longer fits on navbar*/
 #logo1 {
     display: none;
 }
 
+/* logo that is displayed on the navbar */
 #logo2 {
     display: block;
 }
 
-.link {
-    transition: all .5s;
-    color: #3771c8ff;
-    font-size: 23px;
-    font-family: 'MainFont';
-}
-
-    .link:hover {
-        color: #73a5ff;
-        transition: all .5s;
-        /* Gets rid of the underline on links */
-        text-decoration: none;
-        font-size: 23px;
-        font-family: 'MainFont';
-    }
-
+/* styling for all forms on the website */
 .form {
-    max-width:500px;;
-}
-
-.content {
-    padding-top: 50px;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.6);
-    margin-bottom:50px;
-}
-
-.container-content {
-    padding-top: 100px;
-    padding-right: 40px;
-    padding-left: 40px;  
-}
-
-.container {
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    width: 100%;
-}
-
-.container form {
+    /* resizes the forms correctly when the page is resized */
+    max-width: 500px;
     padding-top: 0px;
     padding-right: 0px;
     padding-left: 0px;
     width: 60%;
 }
 
+/* container for all the content on the webpage */
+.container {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+    height: 200px;
+}
+
+/* the div that contains content on the webpage */
+.content {
+    padding-top: 50px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 50px;
+    min-height: 600px;
+    background-color: white
+}
+
+/* the styling for the content inside the content div */
+.container-content {
+    padding-top: 110px;
+    padding-right: 40px;
+    padding-left: 40px;  
+}
+
+/* styling for h1 tags */
 h1 {
     color: #3771c8ff;
     font-family: 'MainFont';
     font-size: 50px;
 }
 
-/* Navigation bar styling */
+/* styling for h2 tags */
+h2 {
+    color: #3771c8ff;
+}
 
+/* styling for p tags */
+p {
+    color: #3771c8ff;
+}
+
+
+/* NAVIGATION BAR STYLING */
+/* navbar-custom overwrites the stlying for the default bootstrap navbar*/
 .navbar-custom {
     background-color: transparent;
     padding-top: 20px;
@@ -117,12 +134,9 @@ h1 {
     text-align: center;
     width: 100px;
     color: #3771c8ff;
-    }
+}
 
-
-
-
-    .navbar-nav > li > a:focus{
+    .navbar-nav > li > a:hover {
         background-color: transparent;
         border: 2px solid #3771c8ff;
         transition: all .5s;
@@ -134,17 +148,45 @@ h1 {
         color: #3771c8ff;
     }
 
-    .navbar-nav > li > a:after {
-        background-color: transparent;
-        border: 2px solid #3771c8ff;
-        transition: all .5s;
-        margin-right: 5px;
-        margin-top: 6px;
-        padding: 10px;
-        text-align: center;
-        width: 100px;
-        color: #3771c8ff;
-    }
+
+.navbar-nav > li > a:focus{
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
+
+.navbar-nav > li > a::after {
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: transparent;
+    border-color: #3771c8ff;
+}
+
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 15px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding:10px;
+    text-decoration:none;
+
+}
 
 .navbar-custom .navbar-nav > li > a.active {
     background-color: transparent;
@@ -157,6 +199,19 @@ h1 {
     width: 100px;
     color: #3771c8ff;
 }
+
+a {
+    text-decoration: none;
+    color: #2c2f40ff;
+}
+
+    a:hover {
+        text-decoration: none;
+        color: #2e5287;
+    }
+
+
+
 
 .icon-bar {
     background-color: white;
@@ -219,6 +274,42 @@ h1 {
     font-family: 'MainFont';
 }
 
+.dropdown-menu {
+
+    margin-top:200px;
+   
+}
+
+
+.btn-primary-dropdown {
+    width: 80px;
+    margin-top: 7px;
+    height: 40px;
+    padding-right:10px;
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+
+.btn-primary-dropdown:hover {
+    color: #3771c8ff;
+}
+
+.dropdown {
+    color:white;
+}
+
+li.active > a dropdown {
+    color: white;
+    background-color:red;
+}
+
+
 /* brand logo styling */
 
 .navbar-brand {
@@ -228,21 +319,12 @@ h1 {
 }
 
 .navbar-brand > img {
-        height: 90px;
-        margin-top: 0px;
-        height: auto;
+    height: 90px;
+    margin-top: 0px;
+    height: auto;
 }
 
-body, html {
-    background-image: url('/images/background.png');
-    /* Full height */
-    height: 100%;
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+/* END OF NAVIGATION BAR STYLING */
 
 input[type=text], select, textarea {
     width: 100%;
@@ -279,6 +361,8 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
+
+/* changes the logo when the logo no longer fits on the screen*/
 @media only screen and (max-width: 470px) {
 
     #logo1 {
@@ -287,106 +371,106 @@ input[type=submit]:hover {
 
     #logo2 {
         display: none;
-    } 
+    }
 }
 
+/* all the styling when the page is resized and the navbar is toggled*/
 @media only screen and (max-width: 1200px) {
 
-.navbar-custom {
-    background-color: transparent;
-}
+    .navbar-custom {
+        background-color: transparent;
+    }
 
-.navbar-collapse {
-    background-color: #2c2f40ff;
-    margin-top: 30px;
-}
+    .navbar-collapse {
+        background-color: #2c2f40ff;
+        margin-top: 30px;
+    }
 
-.navbar-nav > li > a {
-    background-color: transparent;
-    border: 2px solid transparent;
-    text-align: left;
-}
+    .navbar-nav > li > a {
+        background-color: transparent;
+        border: 2px solid transparent;
+        text-align: left;
+    }
 
-.navbar-nav > li > a:hover {
-    background-color: transparent;
-    border: 2px solid transparent;
-    text-align: left;
-}
+        .navbar-nav > li > a:hover {
+            background-color: transparent;
+            border: 2px solid transparent;
+            text-align: left;
+        }
 
-.navbar-toggle {
-    background-color: transparent;
-    border: none;
-}
+    .navbar-toggle {
+        background-color: transparent;
+        border: none;
+    }
 
-.navbar-nav .open .dropdown-menu > li > a {
-    line-height: 20px;
-}
+    .navbar-nav .open .dropdown-menu > li > a {
+        line-height: 20px;
+    }
 
-.navbar-nav .open .dropdown-menu > li > a,
-.navbar-nav .open .dropdown-menu .dropdown-header {
-    padding: 5px 15px 5px 25px;
-}
+    .navbar-nav .open .dropdown-menu > li > a,
+    .navbar-nav .open .dropdown-menu .dropdown-header {
+        padding: 5px 15px 5px 25px;
+    }
 
-.dropdown-menu > li > a {
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: normal;
-    line-height: 1.42857143;
-    color: #333;
-    white-space: nowrap;
-}
+    .dropdown-menu > li > a {
+        display: block;
+        padding: 3px 20px;
+        clear: both;
+        font-weight: normal;
+        line-height: 1.42857143;
+        color: #333;
+        white-space: nowrap;
+    }
 
-.navbar-header {
-    float: none;
-}
+    .navbar-header {
+        float: none;
+    }
 
-.navbar-toggle {
-    display: block;
-}
+    .navbar-toggle {
+        display: block;
+    }
 
-.navbar-collapse {
-    border-top: 1px solid transparent;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-}
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
 
-.navbar-collapse.collapse {
-    display: none !important;
-}
+        .navbar-collapse.collapse {
+            display: none !important;
+        }
 
-.navbar-nav {
-    float: none !important;
-    /*margin: 7.5px -15px;*/
-    margin: 7.5px 50px 7.5px -15px
-}
+    .navbar-nav {
+        float: none !important;
+        /*margin: 7.5px -15px;*/
+        margin: 7.5px 50px 7.5px -15px
+    }
 
-.navbar-nav > li {
-    float: none;
-}
+        .navbar-nav > li {
+            float: none;
+        }
 
-.navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color:transparent;
-}
+            .navbar-nav > li > a {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: transparent;
+            }
 
-.navbar-custom .navbar-nav > li > .active {
-    background-color: transparent;
-    text-align: left;
-    border:2px solid transparent;
-}
+    .navbar-custom .navbar-nav > li > .active {
+        background-color: transparent;
+        text-align: left;
+        border: 2px solid transparent;
+    }
 
-.navbar-text {
+    .navbar-text {
         float: none;
         margin: 15px 0;
-}
+    }
 
-.navbar-collapse.collapse.in {
+    .navbar-collapse.collapse.in {
         display: block !important;
-}
+    }
 
-.collapsing {
-   overflow: hidden !important;
-}
-
+    .collapsing {
+        overflow: hidden !important;
+    }
 }
