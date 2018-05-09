@@ -4,10 +4,12 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container-content" id="startchange">
+
     @if (ViewBag.Message == null)
     {
+        <br />
         <center><h1>Send Us a Message</h1></center>
+        <br />
         <center>
             <div asp-validation-summary=" All" class="text-danger"></div>
             <form class="form" method="post">
@@ -66,7 +68,7 @@
             }
         </div>
     </div>
-</div>
+
 
 
 @*@model CCS.Models.EmailFormModel
