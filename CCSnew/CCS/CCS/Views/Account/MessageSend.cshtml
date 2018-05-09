@@ -4,18 +4,18 @@
 }
 
 
+<br>
+<center><h1>Send a Message</h1></center>
+<br>
 
-<h2>Send a Message</h2>
-
-<form method="post">
-    <label asp-for="ToID"><strong>Send To</strong></label><br />
-    <input asp-for="ToUser"><br />&nbsp;<br />
+<center>
+<form method="post" class="form">
+    <input asp-for="ToUser" placeholder="Send To">
     <input type="hidden" asp-for="FromID" />
-    <label asp-for="Subject">Subject</label><br />
-    <input asp-for="Subject" /><br />&nbsp;<br />
-    <label asp-for="Text">Message</label><br />
-    <textarea asp-for="Text"></textarea><br />
-    <input type="Submit" value="Send!"/>
+    <input asp-for="Subject" placeholder="Subject"/>
+    <textarea asp-for="Text" placeholder="Message"></textarea>
+    <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
 </form>
+</center>
 
 <script type="text/javascript" src="/Home/memberMessageList"></script>

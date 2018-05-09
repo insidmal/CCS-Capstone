@@ -5,84 +5,106 @@
 
 
 <div class="container">
-<center><h1>Your Messages</h1><br /></center>
-<center><a asp-action="MessageSend">Send a New Message</a></center>
-<br />
-@if (Model.Any(a => a.ToID == ViewBag.UserId))
-{
+    <center><h1>Your Messages</h1><br /></center>
+
+
+    <center><a asp-action="MessageSend" class="btn button">Send a New Message</a></center>
 
     <center>
-    <table cellspacing="3">
 
-        
-        <caption>Inbox</caption>
-        <tr><td>From</td><td>Subject</td><td>Date</td></tr>
-        @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
-        {
-            <tr>
-                <td>@m.FromName</td>
-                <td>
-                    <a asp-action="MessageView" asp-route-id="@m.Parent">
-                        @if (m.Status == Read.Unread)
+        <div class="table-responsive">
+            <table cellspacing="3" class="table table-condensed">
+
+                @if (Model.Any(a => a.ToID == ViewBag.UserId))
+                {
+
+
+                    <thead>
+
+                        <tr style=" "><th style="background-color:transparent; color:black; border:0px solid white;">Inbox</th></tr>
+                        <tr><th>From</th><th>Subject</th><th>Date</th></tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
                         {
+                            <tr>
+                                <td>@m.FromName</td>
+                                <td>
+                                    <a asp-action="MessageView" asp-route-id="@m.Parent">
+                                        @if (m.Status == Read.Unread)
+                                        {
 
-                            <strong>@m.Subject</strong>
+                                            <strong>@m.Subject</strong>
+                                        }
+                                        else
+                                        { @m.Subject}
+                                    </a>
+                                </td>
+                                <td>@m.Date</td>
+                            </tr>
                         }
-                        else
-                        { @m.Subject }
-                    </a>
-                </td>
-                <td>@m.Date</td>
-            </tr>
-        }
-    </table>
-    </center>
-    <br/>
-     
-
-}
+                    </tbody>
 
 
 
+                }
 
-else
-{ <center><span>You have not received any messages.</span></center>}
 
-</div>
-<br />&nbsp;<br />
+                else
+                {
+                    <center><span>You have not received any messages.</span></center>}
 
-@if (Model.Any(a => a.FromID == ViewBag.UserId))
-{
 
-            <table cellspacing="3">
-                <caption>Sent Messages</caption>
-                <tr><td>To</td><td>Subject</td><td>Date</td></tr>
+
+        </div>
+
+
+
+
+        @if (Model.Any(a => a.FromID == ViewBag.UserId))
+        {
+
+
+            <thead>
+                <tr><th style="background-color:transparent; color:black; border:0px solid white;">Sent Messages</th></tr>
+                <tr><th>To</th><th>Subject</th><th>Date</th></tr>
+            </thead>
+            <tbody>
                 @foreach (Message m in @Model.Where(a => a.FromID == ViewBag.UserId))
-    {
-            <tr>
-                <td>@m.ToUser</td>
-                <td>
-                    <a asp-action="MessageView" asp-route-id="@m.Parent">
-                        @if (m.Status == Read.Unread)
-            {
+                {
+                    <tr>
+                        <td>@m.ToUser</td>
+                        <td>
+                            <a asp-action="MessageView" asp-route-id="@m.Parent">
+                                @if (m.Status == Read.Unread)
+                                {
 
-                <strong>@m.Subject</strong>
-}
-else
-{ @m.Subject}
-                    </a>
-                </td>
-                <td>@m.Date</td>
-            </tr>
-}
-            </table>
-            <br />
-}
-else
-{ 
-    <br/>
-    <br />
-    <center><span>You have not sent any messages.</span></center>}
+                                    <strong>@m.Subject</strong>
+                                }
+                                else
+                                { @m.Subject}
+                            </a>
+                        </td>
+                        <td>@m.Date</td>
+                    </tr>
+                }
+            </tbody>
+
+
+
+
+        }
+        else
+        {
+
+            <center><span><h3>You have not sent any messages.</h3></span></center>}
+
+        </table>
+</div>
+</center>
+
+
+
 
 
 

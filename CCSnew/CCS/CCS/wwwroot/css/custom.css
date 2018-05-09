@@ -46,25 +46,33 @@ body, html {
     height: 200px;
 }
 
-td,th {
-    border: 1px solid #ddd;
-    padding: 8px;
+caption {
+
+}
+
+
+
+.table {
+    width:90%;
+}
+
+.tbody {
+    margin-bottom:100px;
 }
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:hover {
-    background-color: #ddd;
-}
+
 
 th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #4CAF50;
+    background-color: #3771c8ff;
     color: white;
+
 }
 
 /* the div that contains content on the webpage */
@@ -95,6 +103,12 @@ h1 {
 h2 {
     color: #3771c8ff;
 }
+
+
+h3 {
+    color: #2c2f40ff;
+}
+
 
 /* styling for p tags */
 p {
@@ -254,6 +268,10 @@ a {
     font-family: 'MainFont';
 }
 
+
+
+
+
 .navbar-right {
     background-color: transparent;
     padding-left: 10px;
@@ -294,6 +312,43 @@ a {
     color: #3771c8ff;
     font-family: 'MainFont';
 }
+
+
+.button {
+
+
+    transition: all .5s;
+
+    background-color: #3771c8ff;
+    border: 2px solid #3771c8ff;
+
+    color: white;
+    font-family: 'MainFont';
+}
+
+    .button:hover {
+        transition: all .5s;
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        color: #3771c8ff;
+        font-family: 'MainFont';
+    }
+
+    .button:after {
+        transition: all .5s;
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        color: #3771c8ff;
+        font-family: 'MainFont';
+    }
+
+    .button.active {
+        transition: all .5s;
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        color: #3771c8ff;
+        font-family: 'MainFont';
+    }
 
 .dropdown-menu {
 
@@ -396,7 +451,7 @@ input[type=submit]:hover {
 }
 
 /* all the styling when the page is resized and the navbar is toggled*/
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1300px) {
 
     .navbar-custom {
         background-color: transparent;
