@@ -28,7 +28,7 @@ Status: @Model.Progress<br />&nbsp;<br />
         <caption>Products</caption>
         @foreach (Product p in Model.Products)
         {
-            <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ProjProdId">Edit</a></td></tr>
+            <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td></tr>
         }
     </table>
 
@@ -42,12 +42,11 @@ Status: @Model.Progress<br />&nbsp;<br />
 
         @foreach (Note n in Model.Notes)
         {
-            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
+            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
 
         }
     </table>
 
 }
 
-<br /><a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
 <br />
