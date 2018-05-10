@@ -439,10 +439,12 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
+.clickable-row {
+    cursor:pointer;
+}
 
 /* changes the logo when the logo no longer fits on the screen*/
 @media only screen and (max-width: 470px) {
-
     #logo1 {
         display: block;
     }

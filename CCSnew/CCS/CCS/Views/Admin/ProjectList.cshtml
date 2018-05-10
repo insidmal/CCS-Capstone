@@ -18,14 +18,20 @@
             <thead><tr><th>Customer</th><th>Project Name</th><th>Status</th><th>Origination Date</th></tr></thead>
 
             @foreach (Project p in Model)
-            {
-                <tr><td>@p.CustomerName</td><td><a asp-action="ProjectView" asp-route-id="@p.ID">@p.Name</a></td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
-            }
+    {
+        <tr class="clickable-row" data-href="ProjectView/@p.ID"><td>@p.CustomerName</td><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
+}
         </table>
     </center>
 </div>
 
 
-
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".clickable-row").click(function () {
+            window.location = $(this).data("href");
+        });
+    });
+</script>
 
 

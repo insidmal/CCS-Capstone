@@ -16,43 +16,44 @@
             <table cellspacing="3" class="table table-condensed">
 
                 @if (Model.Any(a => a.ToID == ViewBag.UserId))
+            {
+
+
+                <thead>
+
+                    <tr><th style="background-color:transparent; color:black; border:0px solid white;">Inbox</th></tr>
+                    <tr><th>From</th><th>Subject</th><th>Date</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
                 {
+                    <tr class="clickable-row" data-href="MessageView/@m.Parent">
+                        <td>@m.FromName</td>
+                        <td>
 
-
-                    <thead>
-
-                        <tr style=" "><th style="background-color:transparent; color:black; border:0px solid white;">Inbox</th></tr>
-                        <tr><th>From</th><th>Subject</th><th>Date</th></tr>
-                    </thead>
-                    <tbody>
-                        @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
+                            @if (m.Status == Read.Unread)
                         {
-                            <tr>
-                                <td>@m.FromName</td>
-                                <td>
-                                    <a asp-action="MessageView" asp-route-id="@m.Parent">
-                                        @if (m.Status == Read.Unread)
-                                        {
 
-                                            <strong>@m.Subject</strong>
-                                        }
-                                        else
-                                        { @m.Subject}
-                                    </a>
-                                </td>
-                                <td>@m.Date</td>
-                            </tr>
-                        }
-                    </tbody>
+                            <strong>@m.Subject</strong>
+                    }
+                    else
+                    { @m.Subject}
+
+                        </td>
+                        <td>@m.Date</td>
+                    </tr>
+            }
+                </tbody>
 
 
 
-                }
+        }
 
 
                 else
                 {
                     <center><span><h3>You have not received any messages.</h3></span></center>}
+
 
 
 
@@ -62,33 +63,33 @@
 
 
         @if (Model.Any(a => a.FromID == ViewBag.UserId))
+    {
+
+
+        <thead>
+            <tr><th style="background-color:transparent; color:black; border:0px solid white;">Sent Messages</th></tr>
+            <tr><th>To</th><th>Subject</th><th>Date</th></tr>
+        </thead>
+        <tbody>
+            @foreach (Message m in @Model.Where(a => a.FromID == ViewBag.UserId))
         {
+            <tr class="clickable-row" data-href="MessageView/@m.Parent">
+                <td>@m.ToUser</td>
+                <td>
 
-
-            <thead>
-                <tr><th style="background-color:transparent; color:black; border:0px solid white;">Sent Messages</th></tr>
-                <tr><th>To</th><th>Subject</th><th>Date</th></tr>
-            </thead>
-            <tbody>
-                @foreach (Message m in @Model.Where(a => a.FromID == ViewBag.UserId))
+                    @if (m.Status == Read.Unread)
                 {
-                    <tr>
-                        <td>@m.ToUser</td>
-                        <td>
-                            <a asp-action="MessageView" asp-route-id="@m.Parent">
-                                @if (m.Status == Read.Unread)
-                                {
 
-                                    <strong>@m.Subject</strong>
-                                }
-                                else
-                                { @m.Subject}
-                            </a>
-                        </td>
-                        <td>@m.Date</td>
-                    </tr>
-                }
-            </tbody>
+                    <strong>@m.Subject</strong>
+            }
+            else
+            { @m.Subject}
+
+                </td>
+                <td>@m.Date</td>
+            </tr>
+    }
+        </tbody>
 
 
 
@@ -97,12 +98,21 @@
         else
         {
 
-            <center><span><h3>You have not sent any messages.</h3></span></center>}
+    <center><h3>You have not sent any messages.</h3></center>
+        }
 
         </table>
 </div>
 </center>
 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".clickable-row").click(function () {
+            window.location = $(this).data("href");
+        });
+    });
+</script>
 
 
 
