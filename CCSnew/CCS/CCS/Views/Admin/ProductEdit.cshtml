@@ -1,16 +1,17 @@
-﻿@model  Product
+﻿@model Product
 @{
     ViewData["Title"] = "Edit Product";
 }
-
-<h2>Edit Product</h2>
-<form method="post">
-    <label asp-for="Name">Product Name</label><br />
-    <input asp-for="Name" /><br />&nbsp;<br />
-    <label asp-for="Description">Description</label><br />
-    <textarea asp-for="Description"></textarea><br />&nbsp;<br />
-    <label asp-for="Price">Price</label><br />
-    <input asp-for="Price" />
-    <input type="submit" value="Add Product" />
-</form>
-
+<center>
+    <h1>Edit Product</h1>
+    <div asp-validation-summary=" All" class="text-danger"></div>
+    <form class="form" method="post">
+        <label asp-for="Name">Product Name</label><br />
+        <input asp-for="Name" placeholder="Name" /><br />&nbsp;<br />
+        <label asp-for="Description">Description</label><br />
+        <textarea asp-for="Description" placeholder="Description"></textarea><br />&nbsp;<br />
+        <label asp-for="Price" placeholder="Price">Price</label><br />
+        <input asp-for="Price" placeholder="Price" type="text" />
+        <input type="submit" value="Add Product" />
+    </form>
+</center>
