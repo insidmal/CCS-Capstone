@@ -241,7 +241,47 @@ namespace CCS.Controllers
             project.Add(p);
             return RedirectToAction("Index");
         }
-        
+
+        public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id));
+
+
+
+
+        #endregion
+
+        #region Note Views
+
+        [HttpGet]
+        public IActionResult NoteAdd(int id)
+        {
+            if (userManager.GetUserAsync(HttpContext.User).Result.Id is null)
+            {
+                ViewBag.From = 0;
+            }
+            else ViewBag.From = userManager.GetUserAsync(HttpContext.User).Result.Id;
+            Note n = new Note();
+            n.ProjectID = id;
+            return View(n);
+        }
+
+        [HttpPost]
+        public IActionResult NoteAdd(Note n)
+        {
+            n.Date = DateTime.Now;
+            note.AddNote(n.ProjectID, n);
+            ViewBag.Message = "Note Added!";
+            return RedirectToAction("ProjectView", n.ProjectID);
+        }
+
+        [HttpGet]
+        public IActionResult NoteEdit(int id) => View(note.GetNote(id));
+        [HttpPost]
+        public IActionResult NoteEdit(Note n)
+        {
+            note.UpdateNote(n);
+            ViewBag.Message = "Message Updated!";
+            return RedirectToAction("ProjectView", n.ProjectID);
+        }
         #endregion
 
         public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
