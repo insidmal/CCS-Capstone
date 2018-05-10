@@ -5,7 +5,7 @@
 
 <center><h1>Product List</h1></center>
 <br />
-<center><a asp-action="ProductNew" class="btn button">Send a New Message</a></center>
+<center><a asp-action="ProductNew" class="btn button">Create a Product</a></center>
 <br />
 
 <center>
@@ -15,8 +15,8 @@
 
         @foreach (Product p in @Model)
         {
-            <tr>
-                <td><a asp-action="ProductView" asp-route-id="@p.ID">@p.Name</a></td>
+            <tr class="clickable-row" data-href="ProductView/@p.ID">
+                <td>@p.Name</td>
                 <td>$@p.Price</td>
 
                 <td>
@@ -34,3 +34,11 @@
     </table>
 </div>
 </center>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".clickable-row").click(function () {
+            window.location = $(this).data("href");
+        });
+    });
+</script>
