@@ -10,6 +10,8 @@
 
     ViewData["Title"] = Model.Name;
 }
+<br />
+<br />
 <center><h1>@Model.Name</h1></center>
 <center>
     <div style="background-color:#f4f4f4; width:35%; padding:20px;">
@@ -38,10 +40,10 @@
 
 }
 <br />
-    <center>
-        <div style="background-color:#f4f4f4; width:35%; padding:20px;">
+<center>
+    <div style="background-color:#f4f4f4; width:35%; padding:20px;">
 
-            @if (Model.Notes.Count > 0)
+        @if (Model.Notes.Count > 0)
         {
 
             <h3>Invoice Notes</h3>
@@ -49,16 +51,16 @@
             <table class="table table-condensed">
 
                 @foreach (Note n in Model.Notes)
-    {
-            
-            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
+                {
 
-}
+                    <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
+
+                }
             </table>
             <br />
 
-    }
+        }
 
-        </div>
-    </center>
-    <br />
+    </div>
+</center>
+<br />
