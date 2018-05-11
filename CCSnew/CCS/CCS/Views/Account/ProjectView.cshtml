@@ -22,31 +22,32 @@ Status: @Model.Progress<br />&nbsp;<br />
 @if (Model.Products.Count > 0)
 {
     <br /><strong>Invoiced Products</strong><br />
-
-    <table>
-        <tr><td>Qty</td><td>Name</td><td>Price</td><td></td></tr>
-        <caption>Products</caption>
-        @foreach (Product p in Model.Products)
-        {
-            <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td></tr>
-        }
-    </table>
-
-}
-
-@if (Model.Notes.Count > 0)
-{<br />
-    <strong>Invoice Notes</strong>
-    <br />
-    <table>
-
-        @foreach (Note n in Model.Notes)
-        {
-            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
+    <div style="background-color:#f4f4f4; width:35%; padding:20px;">
+        <table>
+            <tr><td>Qtyy</td><td>Name</td><td>Price</td><td></td></tr>
+            <caption>Products</caption>
+            @foreach (Product p in Model.Products)
+            {
+                <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td></tr>
+            }
+        </table>
+    </div>
 
         }
-    </table>
 
-}
+        @if (Model.Notes.Count > 0)
+        {<br />
+            <strong>Invoice Notes</strong>
+            <br />
+            <table>
 
-<br />
+                @foreach (Note n in Model.Notes)
+                {
+                    <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
+
+                }
+            </table>
+
+        }
+
+        <br />

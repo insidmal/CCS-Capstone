@@ -11,42 +11,59 @@
     ViewData["Title"] = Model.Name;
 }
 <center><h1>@Model.Name</h1></center>
+<center>
+    <div style="background-color:#f4f4f4; width:35%; padding:20px;">
+        <center><h3>@Model.Description</h3></center>
+        <center><p> Quotee: $@Model.Quote</p></center>
+        <center><p>Status: @Model.Progress<br /></center>
+        <br />
+        @if (@Model.Quote == 0)
+    {<center><a asp-action="ProjectQuote"  asp-route-id="@Model.ID" class="btn button">Add a Quote</a></center>}
 
-@Model.Description<br />
-Quote: $@Model.Quote<br />
-Status: @Model.Progress<br />&nbsp;<br />
-@if (@Model.Quote == 0)
-{<a asp-action="ProjectQuote" asp-route-id="@Model.ID">Add a Quote</a><br /> <br />}
-<br /><strong>Invoiced Products</strong><br />
-@if (Model.Products.Count > 0)
-{
-    <table>
-        <tr><td>Qty</td><td>Name</td><td>Price</td><td></td></tr>
-        <caption>Products</caption>
-        @foreach (Product p in Model.Products)
+    </div>
+</center>
+<center>
+    <br />
+    <div style="background-color:#f4f4f4; width:35%; padding:20px;">
+        <center><h3>Invoiced Products</h3></center><br />
+        @if (Model.Products.Count > 0)
+    {
+
+        <table>
+            <tr><td>Qty</td><td>Name</td><td>Price</td><td></td></tr>
+            <caption>Products</caption>
+            @foreach (Product p in Model.Products)
         {
             <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ProjProdId">Edit</a></td></tr>
-        }
-    </table>
+    }
+        </table>
+
 
 }
-<a asp-action="ProductAdd" asp-route-id="@Model.ID">Add a Product to Project Invoice</a>
 
-@if (Model.Notes.Count > 0)
-{
-    <br />
-    <strong>Invoice Notes</strong>
-    <br />
-    <table>
+        <center><a asp-action="ProductAdd" asp-route-id="@Model.ID" class="btn button">Add a Product to Project Invoice</a></center>
+        <br />
 
-        @foreach (Note n in Model.Notes)
+        @if (Model.Notes.Count > 0)
+    {
+        <br />
+        <h3>Invoice Notes</h3>
+        <br />
+        <table>
+
+            @foreach (Note n in Model.Notes)
         {
             <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
 
-        }
-    </table>
+    }
+        </table>
 
 }
 
-<br /><a asp-action="NoteAdd" asp-route-id="@Model.ID">Add Notes to Project</a><br />
+        <center><a asp-action="NoteAdd" asp-route-id="@Model.ID" class="btn button">Add Notes to Project</a></center>
+    </div>
+    </center>
 <br />
+<br />
+
+
