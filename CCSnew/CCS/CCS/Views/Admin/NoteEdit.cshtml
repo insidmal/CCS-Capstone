@@ -3,14 +3,19 @@
     ViewData["Title"] = "NoteEdit";
 }
 
-<h2>Edit Note</h2>
-
-<form method="post">
+<br/>
+<br />
+<br />
+<br />
+<center><h1>Edit Note</h1></center>
+<br/>
+<center>
+<form method="post" class="form">
     <input type="hidden" asp-for="ID" />
     <input type="hidden" asp-for="From" />
     <input type="hidden" asp-for="ProjectID" />
     <input type="hidden" asp-for="Date" />
-    <label asp-for="Text">Note:</label>
-    <br /><textarea asp-for="Text"></textarea>
-    <br /><input type="submit" value="Update Note" />
+    <textarea asp-for="Text" placeholder="Note:"></textarea>
+          <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
 </form>
+</center>

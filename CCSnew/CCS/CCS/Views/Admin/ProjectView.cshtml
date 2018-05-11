@@ -14,7 +14,7 @@
 <center>
     <div style="background-color:#f4f4f4; width:35%; padding:20px;">
         <center><h3>@Model.Description</h3></center>
-        <center><p> Quotee: $@Model.Quote</p></center>
+        <center><p> Quote: $@Model.Quote</p></center>
         <center><p>Status: @Model.Progress<br /></center>
         <br />
         @if (@Model.Quote == 0)
@@ -42,26 +42,32 @@
 }
 
         <center><a asp-action="ProductAdd" asp-route-id="@Model.ID" class="btn button">Add a Product to Project Invoice</a></center>
-        <br />
+   </div>  
+    </center>
+<br/>
+<center>
+<div style="background-color:#f4f4f4; width:35%; padding:20px;">
 
-        @if (Model.Notes.Count > 0)
+    @if (Model.Notes.Count > 0)
     {
-        <br />
+
         <h3>Invoice Notes</h3>
-        <br />
-        <table>
+
+        <table class="table table-condensed">
 
             @foreach (Note n in Model.Notes)
-        {
-            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
+            {
+         
+                <tr><td>@n.Date</td>&nbsp;<td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
+             
 
-    }
+            }
         </table>
 
-}
-
-        <center><a asp-action="NoteAdd" asp-route-id="@Model.ID" class="btn button">Add Notes to Project</a></center>
-    </div>
+    }
+    <br />
+    <center><a asp-action="NoteAdd" asp-route-id="@Model.ID" class="btn button">Add Notes to Project</a></center>
+</div>
     </center>
 <br />
 <br />

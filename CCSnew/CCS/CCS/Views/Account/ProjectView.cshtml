@@ -10,18 +10,21 @@
 
     ViewData["Title"] = Model.Name;
 }
-<h2>@Model.Name</h2>
+<center><h1>@Model.Name</h1></center>
+<center>
+    <div style="background-color:#f4f4f4; width:35%; padding:20px;">
 
-@Model.Description<br />
-Status: @Model.Progress<br />&nbsp;<br />
-@if (@Model.Quote != 0)
-{
-    <span>Quote: $@Model.Quote<br /></span>}
-
+        <h3>@Model.Description</h3><br />
+        Status: @Model.Progress<br />&nbsp;<br />
+        @if (@Model.Quote != 0)
+        {
+            <span>Quote: $@Model.Quote<br /></span>}
+    </div>
+</center>
 
 @if (Model.Products.Count > 0)
 {
-    <br /><strong>Invoiced Products</strong><br />
+    <h3>Invoiced Products</h3>
     <div style="background-color:#f4f4f4; width:35%; padding:20px;">
         <table>
             <tr><td>Qtyy</td><td>Name</td><td>Price</td><td></td></tr>
@@ -33,21 +36,29 @@ Status: @Model.Progress<br />&nbsp;<br />
         </table>
     </div>
 
-        }
+}
+<br />
+    <center>
+        <div style="background-color:#f4f4f4; width:35%; padding:20px;">
 
-        @if (Model.Notes.Count > 0)
-        {<br />
-            <strong>Invoice Notes</strong>
+            @if (Model.Notes.Count > 0)
+        {
+
+            <h3>Invoice Notes</h3>
             <br />
-            <table>
+            <table class="table table-condensed">
 
                 @foreach (Note n in Model.Notes)
-                {
-                    <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
+    {
+            
+            <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
 
-                }
+}
             </table>
+            <br />
 
-        }
+    }
 
-        <br />
+        </div>
+    </center>
+    <br />

@@ -11,9 +11,15 @@
     ViewData["Title"] = "Add a Product";
 }
 
-<h2>Add a Product</h2>
 
-<form method="post">
+<br />
+<br />
+<br />
+<br />
+<center><h1>Add a Product</h1></center>
+<br/>
+<center>
+<form method="post" class="form">
     <input name="ProjectId" value="@ViewBag.Project" style="width:30px" type="hidden" />
     <select name="ProductId" class="form-control" width="30">
         @foreach (Product p in Model)
@@ -23,8 +29,10 @@
 
 
     </select>
+
+    <input name="Qty" type="text" placeholder="Quantity"/>
     <br />
-    Quantity<br />
-    <input name="Qty" type="text" /><br />
-    <input type="Submit" value="Add Product" />
+    <br />
+<button class="btn btn-primary" style="float: left; width:120px;" type="submit" value="Submit">Add Product</button>
 </form>
+</center>

@@ -7,14 +7,18 @@
 
     ViewData["Title"] = "Add a Note";
 }
+<br />
+<br />
+<br />
+<br />
+<center><h1>Add a Note</h1></center>
+<center>
+    <form method="post" class="form">
+        <input type="hidden" asp-for="From" value="@ViewBag.From" />
+        <input type="hidden" asp-for="ProjectID" />
+        <br /><textarea asp-for="Text" placeholder="Note:"></textarea>
+              <button class="btn btn-primary" style="float: left; width:120px;" type="submit" value="Submit">Add Note</button>
 
-<h2>Add a Note</h2>
-<form method="post">
-    <input type="hidden" asp-for="From" value="@ViewBag.From" />
-    <input type="hidden" asp-for="ProjectID" />
-    <label asp-for="Text">Note:</label>
-    <br /><textarea asp-for="Text"></textarea>
-    <br /><input type="submit" value="Add Note" />
-
-</form>
+    </form>
+</center>
 
