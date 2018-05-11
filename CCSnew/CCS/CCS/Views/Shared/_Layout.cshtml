@@ -113,13 +113,11 @@
                 });
 
                 
-                jQuery(document).ready(function () {
-                    jQuery(window).scroll(function () {
-                        if (jQuery('body').height() <= (jQuery(window).height() + jQuery(window).scrollTop())) {
-                            jQuery('#followwidget').hide();
-                        } else {
-                            jQuery("#followwidget").show();
-                        }
+                $('.footer').on('mouseover', function () {
+                    $(this).stop().fadeTo(100, 1);
+                    $(this).on('mouseout', function () {
+                        $(this).stop().fadeOut(2000);
+                        $(this).off('mouseout');
                     });
                 });
             </script>

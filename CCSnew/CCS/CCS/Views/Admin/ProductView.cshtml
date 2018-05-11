@@ -7,12 +7,16 @@
     <h1>@Model.Name</h1>
     <span style="color:red">@ViewBag.Message</span>
     <br /><h2>Description</h2>
-    @Model.Description<br />&nbsp;<br />
+    @Model.Description<br />
     <br /><h2>Price</h2>
     $@Model.Price
-    <br />&nbsp;<br />
-    <a asp-action="ProductEdit" asp-route-id="@Model.ID" class="btn btn-sm btn-primary">Edit Product</a>
-    <br />&nbsp;<br /><a asp-action="ProductDelete" asp-route-id="@Model.ID" class="btn btn-sm btn-danger">Delete Product</a><br />
+    <br>
+    <br>
+
+    <center><a asp-action="ProductEdit" asp-route-id="@Model.ID" class="btn button" style="width:120px;" type="submit" value="AddProduct">Edit Product</a><center>
+    <br />
+    <center><a asp-action="ProductDelete" asp-route-id="@Model.ID" class="btn button-danger" style="width:120px;" type="submit" value="AddProduct">Delete Product</a></center>
+    <br />
     (If product exists in an invoice, it will be marked inactive instead of deleted.)
 
 </center>
