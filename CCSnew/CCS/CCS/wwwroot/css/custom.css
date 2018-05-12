@@ -75,13 +75,24 @@ tr:nth-child(even) {
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    height:400px;
+    overflow: hidden;
+ 
 
 }
 
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
+.card-text {
+    word-wrap: break-word;
+}
+
+   
+
+
+.card-icon {
+
+
+}
+
+
 
 
 th {
@@ -429,7 +440,7 @@ a {
 
 li.active > a dropdown {
     color: white;
-    background-color:red;
+  
 }
 
 
@@ -514,13 +525,75 @@ input[type=submit]:hover {
     .navbar-nav > li > a {
         background-color: transparent;
         border: 2px solid transparent;
+        margin-right: 5px;
+        transition: all .5s;
+        margin-top: 6px;
+        padding: 10px;
+        padding-right:0px;
         text-align: left;
+        width: 100px;
+        color: white;
     }
 
         .navbar-nav > li > a:hover {
             background-color: transparent;
-            border: 2px solid transparent;
+            border: 2px solid #3771c8ff;
+            transition: all .5s;
+            margin-right: 5px;
+            margin-top: 6px;
+            padding: 10px;
             text-align: left;
+            width: 100px;
+            color: #3771c8ff;
+        }
+
+        .navbar-nav > li > a:hover {
+            background-color: transparent;
+            border: 2px solid #3771c8ff;
+            transition: all .5s;
+            margin-right: 5px;
+            margin-top: 6px;
+            padding: 10px;
+            text-align: left;
+            width: 100px;
+            color: #3771c8ff;
+        }
+
+
+        .navbar-nav > li > a:focus {
+            background-color: transparent;
+            border: 2px solid #3771c8ff;
+            transition: all .5s;
+            margin-right: 5px;
+            margin-top: 6px;
+            padding: 10px;
+            text-align: left;
+            width: 100px;
+            color: #3771c8ff;
+        }
+
+        .navbar-nav > li > a::after {
+            background-color: transparent;
+            border: 2px solid #3771c8ff;
+            transition: all .5s;
+            margin-right: 5px;
+            margin-top: 6px;
+            padding: 10px;
+            text-align: left;
+            width: 100px;
+            color: #3771c8ff;
+        }
+
+        .navbar-nav > li > a::after {
+            background-color: transparent;
+            border: 2px solid #3771c8ff;
+            transition: all .5s;
+            margin-right: 5px;
+            margin-top: 6px;
+            padding: 10px;
+            text-align: center;
+            width: 100px;
+            color: #3771c8ff;
         }
 
     .navbar-toggle {
@@ -598,4 +671,13 @@ input[type=submit]:hover {
     .collapsing {
         overflow: hidden !important;
     }
+
+    .dropdown {
+        color: white;
+    }
+
+    li.active > a dropdown {
+        color: white;
+    }
+
 }
