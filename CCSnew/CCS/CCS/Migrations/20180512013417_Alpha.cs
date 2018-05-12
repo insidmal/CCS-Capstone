@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CCS.Migrations
 {
-    public partial class AlphaCandidate1 : Migration
+    public partial class Alpha : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

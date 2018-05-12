@@ -11,8 +11,8 @@ using System;
 namespace CCS.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180502191438_AlphaCandidate1")]
-    partial class AlphaCandidate1
+    [Migration("20180512013417_Alpha")]
+    partial class Alpha
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
