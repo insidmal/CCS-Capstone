@@ -52,7 +52,7 @@
 
                 <li>
                     <a href="#" id="adminDropdown"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Account&nbsp;<span class="caret"></span></a>
-                    <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                    <div class="dropdown-menu" style="background-color:white; width:150px"; aria-labelledby="accountDropdown">
 
                         <a class="dropdown-item" asp-controller="Account" asp-action="MessageList">View Messages</a>
                         <br /><a class="dropdown-item" asp-controller="Account" asp-action="MessageSend">Send Message</a>
@@ -65,9 +65,9 @@
                 <li class="nav-item dropdown">
           
                     <a href="#" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown">Admin&nbsp;<span class="caret"></span></a>
-                <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                <div class="dropdown-menu" style="background-color:white; width:150px;" aria-labelledby="adminDropdown">
                     <a class="dropdown-item" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
-                    <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
+                    <br /><a class="dropdown-item"  asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
                     <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductList">View Products</a>
                     <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductNew">New Product</a>
                     <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ViewUsers">View Registered Users</a>
@@ -121,13 +121,7 @@
                 });
 
                 
-                $('.footer').on('mouseover', function () {
-                    $(this).stop().fadeTo(100, 1);
-                    $(this).on('mouseout', function () {
-                        $(this).stop().fadeOut(2000);
-                        $(this).off('mouseout');
-                    });
-                });
+       
             </script>
 
 </body>
