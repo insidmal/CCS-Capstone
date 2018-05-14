@@ -58,7 +58,6 @@ namespace CCS.Controllers
 
         #endregion
 
-
         #region Account Functions
         [Authorize]
             public IActionResult Index() => View(GetData(nameof(Index)));
@@ -239,7 +238,8 @@ namespace CCS.Controllers
         public IActionResult ProjectRequest(Project p)
         {
             project.Add(p);
-            return RedirectToAction("Index");
+            ViewBag.Message = "Project Requested!";
+            return View("ProjectList", project.ShowProjectsByCustomer(GetCurrentUserId()));
         }
 
         public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id));

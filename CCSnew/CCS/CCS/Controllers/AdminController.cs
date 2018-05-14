@@ -58,7 +58,7 @@ namespace CCS.Controllers
         public IActionResult Index() => View();
         
         #region Account Function Views
-        public ViewResult ViewUsers() => View(userManager.Users);
+        public ViewResult ViewUsers(string message) => View(userManager.Users);
 
         public ViewResult Register() => View();
 
@@ -77,7 +77,8 @@ namespace CCS.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    ViewBag.Message = "Account Created";
+                    return View("ViewUsers", userManager.Users);
                 }
                 else
                 {
@@ -99,7 +100,8 @@ namespace CCS.Controllers
                 IdentityResult result = await userManager.DeleteAsync(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    ViewBag.Message = "Account Deleted";
+                    return View("ViewUsers",userManager.Users);
                 }
                 else
                 {
@@ -219,6 +221,7 @@ namespace CCS.Controllers
             p.CustomerID = userManager.FindByNameAsync(p.CustomerName).Result.Id;
             project.Add(p);
             p.Notes = new List<Note>();
+            ViewBag.Message = "Project Created";
             return View("ProjectView", p);
         }
 
