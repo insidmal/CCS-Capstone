@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Your Messages";
 }
-<br/>
+<br/><script>
+    document.write('<a href="' + document.referrer + '">Back</a>');
+</script>
 <br />
 @foreach (Message m in @Model)
 {
