@@ -6,8 +6,9 @@
 <br />
 <br/>
 <div class="container">
-    <center><h1>Your Messages</h1><br /></center>
-
+    <center><h1>Your Messages</h1></center>
+    <br /><center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
+    <br />
 
     <center><a asp-action="MessageSend" class="btn button">Send a New Message</a></center>
 
@@ -17,38 +18,38 @@
             <table cellspacing="3" class="table table-condensed">
 
                 @if (Model.Any(a => a.ToID == ViewBag.UserId))
-            {
-
-
-                <thead>
-
-                    <tr><th style="background-color:transparent; color:black; border:0px solid white;">Inbox</th></tr>
-                    <tr><th>From</th><th>Subject</th><th>Date</th></tr>
-                </thead>
-                <tbody>
-                    @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
                 {
-                    <tr class="clickable-row" data-href="MessageView/@m.Parent">
-                        <td>@m.FromName</td>
-                        <td>
 
-                            @if (m.Status == Read.Unread)
+
+                    <thead>
+
+                        <tr><th style="background-color:transparent; color:black; border:0px solid white;">Inbox</th></tr>
+                        <tr><th>From</th><th>Subject</th><th>Date</th></tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
                         {
+                            <tr class="clickable-row" data-href="MessageView/@m.Parent">
+                                <td>@m.FromName</td>
+                                <td>
 
-                            <strong>@m.Subject</strong>
-                    }
-                    else
-                    { @m.Subject}
+                                    @if (m.Status == Read.Unread)
+                                    {
 
-                        </td>
-                        <td>@m.Date</td>
-                    </tr>
-            }
-                </tbody>
+                                        <strong>@m.Subject</strong>
+                                    }
+                                    else
+                                    { @m.Subject}
+
+                                </td>
+                                <td>@m.Date</td>
+                            </tr>
+                        }
+                    </tbody>
 
 
 
-        }
+                }
 
 
                 else
@@ -64,33 +65,33 @@
 
 
         @if (Model.Any(a => a.FromID == ViewBag.UserId))
-    {
-
-
-        <thead>
-            <tr><th style="background-color:transparent; color:black; border:0px solid white;">Sent Messages</th></tr>
-            <tr><th>To</th><th>Subject</th><th>Date</th></tr>
-        </thead>
-        <tbody>
-            @foreach (Message m in @Model.Where(a => a.FromID == ViewBag.UserId))
         {
-            <tr class="clickable-row" data-href="MessageView/@m.Parent">
-                <td>@m.ToUser</td>
-                <td>
 
-                    @if (m.Status == Read.Unread)
+
+            <thead>
+                <tr><th style="background-color:transparent; color:black; border:0px solid white;"><br />Sent Messages</th></tr>
+                <tr><th>To</th><th>Subject</th><th>Date</th></tr>
+            </thead>
+            <tbody>
+                @foreach (Message m in @Model.Where(a => a.FromID == ViewBag.UserId))
                 {
+                    <tr class="clickable-row" data-href="MessageView/@m.Parent">
+                        <td>@m.ToUser</td>
+                        <td>
 
-                    <strong>@m.Subject</strong>
-            }
-            else
-            { @m.Subject}
+                            @if (m.Status == Read.Unread)
+                            {
 
-                </td>
-                <td>@m.Date</td>
-            </tr>
-    }
-        </tbody>
+                                <strong>@m.Subject</strong>
+                            }
+                            else
+                            { @m.Subject}
+
+                        </td>
+                        <td>@m.Date</td>
+                    </tr>
+                }
+            </tbody>
 
 
 
@@ -99,7 +100,7 @@
         else
         {
 
-    <center><h3>You have not sent any messages.</h3></center>
+            <center><h3>You have not sent any messages.</h3></center>
         }
 
         </table>
