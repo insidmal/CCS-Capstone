@@ -58,7 +58,6 @@ namespace CCS.Controllers
 
         #endregion
 
-
         #region Account Functions
         [Authorize]
             public IActionResult Index() => View(GetData(nameof(Index)));
@@ -165,17 +164,18 @@ namespace CCS.Controllers
         #region Message System Views
 
         public IActionResult MessageList()
-
             {
             List<Message> mess = new List<Message>();
                 ViewBag.UserId = GetCurrentUserId();
                  mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
                 foreach (Message m in mess)
                 {
-                    m.FromName = userManager.FindByIdAsync(m.FromID).Result.UserName;
-                    m.ToUser = userManager.FindByIdAsync(m.ToID).Result.UserName;
-
+                if (!userManager.FindByIdAsync(m.FromID).IsCompletedSuccessfully) m.FromName = "[Deleted]";
+                    else m.FromName = userManager.FindByIdAsync(m.FromID).Result.UserName;
+                if (!userManager.FindByIdAsync(m.ToID).IsCompletedSuccessfully) m.ToUser = "[Deleted]";
+                else m.ToUser = userManager.FindByIdAsync(m.ToID).Result.UserName;
                 }
+            ViewBag.Message = TempData["Message"];
                 return View(mess);
             }
 
@@ -200,11 +200,19 @@ namespace CCS.Controllers
             [HttpPost]
             public IActionResult MessageSend(Message m)
             {
+           try { 
                 m.ToID = userManager.FindByNameAsync(m.ToUser).Result.Id;
                 m.Date = DateTime.Now;
                 message.Add(m);
-                ViewBag.Message = "Message Sent to " + m.ToUser + "!";
+                TempData["Message"] = "Message Sent to " + m.ToUser + "!";
                 return RedirectToAction("MessageList");
+            }
+            catch(Exception ex)
+            {
+                ViewBag.Message = "User not Found, Please Check your Recipient and Try Again";
+                ViewBag.Exception = ex.ToString();
+                return View(m);
+            }
             }
 
         [HttpPost]
@@ -239,7 +247,8 @@ namespace CCS.Controllers
         public IActionResult ProjectRequest(Project p)
         {
             project.Add(p);
-            return RedirectToAction("Index");
+            ViewBag.Message = "Project Requested!";
+            return View("ProjectList", project.ShowProjectsByCustomer(GetCurrentUserId()));
         }
 
         public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id));

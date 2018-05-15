@@ -2,46 +2,50 @@
 @{
     ViewData["Title"] = "Your Messages";
 }
-<br/>
+<br />
+<script>
+    document.write('<a href="' + document.referrer + '">Back</a>');
+</script>
+<br /><center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
 <br />
 @foreach (Message m in @Model)
 {
     <a id="@m.ID"></a>
     <center>
-    <div style="background-color:#f4f4f4; width:35%; padding:20px;">
-    <center><div style="text-align:left;">@m.Subject -  @m.Date</div></center>
-    <center>
-    <div>
-        @if (m.Status == Read.Unread)
-        {<h3 style="text-align:left;">Message: @m.Text</h3> }
-    else
-    { @m.Text}
-    </div>
-     </center>
+        <div style="background-color:#f4f4f4; width:35%; padding:20px;">
+            <center><div style="text-align:left;">@m.Subject -  @m.Date</div></center>
+            <center>
+                <div>
+                    @if (m.Status == Read.Unread)
+                    {<h3 style="text-align:left;">Message: @m.Text</h3> }
+                else
+                { @m.Text}
+                </div>
+            </center>
         </div>
-        </center>
+    </center>
     <div style="margin:10px;"></div>
 }
 <center>
-<form method="post" asp-action="MessageReply" class="form">
-    <input type="hidden" name="parent" value="@Model[0].Parent" />
-    @if (Model[0].FromID == ViewBag.UserId)
-    {
-        <input type="hidden" name="ToId" value="@Model[0].ToID" />
-        <input type="hidden" name="FromId" value="@Model[0].FromID" />
-    }
-    else
-    {
-        <input type="hidden" name="FromId" value="@Model[0].ToID" />
-        <input type="hidden" id="ToId" value="@Model[0].FromID" />
-    }
-    <input type="text" name="Subject" value="Re: @Model[0].Subject" />
-    <textarea name="Text"></textarea>
-    <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Send</button>
+    <form method="post" asp-action="MessageReply" class="form">
+        <input type="hidden" name="parent" value="@Model[0].Parent" />
+        @if (Model[0].FromID == ViewBag.UserId)
+        {
+            <input type="hidden" name="ToId" value="@Model[0].ToID" />
+            <input type="hidden" name="FromId" value="@Model[0].FromID" />
+        }
+        else
+        {
+            <input type="hidden" name="FromId" value="@Model[0].ToID" />
+            <input type="hidden" id="ToId" value="@Model[0].FromID" />
+        }
+        <input type="text" name="Subject" value="Re: @Model[0].Subject" />
+        <textarea name="Text"></textarea>
+        <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Send</button>
 
-</form>
+    </form>
 </center>
-<br/>
+<br />
 <br />
 <br />
 <br />
@@ -51,4 +55,4 @@ $(document).ready(function () {
     var anchor = document.getElementById('@ViewBag.Item');
     anchor.scrollIntoView(true);
     });
-        </script>
+</script>
