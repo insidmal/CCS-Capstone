@@ -3,9 +3,7 @@
     ViewData["Title"] = "Your Messages";
 }
 <br />
-<script>
-    document.write('<a href="' + document.referrer + '">Back</a>');
-</script>
+
 <br /><center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
 <br />
 @foreach (Message m in @Model)
@@ -26,25 +24,30 @@
     </center>
     <div style="margin:10px;"></div>
 }
-<center>
-    <form method="post" asp-action="MessageReply" class="form">
-        <input type="hidden" name="parent" value="@Model[0].Parent" />
-        @if (Model[0].FromID == ViewBag.UserId)
+    <center>
+        <br />
+        <script>
+            document.write('<a href="' + document.referrer + '">Back</a>');
+        </script>
+        <br />
+        <form method="post" asp-action="MessageReply" class="form">
+            <input type="hidden" name="parent" value="@Model[0].Parent" />
+            @if (Model[0].FromID == ViewBag.UserId)
         {
             <input type="hidden" name="ToId" value="@Model[0].ToID" />
             <input type="hidden" name="FromId" value="@Model[0].FromID" />
-        }
-        else
-        {
-            <input type="hidden" name="FromId" value="@Model[0].ToID" />
-            <input type="hidden" id="ToId" value="@Model[0].FromID" />
-        }
-        <input type="text" name="Subject" value="Re: @Model[0].Subject" />
-        <textarea name="Text"></textarea>
-        <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Send</button>
+    }
+    else
+    {
+        <input type="hidden" name="FromId" value="@Model[0].ToID" />
+        <input type="hidden" id="ToId" value="@Model[0].FromID" />
+}
+            <input type="text" name="Subject" value="Re: @Model[0].Subject" />
+            <textarea name="Text"></textarea>
+            <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Send</button>
 
-    </form>
-</center>
+        </form>
+    </center>
 <br />
 <br />
 <br />

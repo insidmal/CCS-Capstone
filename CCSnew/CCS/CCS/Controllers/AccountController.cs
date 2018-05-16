@@ -187,7 +187,8 @@ namespace CCS.Controllers
             var messages = message.GetMessages(id, GetCurrentUserId());
             foreach (Message m in messages)
             {
-                m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
+                if (userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser)==null) m.FromName = "[Deleted]";
+                else m.FromName = userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser).UserName;
             }
             ViewBag.Item = messages.Last().ID;
             return View(messages);
@@ -200,17 +201,19 @@ namespace CCS.Controllers
             [HttpPost]
             public IActionResult MessageSend(Message m)
             {
-           try { 
-                m.ToID = userManager.FindByNameAsync(m.ToUser).Result.Id;
+
+            
+                if(userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser) != null)
+
+            {
+                m.ToID = userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser).Id;
                 m.Date = DateTime.Now;
                 message.Add(m);
                 TempData["Message"] = "Message Sent to " + m.ToUser + "!";
                 return RedirectToAction("MessageList");
             }
-            catch(Exception ex)
-            {
+            else { 
                 ViewBag.Message = "User not Found, Please Check your Recipient and Try Again";
-                ViewBag.Exception = ex.ToString();
                 return View(m);
             }
             }
