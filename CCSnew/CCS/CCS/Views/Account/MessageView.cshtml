@@ -26,25 +26,29 @@
     </center>
     <div style="margin:10px;"></div>
 }
-<center>
-    <form method="post" asp-action="MessageReply" class="form">
-        <input type="hidden" name="parent" value="@Model[0].Parent" />
-        @if (Model[0].FromID == ViewBag.UserId)
+    <center>
+        <script>
+            document.write('<button href="' + document.referrer + '" class="btn btn-primary" style="float: left;">Back to Message List</button>');
+        </script>
+        <br />
+        <form method="post" asp-action="MessageReply" class="form">
+            <input type="hidden" name="parent" value="@Model[0].Parent" />
+            @if (Model[0].FromID == ViewBag.UserId)
         {
             <input type="hidden" name="ToId" value="@Model[0].ToID" />
             <input type="hidden" name="FromId" value="@Model[0].FromID" />
-        }
-        else
-        {
-            <input type="hidden" name="FromId" value="@Model[0].ToID" />
-            <input type="hidden" id="ToId" value="@Model[0].FromID" />
-        }
-        <input type="text" name="Subject" value="Re: @Model[0].Subject" />
-        <textarea name="Text"></textarea>
-        <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Send</button>
+    }
+    else
+    {
+        <input type="hidden" name="FromId" value="@Model[0].ToID" />
+        <input type="hidden" id="ToId" value="@Model[0].FromID" />
+}
+            <input type="text" name="Subject" value="Re: @Model[0].Subject" />
+            <textarea name="Text"></textarea>
+            <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Send</button>
 
-    </form>
-</center>
+        </form>
+    </center>
 <br />
 <br />
 <br />
