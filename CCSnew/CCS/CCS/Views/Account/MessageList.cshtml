@@ -29,7 +29,7 @@
                     <tbody>
                         @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
                         {
-                            <tr class="clickable-row" data-href="MessageView/@m.ID">
+                            <tr class="clickable-row" data-href="MessageView/@m.Parent">
                                 <td>@m.FromName</td>
                                 <td>
 
