@@ -1,0 +1,240 @@
+﻿/* All the styling for the navigation bar is in Navigation.css*/
+
+/*logo that is displayed when regular logo no longer fits on navbar*/
+#logo1 {
+    display: none;
+}
+
+/* logo that is displayed on the navbar */
+#logo2 {
+    display: block;
+}
+
+/* changes the logo when the logo no longer fits on the screen*/
+@media only screen and (max-width: 470px) {
+    #logo1 {
+        display: block;
+    }
+
+    #logo2 {
+        display: none;
+    }
+}
+
+/* NAVIGATION BAR STYLING */
+
+/* navbar-custom overwrites the stlying for the default bootstrap navbar*/
+.navbar-custom {
+    background-color: transparent;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 2px solid transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+}
+
+/* styling for <a> tags in the navbar*/
+.navbar-nav > li > a {
+    background-color: transparent;
+    border: 2px solid transparent;
+    margin-right: 5px;
+    transition: all .5s;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: white;
+}
+
+/* hovering a link on navigation bar */
+.navbar-nav > li > a:hover {
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
+
+.navbar-nav > li > a:focus {
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
+
+.navbar-nav > li > a::after {
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
+
+/* Ending css for <a> tag styling in the navigation bar*/
+
+/* styling on the <a> tag when the drop down menu is opened*/
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+    background-color: transparent;
+    border-color: #3771c8ff;
+}
+
+/* styling for the drop down menu on the navigation bar */
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 15px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 10px;
+    text-decoration: none;
+    width: 170px;
+    background-color:red;
+}
+
+.navbar-custom .navbar-nav > li > a.active {
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    transition: all .5s;
+    margin-right: 5px;
+    margin-top: 6px;
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    color: #3771c8ff;
+}
+
+a {
+    text-decoration: none;
+    color: #2c2f40ff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #2e5287;
+}
+
+
+.icon-bar {
+    background-color: white;
+    margin-top: 3px;
+}
+
+
+/* primary button styling */
+
+.btn-primary {
+    margin-right: 10px;
+    width: 80px;
+    transition: all .5s;
+    height: 42px;
+    background-color: #3771c8ff;
+    border: 2px solid #3771c8ff;
+    margin-bottom: 10px;
+    color: white;
+    font-family: 'MainFont';
+}
+
+
+.navbar-right {
+    background-color: transparent;
+    padding-left: 10px;
+    margin-top: 6px;
+}
+
+/* primary button styling on hover */
+
+.btn-primary:hover {
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    height: 42px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+.btn-primary:after {
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    height: 42px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+.btn-primary.active {
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    height: 42px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+
+.dropdown-menu {
+    margin-top: 200px;
+}
+
+
+.btn-primary-dropdown {
+    width: 80px;
+    margin-top: 7px;
+    height: 40px;
+    padding-right: 10px;
+    margin-right: 10px;
+    transition: all .5s;
+    width: 80px;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+.btn-primary-dropdown:hover {
+    color: #3771c8ff;
+}
+
+.dropdown {
+    color: white;
+}
+
+li.active > a dropdown {
+    color: white;
+}
+
+/* brand logo styling */
+
+.navbar-brand {
+    padding: 0px;
+    padding-right: 50px;
+    padding-left: 20px;
+}
+
+.navbar-brand > img {
+    height: 90px;
+    margin-top: 0px;
+    height: auto;
+}
+
+
+
