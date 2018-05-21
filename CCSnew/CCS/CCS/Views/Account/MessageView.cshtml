@@ -1,4 +1,4 @@
-﻿@model List<Message>;
+@model List<Message>;
 @{
     ViewData["Title"] = "Your Messages";
 }
@@ -25,9 +25,10 @@
     <div style="margin:10px;"></div>
 }
     <center>
-        <br />
+
         <script>
-            document.write('<a href="' + document.referrer + '">Back</a>');
+            document.write('<button href="' + document.referrer + '" class="btn btn-primary" style="float: left;">Message List</button>');
+
         </script>
         <br />
         <form method="post" asp-action="MessageReply" class="form">
