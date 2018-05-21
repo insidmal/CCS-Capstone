@@ -277,7 +277,7 @@ namespace CCS.Controllers
 
         public IActionResult UpdateStatus(int id, Status s)
         {
-            project.UpdateStatus(id, s);
+            project.UpdateStatus(id, s, GetCurrentUserId());
             return View("ProjectView", project.ShowProjectByID(id));
         }
 

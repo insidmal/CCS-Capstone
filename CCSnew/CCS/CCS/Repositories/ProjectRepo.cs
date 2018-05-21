@@ -81,11 +81,12 @@ namespace CCS.Repositories
             return oldP;
         }
 
-        public Project UpdateStatus(int id, Status s)
+        public Project UpdateStatus(int id, Status s, string UserId)
         {
             Project oldP = ShowProjectByID(id);
             oldP.Progress = s;
             context.Project.Update(oldP);
+            notes.AddNote(id, new Note() { Date = DateTime.Now, Text = "Project Status Updated: " + s.ToString(), From=UserId });
             return oldP;
         }
     }
