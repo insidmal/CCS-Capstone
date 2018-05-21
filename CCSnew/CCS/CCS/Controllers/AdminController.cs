@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CCS.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Web;
 
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/10/2018
@@ -257,9 +258,27 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProjectQuote(int projectId, double quote)
         {
+            ViewBag.Message = "Quote Added, Message Sent to Client";
+            var p = project.ShowProjectByID(projectId);
             project.AddQuote(projectId, quote);
+            message.Add(new Message()
+            {
+                Date = DateTime.Now,
+                FromID = GetCurrentUserId(),
+                ToID = p.CustomerID,
+                Status = Read.Unread,
+                Parent = 0,
+                Subject = "Quote Added for " + p.Name,
+                Text = "We've added a quote for your project. " + HttpUtility.HtmlDecode("<a href=\"Account\\ProjectView\\" + p.ID + "\"> Click Here to View your Project and see your quote.</a>")
+            });
             return View("ProjectView", project.ShowProjectByID(projectId));
 
+        }
+
+        public IActionResult UpdateStatus(int id, Status s)
+        {
+            project.UpdateStatus(id, s);
+            return View("ProjectView", project.ShowProjectByID(id));
         }
 
         #endregion
@@ -359,9 +378,12 @@ namespace CCS.Controllers
             ViewBag.Message = "Message Updated!";
             return RedirectToAction("ProjectView", n.ProjectID);
         }
-        #endregion
+    #endregion
+
+    public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
 
 
-    }
+
+}
 }
 

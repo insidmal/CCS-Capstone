@@ -256,6 +256,12 @@ namespace CCS.Controllers
 
         public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id));
 
+        public IActionResult AcceptQuote(int id)
+        {
+            project.UpdateStatus(id, Status.Accepted);
+            ViewBag.Message = "Your Quoted Price was Accepted, Your Project Will Be Started Soon.";
+            return View("ProjectView", project.ShowProjectByID(id));
+        }
 
 
 

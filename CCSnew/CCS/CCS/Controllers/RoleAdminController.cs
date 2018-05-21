@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CCS.Controllers
 {
-    [Authorize(Roles = "Admins")]
+    //[Authorize(Roles = "Admins")]
     public class RoleAdminController : Controller
     {
         private RoleManager<IdentityRole> roleManager;

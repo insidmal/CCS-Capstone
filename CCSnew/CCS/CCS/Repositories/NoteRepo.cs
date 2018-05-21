@@ -39,6 +39,11 @@ namespace CCS.Repositories
         {
             List<Note> ln = new List<Note>();
             ln = context.Note.Where(a => a.ProjectID == id).ToList();
+            foreach (Note n in ln)
+            {
+                if (context.Users.FirstOrDefault(a => a.Id == n.From) == null) n.FromName = "[Deleted]";
+                else n.FromName = context.Users.FirstOrDefault(a => a.Id == n.From).UserName;
+            }
             return ln;
         }
         public int RemoveNote(Note n)

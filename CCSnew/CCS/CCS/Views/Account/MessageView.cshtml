@@ -14,10 +14,11 @@
             <center><div style="text-align:left;">@m.Subject -  @m.Date</div></center>
             <center>
                 <div>
+
                     @if (m.Status == Read.Unread)
-                    {<h3 style="text-align:left;">Message: @m.Text</h3> }
-                else
-                { @m.Text}
+    {<h3 style="text-align:left;">Message: @Html.Raw(m.Text)</h3> }
+else
+{ @Html.Raw(m.Text) }
                 </div>
             </center>
         </div>

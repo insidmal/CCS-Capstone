@@ -64,6 +64,7 @@ namespace CCS.Repositories
             Project p = context.Project.FirstOrDefault(a => a.ID == id);
             p.Notes = notes.GetNotesByProject(id);
             p.Products = projProd.GetProjectProducts(id);
+            p.TotalDue = p.Products.Sum(a => a.Price);
             return p;
         }
         public List<Project> ShowProjectsByCustomer(string custID) => context.Project.Where(a => a.CustomerID == custID).ToList();
