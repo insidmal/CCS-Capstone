@@ -33,21 +33,24 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <div class="navbar-brand" id="logo1"><img style="height:55px;" src="/images/logo2.png"></div>
-                <div class="navbar-brand" id="logo2"><img style="height:55px;" src="/images/logo.png"></div>
-
+                <div class="navbar-brand" id="logo1"><img src="/images/newlogosmall.png"></div>
+                <div class="navbar-brand" id="logo2"><img src="/images/newlogo.png"></div>
+                <div style="padding-left:350px;"></div>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
+                
                 <ul class="nav navbar-nav ">
 
 
                     <li class="dropdown">
 
                     </li>
+               
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-controller="Home" asp-action="Services">Services</a></li>
                     <li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Contact" asp-action="Index">Contact</a></li>
+                
 
 
                     @if (User.Identity.IsAuthenticated)

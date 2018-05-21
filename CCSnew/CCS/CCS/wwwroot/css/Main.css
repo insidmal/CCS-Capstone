@@ -9,7 +9,11 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index:auto;
 }
+
+
+
 
 /* uses font from folder instead of using installed fonts*/
 @font-face {
@@ -57,15 +61,19 @@ p {
     background-color: rgba(255, 255, 255, 0.6);
     margin-bottom: 50px;
     min-height: 600px;
-    background-color: white
+    background-color: white;
+    width:100%;
 }
 
 /* the styling for the content inside the content div */
 .container-content {
     padding-top: 110px;
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: 30px;
+    padding-left: 30px;
+ 
 }
+
+
 
 /* container for all the content on the webpage */
 .container {
@@ -75,6 +83,7 @@ p {
     width: 100%;
     height: 200px;
 }
+
 
 
 /* table styling */
@@ -199,6 +208,10 @@ th {
     width: 60%;
 }
 
+
+
+
+
 /* form input styling */
 
 input[type=text], select, textarea {
@@ -210,6 +223,7 @@ input[type=text], select, textarea {
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
+   
 }
 
 input[type=password], select, textarea {
@@ -221,6 +235,7 @@ input[type=password], select, textarea {
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
+
 }
 
 input[type=submit] {
@@ -241,4 +256,13 @@ input[type=submit]:hover {
 /* makes rows in tables clickable */
 .clickable-row {
     cursor:pointer;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .container-content {
+        padding: 0px;
+        padding-top: 110px;
+        width: 100%;
+    }
 }

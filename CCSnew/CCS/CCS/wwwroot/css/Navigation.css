@@ -32,9 +32,13 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+
     width: 100%;
 }
+
+
+
+
 
 /* styling for <a> tags in the navbar*/
 .navbar-nav > li > a {
@@ -47,7 +51,10 @@
     text-align: center;
     width: 100px;
     color: white;
+
 }
+
+
 
 /* hovering a link on navigation bar */
 .navbar-nav > li > a:hover {
@@ -131,6 +138,7 @@ a:hover {
 .icon-bar {
     background-color: white;
     margin-top: 3px;
+
 }
 
 
@@ -226,15 +234,16 @@ li.active > a dropdown {
 
 .navbar-brand {
     padding: 0px;
+    
     padding-right: 50px;
     padding-left: 20px;
 }
 
-.navbar-brand > img {
-    height: 90px;
-    margin-top: 0px;
-    height: auto;
-}
+    .navbar-brand > img {
+        height: 55px;
+        position: absolute;
+        z-index: 1000;
+    }
 
 
 

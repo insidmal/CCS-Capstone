@@ -1,9 +1,10 @@
 ﻿/* all the styling when the page is resized and the navbar is toggled*/
 
-@media only screen and (max-width: 1300px) {
+@media screen and (max-width: 1250px) {
 
 .navbar-custom {
     background-color: transparent;
+
 }
 
 .navbar-collapse {
