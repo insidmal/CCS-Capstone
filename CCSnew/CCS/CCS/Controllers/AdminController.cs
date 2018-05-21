@@ -191,7 +191,17 @@ namespace CCS.Controllers
 
         #region Project Views
         //view projects
-        public IActionResult ProjectList() => View(project.ShowAllProjects());
+        public IActionResult ProjectList() {
+            List<Project> projects = project.ShowAllProjects();
+            foreach (Project p in projects)
+            {
+                if (userManager.Users.FirstOrDefault(a=>a.Id==p.CustomerID)==null) p.CustomerName = "[Deleted]";
+                else p.CustomerName = userManager.Users.FirstOrDefault(a => a.Id == p.CustomerID).UserName;
+            }
+
+            return View(projects);
+        }
+        
         public IActionResult ProjectView(int? id)
         {
             if (id == null || id == 0) return RedirectToAction("ProjectList");
@@ -203,7 +213,8 @@ namespace CCS.Controllers
                 var pj = project.ShowProjectByID((int)id);
                 foreach (Note n in pj.Notes)
                 {
-                    n.FromName = userManager.FindByIdAsync(n.From).Result.UserName;
+                    if (userManager.Users.FirstOrDefault(a => a.Id == n.From) == null) n.FromName = "[Deleted]";
+                    else n.FromName = userManager.Users.FirstOrDefault(a => a.Id == n.From).UserName;
                 }
 
                 pj.CustomerName = userManager.FindByIdAsync(pj.CustomerID).Result.UserName;
@@ -217,13 +228,22 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProjectAdd(Project p)
         {
-            p.Progress = Status.New;
-            p.CustomerID = userManager.FindByNameAsync(p.CustomerName).Result.Id;
-            project.Add(p);
-            p.Notes = new List<Note>();
-            ViewBag.Message = "Project Created";
-            return View("ProjectView", p);
-        }
+            if (userManager.Users.FirstOrDefault(a => a.UserName == p.CustomerName) != null)
+            { 
+           
+                p.Progress = Status.New;
+                p.CustomerID = userManager.Users.FirstOrDefault(a => a.UserName == p.CustomerName).Id;
+                project.Add(p);
+                p.Notes = new List<Note>();
+                ViewBag.Message = "Project Created";
+                return View("ProjectView", p);
+            }
+            else
+            {
+                ViewBag.Message = "User not Found, Please Check your Recipient and Try Again";
+                return View(p);
+            }
+        }       
 
         //add quote to project
         [HttpGet]

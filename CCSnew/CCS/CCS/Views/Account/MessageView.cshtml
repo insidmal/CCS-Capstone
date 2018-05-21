@@ -1,11 +1,9 @@
-﻿@model List<Message>;
+@model List<Message>;
 @{
     ViewData["Title"] = "Your Messages";
 }
 <br />
-<script>
-    document.write('<a href="' + document.referrer + '">Back</a>');
-</script>
+
 <br /><center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
 <br />
 @foreach (Message m in @Model)
@@ -27,8 +25,10 @@
     <div style="margin:10px;"></div>
 }
     <center>
+
         <script>
-            document.write('<button href="' + document.referrer + '" class="btn btn-primary" style="float: left;">Back to Message List</button>');
+            document.write('<button href="' + document.referrer + '" class="btn btn-primary" style="float: left;">Message List</button>');
+
         </script>
         <br />
         <form method="post" asp-action="MessageReply" class="form">
