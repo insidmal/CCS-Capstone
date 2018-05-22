@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
 using CCS.Models;
 using CCS.Repositories;
+using System.Net;
 
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 05/10/2018
@@ -45,15 +46,16 @@ namespace CCS.Controllers
                     msz.From = new MailAddress(vm.Email);//Email which you are getting 
                                                          //from contact us page 
                     msz.To.Add(settings.ContactEmail);//Where mail will be sent 
+                    msz.Sender = new MailAddress(vm.Email, vm.Name);
                     msz.Subject = vm.Subject;
                     msz.Body = vm.Message;
                     SmtpClient smtp = new SmtpClient(settings.ContactSMTP, settings.ContactPort);
 
                     smtp.Credentials = 
-                        new System.Net.NetworkCredential(settings.ContactLogin, settings.ContactPassword);
+                        new NetworkCredential(settings.ContactLogin, settings.ContactPassword);
 
                     smtp.EnableSsl = true;
-
+                    smtp.UseDefaultCredentials = true;
                     smtp.Send(msz);
 
                     ModelState.Clear();
@@ -74,5 +76,6 @@ namespace CCS.Controllers
         {
             return View();
         }
+
     }
 }
