@@ -1,0 +1,54 @@
+﻿@model CCS.Models.Settings
+
+@{
+    ViewData["Title"] = "Settings";
+    //auto generated, controllers have been adde but not yet tested
+}
+
+<center>
+
+    <form asp-action="Settings" class="form">
+        <h2>Settings</h2>
+        <p>&nbsp;</p>
+        <h4>Contact Form Settings</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <label asp-for="ContactEmail" class="control-label">Email Address</label>
+        <input asp-for="ContactEmail" class="form-control" />
+        <span asp-validation-for="ContactEmail" class="text-danger"></span>
+
+        <label asp-for="ContactSMTP" class="control-label">SMTP Server</label>
+        <input asp-for="ContactSMTP" class="form-control" />
+        <span asp-validation-for="ContactSMTP" class="text-danger"></span>
+
+        <label asp-for="ContactPort" class="control-label">SMTP Port</label>
+        <input asp-for="ContactPort" class="form-control" />
+        <span asp-validation-for="ContactPort" class="text-danger"></span>
+
+        <label asp-for="ContactLogin" class="control-label">SMTP Username</label>
+        <input asp-for="ContactLogin" class="form-control" />
+        <span asp-validation-for="ContactLogin" class="text-danger"></span>
+
+        <label asp-for="ContactPassword" class="control-label">SMTP Password</label>
+        <input asp-for="ContactPassword" class="form-control" />
+        <span asp-validation-for="ContactPassword" class="text-danger"></span>
+        <p>&nbsp;</p>
+
+        <h4>Invoice Settings</h4>
+        <hr />
+
+        <label asp-for="InvoiceDays" class="control-label"></label>
+        <input asp-for="InvoiceDays" class="form-control" />
+        <span asp-validation-for="InvoiceDays" class="text-danger"></span>
+
+        <label asp-for="InvoiceStatus" class="control-label"></label>
+        <input asp-for="InvoiceStatus" class="form-control" />
+        <span asp-validation-for="InvoiceStatus" class="text-danger"></span>
+
+        <input type="submit" value="Save" class="btn btn-default" />
+
+    </form>
+
+</center>
+
+
