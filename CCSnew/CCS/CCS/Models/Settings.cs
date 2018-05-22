@@ -7,12 +7,12 @@ namespace CCS.Models
 {
     public class Settings
     {
-        string ContactTo { get; set; }
-        string ContactSMTP { get; set; }
-        string ContactEmail { get; set; }
-        string ContactPassword { get; set; }
-        int ContactPort { get; set; }
-        int InvoiceDays { get; set; }
-        Status InvoiceStatus { get; set; }
+        public string ContactSMTP { get; set; }
+        public string ContactEmail { get; set; }
+        public string ContactLogin { get; set; }
+        public string ContactPassword { get; set; }
+        public int ContactPort { get; set; }
+        public int InvoiceDays { get; set; }
+        public Status InvoiceStatus { get; set; }
     }
 }
