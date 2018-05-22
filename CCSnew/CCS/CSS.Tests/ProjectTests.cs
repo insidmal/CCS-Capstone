@@ -109,7 +109,7 @@ namespace CCS.Tests
             Assert.Empty(repo.ShowAllProjects());
             repo.Add(pr1);
             Assert.Equal(Status.New, repo.ShowProjectByID(1).Progress);
-            repo.UpdateStatus(1, Status.Started);
+            repo.UpdateStatus(1, Status.Started, "1");
             Assert.Equal(Status.Started, repo.ShowProjectByID(1).Progress);
         }
     }

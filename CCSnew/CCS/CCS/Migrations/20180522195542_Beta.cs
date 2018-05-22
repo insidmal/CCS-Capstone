@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CCS.Migrations
 {
-    public partial class AlphaCandidate1 : Migration
+    public partial class Beta : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -106,6 +106,25 @@ namespace CCS.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProjProd", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Settings",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ContactEmail = table.Column<string>(nullable: true),
+                    ContactLogin = table.Column<string>(nullable: true),
+                    ContactPassword = table.Column<string>(nullable: true),
+                    ContactPort = table.Column<int>(nullable: false),
+                    ContactSMTP = table.Column<string>(nullable: true),
+                    InvoiceDays = table.Column<int>(nullable: false),
+                    InvoiceStatus = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Settings", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -341,6 +360,9 @@ namespace CCS.Migrations
 
             migrationBuilder.DropTable(
                 name: "ProjProd");
+
+            migrationBuilder.DropTable(
+                name: "Settings");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
