@@ -28,7 +28,7 @@ namespace CCS.Models
         public DbSet<Note> Note { get; set; }
         public DbSet<Message> Message { get; set; }
         public DbSet<ProjectProducts> ProjProd { get; set; }
-
+        public DbSet<Settings> Settings { get; set; }
         public static async Task CreateAdminAccount(IServiceProvider serviceProvider,
             IConfiguration configuration)
         {

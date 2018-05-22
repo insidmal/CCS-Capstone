@@ -3,7 +3,7 @@
     // CREATIVE CYBER SOLUTIONS
     // CREATED 04/12/2018
     // CREATED BY JOHN BELL contact@conquest-marketing.com
-    // UPDATED 05/21/2018
+    // UPDATED 05/22/2018
     // UPDATED BY JOHN BELL contact@conquest-marketing.com
 
 
@@ -18,17 +18,22 @@
         <center><h3>@Model.Description</h3></center>
         <center><p> Quote: $@Model.Quote</p></center>
         <center><p>Invoiced Total: $@Model.TotalDue</p></center>
-        <center><p>
-    Status: @Model.Progress<br />
-    @if (Model.Progress == Status.Accepted)
-    {<a asp-action="UpdateStatus" asp-route-id="@Model.ID" asp-route-status="@Status.Started">=> Started</a>}
-    else if (Model.Progress == Status.Started)
-    {<a asp-action="UpdateStatus" asp-route-id="@Model.ID" asp-route-status="@Status.Completed">=> Completed</a>}
+        <center>
+            <p>
+                Status: @Model.Progress<br />
+                @if (Model.Progress == Status.Accepted)
+            {<a asp-action="UpdateStatus" asp-route-id="@Model.ID" asp-route-status="@Status.Started" class="btn button">Mark as Started</a>}
+        else if (Model.Progress == Status.Started)
+        {<a asp-action="UpdateStatus" asp-route-id="@Model.ID" asp-route-status="@Status.Completed" class="btn button">Mark as Completed</a>}
 
-</center>
+        </center>
         <br />
         @if (@Model.Quote == 0)
     {<center><a asp-action="ProjectQuote" asp-route-id="@Model.ID" class="btn button">Add a Quote</a></center>}
+
+else if (Model.Paid == Paid.Unpaid)
+{<a asp-action="MarkPaid" asp-route-id="@Model.ID" class="btn button">Mark as Paid</a>}
+        else { <center><p>Status: Paid</p></center>}
 
     </div>
 </center>

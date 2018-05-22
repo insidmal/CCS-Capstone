@@ -12,7 +12,7 @@ using System.Web;
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/10/2018
 // CREATED BY: JOHN BELL contact@conquest-marketing.com
-// UPDATED: 04/23/2018
+// UPDATED: 05/22/2018
 // UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
 
 
@@ -275,10 +275,19 @@ namespace CCS.Controllers
 
         }
 
-        public IActionResult UpdateStatus(int id, Status s)
+        public IActionResult UpdateStatus(int id, Status status)
         {
-            project.UpdateStatus(id, s, GetCurrentUserId());
+            ViewBag.MEssage = "Status Updated to " + status.ToString();
+            project.UpdateStatus(id, status, GetCurrentUserId());
             return View("ProjectView", project.ShowProjectByID(id));
+        }
+
+        public IActionResult MarkPaid(int id)
+        {
+            var p = project.ShowProjectByID(id);
+            p.Paid = Paid.Paid;
+            project.Update(p);
+            return View("ProjectView", p);
         }
 
         #endregion

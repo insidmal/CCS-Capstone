@@ -36,7 +36,7 @@ namespace CCS.Models
     public enum Paid
     {
         Paid = 1,
-        Unaid = 2
+        Unpaid = 2
     }
 
     public enum Status
