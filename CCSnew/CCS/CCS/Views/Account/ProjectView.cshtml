@@ -14,37 +14,52 @@
 <br />
 <center><h1>@Model.Name</h1></center>
 <center>
-    <div style="background-color:#f4f4f4; width:50%; padding:20px;">
+    <div style="background-color:#f4f4f4; min-width:50%; max-width:800px; padding:20px;">
 
         <h3>@Model.Description</h3><br />
         Status: @Model.Progress<br />&nbsp;<br />
         @if (@Model.Quote != 0)
-        {
-            <span>Quote: $@Model.Quote<br /></span>}
+    {
+        <span>Quote: $@Model.Quote<br /></span>
+        @if (Model.Progress == Status.Quoted)
+    {<br /><a asp-action="AcceptQuote" asp-route-id="@Model.ID" class="btn button">Accept Quote</a><br />}
+}
+        else if (@Model.TotalDue != 0)
+    {
+        <span>Invoiced Total: $@Model.TotalDue<br /></span>
+}
     </div>
 </center>
 
+
 @if (Model.Products.Count > 0)
 {
-    <h3>Invoiced Products</h3>
-    <div style="background-color:#f4f4f4; width:35%; padding:20px;">
-        <table>
-            <tr><td>Qtyy</td><td>Name</td><td>Price</td><td></td></tr>
-            <caption>Products</caption>
-            @foreach (Product p in Model.Products)
-            {
-                <tr><td>@p.Quantity</td><td>@p.Name</td><td>$@p.Price</td></tr>
-            }
-        </table>
-    </div>
+    <center>
+        <br />
+        <div style="background-color:#f4f4f4; min-width:50%; max-width:800px; padding:20px;">
+            <center><h3>Invoiced Products</h3></center><br />
 
+            <table cellspacing="3" class="table table-condensed">
+                <tr><th>Name</th><th>Quantity</th><th>Price</th><th></th></tr>
+                <caption>Products</caption>
+                @foreach (Product p in Model.Products)
+                {
+                    <tr><td>@p.Name</td><td>@p.Quantity</td><td>$@p.Price</td></tr>
+                }
+                <tr><td></td><td align="right">Invoice Total: </td><td>$@Model.TotalDue</td></tr>
+            </table>
+
+        </div>
+    </center>
+    <br />
 }
-<br />
-<center>
-    <div style="background-color:#f4f4f4; width:50%; padding:20px;">
 
-        @if (Model.Notes.Count > 0)
-        {
+
+
+@if (Model.Notes.Count > 0)
+{
+    <center>
+        <div style="background-color:#f4f4f4; min-width:50%; max-width:800px; padding:20px;">
 
             <h3>Invoice Notes</h3>
             <br />
@@ -58,9 +73,10 @@
                 }
             </table>
             <br />
+        </div>
+    </center>
 
-        }
+    <br />
+}
 
-    </div>
-</center>
-<br />
+

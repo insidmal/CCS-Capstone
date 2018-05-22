@@ -85,7 +85,7 @@ namespace CCS.Repositories
             return oldP;
         }
 
-        public Project UpdateStatus(int id, Status s)
+        public Project UpdateStatus(int id, Status s, string UserId)
         {
             Project oldP = ShowProjectByID(id);
             projects.Remove(oldP);

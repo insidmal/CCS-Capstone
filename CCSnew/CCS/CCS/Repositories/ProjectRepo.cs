@@ -64,6 +64,7 @@ namespace CCS.Repositories
             Project p = context.Project.FirstOrDefault(a => a.ID == id);
             p.Notes = notes.GetNotesByProject(id);
             p.Products = projProd.GetProjectProducts(id);
+            p.TotalDue = p.Products.Sum(a => a.Price);
             return p;
         }
         public List<Project> ShowProjectsByCustomer(string custID) => context.Project.Where(a => a.CustomerID == custID).ToList();
@@ -80,11 +81,12 @@ namespace CCS.Repositories
             return oldP;
         }
 
-        public Project UpdateStatus(int id, Status s)
+        public Project UpdateStatus(int id, Status s, string UserId)
         {
             Project oldP = ShowProjectByID(id);
             oldP.Progress = s;
             context.Project.Update(oldP);
+            notes.AddNote(id, new Note() { Date = DateTime.Now, Text = "Project Status Updated: " + s.ToString(), From=UserId });
             return oldP;
         }
     }
