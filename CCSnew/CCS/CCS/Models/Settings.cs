@@ -7,6 +7,7 @@ namespace CCS.Models
 {
     public class Settings
     {
+        public int ID { get; set; }
         public string ContactSMTP { get; set; }
         public string ContactEmail { get; set; }
         public string ContactLogin { get; set; }
