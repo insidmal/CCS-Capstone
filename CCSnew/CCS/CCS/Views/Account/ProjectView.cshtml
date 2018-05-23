@@ -3,7 +3,7 @@
     // CREATIVE CYBER SOLUTIONS
     // CREATED 05/02/2018
     // CREATED BY JOHN BELL contact@conquest-marketing.com
-    // UPDATED 05/02/2018
+    // UPDATED 05/23/2018
     // UPDATED BY JOHN BELL contact@conquest-marketing.com
 
 
@@ -24,9 +24,11 @@
         @if (Model.Progress == Status.Quoted)
     {<br /><a asp-action="AcceptQuote" asp-route-id="@Model.ID" class="btn button">Accept Quote</a><br />}
 }
-        else if (@Model.TotalDue != 0)
-    {
-        <span>Invoiced Total: $@Model.TotalDue<br /></span>
+@if (Model.TotalDue != 0)
+{
+    <span>Invoiced Total: $@Model.TotalDue<br /></span>
+    <span>Invoiced Due: @Model.InvoiceDue<br /></span>
+
 }
     </div>
 </center>

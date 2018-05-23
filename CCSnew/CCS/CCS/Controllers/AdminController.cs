@@ -272,7 +272,7 @@ namespace CCS.Controllers
                 Status = Read.Unread,
                 Parent = 0,
                 Subject = "Quote Added for " + p.Name,
-                Text = "We've added a quote for your project. " + HttpUtility.HtmlDecode("<a href=\"Account\\ProjectView\\" + p.ID + "\"> Click Here to View your Project and see your quote.</a>")
+                Text = "We've added a quote for your project. " + HttpUtility.HtmlDecode("<a href=\"/Account/ProjectView/" + p.ID + "\"> Click Here to View your Project and see your quote.</a>")
             });
             return View("ProjectView", project.ShowProjectByID(projectId));
 

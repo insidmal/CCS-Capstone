@@ -36,7 +36,7 @@ namespace CCS.Repositories
                     s.ContactPassword = "capstone123";
 
                     s.InvoiceDays = 30;
-                    s.InvoiceStatus=Status.Completed
+                    s.InvoiceStatus = Status.Completed;
 
                     context.Settings.Add(s);
                     context.SaveChanges();
