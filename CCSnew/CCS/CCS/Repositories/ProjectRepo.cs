@@ -85,6 +85,13 @@ namespace CCS.Repositories
         {
             Project oldP = ShowProjectByID(id);
             oldP.Progress = s;
+            Settings set = context.Settings.FirstOrDefault();
+
+            if(s == set.InvoiceStatus)
+            {
+                oldP.InvoiceDue = DateTime.Now.AddDays(set.InvoiceDays);
+            }
+
             context.Project.Update(oldP);
             notes.AddNote(id, new Note() { Date = DateTime.Now, Text = "Project Status Updated: " + s.ToString(), From=UserId });
             return oldP;
