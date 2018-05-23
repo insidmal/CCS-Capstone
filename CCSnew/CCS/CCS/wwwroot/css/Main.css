@@ -1,0 +1,269 @@
+
+body, html {
+    /* background image for the website */
+    background-image: url('/images/background.png');
+    /* Full height */
+    height: 100%;
+    /* fits the background image to the screen when resizing */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index:auto;
+}
+
+
+
+
+
+/* uses font from folder instead of using installed fonts*/
+@font-face {
+    font-family: MainFont;
+    src: url(/fonts/Aller_Std_Bd.ttf);
+}
+
+/* changing some of the default bootstrap styling of h1, h2, h3, and p tags*/
+h1 {
+    color: #3771c8ff;
+    font-family: 'MainFont';
+    font-size: 50px;
+}
+
+h2 {
+    color: #3771c8ff;
+}
+
+h3 {
+    color: #2c2f40ff;
+}
+
+p {
+    color: #3771c8ff;
+}
+
+
+/* footer styling */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding-top: 15px;
+    background-color: #3771c8ff;
+    color: white;
+    text-align: center;
+}
+
+/* All div container styling.  The three containers being used are content, container-content and container*/
+/* the div that contains content on the webpage */
+.content {
+    /*border-radius: 5px;*/
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 50px;
+    min-height: 600px;
+    background-color: white;
+    width:100%;
+}
+
+/* the styling for the content inside the content div */
+.container-content {
+    padding-top: 110px;
+    padding-right: 30px;
+    padding-left: 30px;
+ 
+}
+
+
+
+/* container for all the content on the webpage */
+.container {
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+    height: 200px;
+}
+
+
+
+/* table styling */
+.table {
+    width:90%;
+}
+
+.tbody {
+    margin-bottom:100px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3771c8ff;
+    color: white;
+}
+
+/* end of table styling */
+
+
+/* bootstrap card styling. */
+/* the bios on the about and is used for the services content on the services page */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.card-text {
+    word-wrap: break-word;
+}
+
+.card-icon {
+}
+
+/* end of card css */
+
+
+/* button styling for all of the buttons except for the buttons on the navigation bar*/
+/* the css for navigation bar buttons are in Navigation-toggle.css and Navigation.css*/
+.button {
+    transition: all .5s;
+    background-color: #3771c8ff;
+    border: 2px solid #3771c8ff;
+    color: white;
+    font-family: 'MainFont';
+}
+
+.button:hover {
+    transition: all .5s;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+.button:after {
+    transition: all .5s;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+.button.active {
+    transition: all .5s;
+    background-color: transparent;
+    border: 2px solid #3771c8ff;
+    color: #3771c8ff;
+    font-family: 'MainFont';
+}
+
+.button-danger {
+    transition: all .5s;
+    background-color: #bd2525;
+    border: 2px solid #bd2525;
+    color: white;
+    font-family: 'MainFont';
+}
+
+.button-danger:hover {
+    transition: all .5s;
+    background-color: transparent;
+    border: 2px solid #bd2525;
+    color: #bd2525;
+    font-family: 'MainFont';
+}
+
+.button-danger:after {
+    transition: all .5s;
+    background-color: transparent;
+    border: 2px solid #bd2525;
+    color: #bd2525;
+    font-family: 'MainFont';
+}
+
+.button-danger.active {
+    transition: all .5s;
+    background-color: transparent;
+    border: 2px solid #bd2525;
+    color: #bd2525;
+    font-family: 'MainFont';
+}
+
+/* End of button styling */
+
+
+
+/* styling for all forms on the website */
+.form {
+    /* resizes the forms correctly when the page is resized */
+    max-width: 500px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 60%;
+}
+
+
+
+
+
+/* form input styling */
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+   
+}
+
+input[type=password], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+/* end of form input styling */
+
+/* makes rows in tables clickable */
+.clickable-row {
+    cursor:pointer;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .container-content {
+        padding: 0px;
+        padding-top: 110px;
+        width: 100%;
+    }
+}
