@@ -32,6 +32,7 @@ namespace CCS.Controllers
         private IMessageRepository message;
         private IProjectProductsRepository prodProj;
         private INoteRepository note;
+        private ISettingRepository settings;
 
         public AdminController(UserManager<User> usrMgr,
             IUserValidator<User> userValid,
@@ -41,7 +42,8 @@ namespace CCS.Controllers
             IProjectRepository proj, 
             IProductRepository prod,
             IProjectProductsRepository prop,
-            INoteRepository nor)
+            INoteRepository nor,
+            ISettingRepository set)
         {
             userManager = usrMgr;
             userValidator = userValid;
@@ -52,6 +54,7 @@ namespace CCS.Controllers
             product = prod;
             prodProj = prop;
             note = nor;
+            settings = set;
         }
 
         #endregion
@@ -387,9 +390,22 @@ namespace CCS.Controllers
             ViewBag.Message = "Message Updated!";
             return RedirectToAction("ProjectView", n.ProjectID);
         }
-    #endregion
+        #endregion
 
-    public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
+        #region Settings
+        [HttpGet]
+        public IActionResult Settings() => View(settings.GetSettings());
+        [HttpPost]
+        public IActionResult Settings(Settings s)
+        {
+            settings.UpdateSettings(s);
+            ViewBag.Message = "Your Settings Have Been Saved.";
+            return View(s);
+        }
+
+        #endregion
+
+        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
 
 
 
