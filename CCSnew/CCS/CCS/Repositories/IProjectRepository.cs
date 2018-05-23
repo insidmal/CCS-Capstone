@@ -20,7 +20,7 @@ namespace CCS.Repositories
         int Remove(Project p);
         int Remove(int id);
         Project Update(Project p);
-        Project UpdateStatus(int id, Status s);
+        Project UpdateStatus(int id, Status s, string UserId);
         Project AddQuote(int id, double q);
 
 

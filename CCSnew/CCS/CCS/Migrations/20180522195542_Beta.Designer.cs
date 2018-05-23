@@ -11,8 +11,8 @@ using System;
 namespace CCS.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180502191438_AlphaCandidate1")]
-    partial class AlphaCandidate1
+    [Migration("20180522195542_Beta")]
+    partial class Beta
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -143,6 +143,30 @@ namespace CCS.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("ProjProd");
+                });
+
+            modelBuilder.Entity("CCS.Models.Settings", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ContactEmail");
+
+                    b.Property<string>("ContactLogin");
+
+                    b.Property<string>("ContactPassword");
+
+                    b.Property<int>("ContactPort");
+
+                    b.Property<string>("ContactSMTP");
+
+                    b.Property<int>("InvoiceDays");
+
+                    b.Property<int>("InvoiceStatus");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("CCS.Models.User", b =>

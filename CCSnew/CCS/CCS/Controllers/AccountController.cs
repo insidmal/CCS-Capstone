@@ -164,17 +164,18 @@ namespace CCS.Controllers
         #region Message System Views
 
         public IActionResult MessageList()
-
             {
             List<Message> mess = new List<Message>();
                 ViewBag.UserId = GetCurrentUserId();
                  mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
                 foreach (Message m in mess)
                 {
-                    m.FromName = userManager.FindByIdAsync(m.FromID).Result.UserName;
-                    m.ToUser = userManager.FindByIdAsync(m.ToID).Result.UserName;
-
+                if (!userManager.FindByIdAsync(m.FromID).IsCompletedSuccessfully) m.FromName = "[Deleted]";
+                    else m.FromName = userManager.FindByIdAsync(m.FromID).Result.UserName;
+                if (!userManager.FindByIdAsync(m.ToID).IsCompletedSuccessfully) m.ToUser = "[Deleted]";
+                else m.ToUser = userManager.FindByIdAsync(m.ToID).Result.UserName;
                 }
+            ViewBag.Message = TempData["Message"];
                 return View(mess);
             }
 
@@ -186,7 +187,8 @@ namespace CCS.Controllers
             var messages = message.GetMessages(id, GetCurrentUserId());
             foreach (Message m in messages)
             {
-                m.FromName = userManager.FindByIdAsync(m.FromID).Result.Id;
+                if (userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser)==null) m.FromName = "[Deleted]";
+                else m.FromName = userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser).UserName;
             }
             ViewBag.Item = messages.Last().ID;
             return View(messages);
@@ -199,11 +201,21 @@ namespace CCS.Controllers
             [HttpPost]
             public IActionResult MessageSend(Message m)
             {
-                m.ToID = userManager.FindByNameAsync(m.ToUser).Result.Id;
+
+            
+                if(userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser) != null)
+
+            {
+                m.ToID = userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser).Id;
                 m.Date = DateTime.Now;
                 message.Add(m);
-                ViewBag.Message = "Message Sent to " + m.ToUser + "!";
+                TempData["Message"] = "Message Sent to " + m.ToUser + "!";
                 return RedirectToAction("MessageList");
+            }
+            else { 
+                ViewBag.Message = "User not Found, Please Check your Recipient and Try Again";
+                return View(m);
+            }
             }
 
         [HttpPost]
@@ -244,6 +256,12 @@ namespace CCS.Controllers
 
         public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id));
 
+        public IActionResult AcceptQuote(int id)
+        {
+            project.UpdateStatus(id, Status.Accepted, GetCurrentUserId());
+            ViewBag.Message = "Your Quoted Price was Accepted, Your Project Will Be Started Soon.";
+            return View("ProjectView", project.ShowProjectByID(id));
+        }
 
 
 

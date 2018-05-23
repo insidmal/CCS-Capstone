@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,9 +22,15 @@ namespace CCS.Models
         public string Description { get; set; }
         public List<Product> Products { get; set; }
         public List<Note> Notes { get; set; }
+        [DataType(DataType.Currency)]
         public double Quote { get; set; }
+        [DataType(DataType.Currency)]
         public double TotalDue { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime QuoteDate { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime InvoiceDue { get; set; }
         public Paid Paid { get; set; }
         public Status Progress { get; set; }
@@ -35,8 +42,8 @@ namespace CCS.Models
 
     public enum Paid
     {
-        Paid = 1,
-        Unaid = 2
+        Unpaid = 0,
+        Paid = 1
     }
 
     public enum Status

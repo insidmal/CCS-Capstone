@@ -4,20 +4,22 @@
 }
 
 
-<br />
+
 <br />
 <br>
 <center><h1>Send a Message</h1></center>
+<br /><center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
 <br>
 
 <center>
-<form method="post" class="form">
-    <input asp-for="ToUser" placeholder="Send To">
-    <input type="hidden" asp-for="FromID" />
-    <input asp-for="Subject" placeholder="Subject"/>
-    <textarea asp-for="Text" placeholder="Message"></textarea>
-    <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
-</form>
+    <form method="post" class="form">
+        <input asp-for="ToUser" placeholder="Send To">
+        <input type="hidden" asp-for="FromID" />
+        <input asp-for="Subject" placeholder="Subject" />
+        <textarea asp-for="Text" placeholder="Message"></textarea>
+        <button class="btn btn-primary" style="float: left;" type="submit" value="Submit">Submit</button>
+    </form>
+<br />
 </center>
 
 <script type="text/javascript" src="/Home/memberMessageList"></script>

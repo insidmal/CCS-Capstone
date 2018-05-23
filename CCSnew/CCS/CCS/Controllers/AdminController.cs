@@ -7,11 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CCS.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Web;
 
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/10/2018
 // CREATED BY: JOHN BELL contact@conquest-marketing.com
-// UPDATED: 04/23/2018
+// UPDATED: 05/22/2018
 // UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
 
 
@@ -31,6 +32,7 @@ namespace CCS.Controllers
         private IMessageRepository message;
         private IProjectProductsRepository prodProj;
         private INoteRepository note;
+        private ISettingRepository settings;
 
         public AdminController(UserManager<User> usrMgr,
             IUserValidator<User> userValid,
@@ -40,7 +42,8 @@ namespace CCS.Controllers
             IProjectRepository proj, 
             IProductRepository prod,
             IProjectProductsRepository prop,
-            INoteRepository nor)
+            INoteRepository nor,
+            ISettingRepository set)
         {
             userManager = usrMgr;
             userValidator = userValid;
@@ -51,6 +54,7 @@ namespace CCS.Controllers
             product = prod;
             prodProj = prop;
             note = nor;
+            settings = set;
         }
 
         #endregion
@@ -191,7 +195,17 @@ namespace CCS.Controllers
 
         #region Project Views
         //view projects
-        public IActionResult ProjectList() => View(project.ShowAllProjects());
+        public IActionResult ProjectList() {
+            List<Project> projects = project.ShowAllProjects();
+            foreach (Project p in projects)
+            {
+                if (userManager.Users.FirstOrDefault(a=>a.Id==p.CustomerID)==null) p.CustomerName = "[Deleted]";
+                else p.CustomerName = userManager.Users.FirstOrDefault(a => a.Id == p.CustomerID).UserName;
+            }
+
+            return View(projects);
+        }
+        
         public IActionResult ProjectView(int? id)
         {
             if (id == null || id == 0) return RedirectToAction("ProjectList");
@@ -203,7 +217,8 @@ namespace CCS.Controllers
                 var pj = project.ShowProjectByID((int)id);
                 foreach (Note n in pj.Notes)
                 {
-                    n.FromName = userManager.FindByIdAsync(n.From).Result.UserName;
+                    if (userManager.Users.FirstOrDefault(a => a.Id == n.From) == null) n.FromName = "[Deleted]";
+                    else n.FromName = userManager.Users.FirstOrDefault(a => a.Id == n.From).UserName;
                 }
 
                 pj.CustomerName = userManager.FindByIdAsync(pj.CustomerID).Result.UserName;
@@ -217,13 +232,22 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProjectAdd(Project p)
         {
-            p.Progress = Status.New;
-            p.CustomerID = userManager.FindByNameAsync(p.CustomerName).Result.Id;
-            project.Add(p);
-            p.Notes = new List<Note>();
-            ViewBag.Message = "Project Created";
-            return View("ProjectView", p);
-        }
+            if (userManager.Users.FirstOrDefault(a => a.UserName == p.CustomerName) != null)
+            { 
+           
+                p.Progress = Status.New;
+                p.CustomerID = userManager.Users.FirstOrDefault(a => a.UserName == p.CustomerName).Id;
+                project.Add(p);
+                p.Notes = new List<Note>();
+                ViewBag.Message = "Project Created";
+                return View("ProjectView", p);
+            }
+            else
+            {
+                ViewBag.Message = "User not Found, Please Check your Recipient and Try Again";
+                return View(p);
+            }
+        }       
 
         //add quote to project
         [HttpGet]
@@ -237,9 +261,36 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProjectQuote(int projectId, double quote)
         {
+            ViewBag.Message = "Quote Added, Message Sent to Client";
+            var p = project.ShowProjectByID(projectId);
             project.AddQuote(projectId, quote);
+            message.Add(new Message()
+            {
+                Date = DateTime.Now,
+                FromID = GetCurrentUserId(),
+                ToID = p.CustomerID,
+                Status = Read.Unread,
+                Parent = 0,
+                Subject = "Quote Added for " + p.Name,
+                Text = "We've added a quote for your project. " + HttpUtility.HtmlDecode("<a href=\"/Account/ProjectView/" + p.ID + "\"> Click Here to View your Project and see your quote.</a>")
+            });
             return View("ProjectView", project.ShowProjectByID(projectId));
 
+        }
+
+        public IActionResult UpdateStatus(int id, Status status)
+        {
+            ViewBag.MEssage = "Status Updated to " + status.ToString();
+            project.UpdateStatus(id, status, GetCurrentUserId());
+            return View("ProjectView", project.ShowProjectByID(id));
+        }
+
+        public IActionResult MarkPaid(int id)
+        {
+            var p = project.ShowProjectByID(id);
+            p.Paid = Paid.Paid;
+            project.Update(p);
+            return View("ProjectView", p);
         }
 
         #endregion
@@ -341,7 +392,23 @@ namespace CCS.Controllers
         }
         #endregion
 
+        #region Settings
+        [HttpGet]
+        public IActionResult Settings() => View(settings.GetSettings());
+        [HttpPost]
+        public IActionResult Settings(Settings s)
+        {
+            settings.UpdateSettings(s);
+            ViewBag.Message = "Your Settings Have Been Saved.";
+            return View(s);
+        }
 
-    }
+        #endregion
+
+        public string GetCurrentUserId() => userManager.GetUserAsync(HttpContext.User).Result.Id ?? 0.ToString();
+
+
+
+}
 }
 

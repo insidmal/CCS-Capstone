@@ -144,6 +144,30 @@ namespace CCS.Migrations
                     b.ToTable("ProjProd");
                 });
 
+            modelBuilder.Entity("CCS.Models.Settings", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ContactEmail");
+
+                    b.Property<string>("ContactLogin");
+
+                    b.Property<string>("ContactPassword");
+
+                    b.Property<int>("ContactPort");
+
+                    b.Property<string>("ContactSMTP");
+
+                    b.Property<int>("InvoiceDays");
+
+                    b.Property<int>("InvoiceStatus");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Settings");
+                });
+
             modelBuilder.Entity("CCS.Models.User", b =>
                 {
                     b.Property<string>("Id")

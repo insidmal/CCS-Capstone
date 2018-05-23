@@ -50,6 +50,7 @@ namespace CCS
             services.AddTransient<INoteRepository, NoteRepo>();
             services.AddTransient<IProductRepository, ProductRepo>();
             services.AddTransient<IProjectProductsRepository, ProjProdRepo>();
+            services.AddTransient<ISettingRepository, SettingRepo>();
 
 
         }
