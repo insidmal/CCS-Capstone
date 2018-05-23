@@ -1,8 +1,16 @@
 ﻿/* all the styling when the page is resized and the navbar is toggled*/
 
 @media screen and (max-width: 1250px) {
-    
 
+    .overlay a {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
 
 .navbar-custom {
     background-color: transparent;
