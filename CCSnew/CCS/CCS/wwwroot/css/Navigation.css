@@ -5,7 +5,7 @@
 
 .overlay {
     height: 100%;
-    width: 0;
+    width: 0%;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -24,7 +24,7 @@
     margin-top: 30px;
 }
 
-.overlay a {
+.overlay  a {
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
