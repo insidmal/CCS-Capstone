@@ -7,7 +7,7 @@
 
     ViewData["Title"] = "Projects";
 
-    Html.GetEnumSelectList<Status>()
+    //Html.GetEnumSelectList<Status>()
 }
 <br />
 <br />
@@ -16,26 +16,97 @@
 <br />
 <center><a asp-action="ProjectAdd" class="btn button">Create a new Project</a></center>
 <br />
+
 <div class="table-responsive">
-    <center>
-        <table cellspacing="3" class="table table-condensed">
-            <thead><tr><th>Customer</th><th>Project Name</th><th>Status</th><th>Origination Date</th></tr></thead>
+    
+    <table style="width:90%; margin-left:5%;">
+        <tr><td style="width:33%"><strong>View:</strong></td><td style="width:33%"><input type="checkbox" name="view" value="New">New</td><td style="width:33%"><input type="checkbox" name="view" value="Quoted">Quoted</td></tr>
+        <tr><td></td><td></td><td></td></tr>
 
-            @foreach (Project p in Model)
-            {
-                <tr class="clickable-row" data-href="ProjectView/@p.ID" id="@p.Progress"><td>@p.CustomerName</td><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
-            }
-        </table>
-    </center>
+        <tr><td style="width:33%"><input type="checkbox" name="view" id="Accepted" value="canafford">Accepted</td><td><input type="checkbox" name="view" value="Started">Started</td><td><input type="checkbox" name="view" value="Completed">Completed</td><td></td></tr>
+    </table>
 </div>
+    <br />
+    <div class="table-responsive">
+        <center>
+            <table cellspacing="3" class="table table-condensed">
+                <thead><tr><th>Customer</th><th>Project Name</th><th>Status</th><th>Origination Date</th></tr></thead>
+
+                @foreach (Project p in Model)
+                {
+                    <tr class="clickable-row" data-href="ProjectView/@p.ID" id="proj-@p.Progress"><td>@p.CustomerName</td><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
+                }
+            </table>
+        </center>
+    </div>
 
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".clickable-row").click(function () {
-            window.location = $(this).data("href");
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".clickable-row").click(function () {
+                window.location = $(this).data("href");
+            });
         });
-    });
-</script>
+
+
+
+
+
+        $(":checkbox").change(function () {
+            $('[id*=proj]').hide();
+
+            $('input[type=checkbox]').each(function () {
+                var show = this.value;
+
+                if (this.checked) {
+                    localStorage.setItem(show, "true");
+                    if (show != "canafford") $('[id*=' + show + ']').show();
+
+                } else localStorage.setItem(show, "false");
+
+
+
+
+            });
+
+
+        });
+
+
+
+
+        var count = 0;
+
+        $(document).ready(function () {
+            $('[id*=proj]').hide();
+            $('input[type=checkbox]').each(function () {
+                var show = this.value;
+                if (localStorage.getItem(show) == "true") {
+                    $(this).attr('checked', true);
+                    $('[id*=' + show + ']').show();
+                    count++;
+                }
+            });
+
+            if (count == 0) {
+                localStorage.setItem("New", "true");
+                localStorage.setItem("Accepted", "true");
+                localStorage.setItem("Started", "true");
+
+                $("input[value='New']").prop('checked', true);
+                $("input[value='Accepted']").prop('checked', true);
+                $("input[value='Started']").prop('checked', true);
+                $('[id*=New]').show();
+                $('[id*=Accepted]').show();
+                $('[id*=Started]').show();
+                $('[id*=Quoted]').hie();
+                $('[id*=Completed]').hide();
+
+            }
+
+        });
+
+
+    </script>
 
 
