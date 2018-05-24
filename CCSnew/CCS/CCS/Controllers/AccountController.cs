@@ -158,7 +158,35 @@ namespace CCS.Controllers
             return View(model);
         }
 
-      
+        [HttpGet]
+        public ViewResult AccountEdit() => View(userManager.Users.FirstOrDefault(a => a.Id == GetCurrentUserId()));
+
+        [HttpPost]
+        public IActionResult AccountEdit(User a)
+        {
+            var oldA = userManager.Users.FirstOrDefault(u => u.Id == a.Id);
+            if (oldA.Id == GetCurrentUserId())
+            {
+                oldA.FirstName = a.FirstName;
+                oldA.LastName = a.LastName;
+                oldA.Email = a.Email;
+                oldA.UserName = a.UserName;
+                oldA.PhoneNumber = a.PhoneNumber;
+                oldA.NormalizedUserName = a.UserName.ToUpper();
+                oldA.NormalizedEmail = a.Email.ToUpper();
+
+                userManager.UpdateAsync(a);
+                ViewBag.Message = "Account Updated";
+                return View(oldA);
+            }
+            else
+            {
+                ViewBag.Message = "An Error has Occured, your Information was Not Updated.";
+                return View(a);
+            }
+        }
+
+
         #endregion
 
         #region Message System Views
