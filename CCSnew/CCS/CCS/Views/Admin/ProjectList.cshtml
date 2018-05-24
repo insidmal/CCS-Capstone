@@ -6,6 +6,8 @@
     // JOHN BELL contact@conquest-marketing.com
 
     ViewData["Title"] = "Projects";
+
+    Html.GetEnumSelectList<Status>()
 }
 <br />
 <br />
@@ -21,7 +23,7 @@
 
             @foreach (Project p in Model)
             {
-                <tr class="clickable-row" data-href="ProjectView/@p.ID"><td>@p.CustomerName</td><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
+                <tr class="clickable-row" data-href="ProjectView/@p.ID" id="@p.Progress"><td>@p.CustomerName</td><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
             }
         </table>
     </center>
