@@ -16,6 +16,7 @@ body, html {
 
 
 
+
 /* uses font from folder instead of using installed fonts*/
 @font-face {
     font-family: MainFont;
@@ -27,10 +28,12 @@ h1 {
     color: #3771c8ff;
     font-family: 'MainFont';
     font-size: 50px;
+    
 }
 
 h2 {
     color: #3771c8ff;
+    font-family: 'MainFont';
 }
 
 h3 {
@@ -53,17 +56,19 @@ p {
     background-color: #3771c8ff;
     color: white;
     text-align: center;
+
+    
 }
 
 /* All div container styling.  The three containers being used are content, container-content and container*/
 /* the div that contains content on the webpage */
 .content {
     /*border-radius: 5px;*/
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: white;
     margin-bottom: 50px;
     min-height: 600px;
-    background-color: white;
-    width:100%;
+
+    width: 100%;
 }
 
 /* the styling for the content inside the content div */
@@ -71,19 +76,27 @@ p {
     padding-top: 110px;
     padding-right: 30px;
     padding-left: 30px;
- 
+
+
+
 }
 
 
 
 /* container for all the content on the webpage */
-.container {
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
+.container  {
+
     width: 100%;
-    height: 200px;
+    
+
 }
+
+.media-body {
+ 
+}
+
+
+
 
 
 
@@ -162,6 +175,42 @@ th {
     color: #3771c8ff;
     font-family: 'MainFont';
 }
+
+
+
+.button-toggle {
+    transition: all .5s;
+    background-color: #3771c8ff;
+    border: 2px solid #3771c8ff;
+    color: white;
+    margin-bottom:20px;
+    font-family: 'MainFont';
+}
+
+    .button-toggle:hover {
+        transition: all .5s;
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        color: #3771c8ff;
+        font-family: 'MainFont';
+    }
+
+    .button-toggle:after {
+        transition: all .5s;
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        color: #3771c8ff;
+        font-family: 'MainFont';
+    }
+
+    .button-toggle.active {
+        transition: all .5s;
+        background-color: transparent;
+        border: 2px solid #3771c8ff;
+        color: #3771c8ff;
+        font-family: 'MainFont';
+    }
+
 
 .button-danger {
     transition: all .5s;
