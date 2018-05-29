@@ -3,56 +3,79 @@
 @{
     ViewData["Title"] = "Edit Account";
 
-    //Auto Generated, hasn't been implemented in controller or tested yet
+    // CREATIVE CYBER SOLUTIONS
+    // CREATED: 05/22/2018
+    // CREATED BY: JOHN BELL contact@conquest-marketing.com
+    // UPDATED: 05/29/2018
+    // UPDATED BY: JOHN BELL contact@conquest-marketing.com
+
+
 }
-
-<h2>Edit Account</h2>
-
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AccountEdit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+<center>
+    <br />
+    <h2>Edit Account</h2>
+    <br />
+    <center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
 
 
+    <form asp-action="AccountEdit" method="post" class="form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
+        <input asp-for="Id" type="hidden" />
+        First Name
+        <input asp-for="FirstName" placeholder="First Name" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
 
+        Last Name
+        <input asp-for="LastName" placeholder="Last Name" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
 
+        Username
+        <input asp-for="UserName" placeholder="Username" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
 
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
+        Email Address
+        <input asp-for="Email" placeholder="Email Address" />
+        <span asp-validation-for="Email" class="text-danger"></span>
 
+        Phone Number
+        <input asp-for="PhoneNumber" placeholder="Phone Number" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
+        <input type="submit" value="Save" class="btn btn-default" />
 
+    </form>
+    <br />&nbsp;
+    <br />
+    <h2>Change Password</h2>
+    <br />
+    <form asp-action="AccountPasswordEdit" method="post" class="form">
+        Old Password<br />
+        <input type="password" name="oldPassword" />
+        New Password <br />
+        <input type="password" id="newPassword" name="newPassword" style="margin-bottom:0px; border-bottom:none; border-bottom-left-radius:unset;border-bottom-right-radius:unset;"/>
+        <input type="button" id="showPassword" value="Show Password" class="button btn-block" style="margin-top:0px; margin-bottom:15px;border-bottom-left-radius:4px;border-bottom-right-radius:4px;" />
+
+        <input type="submit" value="Save" class="btn btn-default" />
+
+    </form>
+
+</center>
+
+<script>
+
+    // Check javascript has loaded
+    $(document).ready(function () {
+        $('#showPassword').on('click', function () {
+            var passwordField = $('#newPassword');
+            var passwordFieldType = passwordField.attr('type');
+            if (passwordFieldType == 'password') {
+                passwordField.attr('type', 'text');
+                $(this).val('Hide Password');
+            } else {
+                passwordField.attr('type', 'password');
+                $(this).val('Show Password');
+            }
+        });
+    });
+</script>
