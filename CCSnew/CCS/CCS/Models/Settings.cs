@@ -15,6 +15,5 @@ namespace CCS.Models
         public int ContactPort { get; set; }
         public int InvoiceDays { get; set; }
         public Status InvoiceStatus { get; set; }
-        public List<Status> Statuses { get { return new List<Status> { Status.Accepted, Status.Started, Status.Completed }; } }
     }
 }
