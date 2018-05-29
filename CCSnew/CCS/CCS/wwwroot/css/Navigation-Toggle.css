@@ -1,6 +1,6 @@
 ﻿/* all the styling when the page is resized and the navbar is toggled*/
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1150px) {
 
     .overlay a {
         font-size: 20px
@@ -9,17 +9,14 @@
     .overlay .closebtn {
         font-size: 40px;
         top: 15px;
-        right: 35px;
+        right: 30px;
     }
 
-.navbar-custom {
-    background-color: transparent;
 
-}
 
 .navbar-collapse {
     background-color: #2c2f40ff;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .navbar-nav > li > a {
@@ -29,10 +26,10 @@
     transition: all .5s;
     margin-top: 6px;
     padding: 10px;
-    padding-right: 0px;
-    text-align: left;
+    padding-right: 70px;
+    text-align: center;
     width: 100px;
-    color: white;
+
 }
 
 .navbar-nav > li > a:hover {
@@ -179,4 +176,12 @@
 li.active > a dropdown {
     color: white;
 }
+
+
+
+
+  
+
+
+
 }

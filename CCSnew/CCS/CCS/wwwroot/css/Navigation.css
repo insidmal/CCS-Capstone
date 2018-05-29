@@ -4,17 +4,20 @@
 
 
 .overlay {
-    height: 100%;
-    width: 0;
+    height: 0%;
+    width: 100%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb( 18, 60, 95 );
-    background-color: rgba( 18, 60, 95, 0.99);
+    background-color: rgb( 6, 33, 54 );
+    background-color: rgba( 6, 33, 54, 0.99);
     overflow-x: hidden;
+    overflow-y: hidden;
     transition: 0.5s;
 }
+
+
 
 .overlay-content {
     position: relative;
@@ -27,21 +30,21 @@
 .overlay a {
     padding: 8px;
     text-decoration: none;
-    font-size: 36px;
+   
     color: white;
     display: block;
     transition: 0.3s;
 }
 
     .overlay a:hover, .overlay a:focus {
-        color: #082841;
+        color: #3771c8ff;
     }
 
 .overlay .closebtn {
     position: absolute;
     top: 20px;
     right: 45px;
-    font-size: 60px;
+    font-size: 30px;
 }
 
 /*logo that is displayed when regular logo no longer fits on navbar*/
