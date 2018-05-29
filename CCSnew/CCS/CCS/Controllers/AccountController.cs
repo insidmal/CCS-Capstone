@@ -174,8 +174,8 @@ namespace CCS.Controllers
                 oldA.PhoneNumber = a.PhoneNumber;
                 oldA.NormalizedUserName = a.UserName.ToUpper();
                 oldA.NormalizedEmail = a.Email.ToUpper();
-
-                userManager.UpdateAsync(a);
+                
+                userManager.UpdateAsync(oldA);
                 ViewBag.Message = "Account Updated";
                 return View(oldA);
             }
