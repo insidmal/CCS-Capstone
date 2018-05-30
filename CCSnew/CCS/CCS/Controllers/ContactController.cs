@@ -6,14 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Mail;
 using CCS.Models;
 using CCS.Repositories;
-using System.Net;
-
-// CREATIVE CYBER SOLUTIONS
-// CREATED: 05/10/2018
-// CREATED BY: YADIRA DESPAINGE PLANCHE
-// UPDATED: 05/22/2018
-// UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
-
 
 namespace CCS.Controllers
 {
@@ -26,7 +18,7 @@ namespace CCS.Controllers
         {
             setting = set;
             settings = setting.GetSettings();
-                
+
         }
 
         [HttpGet]
@@ -34,7 +26,6 @@ namespace CCS.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Index(ContactViewModel vm)
         {
@@ -43,29 +34,33 @@ namespace CCS.Controllers
                 try
                 {
                     MailMessage msz = new MailMessage();
-                    msz.From = new MailAddress(vm.Email);//Email which you are getting 
-                                                         //from contact us page 
+                    msz.From = new MailAddress(vm.Email,vm.Name);//Email which you are getting 
+                                                                 //from contact us page 
+
+                    msz.Sender = msz.From;
+                    msz.ReplyToList.Add(msz.From);
                     msz.To.Add(settings.ContactEmail);//Where mail will be sent 
-                    msz.Sender = new MailAddress(vm.Email, vm.Name);
                     msz.Subject = vm.Subject;
                     msz.Body = vm.Message;
+                    
+
                     SmtpClient smtp = new SmtpClient(settings.ContactSMTP, settings.ContactPort);
 
-                    smtp.Credentials = 
-                        new NetworkCredential(settings.ContactLogin, settings.ContactPassword);
+                    smtp.Credentials =
+                        new System.Net.NetworkCredential(settings.ContactLogin, settings.ContactPassword);
 
                     smtp.EnableSsl = true;
-                    smtp.UseDefaultCredentials = true;
+
                     smtp.Send(msz);
 
                     ModelState.Clear();
-                    ViewBag.Message = "Thank you for Contacting us.";
+                    ViewBag.Message = "Your message has been sent!";
                     smtp.Dispose();
                 }
                 catch (Exception ex)
                 {
                     ModelState.Clear();
-                    ViewBag.Message = $" Sorry an error has occured: {ex.Message}";
+                    ViewBag.Message = $"We're sorry, an error has occured.<br /> {ex.Message}";
                 }
             }
 
@@ -77,5 +72,6 @@ namespace CCS.Controllers
             return View();
         }
 
+       
     }
 }
