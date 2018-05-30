@@ -34,8 +34,11 @@ namespace CCS.Controllers
                 try
                 {
                     MailMessage msz = new MailMessage();
-                    msz.From = new MailAddress(vm.Email);//Email which you are getting 
-                                                         //from contact us page 
+                    msz.From = new MailAddress(vm.Email,vm.Name);//Email which you are getting 
+                                                                 //from contact us page 
+
+                    msz.Sender = msz.From;
+                    msz.ReplyToList.Add(msz.From);
                     msz.To.Add(settings.ContactEmail);//Where mail will be sent 
                     msz.Subject = vm.Subject;
                     msz.Body = vm.Message;
