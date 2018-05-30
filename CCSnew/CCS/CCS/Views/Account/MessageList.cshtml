@@ -4,7 +4,7 @@
 }
 
 <br />
-<br/>
+<br />
 <div class="container">
     <center><h1>Your Messages</h1></center>
     <br /><center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
@@ -16,16 +16,17 @@
 
         <div class="table-responsive">
             <table cellspacing="3" class="table table-condensed">
+                <thead>
+                    <tr><th style="background-color:transparent; color:black; border:0px solid white;">Inbox</th></tr>
 
+
+                    <tr><th>From</th><th>Subject</th><th>Date</th></tr>
+                </thead>
                 @if (Model.Any(a => a.ToID == ViewBag.UserId))
                 {
 
 
-                    <thead>
 
-                        <tr><th style="background-color:transparent; color:black; border:0px solid white;">Inbox</th></tr>
-                        <tr><th>From</th><th>Subject</th><th>Date</th></tr>
-                    </thead>
                     <tbody>
                         @foreach (Message m in @Model.Where(a => a.ToID == ViewBag.UserId))
                         {
@@ -54,7 +55,8 @@
 
                 else
                 {
-                    <center><span><h3>You have not received any messages.</h3></span></center>}
+                    <tr><td colspan="3">You have not received any messages.</td></tr>
+                }
 
 
 
@@ -62,16 +64,16 @@
         </div>
 
 
-
+        <thead>
+            <tr><th style="background-color:transparent; color:black; border:0px solid white;"><br />Sent Messages</th></tr>
+            <tr><th>To</th><th>Subject</th><th>Date</th></tr>
+        </thead>
 
         @if (Model.Any(a => a.FromID == ViewBag.UserId))
         {
 
 
-            <thead>
-                <tr><th style="background-color:transparent; color:black; border:0px solid white;"><br />Sent Messages</th></tr>
-                <tr><th>To</th><th>Subject</th><th>Date</th></tr>
-            </thead>
+
             <tbody>
                 @foreach (Message m in @Model.Where(a => a.FromID == ViewBag.UserId))
                 {
@@ -94,14 +96,13 @@
             </tbody>
 
 
-
-
         }
         else
         {
 
-            <center><h3>You have not sent any messages.</h3></center>
+            <tr><td colspan="3">You have not sent any messages.</td></tr>
         }
+
 
         </table>
 </div>
