@@ -16,7 +16,6 @@
 <center><a asp-action="ProjectRequest" class="btn button">Request a Project</a></center>
 <br />
 <center>
-    <div class="table-responsive">
         <table cellspacing="3" class="table table-condensed">
             <thead><tr><th>Project Name</th><th>Status</th><th>Origination Date</th></tr></thead>
 
@@ -25,7 +24,7 @@
                 <tr class="clickable-row" data-href="ProjectView/@p.ID"><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
             }
         </table>
-    </div>
+
 </center>
 
 
