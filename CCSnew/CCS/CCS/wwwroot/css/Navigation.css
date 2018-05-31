@@ -248,6 +248,23 @@ a:hover {
 
 .dropdown-menu {
     margin-top: 200px;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    transform: rotateX(50deg);
+    transform-origin: top;
+    opacity: 0;
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+.open .dropdown-menu {
+    opacity: 1;
+
+    transform: rotateX(0deg);
+    transform-origin: top;
+    width: 100%;
+    border: none;
 }
 
 
@@ -265,17 +282,8 @@ a:hover {
     font-family: 'MainFont';
 }
 
-.btn-primary-dropdown:hover {
-    color: #3771c8ff;
-}
 
-.dropdown {
-    color: white;
-}
 
-li.active > a dropdown {
-    color: white;
-}
 
 /* brand logo styling */
 
