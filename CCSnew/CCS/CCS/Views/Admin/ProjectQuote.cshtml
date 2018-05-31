@@ -11,13 +11,13 @@
 <br/>
 <center>
     <div style="width:20%">
-        <form method="post">
+        <form method="post" class="form">
             <input type="hidden" name="projectId" value="@Model" />
             <h2 style="text-align:left;">@ViewBag.ProjectName</h2>
             <h3 style="text-align:left;">@ViewBag.ProjectDescription</h3>
             <br />&nbsp;<br />
-            <input type="number" name="quote" style=""/><br />
-            <button class="btn btn-primary" style=" width:120px; " type="submit" value="Submit">Add a quote</button>
+            <input type="number" name="quote" /><br />
+            <button class="btn button" style=" float:left; " type="submit" value="Submit">Add a quote</button> <a asp-action="ProjectView" asp-route-id="@Model" style="float: left;margin-left:15px;" class="btn button-danger">Cancel</a>
         </form>
     </div>
 </center>

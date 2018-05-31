@@ -15,7 +15,7 @@ namespace CCS.Repositories
         List<Project> ShowAllProjects();
         List<Project> ShowProjectsByCustomer(string custID);
         List<Project> ShowProjectsByStatus(Status s);
-        Project ShowProjectByID(int id);
+        Project ShowProjectByID(int id, bool visible);
         Project Add(Project p);
         int Remove(Project p);
         int Remove(int id);

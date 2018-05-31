@@ -14,7 +14,7 @@ namespace CCS.Repositories
    public interface INoteRepository
     {
         Note AddNote(int id, Note n);
-        List<Note> GetNotesByProject(int id);
+        List<Note> GetNotesByProject(int id, bool visible);
         Note UpdateNote(Note n);
         int RemoveNote(Note n);
         Note GetNote(int id);

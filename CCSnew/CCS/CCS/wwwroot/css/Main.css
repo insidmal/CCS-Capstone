@@ -264,7 +264,7 @@ th {
 
 /* form input styling */
 
-input[type=text], select, textarea {
+input[type=text], [type=number], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;

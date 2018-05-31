@@ -61,6 +61,7 @@
 @if (Model.Notes.Count > 0)
 {
     <center>
+        <br />
         <div style="background-color:#f4f4f4; min-width:50%; max-width:800px; padding:20px;">
 
             <h3>Invoice Notes</h3>
@@ -68,11 +69,11 @@
             <table class="table table-condensed">
 
                 @foreach (Note n in Model.Notes)
-                {
+            {
 
-                    <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
+                <tr><td>@n.Date</td><td>@n.FromName</td><td>@n.Text</td></tr>
 
-                }
+        }
             </table>
             <br />
         </div>

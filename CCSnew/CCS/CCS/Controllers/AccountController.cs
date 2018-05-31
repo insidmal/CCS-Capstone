@@ -21,7 +21,7 @@ namespace CCS.Controllers
 
         #region var and constructor
 
-
+        const bool CLIENT = true;
         private IProjectRepository project;
         private IProductRepository product;
         private UserManager<User> userManager;
@@ -322,13 +322,13 @@ namespace CCS.Controllers
             return View("ProjectList", project.ShowProjectsByCustomer(GetCurrentUserId()));
         }
 
-        public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id));
+        public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id, CLIENT));
 
         public IActionResult AcceptQuote(int id)
         {
             project.UpdateStatus(id, Status.Accepted, GetCurrentUserId());
             ViewBag.Message = "Your Quoted Price was Accepted, Your Project Will Be Started Soon.";
-            return View("ProjectView", project.ShowProjectByID(id));
+            return View("ProjectView", project.ShowProjectByID(id, CLIENT));
         }
 
 
