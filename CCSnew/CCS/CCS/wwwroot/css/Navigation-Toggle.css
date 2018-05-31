@@ -169,18 +169,40 @@
     overflow: hidden !important;
 }
 
-.dropdown {
-    color: white;
-}
 
-li.active > a dropdown {
-    color: white;
+.content {
+    
 }
 
 
 
 
-  
+    .dropdown-menu-toggle {
+        opacity: 0;
+        height: 0px;
+        width: 220px;
+        border: none;
+        margin: 0 auto;
+    }
+
+    .open .dropdown-menu-toggle {
+        background-color: white;
+        color: black;
+        opacity: 1;
+        height: 200px;
+        width: 220px;
+        border: none;
+        margin: 0 auto;
+    }
+
+
+
+    .open .dropdown-item-toggle {
+        color: black;
+        padding-bottom: 1px;
+        text-align: center;
+        margin: 0 auto;
+    }
 
 
 

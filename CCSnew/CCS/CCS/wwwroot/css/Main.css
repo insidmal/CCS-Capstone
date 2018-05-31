@@ -308,11 +308,21 @@ input[type=submit]:hover {
     cursor:pointer;
 }
 
+.text {
+    width:40%;
+}
+
 
 @media screen and (max-width: 1000px) {
     .container-content {
-        padding: 0px;
         padding-top: 110px;
-        width: 100%;
+        margin:0px;
+        padding-right: 0px;
+        padding-left: 0px;
+        
+    }
+
+    .text {
+        width: 90%;
     }
 }
