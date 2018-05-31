@@ -69,6 +69,7 @@
                     @if (User.IsInRole("Administrator"))
 
             {
+
                 <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
                 <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
                 <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ProductList">View Products</a>
@@ -76,6 +77,7 @@
                 <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ViewUsers">View Users</a>
                 <a class="dropdown-item-toggle" asp-controller="RoleAdmin" asp-action="Index">View Roles</a>
                 <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="Settings">Settings</a>
+
 
     }
     else
@@ -149,7 +151,7 @@
                         @if (User.IsInRole("Administrator"))
 
                 {
-                    <a class="dropdown-item" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
+                    <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
                     <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
                     <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductList">View Products</a>
                     <br /><a class="dropdown-item" asp-controller="Admin" asp-action="ProductNew">New Product</a>

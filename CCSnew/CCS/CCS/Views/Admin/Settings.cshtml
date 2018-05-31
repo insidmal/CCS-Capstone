@@ -5,7 +5,7 @@
     // CREATIVE CYBER SOLUTIONS
     // CREATED 05/22/2018
     // CREATED BY JOHN BELL contact@conquest-marketing.com
-    // UPDATED 05/23/2018
+    // UPDATED 05/29/2018
     // UPDATED BY JOHN BELL contact@conquest-marketing.com
 }
 
@@ -19,23 +19,23 @@
         <input asp-for="ID" type="hidden" /> 
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <label asp-for="ContactEmail" class="control-label">Email Address</label>
-        <input asp-for="ContactEmail" class="form-control" />
+        <input asp-for="ContactEmail" />
         <span asp-validation-for="ContactEmail" class="text-danger"></span>
 
         <label asp-for="ContactSMTP" class="control-label">SMTP Server</label>
-        <input asp-for="ContactSMTP" class="form-control" />
+        <input asp-for="ContactSMTP" />
         <span asp-validation-for="ContactSMTP" class="text-danger"></span>
 
         <label asp-for="ContactPort" class="control-label">SMTP Port</label>
-        <input asp-for="ContactPort" class="form-control" />
+        <input asp-for="ContactPort" />
         <span asp-validation-for="ContactPort" class="text-danger"></span>
 
         <label asp-for="ContactLogin" class="control-label">SMTP Username</label>
-        <input asp-for="ContactLogin" class="form-control" />
+        <input asp-for="ContactLogin" />
         <span asp-validation-for="ContactLogin" class="text-danger"></span>
 
         <label asp-for="ContactPassword" class="control-label">SMTP Password</label>
-        <input asp-for="ContactPassword" class="form-control" />
+        <input asp-for="ContactPassword" />
         <span asp-validation-for="ContactPassword" class="text-danger"></span>
         <p>&nbsp;</p>
 
@@ -45,19 +45,19 @@
         <br />Invoice due dates are set dynamically based on the preferences below.
         <br />&nbsp;<br />
         <label asp-for="InvoiceStatus" class="control-label">Create Invoice when Project Status is Updated to:</label>
-        <select asp-for="InvoiceStatus" asp-items="Html.GetEnumSelectList<Status>()" class="form-control"></select>
+        <select asp-for="InvoiceStatus" asp-items="Html.GetEnumSelectList<Status>()"></select>
         <span asp-validation-for="InvoiceStatus" class="text-danger"></span>
 
 
         <label asp-for="InvoiceDays" class="control-label">Number of days invoice is due after creation:</label>
         <input asp-for="InvoiceDays" class="form-control" />
         <span asp-validation-for="InvoiceDays" class="text-danger"></span>
+        <br />
 
-
-        <input type="submit" value="Save" class="btn btn-default" />
+        <button type="submit" value="Save" class="btn button" style="float:left;">Save Settings</button>
 
     </form>
-
+    <br />&nbsp;<br />
 </center>
 
 

@@ -16,7 +16,7 @@ namespace CCS.Repositories
     {
         private List<Note> notes = new List<Note>();
 
-        public List<Note> GetNotesByProject(int id) => notes.Where(a => a.ProjectID == id).ToList<Note>();
+        public List<Note> GetNotesByProject(int id, bool visible) => notes.Where(a => a.ProjectID == id && a.Visible==visible).ToList<Note>();
         public int RemoveNote(Note n)
         {
             notes.Remove(n);
@@ -41,5 +41,7 @@ namespace CCS.Repositories
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

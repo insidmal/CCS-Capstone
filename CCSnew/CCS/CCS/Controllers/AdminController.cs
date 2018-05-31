@@ -23,6 +23,7 @@ namespace CCS.Controllers
 
         #region var dec and constructor
 
+        const bool CLIENT = false;
         private IProjectRepository project;
         private IProductRepository product;
         private UserManager<User> userManager;
@@ -214,13 +215,13 @@ namespace CCS.Controllers
             else
             {
 
-                var pj = project.ShowProjectByID((int)id);
+                var pj = project.ShowProjectByID((int)id,CLIENT);
                 foreach (Note n in pj.Notes)
                 {
                     if (userManager.Users.FirstOrDefault(a => a.Id == n.From) == null) n.FromName = "[Deleted]";
                     else n.FromName = userManager.Users.FirstOrDefault(a => a.Id == n.From).UserName;
                 }
-
+                ViewBag.Message = TempData["Message"];
                 pj.CustomerName = userManager.FindByIdAsync(pj.CustomerID).Result.UserName;
                 return View(pj);
             }
@@ -239,7 +240,7 @@ namespace CCS.Controllers
                 p.CustomerID = userManager.Users.FirstOrDefault(a => a.UserName == p.CustomerName).Id;
                 project.Add(p);
                 p.Notes = new List<Note>();
-                ViewBag.Message = "Project Created";
+                TempData["Message"] = "Project Created!";
                 return View("ProjectView", p);
             }
             else
@@ -253,7 +254,7 @@ namespace CCS.Controllers
         [HttpGet]
         public IActionResult ProjectQuote(int id)
         {
-            Project p = project.ShowProjectByID(id);
+            Project p = project.ShowProjectByID(id,CLIENT);
             ViewBag.ProjectName = p.Name;
             ViewBag.ProjectDescription = p.Description;
             return View(id);
@@ -261,8 +262,8 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProjectQuote(int projectId, double quote)
         {
-            ViewBag.Message = "Quote Added, Message Sent to Client";
-            var p = project.ShowProjectByID(projectId);
+            TempData["Message"] = "Quote Added, Message Sent to Client!";
+            var p = project.ShowProjectByID(projectId,CLIENT);
             project.AddQuote(projectId, quote);
             message.Add(new Message()
             {
@@ -274,23 +275,24 @@ namespace CCS.Controllers
                 Subject = "Quote Added for " + p.Name,
                 Text = "We've added a quote for your project. " + HttpUtility.HtmlDecode("<a href=\"/Account/ProjectView/" + p.ID + "\"> Click Here to View your Project and see your quote.</a>")
             });
-            return View("ProjectView", project.ShowProjectByID(projectId));
+            return View("ProjectView", project.ShowProjectByID(projectId, CLIENT));
 
         }
 
         public IActionResult UpdateStatus(int id, Status status)
         {
-            ViewBag.MEssage = "Status Updated to " + status.ToString();
+            TempData["Message"] = "Status Updated to " + status.ToString();
             project.UpdateStatus(id, status, GetCurrentUserId());
-            return View("ProjectView", project.ShowProjectByID(id));
+            return View("ProjectView", project.ShowProjectByID(id,CLIENT));
         }
 
         public IActionResult MarkPaid(int id)
         {
-            var p = project.ShowProjectByID(id);
+            var p = project.ShowProjectByID(id,CLIENT);
             p.Paid = Paid.Paid;
             project.Update(p);
-            return View("ProjectView", p);
+            TempData["Message"] = "Project Marked as Paid!";
+            return View("ProjectView", project.ShowProjectByID(id, CLIENT));
         }
 
         #endregion
@@ -309,7 +311,8 @@ namespace CCS.Controllers
         public IActionResult ProductAdd(int ProjectId, int ProductId, int Qty)
         {
             prodProj.AddProjectProductId(ProjectId, ProductId, Qty);
-            return View("ProjectView", project.ShowProjectByID(ProjectId));
+            TempData["Message"] = "Product Added to Project";
+            return View("ProjectView", project.ShowProjectByID(ProjectId,CLIENT));
         }
 
         [HttpGet]
@@ -318,8 +321,9 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProjProdEdit(ProjectProducts pp)
         {
+            TempData["Message"] = "Product Updated";
             prodProj.UpdateProjectProductQty(pp);
-            return View("ProjectView", project.ShowProjectByID(pp.ProjectID));
+            return View("ProjectView", project.ShowProjectByID(pp.ProjectID, CLIENT));
         }
 
         #endregion
@@ -341,6 +345,7 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult ProductNew(Product p)
         {
+            TempData["Message"] = "Product Added";
             product.AddProduct(p);
             return View("ProductView", p);
         }
@@ -377,8 +382,8 @@ namespace CCS.Controllers
         {
             n.Date = DateTime.Now;
             note.AddNote(n.ProjectID, n);
-            ViewBag.Message = "Note Added!";
-            return RedirectToAction("ProjectView", n.ProjectID);
+            TempData["Message"] = "Note Added!";
+            return View("ProjectView", project.ShowProjectByID(n.ProjectID, CLIENT));
         }
 
         [HttpGet]
@@ -387,8 +392,8 @@ namespace CCS.Controllers
         public IActionResult NoteEdit(Note n)
         {
             note.UpdateNote(n);
-            ViewBag.Message = "Message Updated!";
-            return RedirectToAction("ProjectView", n.ProjectID);
+            TempData["Message"] = "Project Note Updated!";
+            return View("ProjectView", project.ShowProjectByID(n.ProjectID, CLIENT));
         }
         #endregion
 

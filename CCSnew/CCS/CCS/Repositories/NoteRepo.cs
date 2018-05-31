@@ -26,8 +26,10 @@ namespace CCS.Repositories
             Note note = new Note();
             note.ProjectID = id;
             note.From = n.From;
-            note.Date = DateTime.Now;
+            note.Date = n.Date;
             note.Text = n.Text;
+            note.Visible = n.Visible;
+
             context.Note.Add(note);
             context.SaveChanges();
             return n;
@@ -35,10 +37,11 @@ namespace CCS.Repositories
 
         public Note GetNote(int id) => context.Note.FirstOrDefault(a => a.ID == id);
 
-        public List<Note> GetNotesByProject(int id)
+        public List<Note> GetNotesByProject(int id, bool visible)
         {
             List<Note> ln = new List<Note>();
-            ln = context.Note.Where(a => a.ProjectID == id).ToList();
+            if (visible == true) ln = context.Note.Where(a => a.ProjectID == id && a.Visible==visible).ToList();
+            else ln = context.Note.Where(a => a.ProjectID == id).ToList();
             foreach (Note n in ln)
             {
                 if (context.Users.FirstOrDefault(a => a.Id == n.From) == null) n.FromName = "[Deleted]";

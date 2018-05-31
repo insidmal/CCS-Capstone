@@ -19,20 +19,20 @@
 <center><h1>Add a Product</h1></center>
 <br/>
 <center>
-<form method="post" class="form">
-    <input name="ProjectId" value="@ViewBag.Project" style="width:30px" type="hidden" />
-    <select name="ProductId" class="form-control" width="30">
-        @foreach (Product p in Model)
+    <form method="post" class="form">
+        <input name="ProjectId" value="@ViewBag.Project" style="width:30px" type="hidden" />
+        <select name="ProductId" class="form-control" width="30">
+            @foreach (Product p in Model)
         {
             <option value="@p.ID">@p.Name — $@p.Price</option>;
-        }
+    }
 
 
-    </select>
+        </select>
 
-    <input name="Qty" type="text" placeholder="Quantity"/>
-    <br />
-    <br />
-<button class="btn btn-primary" style="float: left; width:120px;" type="submit" value="Submit">Add Product</button>
-</form>
+        <input name="Qty" type="text" placeholder="Quantity" />
+        <br />
+        <br />
+        <button class="btn button" style="float: left;" type="submit" value="Submit">Add Product</button> <a asp-action="ProductList" style="float: left;margin-left:15px;" class="btn button-danger">Cancel</a>
+    </form>
 </center>

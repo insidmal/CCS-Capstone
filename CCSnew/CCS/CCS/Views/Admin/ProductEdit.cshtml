@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Edit Product";
 }
+<br />
 <center>
     <h1>Edit Product</h1>
     <div asp-validation-summary=" All" class="text-danger"></div>
@@ -12,6 +13,6 @@
         <textarea asp-for="Description" placeholder="Description"></textarea><br />&nbsp;<br />
         <label asp-for="Price" placeholder="Price">Price</label><br />
         <input asp-for="Price" placeholder="Price" type="text" />
-        <input type="submit" value="Add Product" />
+        <button type="submit" class="btn button" style="float: left;" value="Update Product">Update Product</button><a asp-action="ProductList" style="float: left;margin-left:15px;" class="btn button-danger">Cancel</a>
     </form>
 </center>

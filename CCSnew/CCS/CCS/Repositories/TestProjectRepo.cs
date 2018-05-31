@@ -12,6 +12,7 @@ namespace CCS.Repositories
 
         IProductRepository products = new TestProductRepo();
         IProjectProductsRepository projProds = new TestProjProdRepo();
+        INoteRepository notes = new TestNoteRepo();
 
         //public TestProjectRepo()
         //{
@@ -35,7 +36,7 @@ namespace CCS.Repositories
 
         public Project AddQuote(int id, double q)
         {
-            Project oldP = ShowProjectByID(id);
+            Project oldP = ShowProjectByID(id,true);
             projects.Remove(oldP);
             oldP.Quote = q;
             oldP.Progress = Status.Quoted;
@@ -54,7 +55,7 @@ namespace CCS.Repositories
 
         public int Remove(int id)
         {
-            Project p = ShowProjectByID(id);
+            Project p = ShowProjectByID(id,true);
             projects.Remove(p);
             return 1;
         }
@@ -62,10 +63,11 @@ namespace CCS.Repositories
 
 
         public List<Project> ShowAllProjects() => projects;
-        public Project ShowProjectByID(int id) {
+        public Project ShowProjectByID(int id, bool visible) {
             Project proj = projects.FirstOrDefault(a => a.ID == id);
 
             proj.Products= projProds.GetProjectProducts(id);
+            proj.Notes = notes.GetNotesByProject(id, true);
 
 
             return proj;
@@ -75,7 +77,7 @@ namespace CCS.Repositories
         public List<Project> ShowProjectsByStatus(Status s) => projects.Where(a => a.Progress == s).ToList();
         public Project Update(Project p)
         {
-            Project oldP = ShowProjectByID(p.ID);
+            Project oldP = ShowProjectByID(p.ID,true);
             projects.Remove(oldP);
             oldP.Description = p.Description;
             oldP.InvoiceDue = p.InvoiceDue;
@@ -87,7 +89,7 @@ namespace CCS.Repositories
 
         public Project UpdateStatus(int id, Status s, string UserId)
         {
-            Project oldP = ShowProjectByID(id);
+            Project oldP = ShowProjectByID(id,true);
             projects.Remove(oldP);
             oldP.Progress = s;
             projects.Add(oldP);

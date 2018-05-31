@@ -36,7 +36,7 @@ namespace CCS.Repositories
 
         public Project AddQuote(int id, double q)
         {
-            Project oldP = ShowProjectByID(id);
+            Project oldP = ShowProjectByID(id,true);
             oldP.Quote = q;
             oldP.Progress = Status.Quoted;
             oldP.QuoteDate = DateTime.Now;
@@ -59,10 +59,10 @@ namespace CCS.Repositories
         }
 
         public List<Project> ShowAllProjects() => context.Project.ToList();
-        public Project ShowProjectByID(int id)
+        public Project ShowProjectByID(int id, bool visible)
         {
             Project p = context.Project.FirstOrDefault(a => a.ID == id);
-            p.Notes = notes.GetNotesByProject(id);
+            p.Notes = notes.GetNotesByProject(id,visible);
             p.Products = projProd.GetProjectProducts(id);
             p.TotalDue = p.Products.Sum(a => a.Price);
             return p;
@@ -71,7 +71,7 @@ namespace CCS.Repositories
         public List<Project> ShowProjectsByStatus(Status s) => context.Project.Where(a => a.Progress == s).ToList();
         public Project Update(Project p)
         {
-            Project oldP = ShowProjectByID(p.ID);
+            Project oldP = ShowProjectByID(p.ID,true);
             oldP.Description = p.Description;
             oldP.InvoiceDue = p.InvoiceDue;
             oldP.Quote = p.Quote;
@@ -83,7 +83,7 @@ namespace CCS.Repositories
 
         public Project UpdateStatus(int id, Status s, string UserId)
         {
-            Project oldP = ShowProjectByID(id);
+            Project oldP = ShowProjectByID(id,true);
             oldP.Progress = s;
             Settings set = context.Settings.FirstOrDefault();
 
@@ -93,7 +93,7 @@ namespace CCS.Repositories
             }
 
             context.Project.Update(oldP);
-            notes.AddNote(id, new Note() { Date = DateTime.Now, Text = "Project Status Updated: " + s.ToString(), From=UserId });
+            notes.AddNote(id, new Note() { Date = DateTime.Now, Text = "Project Status Updated: " + s.ToString(), From=UserId, Visible=true });
             return oldP;
         }
     }

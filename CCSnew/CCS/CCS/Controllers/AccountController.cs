@@ -16,115 +16,115 @@ namespace CCS.Controllers
         // CREATIVE CYBER SOLUTIONS
         // CREATED: 04/10/2018
         // CREATED BY: JOHN BELL contact@conquest-marketing.com
-        // UPDATED: 05/02/2018
+        // UPDATED: 05/29/2018
         // UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
         #region var and constructor
 
-
+        const bool CLIENT = true;
         private IProjectRepository project;
-            private IProductRepository product;
-            private UserManager<User> userManager;
-            private SignInManager<User> signInManager;
-            private IUserValidator<User> userValidator;
-            private IPasswordValidator<User> passwordValidator;
-            private IPasswordHasher<User> passwordHasher;
-            private IMessageRepository message;
-            private IProjectProductsRepository prodProj;
-            private INoteRepository note;
+        private IProductRepository product;
+        private UserManager<User> userManager;
+        private SignInManager<User> signInManager;
+        private IUserValidator<User> userValidator;
+        private IPasswordValidator<User> passwordValidator;
+        private IPasswordHasher<User> passwordHasher;
+        private IMessageRepository message;
+        private IProjectProductsRepository prodProj;
+        private INoteRepository note;
 
-            public AccountController(UserManager<User> usrMgr,
-                SignInManager<User> signinMgr,
-                IUserValidator<User> userValid,
-                IPasswordValidator<User> passValid,
-                IPasswordHasher<User> passwordHash,
-                IMessageRepository repos,
-                IProjectRepository proj,
-                IProductRepository prod,
-                IProjectProductsRepository prop,
-                INoteRepository nor)
-            {
-                signInManager = signinMgr;
-                userManager = usrMgr;
-                userValidator = userValid;
-                passwordValidator = passValid;
-                passwordHasher = passwordHash;
-                message = repos;
-                project = proj;
-                product = prod;
-                prodProj = prop;
-                note = nor;
-            }
+        public AccountController(UserManager<User> usrMgr,
+            SignInManager<User> signinMgr,
+            IUserValidator<User> userValid,
+            IPasswordValidator<User> passValid,
+            IPasswordHasher<User> passwordHash,
+            IMessageRepository repos,
+            IProjectRepository proj,
+            IProductRepository prod,
+            IProjectProductsRepository prop,
+            INoteRepository nor)
+        {
+            signInManager = signinMgr;
+            userManager = usrMgr;
+            userValidator = userValid;
+            passwordValidator = passValid;
+            passwordHasher = passwordHash;
+            message = repos;
+            project = proj;
+            product = prod;
+            prodProj = prop;
+            note = nor;
+        }
 
         #endregion
 
         #region Account Functions
         [Authorize]
-            public IActionResult Index() => View(GetData(nameof(Index)));
+        public IActionResult Index() => View(GetData(nameof(Index)));
 
-            [Authorize(Roles = "Users")]
-            public IActionResult OtherAction() => View("Index",
-                GetData(nameof(OtherAction)));
+        [Authorize(Roles = "Users")]
+        public IActionResult OtherAction() => View("Index",
+            GetData(nameof(OtherAction)));
 
-            private Dictionary<string, object> GetData(string actionName) =>
-                new Dictionary<string, object>
-                {
-                    ["Action"] = actionName,
-                    ["User"] = HttpContext.User.Identity.Name,
-                    ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
-                    ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
-                    ["In Users Role"] = HttpContext.User.IsInRole("Users")
-                };
-
-            [AllowAnonymous]
-            public IActionResult Login(string returnUrl)
+        private Dictionary<string, object> GetData(string actionName) =>
+            new Dictionary<string, object>
             {
-                ViewBag.returnUrl = returnUrl;
-                return View();
-            }
+                ["Action"] = actionName,
+                ["User"] = HttpContext.User.Identity.Name,
+                ["Authenticated"] = HttpContext.User.Identity.IsAuthenticated,
+                ["Auth Type"] = HttpContext.User.Identity.AuthenticationType,
+                ["In Users Role"] = HttpContext.User.IsInRole("Users")
+            };
 
-            [HttpPost]
-            [AllowAnonymous]
-            [ValidateAntiForgeryToken]
-            public async Task<IActionResult> Login(LoginModel details,
-                string returnUrl)
+        [AllowAnonymous]
+        public IActionResult Login(string returnUrl)
+        {
+            ViewBag.returnUrl = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginModel details,
+            string returnUrl)
+        {
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                User user = await userManager.FindByEmailAsync(details.Email);
+                if (user != null)
                 {
-                    User user = await userManager.FindByEmailAsync(details.Email);
-                    if (user != null)
+                    await signInManager.SignOutAsync();
+                    Microsoft.AspNetCore.Identity.SignInResult result =
+                        await signInManager.PasswordSignInAsync(
+                            user, details.Password, false, false);
+                    if (result.Succeeded)
                     {
-                        await signInManager.SignOutAsync();
-                        Microsoft.AspNetCore.Identity.SignInResult result =
-                            await signInManager.PasswordSignInAsync(
-                                user, details.Password, false, false);
-                        if (result.Succeeded)
-                        {
-                            return Redirect(returnUrl ?? "/Account");
-                        }
+                        return Redirect(returnUrl ?? "/Account");
                     }
-                    ModelState.AddModelError(nameof(LoginModel.Email),
-                        "Invalid user or password");
                 }
-                return View(details);
+                ModelState.AddModelError(nameof(LoginModel.Email),
+                    "Invalid user or password");
             }
+            return View(details);
+        }
 
-            [Authorize]
-            public async Task<IActionResult> Logout()
-            {
-                await signInManager.SignOutAsync();
-                return RedirectToAction("Index", "Home");
-            }
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
 
-            [AllowAnonymous]
-            public IActionResult AccessDenied()
-            {
-                return View();
-            }
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
 
-            [HttpGet]
-            public ViewResult Register() => View();
+        [HttpGet]
+        public ViewResult Register() => View();
 
 
         [HttpPost]
@@ -158,7 +158,75 @@ namespace CCS.Controllers
             return View(model);
         }
 
-      
+        [HttpGet]
+        public ViewResult AccountEdit() => View(userManager.Users.FirstOrDefault(a => a.Id == GetCurrentUserId()));
+
+        [HttpPost]
+        public async Task<IActionResult> AccountEdit(User a)
+        {
+            var oldA = await userManager.FindByIdAsync(a.Id);
+            if (oldA.Id == GetCurrentUserId())
+            {
+                oldA.FirstName = a.FirstName;
+                oldA.LastName = a.LastName;
+                oldA.Email = a.Email;
+                oldA.UserName = a.UserName;
+                oldA.PhoneNumber = a.PhoneNumber;
+                oldA.NormalizedUserName = a.UserName.ToUpper();
+                oldA.NormalizedEmail = a.Email.ToUpper();
+
+
+                await userManager.UpdateAsync(oldA);
+                ViewBag.Message = "Account Updated";
+                return View(oldA);
+            }
+            else
+            {
+                ViewBag.Message = "An Error has Occured, your Information was Not Updated.";
+                return View(a);
+            }
+        }
+
+        public async Task<IActionResult> AccountPasswordEdit(string oldPassword, string newPassword)
+
+        {
+            try
+            {
+                var oldUser = await userManager.FindByIdAsync(GetCurrentUserId());
+                var newUser = await userManager.FindByIdAsync(GetCurrentUserId());
+
+                var validOldPass = await passwordValidator.ValidateAsync(userManager, oldUser, oldPassword);
+
+                if (validOldPass.Succeeded)
+                {
+                    if (oldUser.PasswordHash == newUser.PasswordHash)
+                    {
+                        if (validOldPass.Succeeded)
+                        {
+                            var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
+
+                            ViewBag.Message = "Password Updated";
+                            await userManager.UpdateAsync(newUser);
+                        }
+                        else
+                        {
+                            ViewBag.Message = "Password Could Not Be Updated";
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Old Password is Incorrect.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message;
+            }
+            return View("AccountEdit", await userManager.FindByIdAsync(GetCurrentUserId()));
+        }
+
+
         #endregion
 
         #region Message System Views
@@ -254,13 +322,13 @@ namespace CCS.Controllers
             return View("ProjectList", project.ShowProjectsByCustomer(GetCurrentUserId()));
         }
 
-        public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id));
+        public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id, CLIENT));
 
         public IActionResult AcceptQuote(int id)
         {
             project.UpdateStatus(id, Status.Accepted, GetCurrentUserId());
             ViewBag.Message = "Your Quoted Price was Accepted, Your Project Will Be Started Soon.";
-            return View("ProjectView", project.ShowProjectByID(id));
+            return View("ProjectView", project.ShowProjectByID(id, CLIENT));
         }
 
 
