@@ -20,7 +20,7 @@
         <center><p>Invoiced Total: $@Model.TotalDue</p></center>
         <center>
             <p>
-                Status: @Model.Progress<br />
+                Status: @Model.Progress<br />&nbsp;<br />
                 @if (Model.Progress == Status.Accepted)
             {<a asp-action="UpdateStatus" asp-route-id="@Model.ID" asp-route-status="@Status.Started" class="btn button">Mark as Started</a>}
         else if (Model.Progress == Status.Started)
@@ -76,7 +76,7 @@ else if (Model.Paid == Paid.Unpaid)
                 @foreach (Note n in Model.Notes)
                 {
 
-                    <tr><td>@n.Date</td>&nbsp;<td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" asp-route-id="@n.ID">Edit</a></td></tr>
+                    <tr><td>@n.Date</td>&nbsp;<td>@n.FromName</td><td>@n.Text</td><td><a asp-action="NoteEdit" class="btn button" asp-route-id="@n.ID">Edit</a></td></tr>
 
 
                 }
