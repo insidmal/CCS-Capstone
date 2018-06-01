@@ -2,6 +2,21 @@
 
 @media screen and (max-width: 1150px) {
 
+    body, html {
+        /* background image for the website */
+        background-image: url('/images/background.png');
+        /* Full height */
+        height: 100%;
+        /* fits the background image to the screen when resizing */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+    }
+
+
+
     .overlay a {
         font-size: 20px
     }
@@ -183,16 +198,21 @@
         width: 220px;
         border: none;
         margin: 0 auto;
+        padding-bottom: 1px;
+        font-size: 15px;
     }
 
     .open .dropdown-menu-toggle {
         background-color: white;
         color: black;
         opacity: 1;
-        height: 200px;
-        width: 220px;
+        height: 160px;
+        width: 170px;
         border: none;
         margin: 0 auto;
+        margin-bottom: 15px;
+        font-size: 15px;
+        padding-bottom: 1px;
     }
 
 
@@ -202,6 +222,7 @@
         padding-bottom: 1px;
         text-align: center;
         margin: 0 auto;
+        font-size: 15px;
     }
 
 
