@@ -2,6 +2,8 @@
 
 @media screen and (max-width: 1150px) {
 
+
+
     .overlay a {
         font-size: 20px
     }
@@ -183,16 +185,21 @@
         width: 220px;
         border: none;
         margin: 0 auto;
+        padding-bottom: 1px;
+        font-size: 15px;
     }
 
     .open .dropdown-menu-toggle {
         background-color: white;
         color: black;
         opacity: 1;
-        height: 200px;
-        width: 220px;
+        height: 160px;
+        width: 170px;
         border: none;
         margin: 0 auto;
+        margin-bottom: 15px;
+        font-size: 15px;
+        padding-bottom: 1px;
     }
 
 
@@ -202,6 +209,7 @@
         padding-bottom: 1px;
         text-align: center;
         margin: 0 auto;
+        font-size: 15px;
     }
 
 
