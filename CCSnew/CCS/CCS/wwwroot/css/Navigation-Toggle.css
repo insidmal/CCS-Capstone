@@ -2,6 +2,19 @@
 
 @media screen and (max-width: 1150px) {
 
+    body, html {
+        /* background image for the website */
+        background-image: url('/images/background.png');
+        /* Full height */
+        height: 100%;
+        /* fits the background image to the screen when resizing */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+    }
+
 
 
     .overlay a {

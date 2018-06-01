@@ -7,7 +7,7 @@
     height: 0%;
     width: 100%;
     position: fixed;
-    z-index: 1000;
+    z-index: 500;
     top: 0;
     left: 0;
     background-color: rgb( 6, 33, 54 );
@@ -15,7 +15,6 @@
     overflow-x: hidden;
     overflow-y: hidden;
     transition: 0.5s;
-
 }
 
 
@@ -26,7 +25,6 @@
     width: 100%;
     text-align: center;
     margin-top: 30px;
-
 }
 
 .overlay a {
@@ -294,7 +292,6 @@ a:hover {
     
     padding-right: 50px;
     padding-left: 20px;
-    z-index:1000;
 }
 
     .navbar-brand > img {

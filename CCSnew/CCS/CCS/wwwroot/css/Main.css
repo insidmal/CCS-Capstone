@@ -342,9 +342,17 @@ input[type=submit]:hover {
     .container-content {
         padding-top: 110px;
         margin:0px;
+
         padding-right: 0px;
         padding-left: 0px;
+
         
+    }
+
+    .container {
+        margin: 0px;
+        padding-right: 0px;
+        padding-left: 0px;
     }
 
     .services-container {
