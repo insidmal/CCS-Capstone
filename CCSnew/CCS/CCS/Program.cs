@@ -25,7 +25,7 @@ namespace CCS
                 try
                 {
                     // Requires using RazorPagesMovie.Models;
-                    SeedData.Initialize(services);
+                    SeedData.InitializeAsync(services);
                 }
                 catch (Exception ex)
                 {
