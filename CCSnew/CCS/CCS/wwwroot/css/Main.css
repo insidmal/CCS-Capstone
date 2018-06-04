@@ -13,8 +13,10 @@ body, html {
 
 }
 
-
-
+.computer_image {
+    width: 100%;
+    height: auto;
+}
 
 .center-img {
     display: block;
@@ -25,9 +27,6 @@ body, html {
 .center-text {
     text-align:center;
 }
-
-
-
 
 
 /* uses font from folder instead of using installed fonts*/
@@ -89,8 +88,6 @@ p {
     padding-right: 30px;
     padding-left: 30px;
 
-
-
 }
 
 
@@ -99,15 +96,12 @@ p {
 .container  {
 
     width: 100%;
-    
-
+   
 }
 
 .media-body {
  
 }
-
-
 
 
 
