@@ -72,6 +72,8 @@ namespace CCS.Repositories
                     admin.NormalizedEmail = ("admin@creativecybersolutions.com").ToUpper();
                     userStore.CreateAsync(admin);
 
+                    userManager.AddToRoleAsync(admin, "Administrator");
+
                     context.SaveChanges();
 
                 }
