@@ -12,12 +12,12 @@ namespace CCS.Repositories
 {
     public class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static async Task Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new AppIdentityDbContext(
                 serviceProvider.GetRequiredService<DbContextOptions<AppIdentityDbContext>>()))
             {
-
+                context.Database.EnsureCreated();
 
                 UserManager<User> userManager = serviceProvider.GetRequiredService<UserManager<User>>();
                 RoleManager<IdentityRole> roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -58,9 +58,9 @@ namespace CCS.Repositories
 
                             Nrole = new IdentityRole(role);
                             Nrole.NormalizedName = role.ToUpper();
-                            roleStore.CreateAsync(Nrole);
+                            await roleStore.CreateAsync(Nrole);
                         }
-                    }
+                    
 
 
                     //seed default admin account
@@ -70,10 +70,10 @@ namespace CCS.Repositories
                     admin.PasswordHash = hashed;
                     admin.NormalizedUserName = "ADMIN";
                     admin.NormalizedEmail = ("admin@creativecybersolutions.com").ToUpper();
-                    userStore.CreateAsync(admin);
+                    await userStore.CreateAsync(admin);
 
-                    userManager.AddToRoleAsync(admin, "Administrator");
-
+                    await userManager.AddToRoleAsync(admin, "Administrator");
+                    }
                     context.SaveChanges();
 
                 }
