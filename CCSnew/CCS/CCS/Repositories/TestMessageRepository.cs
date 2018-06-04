@@ -72,5 +72,10 @@ namespace CCS.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public int UnreadMessageCount(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
