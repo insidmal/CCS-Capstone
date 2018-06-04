@@ -21,6 +21,7 @@ namespace CCS.Repositories
         List<Message> GetMessagesByUser(string id);
         List<Message> GetMessagesToUser(string id);
         List<Message> GetMessagesToAndFromUser(string id);
+        int UnreadMessageCount(string id);
         int Add(Message m);
         int Remove(Message m);
         int Remove(int MessID);
