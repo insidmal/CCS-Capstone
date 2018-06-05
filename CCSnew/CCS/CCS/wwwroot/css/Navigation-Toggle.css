@@ -192,13 +192,26 @@
 
 
     .dropdown-menu-toggle {
-        opacity: 0;
-        height: 0px;
+
+        background-color: white;
         display:none;
-        width: 220px;
+        color: black;
+        opacity: 1;
+        height: 160px;
+        width: 170px;
         border: none;
         margin: 0 auto;
+        margin-bottom: 15px;
+        font-size: 15px;
         padding-bottom: 1px;
+    }
+
+    .dropdown-item-toggle {
+        color: black;
+        display:none;
+        padding-bottom: 1px;
+        text-align: center;
+        margin: 0 auto;
         font-size: 15px;
     }
 
@@ -207,6 +220,7 @@
         color: black;
         display:block;
         opacity: 1;
+        display:block;
         height: 160px;
         width: 170px;
         border: none;
@@ -222,6 +236,7 @@
         color: black;
         padding-bottom: 1px;
         text-align: center;
+        display:block;
         margin: 0 auto;
         font-size: 15px;
     }
