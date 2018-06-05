@@ -61,11 +61,18 @@ namespace CCS.Repositories
         public List<Project> ShowAllProjects() => context.Project.ToList();
         public Project ShowProjectByID(int id, bool visible)
         {
-            Project p = context.Project.FirstOrDefault(a => a.ID == id);
-            p.Notes = notes.GetNotesByProject(id,visible);
-            p.Products = projProd.GetProjectProducts(id);
-            p.TotalDue = p.Products.Sum(a => a.Price);
-            return p;
+            Project p = new Project();
+            try
+            {
+                p = context.Project.FirstOrDefault(a => a.ID == id);
+                p.Notes = notes.GetNotesByProject(id, visible);
+                p.Products = projProd.GetProjectProducts(id);
+                p.TotalDue = p.Products.Sum(a => a.Price);
+            }
+            catch { }
+
+                return p;
+
         }
         public List<Project> ShowProjectsByCustomer(string custID) => context.Project.Where(a => a.CustomerID == custID).ToList();
         public List<Project> ShowProjectsByStatus(Status s) => context.Project.Where(a => a.Progress == s).ToList();

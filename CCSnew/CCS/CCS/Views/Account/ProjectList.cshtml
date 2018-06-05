@@ -21,7 +21,7 @@
 
             @foreach (Project p in Model)
             {
-                <tr class="clickable-row" data-href="ProjectView/@p.ID"><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
+                <tr class="clickable-row" data-href="/Account/ProjectView/@p.ID"><td>@p.Name</td><td>@p.Progress</td><td>@p.QuoteDate</td></tr>
             }
         </table>
 

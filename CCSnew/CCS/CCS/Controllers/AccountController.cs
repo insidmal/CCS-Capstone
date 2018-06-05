@@ -332,7 +332,19 @@ namespace CCS.Controllers
             return View("ProjectList", project.ShowProjectsByCustomer(GetCurrentUserId()));
         }
 
-        public IActionResult ProjectView(int id) => View(project.ShowProjectByID(id, CLIENT));
+        public IActionResult ProjectView(int id)
+        {
+            var pj = project.ShowProjectByID(id, CLIENT);
+            if (pj == null || pj.CustomerID != GetCurrentUserId())
+            {
+                ViewBag.Message = "Project Not Found, Please Try Again.";
+                return View("ProjectList", project.ShowProjectsByCustomer(GetCurrentUserId()));
+
+            }
+
+            else return View(pj);
+
+        }
 
         public IActionResult AcceptQuote(int id)
         {
