@@ -8,9 +8,8 @@
 <br />
 @foreach (Message m in @Model)
 {
-    <a id="@m.ID"></a>
     <center>
-        <div style="background-color:#f4f4f4; min-width:35%; max-width:400px; padding:20px; text-align:left;">
+        <div style="background-color:#f4f4f4; min-width:35%; max-width:400px; padding:20px; text-align:left;" id="@m.ID">
             <div style="margin-left:5px;"><strong>@m.Subject</strong><br /><font size="-1" color="grey">&nbsp;@m.Date</font></div>
             
                 <div style="margin-left:15px;">
