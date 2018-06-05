@@ -32,6 +32,9 @@ namespace CCS.Controllers
         private IMessageRepository message;
         private IProjectProductsRepository prodProj;
         private INoteRepository note;
+        private ISettingRepository sets;
+        private Settings settings;
+
 
         public AccountController(UserManager<User> usrMgr,
             SignInManager<User> signinMgr,
@@ -42,7 +45,8 @@ namespace CCS.Controllers
             IProjectRepository proj,
             IProductRepository prod,
             IProjectProductsRepository prop,
-            INoteRepository nor)
+            INoteRepository nor,
+            ISettingRepository set)
         {
             signInManager = signinMgr;
             userManager = usrMgr;
@@ -54,14 +58,19 @@ namespace CCS.Controllers
             product = prod;
             prodProj = prop;
             note = nor;
+            sets = set;
+            settings = sets.GetSettings();
         }
 
         #endregion
 
         #region Account Functions
         [Authorize]
-        public IActionResult Index() => View(message.UnreadMessageCount(GetCurrentUserId()));
-
+        public IActionResult Index()
+        {
+            ViewBag.Message = settings.WelcomeMessage;
+            return View(message.UnreadMessageCount(GetCurrentUserId()));
+        }
         [Authorize(Roles = "Users")]
         public IActionResult OtherAction() => View("Index",
             GetData(nameof(OtherAction)));
