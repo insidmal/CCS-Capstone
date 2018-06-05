@@ -18,12 +18,18 @@ namespace CCS.Repositories
         private readonly AppIdentityDbContext context;
         private IProjectProductsRepository projProd;
         private INoteRepository notes;
+        private ISettingRepository sets;
+        private Settings settings;
 
-        public ProjectRepo(AppIdentityDbContext repo, IProjectProductsRepository projprod, INoteRepository n)
+
+        public ProjectRepo(AppIdentityDbContext repo, IProjectProductsRepository projprod, INoteRepository n, ISettingRepository set)
         {
             notes = n;
             context = repo;
             projProd = projprod;
+            sets = set;
+            settings = sets.GetSettings();
+
         }
 
         public Project Add(Project p)
@@ -58,7 +64,7 @@ namespace CCS.Repositories
                 return context.SaveChanges();
         }
 
-        public List<Project> ShowAllProjects() => context.Project.ToList();
+        public List<Project> ShowAllProjects() => context.Project.Where(a=>a.LastUpdate>=DateTime.Now.AddDays(settings.InvoiceDays * -1)).ToList();
         public Project ShowProjectByID(int id, bool visible)
         {
             Project p = new Project();
@@ -83,6 +89,7 @@ namespace CCS.Repositories
             oldP.InvoiceDue = p.InvoiceDue;
             oldP.Quote = p.Quote;
             oldP.TotalDue = p.TotalDue;
+            oldP.LastUpdate = DateTime.Now;
             context.Project.Update(oldP);
             context.SaveChanges();
             return oldP;
@@ -98,7 +105,7 @@ namespace CCS.Repositories
             {
                 oldP.InvoiceDue = DateTime.Now.AddDays(set.InvoiceDays);
             }
-
+            oldP.LastUpdate = DateTime.Now;
             context.Project.Update(oldP);
             notes.AddNote(id, new Note() { Date = DateTime.Now, Text = "Project Status Updated: " + s.ToString(), From=UserId, Visible=true });
             return oldP;

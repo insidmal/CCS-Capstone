@@ -38,6 +38,11 @@ namespace CCS.Repositories
                     s.InvoiceDays = 30;
                     s.InvoiceStatus = Status.Completed;
 
+                    s.MsgDays = 90;
+                    s.ProjDays = 90;
+
+                    s.WelcomeMessage = "Welcome to Creative Cyber Solutions.  We look forward to helping you create the website or software product you need, our 45 years of combined experience help make sure you get the software you need at the price you want.";
+
                     context.Settings.Add(s);
                     context.SaveChanges();
                 }

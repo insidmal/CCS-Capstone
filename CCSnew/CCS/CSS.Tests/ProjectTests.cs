@@ -36,11 +36,11 @@ namespace CCS.Tests
         public void AddQuoteTest()
         {
             repo.Add(pr1);
-            Assert.Equal(Status.New, repo.ShowProjectByID(1).Progress);
-            Assert.Equal(0, repo.ShowProjectByID(1).Quote);
+            Assert.Equal(Status.New, repo.ShowProjectByID(1, true).Progress);
+            Assert.Equal(0, repo.ShowProjectByID(1, true).Quote);
             repo.AddQuote(1, 500.00);
-            Assert.Equal(Status.Quoted, repo.ShowProjectByID(1).Progress);
-            Assert.Equal(500, repo.ShowProjectByID(1).Quote);
+            Assert.Equal(Status.Quoted, repo.ShowProjectByID(1, true).Progress);
+            Assert.Equal(500, repo.ShowProjectByID(1, true).Quote);
         }
 
         [Fact]
@@ -78,7 +78,7 @@ namespace CCS.Tests
         {
             Assert.Empty(repo.ShowAllProjects());
             repo.Add(pr1);
-            Assert.Equal("Project 1", repo.ShowProjectByID(1).Name);
+            Assert.Equal("Project 1", repo.ShowProjectByID(1, true).Name);
         }
 
         [Fact]
@@ -108,9 +108,9 @@ namespace CCS.Tests
         {
             Assert.Empty(repo.ShowAllProjects());
             repo.Add(pr1);
-            Assert.Equal(Status.New, repo.ShowProjectByID(1).Progress);
+            Assert.Equal(Status.New, repo.ShowProjectByID(1, true).Progress);
             repo.UpdateStatus(1, Status.Started, "1");
-            Assert.Equal(Status.Started, repo.ShowProjectByID(1).Progress);
+            Assert.Equal(Status.Started, repo.ShowProjectByID(1, true).Progress);
         }
     }
 }
