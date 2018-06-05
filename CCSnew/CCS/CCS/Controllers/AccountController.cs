@@ -253,16 +253,30 @@ namespace CCS.Controllers
 
         public IActionResult MessageView(int id)
         {
-            ViewBag.UserId = GetCurrentUserId();
-
-            var messages = message.GetMessages(id, GetCurrentUserId());
-            foreach (Message m in messages)
+            try
             {
-                if (userManager.Users.FirstOrDefault(a => a.Id == m.FromID)==null) m.FromName = "[Deleted]";
-                else m.FromName = userManager.Users.FirstOrDefault(a => a.Id == m.FromID).UserName;
+                ViewBag.UserId = GetCurrentUserId();
+                var messages = message.GetMessages(id, GetCurrentUserId());
+                if (messages.Count < 1)
+                {
+                    TempData["Message"] = "Message not Found, Please try again.";
+                    return RedirectToAction("MessageList");
+                }
+                else
+                {
+                    foreach (Message m in messages)
+                    {
+                        if (userManager.Users.FirstOrDefault(a => a.Id == m.FromID) == null) m.FromName = "[Deleted]";
+                        else m.FromName = userManager.Users.FirstOrDefault(a => a.Id == m.FromID).UserName;
+                    }
+                    ViewBag.Item = id;
+                    return View(messages);
+                }
             }
-            ViewBag.Item = messages.Last().ID;
-            return View(messages);
+            catch {
+                TempData["Message"] = "Message not Found, Please try again.";
+                return RedirectToAction("MessageList");
+            }
         }
 
             [HttpGet]
