@@ -15,10 +15,11 @@
         z-index: 1;
     }
 
-
+    
 
     .overlay a {
-        font-size: 20px
+        font-size: 20px;
+
     }
 
     .overlay .closebtn {
