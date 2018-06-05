@@ -61,9 +61,9 @@
                     @if (User.Identity.IsAuthenticated)
             {
 
-
-                <a href="#" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account&nbsp;<span class="caret"></span></a>
-                <div class="dropdown-menu-toggle "  aria-labelledby="accountDropdown">
+<!--toggle navbar-->
+                <a  onclick="myFunction()" href="#" id="adminDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account&nbsp;<span class="caret" ></span></a>
+                <div class="dropdown-menu-toggle"  aria-labelledby="accountDropdown">
 
                     <a class="dropdown-item-toggle" asp-controller="Account" asp-action="MessageList">View Messages</a>
                     <a class="dropdown-item-toggle" asp-controller="Account" asp-action="MessageSend">Send Message</a>
@@ -287,7 +287,27 @@ else
         }
 
 
- 
+      
+
+
+        function myFunction() {
+            document.getElementById("dropdown-menu-toggle").classList.toggle("show");
+        }
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
 
 
     </script>

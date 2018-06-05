@@ -193,17 +193,28 @@
 
 
     .dropdown-menu-toggle {
-        opacity: 0;
-        height: 0px;
-        width: 220px;
+        background-color: red;
+        color: black;
+        opacity: 1;
+        height: 160px;
+        width: 170px;
         border: none;
         margin: 0 auto;
+        margin-bottom: 15px;
+        font-size: 15px;
         padding-bottom: 1px;
+    }
+
+    .dropdown-item-toggle {
+        color: black;
+        padding-bottom: 1px;
+        text-align: center;
+        margin: 0 auto;
         font-size: 15px;
     }
 
     .open .dropdown-menu-toggle {
-        background-color: white;
+        background-color: red;
         color: black;
         opacity: 1;
         height: 160px;
