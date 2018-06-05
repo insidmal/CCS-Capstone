@@ -191,10 +191,10 @@
 
 
 
-
     .dropdown-menu-toggle {
         opacity: 0;
         height: 0px;
+        display:none;
         width: 220px;
         border: none;
         margin: 0 auto;
@@ -205,6 +205,7 @@
     .open .dropdown-menu-toggle {
         background-color: white;
         color: black;
+        display:block;
         opacity: 1;
         height: 160px;
         width: 170px;
