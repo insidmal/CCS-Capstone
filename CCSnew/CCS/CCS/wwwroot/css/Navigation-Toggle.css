@@ -191,8 +191,8 @@
 
 
 
-
     .dropdown-menu-toggle {
+
         background-color: white;
         display:none;
         color: black;
@@ -218,6 +218,7 @@
     .open .dropdown-menu-toggle {
         background-color: white;
         color: black;
+        display:block;
         opacity: 1;
         display:block;
         height: 160px;

@@ -1,5 +1,5 @@
-﻿@model Dictionary<string, object>
-
+﻿@model int
+@inject UserManager<User> UserManager
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,7 +7,32 @@
 <br>
 <div class="container-content" id="startchange">
     <center>
-        <h1>You are logged into your account</h1>
+        <h1>Welcome!</h1>
+        <p>
+            <strong>
+                Hi, @UserManager.GetUserName(User)!  @if (Model > 0)
+            {<span>You Have @Model New Messages.</span>}
+            </strong>
+        </p>
+        <p>
+            <a class="btn button" asp-action="MessageList">View Your Messages</a>
+        </p>
+        <p>
+            <a class="btn button" asp-action="ProjectList">View Your Projects</a>
+        </p>
+
+
+    
+            <div style="margin:20px;">Welcome to Creative Cyber Solutions.  We look forward to helping you create the website or software product you need, our 45 years of combined experience help make sure you get the software you need at the price you want.</div>
+ 
+
+
+
+
+
+
+
+       
     </center>
 </div>
 

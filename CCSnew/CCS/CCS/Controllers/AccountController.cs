@@ -60,7 +60,7 @@ namespace CCS.Controllers
 
         #region Account Functions
         [Authorize]
-        public IActionResult Index() => View(GetData(nameof(Index)));
+        public IActionResult Index() => View(message.UnreadMessageCount(GetCurrentUserId()));
 
         [Authorize(Roles = "Users")]
         public IActionResult OtherAction() => View("Index",
@@ -238,11 +238,14 @@ namespace CCS.Controllers
                  mess = message.GetMessagesToAndFromUser(GetCurrentUserId()).OrderByDescending(a => a.Date).ToList<Message>();
                 foreach (Message m in mess)
                 {
-                if (!userManager.FindByIdAsync(m.FromID).IsCompletedSuccessfully) m.FromName = "[Deleted]";
-                    else m.FromName = userManager.FindByIdAsync(m.FromID).Result.UserName;
-                if (!userManager.FindByIdAsync(m.ToID).IsCompletedSuccessfully) m.ToUser = "[Deleted]";
-                else m.ToUser = userManager.FindByIdAsync(m.ToID).Result.UserName;
-                }
+                if (userManager.Users.FirstOrDefault(a => a.Id == m.FromID) == null) m.FromName = "[Deleted]";
+                else m.FromName = userManager.Users.FirstOrDefault(a => a.Id == m.FromID).UserName;
+
+                if (userManager.Users.FirstOrDefault(a => a.Id == m.ToID) == null) m.ToUser = "[Deleted]";
+                else m.ToUser = userManager.Users.FirstOrDefault(a => a.Id == m.ToID).UserName;
+
+
+            }
             ViewBag.Message = TempData["Message"];
                 return View(mess);
             }
@@ -255,8 +258,8 @@ namespace CCS.Controllers
             var messages = message.GetMessages(id, GetCurrentUserId());
             foreach (Message m in messages)
             {
-                if (userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser)==null) m.FromName = "[Deleted]";
-                else m.FromName = userManager.Users.FirstOrDefault(a => a.UserName == m.ToUser).UserName;
+                if (userManager.Users.FirstOrDefault(a => a.Id == m.FromID)==null) m.FromName = "[Deleted]";
+                else m.FromName = userManager.Users.FirstOrDefault(a => a.Id == m.FromID).UserName;
             }
             ViewBag.Item = messages.Last().ID;
             return View(messages);
@@ -289,17 +292,10 @@ namespace CCS.Controllers
         [HttpPost]
         public IActionResult MessageReply(Message m)
         {
-            
-            //Message m = new Message();
-            //m.FromID = FromId;
-            //m.ToID = ToId;
-            //m.Parent = Parent;
-            //m.Text = Text;
-            //m.Subject = Subject;
             m.Date = DateTime.Now;
             m.Status = Read.Unread;
             message.Add(m);
-            ViewBag.Message = "Message Sent to " + m.ToUser + "!";
+            TempData["Message"] = "Reply Sent to " + userManager.Users.FirstOrDefault(a=>a.Id==m.ToID) + "!";
             return RedirectToAction("MessageList");
         }
         #endregion

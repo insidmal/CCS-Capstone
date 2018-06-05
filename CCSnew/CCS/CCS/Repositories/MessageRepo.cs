@@ -18,8 +18,14 @@ namespace CCS.Repositories
 
         public int Add(Message m)
         {
-            if (m.Parent <= 0) m.Parent = m.ID;
+            
             context.Message.Add(m);
+            if (m.Parent <= 0) {
+                context.SaveChanges();
+                m.Parent = m.ID;
+                context.Message.Update(m);
+            }
+
             return context.SaveChanges();
         }
 
@@ -56,6 +62,8 @@ namespace CCS.Repositories
         }
 
         public List<Message> ShowAllMessages() => context.Message.ToList<Message>();
+
+        public int UnreadMessageCount(string id) => context.Message.Count(a => a.ToID == id && a.Status == Read.Unread);
 
         public Message Update(Message m)
         {
