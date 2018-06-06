@@ -145,8 +145,9 @@ namespace CCS.Controllers
                     var validNewPass = await passwordValidator.ValidateAsync(userManager, user, password);
                     if (validNewPass.Succeeded)
                     {
+                        await userManager.RemovePasswordAsync(user);
+                        await userManager.AddPasswordAsync(user, password);
                         ViewBag.Message = "Password Updated";
-                        await userManager.UpdateAsync(user);
                     }
                     else
                     {
