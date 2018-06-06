@@ -15,10 +15,11 @@
         z-index: 1;
     }
 
-
+    
 
     .overlay a {
-        font-size: 20px
+        font-size: 20px;
+
     }
 
     .overlay .closebtn {
@@ -206,11 +207,12 @@
     .open .dropdown-menu-toggle {
         background-color: white;
         color: black;
+        z-index: 600;
         opacity: 1;
         height: 160px;
         width: 170px;
         border: none;
-        display:block;
+        display: block;
         margin: 0 auto;
         margin-bottom: 15px;
         font-size: 15px;
@@ -222,6 +224,7 @@
     .open .dropdown-item-toggle {
         color: black;
         padding-bottom: 1px;
+        z-index: 600;
         text-align: center;
         margin: 0 auto;
         font-size: 15px;
