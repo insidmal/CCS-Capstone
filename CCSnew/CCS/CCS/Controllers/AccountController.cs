@@ -204,29 +204,32 @@ namespace CCS.Controllers
                 var oldUser = await userManager.FindByIdAsync(GetCurrentUserId());
                 var newUser = await userManager.FindByIdAsync(GetCurrentUserId());
 
-                var validOldPass = await passwordValidator.ValidateAsync(userManager, oldUser, oldPassword);
 
-                if (validOldPass.Succeeded)
+
+                if (passwordHasher.HashPassword(newUser, oldPassword) == newUser.PasswordHash)
                 {
-                    if (oldUser.PasswordHash == newUser.PasswordHash)
+                    var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
+                    if (validNewPass.Succeeded)
                     {
-                        if (validOldPass.Succeeded)
-                        {
-                            var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
-
-                            ViewBag.Message = "Password Updated";
-                            await userManager.UpdateAsync(newUser);
-                        }
-                        else
-                        {
-                            ViewBag.Message = "Password Could Not Be Updated";
-                        }
+                        ViewBag.Message = "Password Updated";
+                        await userManager.UpdateAsync(newUser);
                     }
                     else
                     {
-                        ViewBag.Message = "Old Password is Incorrect.";
+                        ViewBag.Message = "An Error Has Occured: ";
+                        foreach (IdentityError s in validNewPass.Errors.ToList())
+                        {
+                            ViewBag.Message += s.Description + " ";
+                        }
+
+                        return View(newUser);
                     }
                 }
+                else
+                {
+                    ViewBag.Message = "Old Password is Incorrect.";
+                }
+                
             }
             catch (Exception ex)
             {
