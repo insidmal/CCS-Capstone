@@ -15,7 +15,9 @@
         z-index: 1;
     }
 
-    
+    .dropdown-backdrop {
+        z-index: 0;
+    }
 
     .overlay a {
         font-size: 20px;
@@ -207,7 +209,6 @@
     .open .dropdown-menu-toggle {
         background-color: white;
         color: black;
-        z-index: 600;
         opacity: 1;
         height: 160px;
         width: 170px;
@@ -217,6 +218,7 @@
         margin-bottom: 15px;
         font-size: 15px;
         padding-bottom: 1px;
+        visibility: visible;
     }
 
 
@@ -224,10 +226,10 @@
     .open .dropdown-item-toggle {
         color: black;
         padding-bottom: 1px;
-        z-index: 600;
         text-align: center;
         margin: 0 auto;
         font-size: 15px;
+        visibility: visible;
     }
 
 
