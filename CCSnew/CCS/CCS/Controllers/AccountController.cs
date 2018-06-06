@@ -16,7 +16,7 @@ namespace CCS.Controllers
         // CREATIVE CYBER SOLUTIONS
         // CREATED: 04/10/2018
         // CREATED BY: JOHN BELL contact@conquest-marketing.com
-        // UPDATED: 05/29/2018
+        // UPDATED: 06/06/2018
         // UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
         #region var and constructor
@@ -201,32 +201,48 @@ namespace CCS.Controllers
         {
             try
             {
-                var oldUser = await userManager.FindByIdAsync(GetCurrentUserId());
+                //var oldUser = await userManager.FindByIdAsync(GetCurrentUserId());
                 var newUser = await userManager.FindByIdAsync(GetCurrentUserId());
 
-                var validOldPass = await passwordValidator.ValidateAsync(userManager, oldUser, oldPassword);
+                var pChange = await userManager.ChangePasswordAsync(newUser,oldPassword, newPassword);
 
-                if (validOldPass.Succeeded)
+                if (pChange.Succeeded)
                 {
-                    if (oldUser.PasswordHash == newUser.PasswordHash)
+                    ViewBag.Message = "Password Updated";
+                }
+                else {
+                    ViewBag.Message = "An Error Has Occured: ";
+                    foreach (IdentityError s in pChange.Errors.ToList())
                     {
-                        if (validOldPass.Succeeded)
-                        {
-                            var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
-
-                            ViewBag.Message = "Password Updated";
-                            await userManager.UpdateAsync(newUser);
-                        }
-                        else
-                        {
-                            ViewBag.Message = "Password Could Not Be Updated";
-                        }
-                    }
-                    else
-                    {
-                        ViewBag.Message = "Old Password is Incorrect.";
+                        ViewBag.Message += s.Description + " ";
                     }
                 }
+
+                //if (passwordHasher.HashPassword(newUser, oldPassword) == newUser.PasswordHash)
+                //{
+                //    var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
+                //    if (validNewPass.Succeeded)
+                //    {
+                //        ViewBag.Message = "Password Updated";
+                //        newUser.PasswordHash = passwordHasher.HashPassword(newUser, newPassword);
+                //        await userManager.UpdateAsync(newUser);
+                //    }
+                //    else
+                //    {
+                //        ViewBag.Message = "An Error Has Occured: ";
+                //        foreach (IdentityError s in validNewPass.Errors.ToList())
+                //        {
+                //            ViewBag.Message += s.Description + " ";
+                //        }
+
+                //        return View(newUser);
+                //    }
+                //}
+                //else
+                //{
+                //    ViewBag.Message = "Old Password is Incorrect.";
+                //}
+
             }
             catch (Exception ex)
             {
