@@ -204,14 +204,13 @@ namespace CCS.Controllers
                 var oldUser = await userManager.FindByIdAsync(GetCurrentUserId());
                 var newUser = await userManager.FindByIdAsync(GetCurrentUserId());
 
-
-
                 if (passwordHasher.HashPassword(newUser, oldPassword) == newUser.PasswordHash)
                 {
                     var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
                     if (validNewPass.Succeeded)
                     {
                         ViewBag.Message = "Password Updated";
+                        newUser.PasswordHash = passwordHasher.HashPassword(newUser, newPassword);
                         await userManager.UpdateAsync(newUser);
                     }
                     else
