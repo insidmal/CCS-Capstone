@@ -238,9 +238,10 @@ namespace CCS.Controllers
            
                 p.Progress = Status.New;
                 p.CustomerID = userManager.Users.FirstOrDefault(a => a.UserName == p.CustomerName).Id;
+                p.LastUpdate = DateTime.Now;
                 project.Add(p);
                 p.Notes = new List<Note>();
-                TempData["Message"] = "Project Created!";
+                ViewBag.Message = "Project Created!";
                 return View("ProjectView", p);
             }
             else
