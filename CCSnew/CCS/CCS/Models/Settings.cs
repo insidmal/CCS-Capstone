@@ -9,7 +9,7 @@ namespace CCS.Models
     // CREATIVE CYBER SOLUTIONS
     // CREATED 05/22/2018
     // CREATED BY JOHN BELL contact@conquest-marketing.com
-    // UPDATED 05/29/2018
+    // UPDATED 06/05/2018
     // UPDATED BY JOHN BELL contact@conquest-marketing.com
 
 
@@ -23,5 +23,8 @@ namespace CCS.Models
         public int ContactPort { get; set; }
         public int InvoiceDays { get; set; }
         public Status InvoiceStatus { get; set; }
-    }
+        public int ProjDays { get; set; }
+        public int MsgDays { get; set; }
+        public string WelcomeMessage { get; set; }
+     }
 }

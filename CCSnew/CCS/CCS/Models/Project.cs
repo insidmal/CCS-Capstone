@@ -32,6 +32,7 @@ namespace CCS.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime InvoiceDue { get; set; }
+        public DateTime LastUpdate { get; set; }
         public Paid Paid { get; set; }
         public Status Progress { get; set; }
         public Project()

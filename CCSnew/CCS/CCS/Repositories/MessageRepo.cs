@@ -10,10 +10,14 @@ namespace CCS.Repositories
     {
 
         private readonly AppIdentityDbContext context;
+        private ISettingRepository sets;
+        private Settings settings;
 
-        public MessageRepo(AppIdentityDbContext ctx)
+        public MessageRepo(AppIdentityDbContext ctx, ISettingRepository set)
         {
+            sets = set;
             context = ctx;
+            settings = sets.GetSettings();
         }
 
         public int Add(Message m)
@@ -35,7 +39,7 @@ namespace CCS.Repositories
             List<Message> messages = new List<Message>();
             if (context.Message.FirstOrDefault(a => a.ID == id && (a.FromID == userId || a.ToID == userId)) != null) {
                 int parent = context.Message.FirstOrDefault(a => a.ID == id).Parent;
-                messages = context.Message.Where(a => a.ID == parent || a.Parent == parent).OrderBy(a => a.Date).ToList();
+                messages = context.Message.Where(a => (a.ID == parent || a.Parent == parent) && a.Date>=DateTime.Now.AddDays(settings.MsgDays*-1)).OrderBy(a => a.Date).ToList();
                 foreach (Message m in messages)
                 {
                     if (m.ToID == userId) m.Status = Read.Read;

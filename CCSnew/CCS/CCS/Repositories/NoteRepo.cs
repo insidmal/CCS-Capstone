@@ -30,6 +30,7 @@ namespace CCS.Repositories
             note.Text = n.Text;
             note.Visible = n.Visible;
 
+            context.Project.FirstOrDefault(a => a.ID == id).LastUpdate = DateTime.Now;
             context.Note.Add(note);
             context.SaveChanges();
             return n;
