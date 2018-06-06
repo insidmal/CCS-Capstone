@@ -192,7 +192,7 @@ namespace CCS.Controllers
             else
             {
                 ViewBag.Message = "An Error has Occured, your Information was Not Updated.";
-                return View(a);
+                return View(oldA);
             }
         }
 
@@ -218,30 +218,6 @@ namespace CCS.Controllers
                     }
                 }
 
-                //if (passwordHasher.HashPassword(newUser, oldPassword) == newUser.PasswordHash)
-                //{
-                //    var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
-                //    if (validNewPass.Succeeded)
-                //    {
-                //        ViewBag.Message = "Password Updated";
-                //        newUser.PasswordHash = passwordHasher.HashPassword(newUser, newPassword);
-                //        await userManager.UpdateAsync(newUser);
-                //    }
-                //    else
-                //    {
-                //        ViewBag.Message = "An Error Has Occured: ";
-                //        foreach (IdentityError s in validNewPass.Errors.ToList())
-                //        {
-                //            ViewBag.Message += s.Description + " ";
-                //        }
-
-                //        return View(newUser);
-                //    }
-                //}
-                //else
-                //{
-                //    ViewBag.Message = "Old Password is Incorrect.";
-                //}
 
             }
             catch (Exception ex)
