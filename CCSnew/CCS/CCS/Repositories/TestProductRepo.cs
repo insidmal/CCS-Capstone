@@ -22,10 +22,13 @@ namespace CCS.Repositories
 
         public TestProductRepo()
         {
-            //AddProduct(new Product { ID = 1, Description = "Test Product 1", Name = "Product 1", Price = 100, Active = true });
-            //AddProduct(new Product { ID = 2, Description = "Test Product 2", Name = "Product 2", Price = 15, Active=true });
-            //AddProduct(new Product { ID = 3, Description = "Test Product 3", Name = "Product 3", Price = 150, Active=true });
-            //AddProduct(new Product { ID = 4, Description = "Test Product 4", Name = "Product 4", Price = 150, Active = false });
+            var p1 = new Product { ID = 1, Description = "Test Product 1", Name = "Product 1", Price = 100 };
+            var p2 = new Product { ID = 2, Description = "Test Product 2", Name = "Product 2", Price = 15 };
+            var p3 = new Product { ID = 3, Description = "Test Product 3", Name = "Product 3", Price = 150 };
+            AddProduct(p1);
+            AddProduct(p2);
+            AddProduct(p3);
+
 
         }
 

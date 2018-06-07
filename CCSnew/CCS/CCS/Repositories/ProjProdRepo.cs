@@ -59,7 +59,8 @@ namespace CCS.Repositories
             foreach (ProjectProducts pp in pplist)
             {
                 var pro = context.Product.FirstOrDefault(a => a.ID == pp.ProductID);
-                pd.Add(new Product { Name = pro.Name, ProjProdId=pp.ID, Quantity=pp.Quantity, Price=pro.Price*pp.Quantity });
+                //pd.Add(new Product { Name = pro.Name, ProjProdId=pp.ID, Quantity=pp.Quantity, Price=pro.Price*pp.Quantity });
+                pd.Add(new Product { Name = pro.Name, Quantity = pp.Quantity, Price = pro.Price * pp.Quantity });
             }
             return pd;
         }

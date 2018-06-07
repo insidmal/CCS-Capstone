@@ -14,18 +14,20 @@ namespace CCS.Repositories
         IProjectProductsRepository projProds = new TestProjProdRepo();
         INoteRepository notes = new TestNoteRepo();
 
-        //public TestProjectRepo()
-        //{
-        //    if (projects.Count == 0)
-        //    {
+        public TestProjectRepo()
+        {
+            if (projects.Count == 0)
+            {
+              var  pr1 = new Project() { ID = 1, CustomerID = "1", Name = "Project 1", Description = "Test Project 1", Progress = Status.New };
+              var  pr2 = new Project() { ID = 2, CustomerID = "1", Name = "Project 2", Description = "Test Project 2", Progress = Status.Started };
+              var  pr3 = new Project() { ID = 3, CustomerID = "2", Name = "Project 3", Description = "Test Project 3", Progress = Status.New };
+                Add(pr1);
+                Add(pr2);
+                Add(pr3);
+            }
+        }
 
-        //        Add(new Project() { ID = 1, CustomerID = 1, Name = "Project 1", Description = "Test Project 1", Progress = Status.New, QuoteDate = DateTime.Now });
-        //        Add(new Project() { ID = 2, CustomerID = 1, Name = "Project 2", Description = "Test Project 2", Progress = Status.Started, QuoteDate = DateTime.Now });
-        //        Add(new Project() { ID = 3, CustomerID = 2, Name = "Project 3", Description = "Test Project 3", Progress = Status.New, QuoteDate = DateTime.Now });
-        //    }
-        //}
 
-            
         public Project Add(Project p)
         {
             projects.Add(p);

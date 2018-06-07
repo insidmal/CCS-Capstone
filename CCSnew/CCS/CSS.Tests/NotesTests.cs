@@ -21,18 +21,18 @@ namespace CCS.Tests
         [Fact]
         public void NoteAddTest()
         {
-            Assert.Empty(repo.GetNotesByProject(1,true));
+            Assert.Empty(repo.GetNotesByProject(1,false));
             repo.AddNote(1, new Note() { Text="Test Note" });
-            Assert.Single(repo.GetNotesByProject(1, true));
+            Assert.Single(repo.GetNotesByProject(1, false));
 
         }
 
         [Fact]
         public void GetNotesByProjectTest()
         {
-            Assert.Empty(repo.GetNotesByProject(1, true));
+            Assert.Empty(repo.GetNotesByProject(1, false));
             repo.AddNote(1, new Note() { Text = "Test Note" });
-            Assert.Single(repo.GetNotesByProject(1, true));
+            Assert.Single(repo.GetNotesByProject(1, false));
 
         }
 
@@ -41,21 +41,21 @@ namespace CCS.Tests
         {
             Note n = new Note() { Text = "Test Note" };
             repo.AddNote(1, n);
-            Note testNote = repo.GetNotesByProject(1, true)[0];
+            Note testNote = repo.GetNotesByProject(1, false)[0];
             testNote.Text = "Updated Text";
             repo.UpdateNote(testNote);
-            Assert.Equal("Updated Text", repo.GetNotesByProject(1, true)[0].Text);
+            Assert.Equal("Updated Text", repo.GetNotesByProject(1, false)[0].Text);
         }
 
         [Fact]
         public void RemoveNoteTest()
         {
-            Assert.Empty(repo.GetNotesByProject(1, true));
+            Assert.Empty(repo.GetNotesByProject(1, false));
             Note n = new Note() { ProjectID=1, Text = "Test Note" };
             repo.AddNote(1, n);
-            Assert.Single(repo.GetNotesByProject(1, true));
+            Assert.Single(repo.GetNotesByProject(1, false));
             repo.RemoveNote(n);
-            Assert.Empty(repo.GetNotesByProject(1, true));
+            Assert.Empty(repo.GetNotesByProject(1, false));
 
         }
     }
