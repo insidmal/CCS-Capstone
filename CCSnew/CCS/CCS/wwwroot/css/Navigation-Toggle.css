@@ -195,7 +195,7 @@
 
 
 
-    .dropdown-menu-toggle {
+    .dropdown-menu {
         opacity: 0;
         height: 0px;
         width: 220px;
@@ -206,27 +206,30 @@
         font-size: 15px;
     }
 
-    .open .dropdown-menu-toggle {
+    .open .dropdown-menu {
         background-color: white;
         color: black;
         opacity: 1;
         height: 160px;
+
         width: 170px;
-        border: none;
-        display: block;
-        margin: 0 auto;
-        margin-bottom: 15px;
-        font-size: 15px;
-        padding-bottom: 1px;
+        right: auto;
+        left: 50%;
+        margin-top:0px;
+  
+        -webkit-transform: translate(-50%, 0);
+        -o-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
         visibility: visible;
     }
 
 
 
-    .open .dropdown-item-toggle {
+    .open .dropdown-item {
         color: black;
         padding-bottom: 1px;
         text-align: center;
+        display:block;
         margin: 0 auto;
         font-size: 15px;
         visibility: visible;
