@@ -59,69 +59,70 @@
 
 
                     @if (User.Identity.IsAuthenticated)
-            {
-
-
-                <a href="#" id="adminDropdown" data-toggle="dropdown"  >Account&nbsp;<span class="caret"></span></a>
-                <div class="dropdown-menu-toggle "  aria-labelledby="accountDropdown">
-
-                    <a class="dropdown-item-toggle" asp-controller="Account" asp-action="MessageList">View Messages</a>
-                    <a class="dropdown-item-toggle" asp-controller="Account" asp-action="MessageSend">Send Message</a>
-                    @if (User.IsInRole("Administrator"))
-
-            {
-
-                <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
-                <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
-                <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ProductList">View Products</a>
-                <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ProductNew">New Product</a>
-                <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="ViewUsers">View Users</a>
-                <a class="dropdown-item-toggle" asp-controller="RoleAdmin" asp-action="Index">View Roles</a>
-                <a class="dropdown-item-toggle" asp-controller="Admin" asp-action="Settings">Settings</a>
-
-
-    }
-    else
     {
 
-        <a class="dropdown-item-toggle" asp-controller="Account" asp-action="ProjectList">View Projects</a>
-        <a class="dropdown-item-toggle" asp-controller="Account" asp-action="ProjectRequest">Request Project</a>
+
+
+                <a href="#" id="adminDropdown" data-toggle="dropdown" style="">Account&nbsp;<span class="caret"></span></a>
+                <div class="dropdown-menu " aria-labelledby="accountDropdown">
+
+
+                    <a class="dropdown-item" asp-controller="Account" asp-action="MessageList">View Messages</a>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="MessageSend">Send Message</a>
+                    @if (User.IsInRole("Administrator"))
+
+    {
+
+                <a class="dropdown-item" asp-controller="Admin" asp-action="ProjectList">View Projects</a>
+                <a class="dropdown-item" asp-controller="Admin" asp-action="ProjectAdd">New Project</a>
+                <a class="dropdown-item" asp-controller="Admin" asp-action="ProductList">View Products</a>
+                <a class="dropdown-item" asp-controller="Admin" asp-action="ProductNew">New Product</a>
+                <a class="dropdown-item" asp-controller="Admin" asp-action="ViewUsers">View Users</a>
+                <a class="dropdown-item" asp-controller="RoleAdmin" asp-action="Index">View Roles</a>
+                <a class="dropdown-item" asp-controller="Admin" asp-action="Settings">Settings</a>
+
+
 }
-                    <a class="dropdown-item-toggle" asp-controller="Account" asp-action="AccountEdit">Edit Profile</a>
+else
+{
+
+                <a class="dropdown-item" asp-controller="Account" asp-action="ProjectList">View Projects</a>
+                <a class="dropdown-item" asp-controller="Account" asp-action="ProjectRequest">Request Project</a>
+}
+                    <a class="dropdown-item" asp-controller="Account" asp-action="AccountEdit">Edit Profile</a>
 
                 </div>
 
 
 
 
-    }
+}
 
 
                     </ul>
                     @if (SignInManager.IsSignedIn(User))
-            {
-                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
-                    
-
-
-
-
-                    <button type="submit" class="btn button-toggle">Log out</button>
-
-                </form>
-    }
-    else
     {
 
-        <br />
-        <button onclick="location.href='/Account/Register'" type="button" class="btn button-toggle">Register</button>
-        <br />
-        <button onclick="location.href='/Account/Login'" type="button" class="btn button-toggle">Login</button>
+                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                    <button type="submit" class="btn button-toggle">Log out</button>
+                </form>
+                
+}
+else
+{
+
+                <br />
+                <button onclick="location.href='/Account/Register'" type="button" class="btn button-toggle">Register</button>
+                <br />
+                <br/>
+                <button onclick="location.href='/Account/Login'" type="button" class="btn button-toggle">Login</button>
 
 
 
 }
+
                 </div>
+                
 
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
@@ -247,7 +248,6 @@ else
             }
 
         });
-
        
         $(document).ready(function () {
             var scroll_start = 0;

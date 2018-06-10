@@ -185,11 +185,12 @@ th {
 
 
 .button-toggle {
+    position:static;
     transition: all .5s;
     background-color: #3771c8ff;
     border: 2px solid #3771c8ff;
     color: white;
-    margin-bottom:20px;
+   
     font-family: 'MainFont';
 }
 
