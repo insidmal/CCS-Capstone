@@ -1,6 +1,6 @@
 ﻿/* all the styling when the page is resized and the navbar is toggled*/
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1100px) {
 
     body, html {
         /* background image for the website */
