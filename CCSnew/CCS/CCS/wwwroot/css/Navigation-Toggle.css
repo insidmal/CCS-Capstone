@@ -203,6 +203,7 @@
         display:none;
         margin: 0 auto;
         padding-bottom: 1px;
+    
         font-size: 15px;
     }
 
@@ -210,12 +211,12 @@
         background-color: white;
         color: black;
         opacity: 1;
-        height: 160px;
-
+        height: 170px;
+    
         width: 170px;
         right: auto;
         left: 50%;
-        margin-top:0px;
+        margin-top:15px;
   
         -webkit-transform: translate(-50%, 0);
         -o-transform: translate(-50%, 0);

@@ -101,8 +101,10 @@ else
                     @if (SignInManager.IsSignedIn(User))
     {
 
-                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm"></form>
-                <button type="submit" class="btn button-toggle">Log out</button>
+                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                    <button type="submit" class="btn button-toggle">Log out</button>
+                </form>
+                
 }
 else
 {
@@ -110,6 +112,7 @@ else
                 <br />
                 <button onclick="location.href='/Account/Register'" type="button" class="btn button-toggle">Register</button>
                 <br />
+                <br/>
                 <button onclick="location.href='/Account/Login'" type="button" class="btn button-toggle">Login</button>
 
 
