@@ -9,16 +9,17 @@
 <br />
 <br />
 <br />
-    <center>
-        <h1>Edit</h1>
-    </center>
 <center>
+    <h1>Edit</h1>
+
+    <br /><center><span style="color:red; font-weight:bold">@ViewBag.Message</span></center>
+    <br />
     <div asp-validation-summary="All" class="text-danger"></div>
     <form asp-action="Edit" method="post" class="form">
         <input asp-for="UserName" type="text" placeholder="Enter your new username" />
         <input asp-for="Email" type="text" placeholder="" />
-        <input nam="password" type="text"placeholder="Password" />
+        <input name="password" type="text" placeholder="Password" />
         <button class="btn button" style="float: left;" type="submit" value="Submit">Submit</button><a asp-action="ViewUsers" style="float: left;margin-left:15px;" class="btn button-danger">Cancel</a>
-    
+
     </form>
 </center>

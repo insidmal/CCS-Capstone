@@ -16,7 +16,7 @@ namespace CCS.Controllers
         // CREATIVE CYBER SOLUTIONS
         // CREATED: 04/10/2018
         // CREATED BY: JOHN BELL contact@conquest-marketing.com
-        // UPDATED: 05/29/2018
+        // UPDATED: 06/06/2018
         // UPDATED BY: JOHN BELL contact@conquest-marketing.com
 
         #region var and constructor
@@ -192,7 +192,7 @@ namespace CCS.Controllers
             else
             {
                 ViewBag.Message = "An Error has Occured, your Information was Not Updated.";
-                return View(a);
+                return View(oldA);
             }
         }
 
@@ -201,32 +201,24 @@ namespace CCS.Controllers
         {
             try
             {
-                var oldUser = await userManager.FindByIdAsync(GetCurrentUserId());
+                //var oldUser = await userManager.FindByIdAsync(GetCurrentUserId());
                 var newUser = await userManager.FindByIdAsync(GetCurrentUserId());
 
-                var validOldPass = await passwordValidator.ValidateAsync(userManager, oldUser, oldPassword);
+                var pChange = await userManager.ChangePasswordAsync(newUser,oldPassword, newPassword);
 
-                if (validOldPass.Succeeded)
+                if (pChange.Succeeded)
                 {
-                    if (oldUser.PasswordHash == newUser.PasswordHash)
+                    ViewBag.Message = "Password Updated";
+                }
+                else {
+                    ViewBag.Message = "An Error Has Occured: ";
+                    foreach (IdentityError s in pChange.Errors.ToList())
                     {
-                        if (validOldPass.Succeeded)
-                        {
-                            var validNewPass = await passwordValidator.ValidateAsync(userManager, newUser, newPassword);
-
-                            ViewBag.Message = "Password Updated";
-                            await userManager.UpdateAsync(newUser);
-                        }
-                        else
-                        {
-                            ViewBag.Message = "Password Could Not Be Updated";
-                        }
-                    }
-                    else
-                    {
-                        ViewBag.Message = "Old Password is Incorrect.";
+                        ViewBag.Message += s.Description + " ";
                     }
                 }
+
+
             }
             catch (Exception ex)
             {

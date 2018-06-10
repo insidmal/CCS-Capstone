@@ -12,16 +12,17 @@ using System.Web;
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/10/2018
 // CREATED BY: JOHN BELL contact@conquest-marketing.com
-// UPDATED: 05/22/2018
+// UPDATED: 06/06/2018
 // UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
 
 
 namespace CCS.Controllers
 {
+
+    #region constructor and var decs
     public class AdminController : Controller
     {
 
-        #region var dec and constructor
 
         const bool CLIENT = false;
         private IProjectRepository project;
@@ -81,19 +82,14 @@ namespace CCS.Controllers
                     = await userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
-                {
+
                     ViewBag.Message = "Account Created";
-                    return View("ViewUsers", userManager.Users);
-                }
+
                 else
-                {
-                    foreach (IdentityError error in result.Errors)
-                    {
-                        ModelState.AddModelError("", error.Description);
-                    }
-                }
+                    ViewBag.Message = "An Error has Occured, Please Try Again";
+
             }
-            return View(model);
+            return View("ViewUsers", userManager.Users);
         }
 
         [HttpPost]
@@ -104,20 +100,14 @@ namespace CCS.Controllers
             {
                 IdentityResult result = await userManager.DeleteAsync(user);
                 if (result.Succeeded)
-                {
                     ViewBag.Message = "Account Deleted";
-                    return View("ViewUsers",userManager.Users);
-                }
                 else
-                {
-                    AddErrorsFromResult(result);
-                }
+                    ViewBag.Message = "An Error has Occured, Please Try Again";
             }
             else
-            {
-                ModelState.AddModelError("", "User Not Found");
-            }
-            return View("Index", userManager.Users);
+                ViewBag.Message = "User Not Found";
+
+            return View("ViewUsers", userManager.Users);
         }
 
         public async Task<IActionResult> Edit(string id)
@@ -129,7 +119,9 @@ namespace CCS.Controllers
             }
             else
             {
-                return RedirectToAction("Index");
+                ViewBag.Message = "User Not Found";
+
+                return View("ViewUsers", userManager.Users);
             }
         }
 
@@ -150,17 +142,25 @@ namespace CCS.Controllers
                 IdentityResult validPass = null;
                 if (!string.IsNullOrEmpty(password))
                 {
-                    validPass = await passwordValidator.ValidateAsync(userManager,
-                    user, password);
-                    if (validPass.Succeeded)
+                    var validNewPass = await passwordValidator.ValidateAsync(userManager, user, password);
+                    if (validNewPass.Succeeded)
                     {
-                        user.PasswordHash = passwordHasher.HashPassword(user,
-                        password);
+                        await userManager.RemovePasswordAsync(user);
+                        await userManager.AddPasswordAsync(user, password);
+                        ViewBag.Message = "Password Updated";
                     }
                     else
                     {
-                        AddErrorsFromResult(validPass);
+                        ViewBag.Message = "An Error Has Occured: ";
+                        foreach (IdentityError s in validNewPass.Errors.ToList())
+                        {
+                            ViewBag.Message += s.Description + " ";
+                        }
+    
+                        return View(user);
                     }
+
+  
                 }
                 if ((validEmail.Succeeded && validPass == null)
                 || (validEmail.Succeeded
@@ -169,7 +169,9 @@ namespace CCS.Controllers
                     IdentityResult result = await userManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index");
+                        ViewBag.Message = "Account Updated!";
+
+                        return View("ViewUsers", userManager.Users);
                     }
                     else
                     {
@@ -181,6 +183,8 @@ namespace CCS.Controllers
             {
                 ModelState.AddModelError("", "User Not Found");
             }
+            ViewBag.Message = "An Error has Occured, Please Try Again";
+
             return View(user);
         }
 
