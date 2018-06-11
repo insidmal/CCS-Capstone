@@ -71,8 +71,13 @@ namespace CCS.Repositories
             }
             else
             {
-                p.Active = true;
-                context.Product.Update(p);
+                Product newP = context.Product.FirstOrDefault(a => a.ID == p.ID);
+                newP.Active = true;
+                newP.Description = p.Description;
+                newP.Name = p.Name;
+                newP.Price = p.Price;
+
+                context.Product.Update(newP);
                 context.SaveChanges();
             }
             return p;
