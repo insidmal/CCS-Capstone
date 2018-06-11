@@ -10,7 +10,7 @@ using CCS.Repositories;
 
 namespace CCS.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AccountController : Controller
     {
         // CREATIVE CYBER SOLUTIONS
@@ -65,13 +65,13 @@ namespace CCS.Controllers
         #endregion
 
         #region Account Functions
-        [Authorize]
+
         public IActionResult Index()
         {
             ViewBag.Message = settings.WelcomeMessage;
             return View(message.UnreadMessageCount(GetCurrentUserId()));
         }
-        [Authorize(Roles = "Users")]
+
         public IActionResult OtherAction() => View("Index",
             GetData(nameof(OtherAction)));
 

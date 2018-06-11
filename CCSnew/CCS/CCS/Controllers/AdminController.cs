@@ -12,13 +12,13 @@ using System.Web;
 // CREATIVE CYBER SOLUTIONS
 // CREATED: 04/10/2018
 // CREATED BY: JOHN BELL contact@conquest-marketing.com
-// UPDATED: 06/06/2018
+// UPDATED: 06/10/2018
 // UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
 
 
 namespace CCS.Controllers
 {
-
+    [Authorize(Roles = "Administrator")]
     #region constructor and var decs
     public class AdminController : Controller
     {

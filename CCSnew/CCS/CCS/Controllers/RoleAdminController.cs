@@ -8,9 +8,16 @@ using System.ComponentModel.DataAnnotations;
 using CCS.Models;
 using Microsoft.AspNetCore.Authorization;
 
+// CREATIVE CYBER SOLUTIONS
+// CREATED: 04/15/2018
+// CREATED BY: YADIRA DESPAINGE PLANCHE
+// UPDATED: 06/10/2018
+// UPDATED BY: JOHN BELL contact@conquest-marketing.com, YADIRA DESPAINGE PLANCHE
+
+
 namespace CCS.Controllers
 {
-    //[Authorize(Roles = "Admins")]
+    [Authorize(Roles = "Administrator")]
     public class RoleAdminController : Controller
     {
         private RoleManager<IdentityRole> roleManager;

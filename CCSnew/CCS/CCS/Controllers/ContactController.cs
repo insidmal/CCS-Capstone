@@ -7,6 +7,12 @@ using System.Net.Mail;
 using CCS.Models;
 using CCS.Repositories;
 
+// CREATIVE CYBER SOLUTIONS
+// CREATED: 05/09/2018
+// CREATED BY: YADIRA DESPAINGE PLANCHE
+// UPDATED: 05/31/2018
+// UPDATED BY: JOHN BELL contact@conquest-marketing.com
+
 namespace CCS.Controllers
 {
     public class ContactController : Controller
