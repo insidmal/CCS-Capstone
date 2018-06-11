@@ -10,7 +10,7 @@
 {
     <center>
         <div style="background-color:#f4f4f4; min-width:35%; max-width:400px; padding:20px; text-align:left;" id="@m.ID">
-            <div style="margin-left:5px;"><strong>@m.Subject</strong><br /><font size="-1" color="grey">&nbsp;@m.Date</font></div>
+            <div style="margin-left:5px;"><strong>@m.Subject</strong><br /><font size="-1" color="grey">&nbsp;From @m.FromName on @m.Date</font></div>
             
                 <div style="margin-left:15px;">
 <br />
@@ -24,20 +24,21 @@
     <center>
         <br />
         <form method="post" asp-action="MessageReply" class="form">
+            <span style="float:left;"><strong>Reply:</strong></span>
 
             <input type="hidden" name="parent" value="@Model[0].Parent" />
             @if (Model[0].FromID == ViewBag.UserId)
-    {
-        <input type="hidden" name="ToId" value="@Model[0].ToID" />
-        <input type="hidden" name="FromId" value="@Model[0].FromID" />
-}
-else
-{
-        <input type="hidden" name="FromId" value="@Model[0].ToID" />
-        <input type="hidden" id="ToId" value="@Model[0].FromID" />
-}
-            <input type="text" name="Subject" value="Re: @Model[0].Subject" />
-            <textarea name="Text"></textarea>
+            {
+                <input type="hidden" name="ToId" value="@Model[0].ToID" />
+                <input type="hidden" name="FromId" value="@Model[0].FromID" />
+            }
+            else
+            {
+                <input type="hidden" name="FromId" value="@Model[0].ToID" />
+                <input type="hidden" id="ToId" value="@Model[0].FromID" />
+            }
+            <input type="text" name="Subject" value="Re: @Model[0].Subject" placeholder="Subject" />
+            <textarea name="Text" placeholder="Message"></textarea>
             <button class="btn button" style="float: left;" type="submit" value="Submit">Send</button><a asp-action="MessageList" style="float: left;margin-left:15px;" class="btn button-danger">Cancel</a>
 
         </form>
