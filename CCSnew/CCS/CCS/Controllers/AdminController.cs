@@ -18,7 +18,7 @@ using System.Web;
 
 namespace CCS.Controllers
 {
-   [Authorize(Roles = "Administrator")]
+   //[Authorize(Roles = "Administrator")]
     #region constructor and var decs
     public class AdminController : Controller
     {
