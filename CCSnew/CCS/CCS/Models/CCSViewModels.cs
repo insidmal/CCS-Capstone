@@ -64,7 +64,7 @@ namespace CCS.Models
     public class ContactViewModel
     {
         [Required]
-        [StringLength(20, MinimumLength = 5)]
+        [StringLength(20, MinimumLength = 1)]
         public string Name { get; set; }
         [Required]
         [EmailAddress]
