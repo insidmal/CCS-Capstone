@@ -57,11 +57,24 @@ namespace CCS.Repositories
             return context.SaveChanges();
         }
 
-        // update so that if the product exists in an invoice and has a price change that it just inactivates the old product and updates the new one, this way it does not create discrepancies on old invoices
         public Product UpdateProduct(Product p)
         {
-            context.Product.Update(p);
-            context.SaveChanges();
+            Product oldP = context.Product.FirstOrDefault(a => a.ID == p.ID);
+            if (context.ProjProd.Any(a => a.ProductID == p.ID) && oldP.Price!=p.Price)
+            {
+                oldP.Active = false;
+                context.Product.Update(oldP);
+                context.SaveChanges();
+
+                context.Product.Add(new Product() { Name = p.Name, Active = true, Price = p.Price, Description = p.Description });
+                context.SaveChanges();
+            }
+            else
+            {
+                p.Active = true;
+                context.Product.Update(p);
+                context.SaveChanges();
+            }
             return p;
         }
 
