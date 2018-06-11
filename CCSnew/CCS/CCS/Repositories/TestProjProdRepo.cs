@@ -16,7 +16,11 @@ namespace CCS.Repositories
         private List<ProjectProducts> projectProducts = new List<ProjectProducts>();
         private List<Product> products = new List<Product>();
 
-         
+        public void TestProjectRepo()
+        {
+            projectProducts.Add(new ProjectProducts { ProductID = 1, ProjectID = 1, Quantity = 1 });
+        } 
+
         public Product AddProjectProduct(int projectID, Product p, int qty)
         {
             projectProducts.Add(new ProjectProducts { ProjectID = projectID, ProductID = p.ID, Quantity = qty });
@@ -40,13 +44,13 @@ namespace CCS.Repositories
         {
             List<Product> p = new List<Product>();
             Product pr = new Product();
-            //foreach(ProjectProducts pp in projectProducts.Where(a => a.ProjectID == projectId).ToList())
-            //{
-            //    pr = products.FirstOrDefault(a => a.ID == pp.ID);
-            //    pr.Quantity = pp.Quantity;
-            //    pr.Price = pp.Quantity * pr.Price;
-            //    p.Add(pr);
-            // }
+            foreach (ProjectProducts pp in projectProducts.Where(a => a.ProjectID == projectId).ToList())
+            {
+                pr = products.FirstOrDefault(a => a.ID == pp.ID);
+                pr.Quantity = pp.Quantity;
+                pr.Price = pp.Quantity * pr.Price;
+                p.Add(pr);
+            }
             return p;
         }
 
