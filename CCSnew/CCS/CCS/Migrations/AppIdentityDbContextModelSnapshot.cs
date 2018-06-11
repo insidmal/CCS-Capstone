@@ -85,8 +85,6 @@ namespace CCS.Migrations
 
                     b.Property<float>("Price");
 
-                    b.Property<int>("ProjProdId");
-
                     b.Property<int?>("ProjectID");
 
                     b.Property<int>("Quantity");

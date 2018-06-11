@@ -11,8 +11,8 @@ using System;
 namespace CCS.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20180605200222_beta2")]
-    partial class beta2
+    [Migration("20180611035704_Release")]
+    partial class Release
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -85,8 +85,6 @@ namespace CCS.Migrations
                     b.Property<string>("Name");
 
                     b.Property<float>("Price");
-
-                    b.Property<int>("ProjProdId");
 
                     b.Property<int?>("ProjectID");
 

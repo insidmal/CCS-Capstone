@@ -65,19 +65,21 @@ namespace CCS.Repositories
                             Nrole.NormalizedName = role.ToUpper();
                             await roleStore.CreateAsync(Nrole);
                         }
-                    
+                        context.SaveChanges();
 
 
-                    //seed default admin account
-                    var admin = new User { FirstName = "Admin", LastName = "Admin", Email = "admin@creativecybersolutions.com", UserName = "Admin", EmailConfirmed = true, LockoutEnabled = false, SecurityStamp = Guid.NewGuid().ToString("D") };
+
+                        //seed default admin account
+                        var admin = new User { FirstName = "Admin", LastName = "Admin", Email = "admin@creativecybersolutions.com", UserName = "Admin", EmailConfirmed = true, LockoutEnabled = false, SecurityStamp = Guid.NewGuid().ToString("D") };
                     var password = new PasswordHasher<User>();
                     var hashed = password.HashPassword(admin, "adminpass");
                     admin.PasswordHash = hashed;
                     admin.NormalizedUserName = "ADMIN";
                     admin.NormalizedEmail = ("admin@creativecybersolutions.com").ToUpper();
                     await userStore.CreateAsync(admin);
+                     context.SaveChanges();
 
-                    await userManager.AddToRoleAsync(admin, "Administrator");
+                        await userManager.AddToRoleAsync(admin, "Administrator");
                     }
                     context.SaveChanges();
 
