@@ -2,15 +2,16 @@
 @{
     ViewData["Title"] = "Edit Project Product";
 }
+<br />
+<Center>
+    <h2>Update Item Quantity</h2>
+    <form method="post" class="form">
+        <input type="hidden" asp-for="ID" />
+        <input type="hidden" asp-for="ProductID" />
+        <input type="hidden" asp-for="ProjectID" />
+        <label asp-for="Quantity">Quantity</label><br />
+        <input asp-for="Quantity" /><br />
+        <button type="submit" value="Update" class="btn button" style="float: left;" >Update</button>&nbsp; <a asp-action="ProjectView" asp-route-id="@Model.ProjectID" class=" btn button-danger" style="float: left;margin-left:15px;">Back</a>
 
-<h2>Edit Project Product</h2>
-<form method="post">
-    <input type="hidden" asp-for="ID" />
-    <input type="hidden" asp-for="ProductID" />
-    <input type="hidden" asp-for="ProjectID" />
-    <label asp-for="Quantity">Quantity</label><br />
-    <input asp-for="Quantity" /><br />
-    <input type="submit" value="Update" />
-    
-</form>
-
+    </form>
+</Center>
