@@ -50,7 +50,7 @@ else if (Model.Paid == Paid.Unpaid)
                 <caption>Products</caption>
                 @foreach (Product p in Model.Products)
                 {
-                    <tr><td>@p.Name</td><td>@p.Quantity</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ProjProdId">Edit</a></td></tr>
+                    <tr><td>@p.Name</td><td>@p.Quantity</td><td>$@p.Price</td><td><a asp-action="ProjProdEdit" asp-route-id="@p.ID">Edit</a></td></tr>
                 }
                 <tr><td></td><td align="right">Invoice Total: </td><td>$@Model.TotalDue</td><td></td></tr>
 
