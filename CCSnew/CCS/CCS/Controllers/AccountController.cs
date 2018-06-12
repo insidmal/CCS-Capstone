@@ -118,7 +118,6 @@ namespace CCS.Controllers
             return View(details);
         }
 
-        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
@@ -131,11 +130,11 @@ namespace CCS.Controllers
             return View();
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         public ViewResult Register() => View();
 
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model)
         {
